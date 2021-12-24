@@ -1,0 +1,40 @@
+.header{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.header .menu-mobile{
+  display: none;
+}
+.header h2{
+  margin: 0;
+  font-weight: bolder;
+  font-size: 1.7rem;
+}
+.header img{
+  position: absolute;
+  width: 10vw;
+  margin: 0;
+  right: 0;
+}
+@media (max-width: 768px) {
+  .header h2{
+    font-size: 1.2rem;
+  }
+  .header img{
+    width: 14vw;
+  }
+}
+@media (max-width: 425px) {
+  .header .menu-mobile{
+    display: block;
+  }
+  .header h2{
+    font-size: .8rem;
+  }
+  .header img{
+    display: none;
+  }
+}
