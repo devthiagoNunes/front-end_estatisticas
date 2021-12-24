@@ -1,0 +1,133 @@
+.content{
+  width: 85%;
+  max-width: 1366px;
+  margin: auto;
+  margin-top: 6rem;
+  padding: 1rem .5rem;
+  background: white;
+
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, .3);
+  border: 1px solid #007CC1;
+}
+.content .txt-filtros{
+  position: relative;
+  max-width: min-content;
+  margin-top: -2rem;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007CC1;
+  background: white;
+  padding: 0 8px;
+}
+.secao-topo{
+  display: flex;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+}
+.secao-topo div{
+  width: 25vw;
+  padding: 5px;
+  margin: 0 5px 0 0;
+}
+.secao-topo div p, .secao-bottom div p{
+  margin: 0;
+}
+.secao-topo div select, .secao-bottom div select{
+  width: 100%;
+  padding: 5px 0;
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0, .5);
+}
+.secao-bottom {
+  width: 100%;
+  display: flex;
+}
+.secao-bottom div{
+  width: 33vw;
+  padding: 5px;
+  margin: 0 15px 0 0;
+}
+.close-filters{
+  display: none;
+}
+@media (max-width: 1024px) {
+  .secao-topo div p, .secao-bottom div p, .secao-topo div select, .secao-bottom div select{
+    font-size: .8rem;
+  }
+  .content .txt-filtros{
+    margin-top: -1.9rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .content{
+    margin-top: 5rem;
+  }
+  .secao-topo div p, .secao-bottom div p, .secao-topo div select, .secao-bottom div select{
+    font-size: .7rem;
+  }
+  .content .txt-filtros{
+    margin-top: -1.85rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 425px) {
+  .content{
+    display: none;
+    width: 100%;
+    height: 120vh;
+    position: fixed;
+    z-index: 99;
+    right: 0;
+    margin-top: 3.8rem;
+    padding-bottom: 2rem;
+    border: none;
+    background: rgba(0, 0, 0, .3);
+    padding-top: 0;
+  }
+  .header-filters{
+    margin-top: -2rem;   
+    display: flex;
+    justify-content: space-between;
+  }
+  .content .txt-filtros{
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+    background: none;
+    max-width: min-content;
+    margin-top: 0rem;
+    margin-left: 0;
+  }
+  .all-filtros{
+    width: 65%;
+    height: inherit;
+    right: 0;
+    position: absolute;
+    background-color: white;
+    padding-top: 2rem;
+  }
+  .secao-topo{
+    margin-top: .5rem;
+  }
+  .secao-topo, .secao-bottom{
+    display: block;
+    font-size: .9rem;
+    margin-bottom: 0;
+  }
+  .secao-topo div, .secao-bottom div{
+    width: 100%;
+  }
+  .secao-topo div p, .secao-bottom div p, .secao-topo div select, .secao-bottom div select{
+    font-size: .9rem;
+  }
+  .close-filters{
+    display: block;
+  }
+  .header-filters{
+    position: absolute;
+    width: 100%;
+    padding: 15px;
+  }
+}
