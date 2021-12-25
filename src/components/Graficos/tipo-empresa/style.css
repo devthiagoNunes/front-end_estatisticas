@@ -1,47 +1,47 @@
-.grafico{
+.grafico {
   margin: 0;
   border-radius: 15px;
   overflow-x: scroll;
-  box-shadow: 4px 4px 8px rgb(0, 0, 0, .4);
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
   margin-bottom: 1rem;
 }
-.grafico p{
-  padding: .5rem 0;
+.grafico p {
+  padding: 0.5rem 0;
   position: sticky;
   left: 0;
   font-size: 1.5rem;
   font-weight: bold;
-  background: #007CC1;
+  background: #007cc1;
   color: white;
   text-align: center;
 }
-.setor{
+.setor {
   display: flex;
   flex-direction: column;
 }
 @media (max-width: 1024px) {
-  .grafico{
+  .grafico {
     overflow-x: scroll;
   }
-  .grafico p{
+  .grafico p {
     font-size: 1.2rem;
     position: sticky;
     left: 0;
   }
 }
 @media (max-width: 768px) {
-  .grafico{
+  .grafico {
     overflow-y: scroll;
     overflow-x: scroll;
   }
-  .grafico p{
-    font-size: .9rem;
+  .grafico p {
+    font-size: 0.9rem;
     position: sticky;
     left: 0;
   }
 }
 @media (max-width: 425px) {
-  .grafico{
+  .grafico {
     width: 65vh;
     max-width: 75vw;
     max-height: 35vh;
@@ -50,7 +50,7 @@
     overflow-x: scroll;
     margin-bottom: 1rem;
   }
-  .grafico p{
+  .grafico p {
     position: sticky;
     left: 0;
   }

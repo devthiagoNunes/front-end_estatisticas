@@ -1,162 +1,165 @@
-.content-municipio{
+.content-municipio {
   width: 26vw;
   height: 100%;
   position: relative;
-  padding: 0 .5rem 0 0;
+  padding: 0 0.5rem 0 0;
   overflow-y: hidden;
 }
-.total-empresasAbertas{
+.total-empresasAbertas {
   position: relative;
   margin: 0 0 2rem 0;
   width: 100%;
   height: 25vh;
   overflow: hidden;
   border-radius: 15px;
-  box-shadow: 4px 4px 8px rgb(0, 0, 0, .4);
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
-.total-empresasAbertas p:first-child{
+.total-empresasAbertas p:first-child {
   position: static;
   margin: 0;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   font-size: 1.5rem;
   font-weight: bold;
-  background: #007CC1;
+  background: #007cc1;
   color: white;
   text-align: center;
 }
-.total-empresasAbertas p:last-child{
+.total-empresasAbertas p:last-child {
   position: absolute;
   width: 100%;
   height: 100%;
   text-align: center;
   padding-top: 1rem;
-  color: #2190DC;
+  color: #2190dc;
   font-size: 3.5rem;
 }
-.content-dataMunicipio{
-  height: 103vh;
+.content-dataMunicipio {
   border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 4px 4px 8px rgb(0, 0, 0, .4);
+  overflow-y: hidden;
+  border-bottom: 1px solid #000;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
-.content-table{
-  height: inherit;
-  border: 1px solid black;
+.content-table .tabelas {
+  height: 100%;
   overflow-y: scroll;
-}
-.content-table .tabelas{
+  border: 1px solid;
   position: relative;
   display: flex;
   padding-bottom: 2px;
 }
-.content-dataMunicipio p:first-child{
+.content-dataMunicipio p:first-child {
   margin: 0;
-  padding: .7rem 0;
+  padding: 0.7rem 0;
   font-size: 1.2rem;
   font-weight: bold;
-  background: #007CC1;
+  background: #007cc1;
   color: white;
   text-align: center;
+  z-index: 9;
 }
-.tabelas table{
+.tabelas table {
   padding: 0 5px;
   width: 50%;
   height: inherit;
 }
-.tabelas table tr{
+.tabelas table tr {
   font-size: 1.1rem;
   border-bottom: 1px solid black;
-} 
-.tabelas table:last-child tr{
+}
+.tabelas table:last-child tr {
   text-align: right;
 }
 @media (min-width: 1366px) {
-  .content-dataMunicipio{
+  .content-dataMunicipio {
     height: 117vh;
   }
-  .total-empresasAbertas{
+  .total-empresasAbertas {
     height: 20vh;
   }
-  .content-table{
+  .content-table {
     height: 100%;
   }
 }
-@media (min-width:1024px) {
-  .content-municipio{
+@media (min-width: 1024px) {
+  .content-municipio {
     width: 28vw;
     height: 100%;
   }
-  .content-dataMunicipio{
+  .content-dataMunicipio {
     height: 85%;
   }
-  .content-table{
+  .content-table {
     max-height: 100%;
   }
-  .total-empresasAbertas{
+  .total-empresasAbertas {
     height: 20vh;
   }
-  .total-empresasAbertas p:last-child{
+  .total-empresasAbertas p:last-child {
     font-size: 2.5rem;
   }
-  .total-empresasAbertas p:first-child{
+  .total-empresasAbertas p:first-child {
     font-size: 1.2rem;
   }
-  .content-dataMunicipio p:first-child{
-    padding: .7rem 0;
+  .content-dataMunicipio p:first-child {
+    padding: 0.7rem 0;
     font-size: 1.1rem;
   }
-  .tabelas table tr{
-    font-size: .9rem;
+  .tabelas table tr {
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 768px) {
-  .content-municipio{
+  .content-municipio {
     width: 28vw;
     height: 100%;
   }
-  .total-empresasAbertas{
+  .total-empresasAbertas {
     height: 23vh;
   }
-  .content-dataMunicipio{
+  .total-empresasAbertas p:last-child {
+    font-size: 2.8rem;
+  }
+  .content-dataMunicipio {
     height: 107vh;
     max-height: min-content;
   }
-  .total-empresasAbertas p:first-child{
-    font-size: .9rem;
+  .total-empresasAbertas p:first-child {
+    font-size: 0.9rem;
   }
-  .content-dataMunicipio p:first-child{
-    padding: .5rem 0;
-    font-size: .9rem;
+  .content-dataMunicipio p:first-child {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
   }
-  .tabelas table tr{
-    font-size: .75rem;
+  .tabelas table tr {
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 425px) {
-  .content-municipio{
+  .content-municipio {
     width: 100%;
     margin: auto;
     max-height: 95vh;
   }
-  .total-empresasAbertas{
+  .total-empresasAbertas {
     width: 80%;
-    max-height: 16vh;
+    max-height: 25vh;
     margin: auto;
     margin-bottom: 1rem;
   }
-  .content-dataMunicipio  {
+  .content-dataMunicipio {
     width: 80%;
     margin: auto;
     height: 64vh;
+    overflow-y: scroll;
   }
-  .content-dataMunicipio p:first-child{
+  .content-dataMunicipio p:first-child {
     font-size: 1rem;
   }
-  .tabelas table tr{
-    font-size: .8rem;
+  .tabelas table tr {
+    font-size: 0.8rem;
   }
-  .tabelas table td{
+  .tabelas table td {
     font-weight: bold;
-  } 
+  }
 }

@@ -1,19 +1,19 @@
-.main{
+.main {
   display: flex;
   flex-direction: column;
   width: 85%;
   max-width: 1366px;
   margin: auto;
-  margin-top:  2rem;
+  margin-top: 2rem;
 }
-.content-data{
+.content-data {
   position: relative;
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
-  border: 1px solid #00B0D7;
+  border: 1px solid #00b0d7;
 }
-.content-tipoEmpresa{
+.content-tipoEmpresa {
   width: 100%;
   max-height: 1135px;
   display: flex;
@@ -21,7 +21,7 @@
   padding-bottom: 2rem;
   justify-content: space-around;
 }
-.tipoEmpresa{
+.tipoEmpresa {
   display: flex;
   flex-direction: column;
   width: 65%;
@@ -30,33 +30,33 @@
 }
 
 @media (max-width: 768px) {
-  .content-tipoEmpresa{
+  .content-tipoEmpresa {
     max-height: 780px;
   }
-  .content-tipoEmpresa{
+  .content-tipoEmpresa {
     justify-content: space-between;
   }
-  .tipoEmpresa{
+  .tipoEmpresa {
     width: 54vw;
   }
 }
 @media (max-width: 425px) {
-  .main{
+  .main {
     width: 95%;
     margin-top: 4.5rem;
   }
-  .content-data{
+  .content-data {
     display: flex;
     flex-wrap: wrap;
   }
-  .tipoEmpresa{
+  .tipoEmpresa {
     width: 95%;
     margin: auto;
     max-width: none;
     height: max-content;
     margin-bottom: 1rem;
   }
-  .content-tipoEmpresa{
+  .content-tipoEmpresa {
     flex-direction: column;
     max-height: min-content;
   }
