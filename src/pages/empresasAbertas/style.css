@@ -61,5 +61,6 @@
   }
   .content-tipoEmpresa {
     height: 217vh;
+    margin-bottom: 1rem;
   }
 }

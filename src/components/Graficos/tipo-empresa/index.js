@@ -97,10 +97,10 @@ export default ({ tipo, categoria, classificacao }) => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: categoria.quantidade.length >= 7 ? "92%" : "50%",
-      height: categoria.quantidade.length > 7 ? "260vh" : "200vh",
+      width: categoria.quantidade.length >= 7 ? "95%" : "50%",
+      height: categoria.quantidade.length > 7 ? "210vh" : "200vh",
       top: categoria.quantidade.length > 7 ? "6%" : "5%",
-      left: categoria.quantidade.length > 7 ? "7%" : "2%",
+      left: "2%",
       bottom: "2%",
     },
     tooltip: {
@@ -182,7 +182,7 @@ export default ({ tipo, categoria, classificacao }) => {
       width:
         categoria.quantidade.length > 6 || window.innerWidth < 768
           ? "90%"
-          : "40%",
+          : "45%",
       top: categoria.quantidade.length > 6 ? "10%" : "6%",
       left: "2%",
       right: categoria.quantidade.length > 7 ? "15%" : "4%",
@@ -197,6 +197,7 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: categoria.quantidade.length > 6 ? "95%" : "45%",
       itemSize: 13,
       showTitle: true,
       feature: {
@@ -262,7 +263,7 @@ export default ({ tipo, categoria, classificacao }) => {
       top: categoria.quantidade.length > 7 ? "2%" : "9%",
       bottom: categoria.quantidade.length > 6 ? "12%" : "18%",
       left: categoria.quantidade.length > 7 ? "25%" : "7%",
-      right: "5%",
+      right: categoria.quantidade.length > 6 ? "10%" : "22%",
     },
     tooltip: {
       trigger: "axis",
@@ -273,7 +274,7 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "95%",
+      left: categoria.quantidade.length > 6 ? "93%" : "80%",
       itemSize: 17,
       showTitle: true,
       feature: {
@@ -347,9 +348,9 @@ export default ({ tipo, categoria, classificacao }) => {
           option={config3}
           style={{
             height: categoria.quantidade.length > 7 ? "40vh" : "35vh",
-            width: categoria.quantidade.length > 6 ? "150vw" : "95vw",
+            width: categoria.quantidade.length > 6 ? "100vw" : "105vw",
           }}
-          opts={{ renderer: "svg" }}
+          opts={{ renderer: "canvas" }}
         />
       )}
 
@@ -358,7 +359,7 @@ export default ({ tipo, categoria, classificacao }) => {
           option={config2}
           style={{
             height: categoria.quantidade.length > 7 ? "50vh" : "40vh",
-            width: categoria.quantidade.length > 7 ? "180vw" : "90vw",
+            width: categoria.quantidade.length > 7 ? "150vw" : "90vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -381,7 +382,7 @@ export default ({ tipo, categoria, classificacao }) => {
             height: categoria.quantidade.length > 7 ? "80vh" : "45vh",
             width: categoria.quantidade.length > 6 ? "70vw" : "60vw",
           }}
-          opts={{ renderer: "svg" }}
+          opts={{ renderer: "canvas" }}
         />
       )}
     </div>
