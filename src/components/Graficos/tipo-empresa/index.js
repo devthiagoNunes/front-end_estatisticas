@@ -348,7 +348,7 @@ export default ({ tipo, categoria, classificacao }) => {
           option={config3}
           style={{
             height: categoria.quantidade.length > 7 ? "40vh" : "35vh",
-            width: categoria.quantidade.length > 6 ? "100vw" : "105vw",
+            width: categoria.quantidade.length > 6 ? "150vw" : "105vw",
           }}
           opts={{ renderer: "canvas" }}
         />
