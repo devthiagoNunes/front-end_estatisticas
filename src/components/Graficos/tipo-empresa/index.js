@@ -179,9 +179,12 @@ export default ({ tipo, categoria, classificacao }) => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: categoria.quantidade.length > 6 ? "90%" : "90%",
-      top: categoria.quantidade.length > 7 ? "6%" : "6%",
-      left: categoria.quantidade.length > 7 ? "7%" : "1%",
+      width:
+        categoria.quantidade.length > 6 || window.innerWidth < 768
+          ? "90%"
+          : "40%",
+      top: categoria.quantidade.length > 6 ? "10%" : "6%",
+      left: "2%",
       right: categoria.quantidade.length > 7 ? "15%" : "4%",
       bottom: categoria.quantidade.length > 7 ? "15%" : "4%",
     },
@@ -194,7 +197,6 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "93%",
       itemSize: 13,
       showTitle: true,
       feature: {
@@ -345,7 +347,7 @@ export default ({ tipo, categoria, classificacao }) => {
           option={config3}
           style={{
             height: categoria.quantidade.length > 7 ? "40vh" : "35vh",
-            width: categoria.quantidade.length > 6 ? "130vw" : "115vw",
+            width: categoria.quantidade.length > 6 ? "150vw" : "95vw",
           }}
           opts={{ renderer: "svg" }}
         />
