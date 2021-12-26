@@ -26,11 +26,6 @@ export default ({ tipo, categoria, classificacao }) => {
       height: "200vh",
       left: "2%",
       top: "8%",
-      // width: categoria.quantidade.length >= 7 ? "93%" : "50%",
-      // height: categoria.quantidade.length > 7 ? "260vh" : "240vh",
-      // top: categoria.quantidade.length > 7 ? "2%" : "8%",
-      // right: categoria.quantidade.length > 7 ? "50%" : "10%",
-      // left: categoria.quantidade.length > 7 ? ".5%" : "1%",
     },
     tooltip: {
       trigger: "axis",
@@ -102,11 +97,6 @@ export default ({ tipo, categoria, classificacao }) => {
       height: "165vh",
       top: "6%",
       left: "4%",
-      // width: categoria.quantidade.length >= 7 ? "95%" : "50%",
-      // height: categoria.quantidade.length > 7 ? "210vh" : "200vh",
-      // top: categoria.quantidade.length > 7 ? "6%" : "5%",
-      // left: "2%",
-      // bottom: "2%",
     },
     tooltip: {
       trigger: "axis",
@@ -186,14 +176,6 @@ export default ({ tipo, categoria, classificacao }) => {
       height: "100vh",
       top: "9%",
       left: "5%",
-      // width:
-      //   categoria.quantidade.length > 6 || window.innerWidth < 768
-      //     ? "90%"
-      //     : "45%",
-      // top: categoria.quantidade.length > 6 ? "10%" : "6%",
-      // left: "2%",
-      // right: categoria.quantidade.length > 7 ? "15%" : "4%",
-      // bottom: categoria.quantidade.length > 7 ? "15%" : "4%",
     },
     tooltip: {
       trigger: "axis",
@@ -270,10 +252,6 @@ export default ({ tipo, categoria, classificacao }) => {
       height: "230vh",
       top: "9%",
       left: "5%",
-      // top: categoria.quantidade.length > 7 ? "2%" : "9%",
-      // bottom: categoria.quantidade.length > 6 ? "12%" : "18%",
-      // left: categoria.quantidade.length > 7 ? "25%" : "7%",
-      // right: categoria.quantidade.length > 6 ? "10%" : "22%",
     },
     tooltip: {
       trigger: "axis",
