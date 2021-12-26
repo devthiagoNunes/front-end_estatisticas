@@ -23,11 +23,14 @@ export default ({ tipo, categoria, classificacao }) => {
   const config1 = {
     grid: {
       containLabel: true,
-      width: categoria.quantidade.length >= 7 ? "93%" : "50%",
-      height: categoria.quantidade.length > 7 ? "260vh" : "240vh",
-      top: categoria.quantidade.length > 7 ? "2%" : "8%",
-      right: categoria.quantidade.length > 7 ? "50%" : "10%",
-      left: categoria.quantidade.length > 7 ? ".5%" : "1%",
+      height: "200vh",
+      left: "2%",
+      top: "8%",
+      // width: categoria.quantidade.length >= 7 ? "93%" : "50%",
+      // height: categoria.quantidade.length > 7 ? "260vh" : "240vh",
+      // top: categoria.quantidade.length > 7 ? "2%" : "8%",
+      // right: categoria.quantidade.length > 7 ? "50%" : "10%",
+      // left: categoria.quantidade.length > 7 ? ".5%" : "1%",
     },
     tooltip: {
       trigger: "axis",
@@ -56,7 +59,6 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: categoria.quantidade.length > 6 ? "95%" : "50%",
       itemSize: 15,
       showTitle: true,
       feature: {
@@ -97,11 +99,14 @@ export default ({ tipo, categoria, classificacao }) => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: categoria.quantidade.length >= 7 ? "95%" : "50%",
-      height: categoria.quantidade.length > 7 ? "210vh" : "200vh",
-      top: categoria.quantidade.length > 7 ? "6%" : "5%",
-      left: "2%",
-      bottom: "2%",
+      height: "165vh",
+      top: "6%",
+      left: "4%",
+      // width: categoria.quantidade.length >= 7 ? "95%" : "50%",
+      // height: categoria.quantidade.length > 7 ? "210vh" : "200vh",
+      // top: categoria.quantidade.length > 7 ? "6%" : "5%",
+      // left: "2%",
+      // bottom: "2%",
     },
     tooltip: {
       trigger: "axis",
@@ -112,7 +117,6 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: categoria.quantidade.length > 6 ? "95%" : "53%",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -179,14 +183,17 @@ export default ({ tipo, categoria, classificacao }) => {
   const config3 = {
     grid: {
       containLabel: true,
-      width:
-        categoria.quantidade.length > 6 || window.innerWidth < 768
-          ? "90%"
-          : "45%",
-      top: categoria.quantidade.length > 6 ? "10%" : "6%",
-      left: "2%",
-      right: categoria.quantidade.length > 7 ? "15%" : "4%",
-      bottom: categoria.quantidade.length > 7 ? "15%" : "4%",
+      height: "100vh",
+      top: "9%",
+      left: "5%",
+      // width:
+      //   categoria.quantidade.length > 6 || window.innerWidth < 768
+      //     ? "90%"
+      //     : "45%",
+      // top: categoria.quantidade.length > 6 ? "10%" : "6%",
+      // left: "2%",
+      // right: categoria.quantidade.length > 7 ? "15%" : "4%",
+      // bottom: categoria.quantidade.length > 7 ? "15%" : "4%",
     },
     tooltip: {
       trigger: "axis",
@@ -197,7 +204,6 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: categoria.quantidade.length > 6 ? "95%" : "45%",
       itemSize: 13,
       showTitle: true,
       feature: {
@@ -260,10 +266,14 @@ export default ({ tipo, categoria, classificacao }) => {
 
   const config4 = {
     grid: {
-      top: categoria.quantidade.length > 7 ? "2%" : "9%",
-      bottom: categoria.quantidade.length > 6 ? "12%" : "18%",
-      left: categoria.quantidade.length > 7 ? "25%" : "7%",
-      right: categoria.quantidade.length > 6 ? "10%" : "22%",
+      containLabel: true,
+      height: "230vh",
+      top: "9%",
+      left: "5%",
+      // top: categoria.quantidade.length > 7 ? "2%" : "9%",
+      // bottom: categoria.quantidade.length > 6 ? "12%" : "18%",
+      // left: categoria.quantidade.length > 7 ? "25%" : "7%",
+      // right: categoria.quantidade.length > 6 ? "10%" : "22%",
     },
     tooltip: {
       trigger: "axis",
@@ -274,7 +284,6 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: categoria.quantidade.length > 6 ? "93%" : "80%",
       itemSize: 17,
       showTitle: true,
       feature: {
@@ -335,41 +344,39 @@ export default ({ tipo, categoria, classificacao }) => {
     <div
       className="grafico setor"
       style={{
-        overflowX:
-          categoria.quantidade.length >= 7 || window.innerWidth < 768
-            ? "scroll"
-            : "hidden",
+        overflowX: "scroll",
+        overflowY: "hidden",
       }}
     >
       <p>{`Empresas ${tipo} Por ${classificacao}`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
             height: categoria.quantidade.length > 7 ? "40vh" : "35vh",
-            width: categoria.quantidade.length > 6 ? "150vw" : "105vw",
+            width: categoria.quantidade.length > 6 ? "160vw" : "100vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
+      {window.innerWidth >= 768 && window.innerWidth < 1024 && (
         <Echarts
           option={config2}
           style={{
             height: categoria.quantidade.length > 7 ? "50vh" : "40vh",
-            width: categoria.quantidade.length > 7 ? "150vw" : "90vw",
+            width: categoria.quantidade.length > 6 ? "110vw" : "80vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
+      {window.innerWidth >= 1024 && window.innerWidth < 1366 && (
         <Echarts
           option={config1}
           style={{
-            width: categoria.quantidade.length > 6 ? "90vw" : "95vw",
+            width: categoria.quantidade.length > 6 ? "100vw" : "70vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -379,7 +386,7 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config4}
           style={{
-            height: categoria.quantidade.length > 7 ? "80vh" : "45vh",
+            height: categoria.quantidade.length > 7 ? "80vh" : "53vh",
             width: categoria.quantidade.length > 6 ? "70vw" : "60vw",
           }}
           opts={{ renderer: "canvas" }}
