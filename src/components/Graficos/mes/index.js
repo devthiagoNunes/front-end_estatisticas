@@ -17,10 +17,11 @@ export default ({ tipo, categoria }) => {
 
   const config1 = {
     grid: {
-      top: categoria.quantidade.length > 12 ? "10%" : "11%",
-      left: "6%",
-      right: "14%",
-      bottom: categoria.quantidade.length > 12 ? "10%" : "16%",
+      containLabel: true,
+      width: "93%", 
+      height: "90%",
+      top: categoria.quantidade.length > 12 ? "10%" : "6%",   
+      left: "2%",
     },
     tooltip: {
       trigger: "axis",
@@ -31,7 +32,7 @@ export default ({ tipo, categoria }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "86%",
+      left: "right",
       showTitle: true,
       feature: {
         type: "png",
@@ -117,10 +118,11 @@ export default ({ tipo, categoria }) => {
 
   const config2 = {
     grid: {
-      top: "7%",
-      left: "7%",
-      right: "5%",
-      bottom: categoria.quantidade.length > 12 ? "12%" : "14%",
+      containLabel: true,
+      width: "93%", 
+      height: "90%",
+      top: categoria.quantidade.length > 12 ? "10%" : "6%",
+      left: "2%",
     },
     tooltip: {
       trigger: "axis",
@@ -131,7 +133,7 @@ export default ({ tipo, categoria }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "94%",
+      left: "right",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -212,10 +214,11 @@ export default ({ tipo, categoria }) => {
 
   const config3 = {
     grid: {
-      top: categoria.quantidade.length > 12 ? "6%" : "5%",
-      left: categoria.quantidade.length > 12 ? "5%" : "8%",
-      bottom: categoria.quantidade.length > 12 ? "16%" : "12%",
-      right: "5%",
+      containLabel: true,
+      width: "93%", 
+      height: categoria.quantidade.length > 12 ? "80%" : "90%",
+      top: categoria.quantidade.length > 12 ? "10%" : "6%",
+      left: "2%",
     },
     tooltip: {
       trigger: "axis",
@@ -249,17 +252,6 @@ export default ({ tipo, categoria }) => {
       offset: categoria.quantidade.length > 12 ? [0, 5] : null,
       color: "rgb(0, 0, 0)",
     },
-    legend: {
-      show: categoria.quantidade.length > 12 ? true : false,
-      icon: "roundRect",
-      type: "scroll",
-      orient: "horizontal",
-      left: "6%",
-      right: "6%",
-      top: "1%",
-      align: "auto",
-      data: categoria.quantidade.length > 12 ? categoria.tipo : null,
-    },
     xAxis: {
       type: "category",
       data: categoria.tipo,
@@ -269,7 +261,7 @@ export default ({ tipo, categoria }) => {
         alignWithLabel: categoria.quantidade.length > 12 ? true : true,
       },
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 7 : 8,
+        fontSize: categoria.quantidade.length > 12 ? 7 : 9,
         fontWeight: "bold",
         rotate: categoria.quantidade.length > 12 ? 90 : 0,
         inside: categoria.quantidade.length > 12 ? true : false,
@@ -419,39 +411,39 @@ export default ({ tipo, categoria }) => {
     <div
       className="grafico-mes"
       style={{
-        height: categoria.quantidade.length > 12 ? "50vh" : "45vh",
+        height: categoria.quantidade.length > 12 ? "50vh" : "55vh",
         marginTop: categoria.quantidade.length > 12 ? 0 : -25,
       }}
     >
       <p>Empresas {tipo == "Abertas" ? "Abertas Por Mes" : "Ativas Por Mes"}</p>
-      {window.innerWidth >= 425 && window.innerWidth < 768 && (
+      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
-            height: categoria.quantidade.length > 12 ? "45vh" : "35vh",
-            width: categoria.quantidade.length > 12 ? "250vw" : "110vw",
+            height: categoria.quantidade.length > 12 ? "45vh" : "45vh",
+            width: categoria.quantidade.length > 12 ? "200vw" : "110vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth >= 768 && window.innerWidth < 1024 && (
+      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
         <Echarts
           option={config2}
           style={{
             height: categoria.quantidade.length > 12 ? "120vh" : "40vh",
-            width: "100vw",
+            width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth >= 1024 && window.innerWidth <= 1366 && (
+      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
         <Echarts
           option={config1}
           style={{
-            height: categoria.quantidade.length > 12 ? "50vh" : "38vh",
-            width: "90vw",
+            height: categoria.quantidade.length > 12 ? "60vh" : "48vh",
+            width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
         />
