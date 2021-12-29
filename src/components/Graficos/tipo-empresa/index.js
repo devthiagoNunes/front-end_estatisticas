@@ -23,7 +23,8 @@ export default ({ tipo, categoria, classificacao }) => {
   const config1 = {
     grid: {
       containLabel: true,
-      height: "200vh",
+      width: categoria.quantidade.length > 7 ? "52%" : "95%",
+      height: "88%",
       left: "2%",
       top: "8%",
     },
@@ -54,6 +55,7 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: "right",
       itemSize: 15,
       showTitle: true,
       feature: {
@@ -94,9 +96,10 @@ export default ({ tipo, categoria, classificacao }) => {
   const config2 = {
     grid: {
       containLabel: true,
-      height: "165vh",
+      width: "90%",
+      height: categoria.quantidade.length > 7 ? "80%" : "88%",
       top: "6%",
-      left: "4%",
+      left: "3%",
     },
     tooltip: {
       trigger: "axis",
@@ -107,6 +110,7 @@ export default ({ tipo, categoria, classificacao }) => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: "right",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -150,7 +154,7 @@ export default ({ tipo, categoria, classificacao }) => {
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 9 : 10,
+        fontSize: categoria.quantidade.length > 7 ? 8 : 10,
         fontWeight: "bold",
       },
       axisTick: {
@@ -173,9 +177,10 @@ export default ({ tipo, categoria, classificacao }) => {
   const config3 = {
     grid: {
       containLabel: true,
-      height: "100vh",
+      width: "92%",
+      height: categoria.quantidade.length > 7 ? "73%" : "85%",
       top: "9%",
-      left: "5%",
+      left: "3%",
     },
     tooltip: {
       trigger: "axis",
@@ -229,7 +234,7 @@ export default ({ tipo, categoria, classificacao }) => {
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: 9,
+        fontSize: 8,
         fontWeight: "bold",
       },
     },
@@ -328,33 +333,32 @@ export default ({ tipo, categoria, classificacao }) => {
     >
       <p>{`Empresas ${tipo} Por ${classificacao}`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth < 768 && (
+      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
-            height: categoria.quantidade.length > 7 ? "40vh" : "35vh",
-            width: categoria.quantidade.length > 6 ? "160vw" : "100vw",
+            width: categoria.quantidade.length > 6 ? "145vw" : "90vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth >= 768 && window.innerWidth < 1024 && (
+      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
         <Echarts
           option={config2}
           style={{
-            height: categoria.quantidade.length > 7 ? "50vh" : "40vh",
-            width: categoria.quantidade.length > 6 ? "110vw" : "80vw",
+            width: categoria.quantidade.length > 6 ? "110vw" : "65vw",
+            height: categoria.quantidade.length > 7 ? "40vh" : "45vh"
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth >= 1024 && window.innerWidth < 1366 && (
+      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
         <Echarts
           option={config1}
           style={{
-            width: categoria.quantidade.length > 6 ? "100vw" : "70vw",
+            width: categoria.quantidade.length > 6 ? "90vw" : "55vw",
           }}
           opts={{ renderer: "canvas" }}
         />
