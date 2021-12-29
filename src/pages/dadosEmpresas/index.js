@@ -21,7 +21,7 @@ export default ({setState, data, tipo}) => {
             <div className='content-tipoEmpresa'>
               <div className='tipoEmpresa'>
                 {data.map((obj, key) => {
-                  if(key == 3) return
+                  if(key === 3) return
                   return <GraficoEmpresa key={key} tipo={tipo} categoria={obj} classificacao={obj.classificacao}/>
                 })}
               </div>
