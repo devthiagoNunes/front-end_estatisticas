@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RenderDatas from "../../pages/empresasAbertas";
+import RenderDatas from "../../pages/dadosEmpresas";
 import "./layout.css";
 import "./styleGlobal.css";
 
