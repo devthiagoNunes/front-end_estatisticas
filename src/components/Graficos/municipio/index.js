@@ -1,7 +1,27 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+
+import pinot from "../../../services/pinot"
 import './style.css'
+require('cors')
 
 export default ({tipo, total}) => {
+
+  useEffect(() => {
+    const reqData = async () => {
+      fetch("http://179.127.13.245:8099/query/sql", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify({sql: "select * from statistical limit 10"})
+      }).then(res => {
+        console.log(res)
+      }).catch(err => console.log(err));
+    }
+    reqData();
+  }, [])
 
   let valorTotalDeEmpresas = 0
   for (let i = 0; i < total.length; i++) {

@@ -254,9 +254,10 @@ export default ({ tipo, categoria, classificacao }) => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: "230vh",
-      top: "9%",
-      left: "5%",
+      height: categoria.quantidade.length > 7 ? "96%" : "88%",
+      width: categoria.quantidade.length >= 7 ? "90%" : '90%',
+      top: categoria.quantidade.length > 7 ? "2%" : "9%",
+      left: "3%",
     },
     tooltip: {
       trigger: "axis",
@@ -347,7 +348,7 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config2}
           style={{
-            width: categoria.quantidade.length > 6 ? "110vw" : "65vw",
+            width: categoria.quantidade.length > 6 ? "100vw" : "65vw",
             height: categoria.quantidade.length > 7 ? "40vh" : "45vh"
           }}
           opts={{ renderer: "canvas" }}
@@ -368,8 +369,8 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config4}
           style={{
-            height: categoria.quantidade.length > 7 ? "80vh" : "53vh",
-            width: categoria.quantidade.length > 6 ? "70vw" : "60vw",
+            height: categoria.quantidade.length > 7 ? "90vh" : "60vh",
+            width: categoria.quantidade.length > 7 ? "60vw" : "60vw",
           }}
           opts={{ renderer: "canvas" }}
         />

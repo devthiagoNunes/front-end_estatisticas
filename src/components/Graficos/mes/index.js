@@ -120,7 +120,7 @@ export default ({ tipo, categoria }) => {
     grid: {
       containLabel: true,
       width: "93%", 
-      height: "90%",
+      height:  categoria.quantidade.length > 12 ? "80%" : "90%",
       top: categoria.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
     },
@@ -341,9 +341,9 @@ export default ({ tipo, categoria }) => {
       },
     },
     label: {
-      show: categoria.quantidade.length > 12 ? true : true,
+      show: true,
       position: categoria.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: categoria.quantidade.length > 12 ? 10 : 12,
+      fontSize: categoria.quantidade.length > 12 ? 12 : 12,
       fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
       color: "black",
     },
@@ -355,7 +355,7 @@ export default ({ tipo, categoria }) => {
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 9 : 12,
+        fontSize: categoria.quantidade.length > 12 ? 11 : 12,
         fontWeight: "bold",
         rotate: categoria.quantidade.length > 12 ? 90 : 0,
         inside: categoria.quantidade.length > 12 ? true : false,
@@ -411,7 +411,7 @@ export default ({ tipo, categoria }) => {
     <div
       className="grafico-mes"
       style={{
-        height: categoria.quantidade.length > 12 ? "50vh" : "55vh",
+        height: categoria.quantidade.length > 12 ? "45vh" : "45vh",
         marginTop: categoria.quantidade.length > 12 ? 0 : -25,
       }}
     >
@@ -431,7 +431,7 @@ export default ({ tipo, categoria }) => {
         <Echarts
           option={config2}
           style={{
-            height: categoria.quantidade.length > 12 ? "120vh" : "40vh",
+            height: categoria.quantidade.length > 12 ? "40vh" : "40vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
@@ -453,7 +453,7 @@ export default ({ tipo, categoria }) => {
         <Echarts
           option={config4}
           style={{
-            height: categoria.quantidade.length > 12 ? "70vh" : "50vh",
+            height: categoria.quantidade.length > 12 ? "70vh" : "45vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
