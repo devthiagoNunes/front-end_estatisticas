@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 import RenderDatas from "../../pages/dadosEmpresas";
+import API_GET_DATAS from "../../services/pinot";
 import "./layout.css";
 import "./styleGlobal.css";
 
 export default () => {
   const [stateInitial, setStateInitial] = useState(true);
   const alterState = (boolean) => setStateInitial(boolean);
+
+  useEffect(() => {
+    const getSetores = async () => {
+      fetch('http://localhost:3333/all_municipios ')
+      .then(res => {
+        console.log(res.json())
+      })
+      .catch(err => console.log(err))
+    }
+    getSetores()
+  }, [])
 
   const empresasAbertas = [
     {
