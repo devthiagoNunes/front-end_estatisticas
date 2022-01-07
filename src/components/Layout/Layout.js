@@ -2,47 +2,50 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import RenderDatas from "../../pages/dadosEmpresas";
-import API_GET_DATAS from "../../services/pinot";
+import { getPorte } from "../../services/pinot";
 import "./layout.css";
 import "./styleGlobal.css";
 
-export default () => {
+export default () => { 
   const [stateInitial, setStateInitial] = useState(true);
   const alterState = (boolean) => setStateInitial(boolean);
 
+  const [dataPorte, setDataPorte] = useState([]);
+  const [porte, setPorte] = useState({
+    classificacao: "Porte",
+    empresas: [], //TODO: classe | label
+    quantidade: [] //TODO: valores | values
+  });
+
+  const [dataSetor, setDataSetor] = useState([])
+  const [setor, setSetor] = useState({
+    classificacao: "Setor",
+    empresas: [], //TODO: classe | label
+    quantidade: [] //TODO: valores | values
+  });
+
   useEffect(() => {
-    const getSetores = async () => {
-      fetch('http://localhost:3333/all_municipios ')
-      .then(res => {
-        console.log(res.json())
-      })
-      .catch(err => console.log(err))
+    const fetchPorte = async () => {
+      var response = await getPorte();
+      setDataPorte(response);
     }
-    getSetores()
-  }, [])
+    fetchPorte()
+  }, []);
+
+  useEffect(() => {
+    if(dataPorte !== undefined){
+      const obj = {classificacao: "Porte", empresas: [], quantidade: []}
+      dataPorte.forEach(element => {
+        obj.empresas.push(element[0]);
+        obj.quantidade.push(element[1]);
+      });
+      setPorte(obj);
+    }  
+  }, [dataPorte]);
 
   const empresasAbertas = [
-    {
-      classificacao: "Porte",
-      empresas: [
-        "Microempresa\nIndividual",
-        "Microempresa",
-        "Pequeno Porte",
-        "Outras\nEmpresas",
-      ],
-      quantidade: [26093, 7826, 1205, 681],
-    },
-    {
-      classificacao: "Setor",
-      empresas: [
-        "Comércio",
-        "Serviços",
-        "Industria",
-        "Construção",
-        "Agropecuária",
-      ],
-      quantidade: [16523, 14798, 2353, 1846, 285],
-    },
+    porte,
+    setor,
     {
       classificacao: "Natureza",
       empresas: [

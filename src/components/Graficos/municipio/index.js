@@ -1,41 +1,8 @@
-import React, {useState, useEffect} from "react"
-import axios from "axios"
-
-import pinot from "../../../services/pinot"
+import React from "react"
 import './style.css'
 require('cors')
 
 export default ({tipo, total}) => {
-
-  useEffect(() => {
-    const reqData = async () => {
-      // fetch("http://179.127.13.245:8099/query/sql", {
-      //   method: "post",
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(`{
-      //     sql: "select * from statistical limit 10"
-      //   }`)
-      // })
-      //   .then(res => {
-      //     console.log(res)
-      //   }).catch(err => console.log(err));
-      // }
-      axios.post("http://179.127.13.245:8099/query/sql" ,{
-         sql: "select * from statistical limit 10"
-        },
-        { 
-          headers:{
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-          } 
-        }
-      ).then(res => console.log(res)).catch(err => console.log(err))
-      }
-      reqData()
-      },  [])
 
   let valorTotalDeEmpresas = 0
   for (let i = 0; i < total.length; i++) {
