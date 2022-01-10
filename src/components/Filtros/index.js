@@ -1,7 +1,64 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade} from '../../services/filtros'
 import './style.css'
 
 export default () => {
+
+
+  const [filtrosPorte, setFiltrosPorte] = useState([])
+  const [filtrosSetor, setFiltrosSetor] = useState([])
+  const [filtrosNatureza, setFiltrosNatureza] = useState([])
+  const [filtrosSecaoAtividade, setFiltrosSecaoAtividade] = useState([])
+  const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
+  const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
+  const [ano] = useState([])
+
+  const set_ano = () => {
+    for (let index = 2015; index <= new Date().getFullYear(); index++) {
+      ano.push(index)      
+    }
+  }
+
+  useEffect(() => {
+    const getFiltros_Porte = async () => {
+      const get_filtros_porte =  await getFiltrosPorte()
+      setFiltrosPorte(get_filtros_porte)
+    }
+
+    const getFiltros_Setor = async () => {
+      const get_filtros_setor  =  await getFiltrosSetor()
+      setFiltrosSetor(get_filtros_setor)
+    }
+
+    const getFiltros_Natureza = async () => {
+      const get_filtros_natureza  =  await getFiltrosNatureza()
+      setFiltrosNatureza(get_filtros_natureza)
+    }
+    
+    const getFiltros_SecaoAtividade = async () => {
+      const get_filtros_secaoAtividade  =  await getFiltrosSecaoAtividade()
+      setFiltrosSecaoAtividade(get_filtros_secaoAtividade)
+    }
+
+    const getFiltros_municipio = async () => {
+      const get_filtros_municipio  =  await getFiltrosMunicipio()
+      setFiltrosMunicipio(get_filtros_municipio)
+    }
+
+    const getFiltros_descricaoAtividade = async () => {
+      const get_descricao_atividade  =  await getFiltrosDescricaoAtividade()
+      setFiltrosDescricaoAtividade(get_descricao_atividade)
+    }
+
+    getFiltros_Porte()
+    getFiltros_Setor()
+    getFiltros_Natureza()
+    getFiltros_SecaoAtividade()
+    getFiltros_municipio()
+    getFiltros_descricaoAtividade()
+    set_ano()
+  }, [])
   
   return(
       <div className="content" id="content-filtros">
@@ -18,42 +75,36 @@ export default () => {
               <p>Ano de Abertura:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>2010</option>
-                <option>2011</option>
-                <option>2012</option>
-                <option>2013</option>
+                {ano !== undefined ? ano.map(ano => (
+                  <option>{ano}</option>
+                )) : null}
               </select>
             </div>
             <div>
               <p>Porte da Empresa:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>Microempresa</option>
-                <option>Microempresa Individual</option>
-                <option>Pequeno Porte</option>
-                <option>Outro</option>
+                {filtrosPorte.map((arr, index) => (
+                  <option key={index}>{arr[0]}</option>
+                ))}
               </select>
             </div>
             <div>
               <p>Setor de Atuação:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>Agropecuária</option>
-                <option>Comércio</option>
-                <option>Construção</option>
-                <option>Industria</option>
-                <option>Serviços</option>
-                <option>Ornismos Inter.</option>
+                {filtrosSetor.map((arr, index) => (
+                  <option key={index}>{ arr[0]}</option>
+                ))}
               </select>
             </div>
             <div>
               <p>Municipio:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>São Luis</option>
-                <option>Açailândia</option>
-                <option>Arari</option>
-                <option>Itapecuru Mirim</option>
+                {filtrosMunicipio.map((arr, index) => (
+                  <option key={index}>{arr}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -62,30 +113,27 @@ export default () => {
               <p>Seção de Atividade:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>Administração Pública, Defesa e Seguridade Social</option>
-                <option>Comércio</option>
-                <option>Construção</option>
-                <option>Educação</option>
+                {filtrosSecaoAtividade.map((arr, index) => (
+                  <option key={index}>{arr[0]}</option>
+                ))}
               </select>
             </div>
             <div>
               <p>Atividade:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>2010</option>
-                <option>2011</option>
-                <option>2012</option>
-                <option>2013</option>
+                {filtrosDescricaoAtividade.map((arr, index) => (
+                  <option key={index}>{arr[0]}</option>
+                ))}
               </select>
             </div>
             <div>
               <p>Natureza:</p>
               <select>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                <option>Abate de Aves</option>
-                <option>Abate de Pequenos Animais</option>
-                <option>Agências de Notícias</option>
-                <option>Agências de Publicidade</option>
+                {filtrosNatureza.map(arr => (
+                  <option>{arr[0]}</option>
+                ))}
               </select>
             </div>
           </div>
