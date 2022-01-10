@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getPorte = async () => {
+export const getAbertasPorte = async () => {
   return await axios({
     method: 'POST', 
     url: 'http://localhost:3000/query/sql', 
@@ -25,7 +25,7 @@ export const getAbertasSetor = async () => {
       'Target-URL': 'http://179.127.13.245:8099',
     },
     data: {
-      "sql": "select setor, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by porte"
+      "sql": "select setor, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by setor"
     }
   })
   .then(res => {
