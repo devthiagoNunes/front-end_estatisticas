@@ -5,7 +5,6 @@ import './style.css'
 
 export default () => {
 
-
   const [filtrosPorte, setFiltrosPorte] = useState([])
   const [filtrosSetor, setFiltrosSetor] = useState([])
   const [filtrosNatureza, setFiltrosNatureza] = useState([])
@@ -13,6 +12,8 @@ export default () => {
   const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
   const [ano] = useState([])
+
+  const camposFiltros = ['inicio_atividade', 'porte', 'setor', 'municipio_empresa', 'secao_atividade', 'descricao_atividade', 'natureza']
 
   const set_ano = () => {
     for (let index = 2015; index <= new Date().getFullYear(); index++) {
@@ -58,6 +59,7 @@ export default () => {
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
     set_ano()
+    
   }, [])
   
   return(
@@ -73,7 +75,7 @@ export default () => {
           <div className="secao-topo">
             <div>
               <p>Ano de Abertura:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {ano !== undefined ? ano.map(ano => (
                   <option>{ano}</option>
@@ -82,7 +84,7 @@ export default () => {
             </div>
             <div>
               <p>Porte da Empresa:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosPorte.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -91,7 +93,7 @@ export default () => {
             </div>
             <div>
               <p>Setor de Atuação:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSetor.map((arr, index) => (
                   <option key={index}>{ arr[0]}</option>
@@ -100,7 +102,7 @@ export default () => {
             </div>
             <div>
               <p>Municipio:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosMunicipio.map((arr, index) => (
                   <option key={index}>{arr}</option>
@@ -111,7 +113,7 @@ export default () => {
           <div className="secao-bottom">
             <div>
               <p>Seção de Atividade:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSecaoAtividade.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -120,7 +122,7 @@ export default () => {
             </div>
             <div>
               <p>Atividade:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosDescricaoAtividade.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -129,7 +131,7 @@ export default () => {
             </div>
             <div>
               <p>Natureza:</p>
-              <select>
+              <select className="filtros-topo">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosNatureza.map(arr => (
                   <option>{arr[0]}</option>
