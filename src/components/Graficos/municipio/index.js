@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+
+import {getAbertasPorMunicipio} from '../../../services/municipio'
+import {getAbertasAnual} from '../../../services/municipio'
 import './style.css'
-require('cors')
 
 export default ({tipo, total}) => {
 
@@ -9,11 +11,30 @@ export default ({tipo, total}) => {
     valorTotalDeEmpresas += total[i]
   }
 
+  const [quantidade, setQuantidade] = useState(null)
+  const [municipios, setMunicipios] = useState([])
+
+  useEffect(() => {
+    const get_abertas_municipio = async () => {
+      const res_abertas_municipio = await getAbertasPorMunicipio()
+      console.log(res_abertas_municipio)
+      setMunicipios(res_abertas_municipio)
+    }
+
+    const get_abertura_ano = async () => {
+      const abertura_ano =await getAbertasAnual()
+      setQuantidade(abertura_ano)
+    }
+
+    get_abertas_municipio()
+    get_abertura_ano()
+  }, [])
+
   return(
     <div className="content-municipio">
       <div className="total-empresasAbertas">
         <p>{`Total de Empresas ${tipo}`}</p>
-        <p>{valorTotalDeEmpresas.toLocaleString('pt-BR')}</p>
+        <p>{quantidade}</p>
       </div>
       <div className="content-dataMunicipio">
         <p>{`Empresas ${tipo} Por Municipio`}</p>
@@ -21,130 +42,11 @@ export default ({tipo, total}) => {
           <div className="tabelas">
             <table>
               <tbody>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-                <tr><td>São Luis</td></tr>
-                <tr><td>São José de Ribamar</td></tr>
-                <tr><td>Timon</td></tr>
-                <tr><td>Arari</td></tr>
-              </tbody>
-            </table>
-            <table>
-              <tbody>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
-                <tr><td>12224</td></tr>
-                <tr><td>3280</td></tr>
-                <tr><td>1699</td></tr>
-                <tr><td>1094</td></tr>
+                {municipios.map((item, index) => (
+                  item.map((item) => (
+                    <tr key={index}><td>{item}</td></tr>
+                  ))
+                ))}
               </tbody>
             </table>
           </div>
