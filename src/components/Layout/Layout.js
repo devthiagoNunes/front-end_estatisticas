@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import RenderDatas from "../../pages/dadosEmpresas";
-import { getPorte } from "../../services/pinot";
+import { getAbertasPorte , getAbertasSetor } from "../../services/pinot";
+import {getAbertasMes } from '../../services/graficoMes'
 import "./layout.css";
 import "./styleGlobal.css";
 
@@ -24,9 +24,24 @@ export default () => {
     quantidade: [] //TODO: valores | values
   });
 
+  const [dataNatureza, setDataNatureza] = useState([])
+  const [natureza, setNatureza] = useState({
+    classificacao: "Natureza",
+    empresas: [], //TODO: classe | label
+    quantidade: [] //TODO: valores | values
+  });
+
+  const [abertasMes, setAbertasMes] = useState(
+    {
+      classificacao: "Mes",
+      tipo: [],
+      quantidade: [],
+    },
+  )
+
   useEffect(() => {
     const fetchPorte = async () => {
-      var response = await getPorte();
+      var response = await getAbertasPorte();
       setDataPorte(response);
     }
     fetchPorte()
@@ -43,42 +58,66 @@ export default () => {
     }  
   }, [dataPorte]);
 
+  // --------------------------------------------------------------------------------------
+  useEffect(() => {
+    const fetchSetor = async () => {
+      var response = await getAbertasSetor();
+      setDataSetor(response);
+    }
+    fetchSetor()
+  }, []);
+
+  useEffect(() => {
+    if(dataSetor !== undefined){
+      const obj = {classificacao: "Setor", empresas: [], quantidade: []}
+      dataSetor.forEach(element => {
+        obj.empresas.push(element[0]);
+        obj.quantidade.push(element[1]);
+      });
+      setSetor(obj);
+    }  
+  }, [dataSetor]);
+
+   // --------------------------------------------------------------------------------------
+   useEffect(() => {
+    const fetchNatureza = async () => {
+      var response = await getAbertasSetor();
+      setDataNatureza(response);
+    }
+    fetchNatureza()
+  }, []);
+
+  useEffect(() => {
+    if(dataNatureza !== undefined){
+      const obj = {classificacao: "Natureza", empresas: [], quantidade: []}
+      dataNatureza.forEach(element => {
+        obj.empresas.push(element[0]);
+        obj.quantidade.push(element[1]);
+      });
+      setNatureza(obj);
+    }  
+  }, [dataNatureza]);
+
+  useEffect(() => {
+    var newAbertasMes = {
+      classificacao: "Mes",
+      tipo: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
+      quantidade: [],
+    }
+    var fetchAbertasMes = async () => {
+      for (let index = 1; index < 13; index++)
+        newAbertasMes.quantidade.push(await getAbertasMes(2021, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
+      setAbertasMes(newAbertasMes);
+    }
+    fetchAbertasMes();
+    
+  }, []);
+
   const empresasAbertas = [
     porte,
     setor,
-    {
-      classificacao: "Natureza",
-      empresas: [
-        "EI",
-        "LTDA",
-        "Eireli",
-        "S/A",
-        "Cooperativa",
-        "Consorcio",
-        "Empresa Publica",
-      ],
-      quantidade: [29973, 4020, 1563, 211, 23, 14, 1],
-    },
-    {
-      classificacao: "Mes",
-      tipo: [
-        "JAN",
-        "FEV",
-        "MAR",
-        "ABR",
-        "MAI",
-        "JUN",
-        "JUL",
-        "AGO",
-        "SET",
-        "OUT",
-        "NOV",
-        "DEZ",
-      ],
-      quantidade: [
-        4948, 4401, 4371, 3936, 4706, 4505, 4805, 4113, 4053, 3956, 4032, 4150,
-      ],
-    },
+    natureza,
+    abertasMes,
   ];
 
   const empresasAtivas = [

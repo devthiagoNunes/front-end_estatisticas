@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
+export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": `select count(*) as qtd_empresas from statistical where inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`

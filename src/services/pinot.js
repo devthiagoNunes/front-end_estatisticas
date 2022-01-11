@@ -3,9 +3,9 @@ import axios from 'axios'
 export const getAbertasPorte = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select porte, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by porte"
@@ -20,9 +20,9 @@ export const getAbertasPorte = async () => {
 export const getAbertasSetor = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select setor, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by setor"

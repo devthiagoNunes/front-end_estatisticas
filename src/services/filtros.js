@@ -3,9 +3,9 @@ import axios from 'axios'
 export const getFiltrosPorte = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct porte from statistical"
@@ -20,9 +20,9 @@ export const getFiltrosPorte = async () => {
 export const getFiltrosSetor = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct setor from statistical where setor != 'null'"
@@ -37,9 +37,9 @@ export const getFiltrosSetor = async () => {
 export const getFiltrosNatureza = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct natureza from statistical limit 50"
@@ -54,9 +54,9 @@ export const getFiltrosNatureza = async () => {
 export const getFiltrosMunicipio = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct municipio_empresa from statistical limit 1420"
@@ -71,9 +71,9 @@ export const getFiltrosMunicipio = async () => {
 export const getFiltrosSecaoAtividade = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct secao_atividade secao_atividade from statistical where secao_atividade != 'null' limit 50"
@@ -88,9 +88,9 @@ export const getFiltrosSecaoAtividade = async () => {
 export const getFiltrosDescricaoAtividade = async () => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/query/sql', 
+    url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
-      'Target-URL': 'http://179.127.13.245:8099',
+      'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
       "sql": "select distinct descricao_atividade from statistical limit 1500"
