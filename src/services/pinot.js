@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getAbertasPorte = async () => {
+export const getAbertas = async (classificacao, ano) => {
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -8,24 +8,7 @@ export const getAbertasPorte = async () => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": "select porte, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by porte"
-    }
-  })
-  .then(res => {
-    return res.data.resultTable.rows;
-  })
-  .catch(err => console.log(err))
-}
-
-export const getAbertasSetor = async () => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://179.127.13.245:3000/query/sql', 
-    headers: {
-      'Target-URL': 'http://pinot-broker:8099',
-    },
-    data: {
-      "sql": "select setor, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by setor"
+      "sql": `select ${classificacao}, count(*) from statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by ${classificacao}`
     }
   })
   .then(res => {

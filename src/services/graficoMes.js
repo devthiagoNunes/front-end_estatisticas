@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => {
+export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
