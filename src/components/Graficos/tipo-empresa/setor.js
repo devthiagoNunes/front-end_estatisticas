@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
+
+import {getAbertas} from '../../../services/pinot'
 import "./style.css";
 
-export default ({ tipo, categoria, classificacao }) => {
+export default () => {
+
+  const [dataPorte, setDataPorte] = useState([]);
+  const [porte, setPorte] = useState({
+    classificacao: "Setor",
+    empresas: [],
+    quantidade: []
+  });
+
+    useEffect(() => {
+    const fetchPorte = async () => {
+      var response = await getAbertas('setor', '2021');
+      setDataPorte(response);
+      }
+    fetchPorte()
+    }, []);
+
+  useEffect(() => {
+    if(dataPorte !== undefined){
+      const obj = {classificacao: "Setor", empresas: [], quantidade: []}
+      dataPorte.forEach(element => {
+        obj.empresas.push(element[0]);
+        obj.quantidade.push(element[1]);
+      });
+      setPorte(obj);
+    }  
+  }, [dataPorte]);
+
   let datas = [];
   const colors = [
     "#00b4d8",
@@ -13,17 +42,17 @@ export default ({ tipo, categoria, classificacao }) => {
     "blue",
     "black",
   ];
-  for (let i = 0; i < categoria.quantidade.length; i++) {
+  for (let i = 0; i < porte.quantidade.length; i++) {
     datas.push({
-      value: categoria.quantidade[i],
+      value: porte.quantidade[i],
       itemStyle: { color: colors[i] },
     });
   }
 
-  const config1 = {
+   const config1 = {
     grid: {
       containLabel: true,
-      width: categoria.quantidade.length > 7 ? "52%" : "95%",
+      width: porte.quantidade.length > 7 ? "52%" : "95%",
       height: "88%",
       left: "2%",
       top: "8%",
@@ -36,20 +65,20 @@ export default ({ tipo, categoria, classificacao }) => {
     },
     label: {
       show: true,
-      position: categoria.quantidade.length > 7 ? "right" : "top",
+      position: porte.quantidade.length > 7 ? "right" : "top",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: categoria.quantidade.length > 7 ? "value" : "category",
-      data: categoria.quantidade.length > 7 ? null : categoria.empresas,
+      type: porte.quantidade.length > 7 ? "value" : "category",
+      data: porte.quantidade.length > 7 ? null : porte.empresas,
       axisTick: {
         alignWithLabel: true,
       },
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 10 : 10,
-        fontWeight: categoria.quantidade.length > 7 ? "normal" : "bold",
+        fontSize: porte.quantidade.length > 7 ? 10 : 10,
+        fontWeight: porte.quantidade.length > 7 ? "normal" : "bold",
         rotate:
-          window.innerWidth <= 1115 && categoria.quantidade.length > 7 ? 30 : 0,
+          window.innerWidth <= 1115 && porte.quantidade.length > 7 ? 30 : 0,
       },
     },
     toolbox: {
@@ -70,14 +99,14 @@ export default ({ tipo, categoria, classificacao }) => {
       },
     },
     yAxis: {
-      tipo: categoria.quantidade.length > 7 ? "category" : "value",
-      data: categoria.quantidade.length > 7 ? categoria.empresas : null,
+      tipo: porte.quantidade.length > 7 ? "category" : "value",
+      data: porte.quantidade.length > 7 ? porte.empresas : null,
       axisLabel: {
         fontSize: 12,
-        fontWeight: categoria.quantidade.length > 7 ? "normal" : "bold",
+        fontWeight: porte.quantidade.length > 7 ? "normal" : "bold",
       },
       axisTick: {
-        alignWithLabel: categoria.quantidade.length > 7 ? true : null,
+        alignWithLabel: porte.quantidade.length > 7 ? true : null,
       },
     },
     series: [
@@ -88,7 +117,7 @@ export default ({ tipo, categoria, classificacao }) => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: categoria.quantidade.length > 7 ? "20%" : "35%",
+        barWidth: porte.quantidade.length > 7 ? "20%" : "35%",
       },
     ],
   };
@@ -97,7 +126,7 @@ export default ({ tipo, categoria, classificacao }) => {
     grid: {
       containLabel: true,
       width: "90%",
-      height: categoria.quantidade.length > 7 ? "80%" : "88%",
+      height: porte.quantidade.length > 7 ? "80%" : "88%",
       top: "6%",
       left: "3%",
     },
@@ -127,38 +156,38 @@ export default ({ tipo, categoria, classificacao }) => {
     label: {
       show: true,
       align: "center",
-      position: categoria.quantidade.length > 7 ? "bottom" : "top",
+      position: porte.quantidade.length > 7 ? "bottom" : "top",
       verticalAlign: "middle",
       rotate: 0,
-      offset: categoria.quantidade.length > 12 ? [0, 10] : null,
-      fontSize: categoria.quantidade.length > 7 ? 10 : 12,
-      fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
+      offset: porte.quantidade.length > 12 ? [0, 10] : null,
+      fontSize: porte.quantidade.length > 7 ? 10 : 12,
+      fontWeight: porte.quantidade.length > 12 ? "bold" : "normal",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
       type: "category",
       show: true,
-      data: categoria.empresas,
+      data: porte.empresas,
       axisTick: {
         alignWithLabel: true,
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 7 : 8,
+        fontSize: porte.quantidade.length > 7 ? 7 : 8,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 7 ? 90 : 0,
-        inside: categoria.quantidade.length > 7 ? true : false,
+        rotate: porte.quantidade.length > 7 ? 90 : 0,
+        inside: porte.quantidade.length > 7 ? true : false,
         fontSize: 9,
       },
     },
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 8 : 10,
+        fontSize: porte.quantidade.length > 7 ? 8 : 10,
         fontWeight: "bold",
       },
       axisTick: {
-        alignWithLabel: categoria.quantidade.length > 7 ? true : null,
+        alignWithLabel: porte.quantidade.length > 7 ? true : null,
       },
     },
     series: [
@@ -169,7 +198,7 @@ export default ({ tipo, categoria, classificacao }) => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: categoria.quantidade.length > 7 ? "35%" : "25%",
+        barWidth: porte.quantidade.length > 7 ? "35%" : "25%",
       },
     ],
   };
@@ -178,7 +207,7 @@ export default ({ tipo, categoria, classificacao }) => {
     grid: {
       containLabel: true,
       width: "92%",
-      height: categoria.quantidade.length > 7 ? "73%" : "85%",
+      height: porte.quantidade.length > 7 ? "73%" : "85%",
       top: "9%",
       left: "3%",
     },
@@ -206,29 +235,29 @@ export default ({ tipo, categoria, classificacao }) => {
     },
     label: {
       show: true,
-      align: categoria.quantidade.length > 7 ? "center" : "center",
+      align: porte.quantidade.length > 7 ? "center" : "center",
       verticalAlign: "middle",
       margin: true,
-      position: categoria.quantidade.length > 7 ? "bottom" : "top",
-      rotate: categoria.quantidade.length > 7 ? 0 : 0,
-      offset: categoria.quantidade.length > 7 ? [0, 8] : null,
-      fontWeight: categoria.quantidade.length > 7 ? "bold" : "normal",
-      fontSize: categoria.quantidade.length > 7 ? 9 : 10,
+      position: porte.quantidade.length > 7 ? "bottom" : "top",
+      rotate: porte.quantidade.length > 7 ? 0 : 0,
+      offset: porte.quantidade.length > 7 ? [0, 8] : null,
+      fontWeight: porte.quantidade.length > 7 ? "bold" : "normal",
+      fontSize: porte.quantidade.length > 7 ? 9 : 10,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
       type: "category",
-      data: categoria.empresas,
+      data: porte.empresas,
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 6 : 8,
+        fontSize: porte.quantidade.length > 7 ? 6 : 8,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 7 ? 90 : 0,
-        inside: categoria.quantidade.length > 7 ? true : false,
+        rotate: porte.quantidade.length > 7 ? 90 : 0,
+        inside: porte.quantidade.length > 7 ? true : false,
         fontSize: 7,
       },
       axisTick: {
-        alignWithLabel: categoria.quantidade.length > 7 ? true : true,
+        alignWithLabel: porte.quantidade.length > 7 ? true : true,
       },
     },
     yAxis: {
@@ -254,9 +283,9 @@ export default ({ tipo, categoria, classificacao }) => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: categoria.quantidade.length > 7 ? "96%" : "88%",
-      width: categoria.quantidade.length >= 7 ? "90%" : '90%',
-      top: categoria.quantidade.length > 7 ? "2%" : "9%",
+      height: porte.quantidade.length > 7 ? "96%" : "88%",
+      width: porte.quantidade.length >= 7 ? "90%" : '90%',
+      top: porte.quantidade.length > 7 ? "2%" : "9%",
       left: "3%",
     },
     tooltip: {
@@ -283,29 +312,29 @@ export default ({ tipo, categoria, classificacao }) => {
     },
     label: {
       show: true,
-      position: categoria.quantidade.length > 7 ? "right" : "top",
+      position: porte.quantidade.length > 7 ? "right" : "top",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: categoria.quantidade.length > 7 ? "value" : "category",
+      type: porte.quantidade.length > 7 ? "value" : "category",
       data:
-        categoria.quantidade.length > 7
-          ? categoria.quantidade
-          : categoria.empresas,
+        porte.quantidade.length > 7
+          ? porte.quantidade
+          : porte.empresas,
       axisTick: {
         alignWithLabel: true,
         show: false,
       },
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 12 : 11,
+        fontSize: porte.quantidade.length > 12 ? 12 : 11,
         fontWeight: "bold",
       },
     },
     yAxis: {
-      tipo: categoria.quantidade.length > 7 ? "category" : "value",
-      data: categoria.quantidade.length > 7 ? categoria.empresas : null,
+      tipo: porte.quantidade.length > 7 ? "category" : "value",
+      data: porte.quantidade.length > 7 ? porte.empresas : null,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 7 ? 9 : 12,
+        fontSize: porte.quantidade.length > 7 ? 9 : 12,
         fontWeight: "bold",
         position: "top",
         verticalAlign: "middle",
@@ -324,6 +353,8 @@ export default ({ tipo, categoria, classificacao }) => {
     ],
   };
 
+ 
+
   return (
     <div
       className="grafico setor"
@@ -332,13 +363,13 @@ export default ({ tipo, categoria, classificacao }) => {
         overflowY: "hidden",
       }}
     >
-      <p>{`Empresas ${tipo} Por ${classificacao}`}</p>
+      <p>{`Empresas Abertas Por Setor`}</p>
 
       {window.innerWidth >= 425 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
-            width: categoria.quantidade.length > 6 ? "145vw" : "90vw",
+            width: porte.quantidade.length > 6 ? "145vw" : "90vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -348,8 +379,8 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config2}
           style={{
-            width: categoria.quantidade.length > 6 ? "100vw" : "65vw",
-            height: categoria.quantidade.length > 7 ? "40vh" : "45vh"
+            width: porte.quantidade.length > 6 ? "100vw" : "65vw",
+            height: porte.quantidade.length > 7 ? "40vh" : "45vh"
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -359,7 +390,7 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config1}
           style={{
-            width: categoria.quantidade.length > 6 ? "90vw" : "55vw",
+            width: porte.quantidade.length > 6 ? "90vw" : "55vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -369,8 +400,8 @@ export default ({ tipo, categoria, classificacao }) => {
         <Echarts
           option={config4}
           style={{
-            height: categoria.quantidade.length > 7 ? "90vh" : "60vh",
-            width: categoria.quantidade.length > 7 ? "60vw" : "60vw",
+            height: porte.quantidade.length > 7 ? "90vh" : "60vh",
+            width: porte.quantidade.length > 7 ? "60vw" : "60vw",
           }}
           opts={{ renderer: "canvas" }}
         />
