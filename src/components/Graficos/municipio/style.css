@@ -65,9 +65,14 @@
   text-align: center;
   z-index: 9;
 }
-.tabelas table {
+.tabelas table:first-child {
   padding: 0 5px;
-  width: 50%;
+  width: 65%;
+  height: inherit;
+}
+.tabelas table:last-child {
+  padding: 0 5px;
+  width: 35%;
   height: inherit;
 }
 .tabelas table tr {

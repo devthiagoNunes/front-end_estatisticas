@@ -5,9 +5,9 @@ import './style.css'
 
 export default () => {
 
+  const context = useContext(ContextGlobal)
   const [quantidade, setQuantidade] = useState(null)
-  const [municipios] = useState([])
-  const [quantidade_abertas_por_municipio] = useState([])
+  const [municipios, setMunicipio] = useState([])
 
   useEffect(() => {
     const get_abertura_ano = async () => {
@@ -17,17 +17,12 @@ export default () => {
 
     const get_qntd_por_municipio = async () => {
       const response = await getQuantidadeAbertasPorMunicipio()
-      response.rows.forEach(element => {
-        municipios.push(element[0])
-        quantidade_abertas_por_municipio.push(element[1])
-      })
+      setMunicipio(response.rows)
     }
 
     get_abertura_ano()
     get_qntd_por_municipio()
   }, [])
-
-  const context = useContext(ContextGlobal)
 
   return(
     <div className="content-municipio">
@@ -40,19 +35,19 @@ export default () => {
         <div className="content-table">
           <div className="tabelas">
             <table>
-              <tbody>
-                {municipios.length > 0 && municipios.map((item, index) => (
-                  <tr key={index}><td>{item}</td></tr>
-                ))}
-              </tbody>
+              {municipios.map((municipio, index) => (
+                <tbody key={index}>
+                  <tr>{municipio[0]}</tr>
+                </tbody>
+              ))}
             </table>
-            {/* <table>
-              <tbody>
-                {quantidade_abertas_por_municipio.map((item, index) => (
-                  <tr key={index}><td>{item}</td></tr>
-                ))}
-              </tbody>
-            </table> */}
+            <table>
+            {municipios.map((municipio, index) => (
+                <tbody key={index}>
+                  <tr>{municipio[1]}</tr>
+                </tbody>
+              ))}
+            </table>
           </div>
         </div>
       </div>
