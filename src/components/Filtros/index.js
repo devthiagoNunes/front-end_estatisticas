@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 
-import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade} from '../../services/filtros'
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade} from '../../services/pinot'
+import { ContextGlobal } from '../../contexts/GlobalContext/context'
+import * as action from '../../contexts/GlobalContext/actions'
 import './style.css'
 
 export default () => {
@@ -11,14 +13,17 @@ export default () => {
   const [filtrosSecaoAtividade, setFiltrosSecaoAtividade] = useState([])
   const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
-  const [ano] = useState([])
+  const [ano, setAno] = useState([])
 
-  const camposFiltros = ['inicio_atividade', 'porte', 'setor', 'municipio_empresa', 'secao_atividade', 'descricao_atividade', 'natureza']
+  const [valorOptionAno, setValorOptionAno] = useState('Selecionar')
+  const [valorOptionPorte, setValorOptionPorte] = useState('Selecionar')
 
   const set_ano = () => {
+    let arrAno = []
     for (let index = 2015; index <= new Date().getFullYear(); index++) {
-      ano.push(index)      
+      arrAno.push(index)      
     }
+    setAno(arrAno)
   }
 
   useEffect(() => {
@@ -59,9 +64,10 @@ export default () => {
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
     set_ano()
-    
   }, [])
-  
+
+  const context = useContext(ContextGlobal)
+
   return(
       <div className="content" id="content-filtros">
         <div className="all-filtros">
@@ -75,16 +81,26 @@ export default () => {
           <div className="secao-topo">
             <div>
               <p>Ano de Abertura:</p>
-              <select className="filtros-topo">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionAno) {
+                  setValorOptionAno(e.target.value)
+                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                {ano !== undefined ? ano.map(ano => (
-                  <option>{ano}</option>
-                )) : null}
+                {ano.map((ano, index) => (
+                  <option key={index}>{ano}</option>
+                ))}
               </select>
             </div>
             <div>
               <p>Porte da Empresa:</p>
-              <select className="filtros-topo">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionPorte) {
+                  setValorOptionPorte(e.target.value)
+                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosPorte.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -93,7 +109,7 @@ export default () => {
             </div>
             <div>
               <p>Setor de Atuação:</p>
-              <select className="filtros-topo">
+              <select className="filtros">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSetor.map((arr, index) => (
                   <option key={index}>{ arr[0]}</option>
@@ -102,7 +118,7 @@ export default () => {
             </div>
             <div>
               <p>Municipio:</p>
-              <select className="filtros-topo">
+              <select className="filtros">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosMunicipio.map((arr, index) => (
                   <option key={index}>{arr}</option>
@@ -113,7 +129,7 @@ export default () => {
           <div className="secao-bottom">
             <div>
               <p>Seção de Atividade:</p>
-              <select className="filtros-topo">
+              <select className="filtros">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSecaoAtividade.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -122,7 +138,7 @@ export default () => {
             </div>
             <div>
               <p>Atividade:</p>
-              <select className="filtros-topo">
+              <select className="filtros">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosDescricaoAtividade.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -131,7 +147,7 @@ export default () => {
             </div>
             <div>
               <p>Natureza:</p>
-              <select className="filtros-topo">
+              <select className="filtros">
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosNatureza.map(arr => (
                   <option>{arr[0]}</option>
