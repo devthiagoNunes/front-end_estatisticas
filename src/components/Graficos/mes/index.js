@@ -6,6 +6,8 @@ import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
 export default () => {
+
+  const context = useContext(ContextGlobal)
   const [abertasMes, setAbertasMes] = useState({
       classificacao: "Mes",
       tipo: [],
@@ -20,13 +22,12 @@ export default () => {
     }
     var fetchAbertasMes = async () => {
       for (let index = 1; index < 13; index++)
-        newAbertasMes.quantidade.push(await getAbertasMes(2021, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
+        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
       setAbertasMes(newAbertasMes);
     }
     fetchAbertasMes();
-  }, []);
+  }, [context]);
 
-  const context = useContext(ContextGlobal)
 
   let dataGraficoMes = [];
   let dataForLegend = [];
