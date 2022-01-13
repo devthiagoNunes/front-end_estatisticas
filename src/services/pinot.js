@@ -1,6 +1,25 @@
 import axios from 'axios'
 
-export const getAbertas = async (classificacao, ano) => {
+export const getAbertas = async (classificacao, filtros) => {
+  if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
+    return [];
+
+  var query = `select ${classificacao}, count(*) from statistical`
+  var filters = ' where '
+
+  for (const key in filtros.state) {
+    if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
+      switch (key) {
+        case 'ano':
+          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao}`
+          break;
+        default:
+          filters += `${key} = '${filtros.state[key]}' and `
+          break;
+      }
+    }
+  }
+  
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -8,13 +27,13 @@ export const getAbertas = async (classificacao, ano) => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": `select ${classificacao}, count(*) from statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by ${classificacao}`
+      "sql": query + filters
     }
   })
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 
@@ -32,7 +51,7 @@ export const getFiltrosPorte = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getFiltrosSetor = async () => {
@@ -49,7 +68,7 @@ export const getFiltrosSetor = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getFiltrosNatureza = async () => {
@@ -66,7 +85,7 @@ export const getFiltrosNatureza = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getFiltrosMunicipio = async () => {
@@ -83,7 +102,7 @@ export const getFiltrosMunicipio = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getFiltrosSecaoAtividade = async () => {
@@ -100,7 +119,7 @@ export const getFiltrosSecaoAtividade = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getFiltrosDescricaoAtividade = async () => {
@@ -117,7 +136,7 @@ export const getFiltrosDescricaoAtividade = async () => {
   .then(res => {
     return res.data.resultTable.rows;
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
@@ -134,7 +153,7 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
   .then(res => {
     return res.data.numDocsScanned
   })
-  .catch(err => console.log(err))
+  .catch(err => err)
 }
 
 export const getAbertasPorMunicipio = async () => {
@@ -149,7 +168,7 @@ export const getAbertasPorMunicipio = async () => {
     .then(res => {
       return res.data.resultTable.rows
     })
-    .catch(err => console.log(err))
+    .catch(err => err)
 }
 
 export const getQuantidadeAbertasPorMunicipio = async () => {
@@ -164,7 +183,7 @@ export const getQuantidadeAbertasPorMunicipio = async () => {
     .then(res => {
       return res.data.resultTable
     })
-    .catch(err => console.log(err))
+    .catch(err => err)
 }  
 
 export const getAbertasAnual = async () => {
@@ -179,7 +198,7 @@ export const getAbertasAnual = async () => {
     .then(res => {
       return res.data.numDocsScanned
     })
-    .catch(err => console.log(err))
+    .catch(err => err)
 }
 
 export const getDataInicial = async (classificacao, setor, porte, natureza, secao_atividade, descricao_atividade, municipio_empresa, ano) => {
@@ -194,5 +213,5 @@ export const getDataInicial = async (classificacao, setor, porte, natureza, seca
     .then(res => {
       return res
     })
-    .catch(err => console.log(err))
+    .catch(err => err)
   }
