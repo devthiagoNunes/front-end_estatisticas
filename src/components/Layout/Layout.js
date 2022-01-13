@@ -1,124 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import RenderDatas from "../../pages/dadosEmpresas";
-import { getAbertasPorte , getAbertasSetor } from "../../services/pinot";
-import {getAbertasMes } from '../../services/graficoMes'
 import "./layout.css";
 import "./styleGlobal.css";
 
 export default () => { 
   const [stateInitial, setStateInitial] = useState(true);
   const alterState = (boolean) => setStateInitial(boolean);
-
-  const [dataPorte, setDataPorte] = useState([]);
-  const [porte, setPorte] = useState({
-    classificacao: "Porte",
-    empresas: [], //TODO: classe | label
-    quantidade: [] //TODO: valores | values
-  });
-
-  const [dataSetor, setDataSetor] = useState([])
-  const [setor, setSetor] = useState({
-    classificacao: "Setor",
-    empresas: [], //TODO: classe | label
-    quantidade: [] //TODO: valores | values
-  });
-
-  const [dataNatureza, setDataNatureza] = useState([])
-  const [natureza, setNatureza] = useState({
-    classificacao: "Natureza",
-    empresas: [], //TODO: classe | label
-    quantidade: [] //TODO: valores | values
-  });
-
-  const [abertasMes, setAbertasMes] = useState(
-    {
-      classificacao: "Mes",
-      tipo: [],
-      quantidade: [],
-    },
-  )
-
-  useEffect(() => {
-    const fetchPorte = async () => {
-      var response = await getAbertasPorte();
-      setDataPorte(response);
-    }
-    fetchPorte()
-  }, []);
-
-  useEffect(() => {
-    if(dataPorte !== undefined){
-      const obj = {classificacao: "Porte", empresas: [], quantidade: []}
-      dataPorte.forEach(element => {
-        obj.empresas.push(element[0]);
-        obj.quantidade.push(element[1]);
-      });
-      setPorte(obj);
-    }  
-  }, [dataPorte]);
-
-  // --------------------------------------------------------------------------------------
-  useEffect(() => {
-    const fetchSetor = async () => {
-      var response = await getAbertasSetor();
-      setDataSetor(response);
-    }
-    fetchSetor()
-  }, []);
-
-  useEffect(() => {
-    if(dataSetor !== undefined){
-      const obj = {classificacao: "Setor", empresas: [], quantidade: []}
-      dataSetor.forEach(element => {
-        obj.empresas.push(element[0]);
-        obj.quantidade.push(element[1]);
-      });
-      setSetor(obj);
-    }  
-  }, [dataSetor]);
-
-   // --------------------------------------------------------------------------------------
-   useEffect(() => {
-    const fetchNatureza = async () => {
-      var response = await getAbertasSetor();
-      setDataNatureza(response);
-    }
-    fetchNatureza()
-  }, []);
-
-  useEffect(() => {
-    if(dataNatureza !== undefined){
-      const obj = {classificacao: "Natureza", empresas: [], quantidade: []}
-      dataNatureza.forEach(element => {
-        obj.empresas.push(element[0]);
-        obj.quantidade.push(element[1]);
-      });
-      setNatureza(obj);
-    }  
-  }, [dataNatureza]);
-
-  useEffect(() => {
-    var newAbertasMes = {
-      classificacao: "Mes",
-      tipo: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
-      quantidade: [],
-    }
-    var fetchAbertasMes = async () => {
-      for (let index = 1; index < 13; index++)
-        newAbertasMes.quantidade.push(await getAbertasMes(2021, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
-      setAbertasMes(newAbertasMes);
-    }
-    fetchAbertasMes();
-    
-  }, []);
-
-  const empresasAbertas = [
-    porte,
-    setor,
-    natureza,
-    abertasMes,
-  ];
 
   const empresasAtivas = [
     {
@@ -200,7 +88,6 @@ export default () => {
         <RenderDatas
           tipo={"Abertas"}
           setState={alterState}
-          data={empresasAbertas}
         />
       )}
       {stateInitial != true && (
