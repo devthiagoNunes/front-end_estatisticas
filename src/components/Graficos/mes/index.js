@@ -1,18 +1,42 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 import echarts from "echarts";
+import { getAbertasMes } from '../../../services/pinot'
+import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
-export default ({ tipo, categoria }) => {
+export default () => {
+  const [abertasMes, setAbertasMes] = useState({
+      classificacao: "Mes",
+      tipo: [],
+      quantidade: [],
+    })
+
+  useEffect(() => {
+    var newAbertasMes = {
+      classificacao: "Mes",
+      tipo: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
+      quantidade: [],
+    }
+    var fetchAbertasMes = async () => {
+      for (let index = 1; index < 13; index++)
+        newAbertasMes.quantidade.push(await getAbertasMes(2021, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
+      setAbertasMes(newAbertasMes);
+    }
+    fetchAbertasMes();
+  }, []);
+
+  const context = useContext(ContextGlobal)
+
   let dataGraficoMes = [];
   let dataForLegend = [];
-  for (let i = 0; i < categoria.tipo.length; i++) {
+  for (let i = 0; i < abertasMes.tipo.length; i++) {
     dataGraficoMes.push({
-      name: categoria.tipo[i],
+      name: abertasMes.tipo[i],
       type: "bar",
-      data: [categoria.quantidade[i]],
+      data: [abertasMes.quantidade[i]],
     });
-    dataForLegend.push({ name: categoria.tipo[i] });
+    dataForLegend.push({ name: abertasMes.tipo[i] });
   }
 
   const config1 = {
@@ -20,7 +44,7 @@ export default ({ tipo, categoria }) => {
       containLabel: true,
       width: "93%", 
       height: "90%",
-      top: categoria.quantidade.length > 12 ? "10%" : "6%",   
+      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",   
       left: "2%",
     },
     tooltip: {
@@ -46,32 +70,32 @@ export default ({ tipo, categoria }) => {
       },
     },
     label: {
-      show: categoria.quantidade.length > 12 ? true : true,
-      position: categoria.quantidade.length > 12 ? "bottom" : "top",
-      fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
-      fontSize: categoria.quantidade.length > 12 ? 9 : 9,
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 9,
       offset: [0, 2],
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
       type: "category",
-      data: categoria.tipo,
+      data: abertasMes.tipo,
       axisTick: {
         alignWithLabel: true,
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 8 : 12,
+        fontSize: abertasMes.quantidade.length > 12 ? 8 : 12,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 12 ? 90 : 0,
-        inside: categoria.quantidade.length > 12 ? true : false,
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
       },
       minInterval: 50000,
     },
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 10 : 12,
+        fontSize: abertasMes.quantidade.length > 12 ? 10 : 12,
         fontWeight: "bold",
       },
       axisTick: {
@@ -81,7 +105,7 @@ export default ({ tipo, categoria }) => {
     series: [
       {
         color: "#023e8a",
-        data: categoria.quantidade,
+        data: abertasMes.quantidade,
         type: "bar",
         showBackground: true,
         backgroundStyle: {
@@ -120,8 +144,8 @@ export default ({ tipo, categoria }) => {
     grid: {
       containLabel: true,
       width: "93%", 
-      height:  categoria.quantidade.length > 12 ? "80%" : "90%",
-      top: categoria.quantidade.length > 12 ? "10%" : "6%",
+      height:  abertasMes.quantidade.length > 12 ? "80%" : "90%",
+      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
     },
     tooltip: {
@@ -149,10 +173,10 @@ export default ({ tipo, categoria }) => {
     },
     label: {
       show: true,
-      position: categoria.quantidade.length > 12 ? "bottom" : "top",
-      offset: categoria.quantidade.length > 12 ? [0, 6] : null,
-      fontSize: categoria.quantidade.length > 12 ? 9 : 12,
-      fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      offset: abertasMes.quantidade.length > 12 ? [0, 6] : null,
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 12,
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
       color: "black",
       align: "center",
       verticalAlign: "middle",
@@ -160,16 +184,16 @@ export default ({ tipo, categoria }) => {
     },
     xAxis: {
       type: "category",
-      data: categoria.tipo,
+      data: abertasMes.tipo,
       axisTick: {
         alignWithLabel: true,
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 7 : 10,
+        fontSize: abertasMes.quantidade.length > 12 ? 7 : 10,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 12 ? 90 : 0,
-        inside: categoria.quantidade.length > 12 ? true : false,
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
       },
     },
     yAxis: {
@@ -182,8 +206,8 @@ export default ({ tipo, categoria }) => {
     series: [
       {
         type: "bar",
-        data: categoria.quantidade,
-        barWidth: categoria.quantidade.length > 12 ? "35%" : "45%",
+        data: abertasMes.quantidade,
+        barWidth: abertasMes.quantidade.length > 12 ? "35%" : "45%",
         itemStyle: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             {
@@ -216,8 +240,8 @@ export default ({ tipo, categoria }) => {
     grid: {
       containLabel: true,
       width: "93%", 
-      height: categoria.quantidade.length > 12 ? "80%" : "90%",
-      top: categoria.quantidade.length > 12 ? "10%" : "6%",
+      height: abertasMes.quantidade.length > 12 ? "80%" : "90%",
+      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
     },
     tooltip: {
@@ -243,40 +267,40 @@ export default ({ tipo, categoria }) => {
       },
     },
     label: {
-      show: categoria.quantidade.length > 12 ? true : true,
-      align: categoria.quantidade.length > 12 ? "center" : "center",
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      align: abertasMes.quantidade.length > 12 ? "center" : "center",
       verticalAlign: "middle",
-      position: categoria.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: categoria.quantidade.length > 12 ? 9 : 10,
-      fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
-      offset: categoria.quantidade.length > 12 ? [0, 5] : null,
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 10,
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      offset: abertasMes.quantidade.length > 12 ? [0, 5] : null,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
       type: "category",
-      data: categoria.tipo,
-      show: categoria.quantidade.length > 12 ? true : true,
-      zlevel: categoria.quantidade.length > 12 ? true : true,
+      data: abertasMes.tipo,
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      zlevel: abertasMes.quantidade.length > 12 ? true : true,
       axisTick: {
-        alignWithLabel: categoria.quantidade.length > 12 ? true : true,
+        alignWithLabel: abertasMes.quantidade.length > 12 ? true : true,
       },
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 7 : 9,
+        fontSize: abertasMes.quantidade.length > 12 ? 7 : 9,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 12 ? 90 : 0,
-        inside: categoria.quantidade.length > 12 ? true : false,
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
       },
     },
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: categoria.quantidade.length > 11 ? 9 : 8,
+        fontSize: abertasMes.quantidade.length > 11 ? 9 : 8,
         fontWeight: "bold",
       },
     },
     series: [
       {
-        data: categoria.quantidade,
+        data: abertasMes.quantidade,
         type: "bar",
         showBackground: true,
         backgroundStyle: {
@@ -314,9 +338,9 @@ export default ({ tipo, categoria }) => {
   const config4 = {
     grid: {
       top: "8%",
-      left: categoria.quantidade.length > 12 ? "6%" : "5%",
+      left: abertasMes.quantidade.length > 12 ? "6%" : "5%",
       right: "4%",
-      bottom: categoria.quantidade.length > 12 ? "10%" : "14%",
+      bottom: abertasMes.quantidade.length > 12 ? "10%" : "14%",
     },
     tooltip: {
       trigger: "axis",
@@ -342,23 +366,23 @@ export default ({ tipo, categoria }) => {
     },
     label: {
       show: true,
-      position: categoria.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: categoria.quantidade.length > 12 ? 12 : 12,
-      fontWeight: categoria.quantidade.length > 12 ? "bold" : "normal",
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      fontSize: abertasMes.quantidade.length > 12 ? 12 : 12,
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
       color: "black",
     },
     xAxis: {
       type: "category",
-      data: categoria.tipo,
+      data: abertasMes.tipo,
       axisTick: {
         alignWithLabel: true,
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: categoria.quantidade.length > 12 ? 11 : 12,
+        fontSize: abertasMes.quantidade.length > 12 ? 11 : 12,
         fontWeight: "bold",
-        rotate: categoria.quantidade.length > 12 ? 90 : 0,
-        inside: categoria.quantidade.length > 12 ? true : false,
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
       },
     },
     yAxis: {
@@ -372,7 +396,7 @@ export default ({ tipo, categoria }) => {
     },
     series: [
       {
-        data: categoria.quantidade,
+        data: abertasMes.quantidade,
         type: "bar",
         showBackground: true,
         backgroundStyle: {
@@ -411,17 +435,17 @@ export default ({ tipo, categoria }) => {
     <div
       className="grafico-mes"
       style={{
-        height: categoria.quantidade.length > 12 ? "45vh" : "45vh",
-        marginTop: categoria.quantidade.length > 12 ? 0 : -25,
+        height: abertasMes.quantidade.length > 12 ? "45vh" : "45vh",
+        marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,
       }}
     >
-      <p>Empresas {tipo == "Abertas" ? "Abertas Por Mes" : "Ativas Por Mes"}</p>
+      <p>Empresas {context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Mes</p>
       {window.innerWidth >= 425 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
-            height: categoria.quantidade.length > 12 ? "45vh" : "45vh",
-            width: categoria.quantidade.length > 12 ? "200vw" : "110vw",
+            height: abertasMes.quantidade.length > 12 ? "45vh" : "45vh",
+            width: abertasMes.quantidade.length > 12 ? "200vw" : "110vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -431,7 +455,7 @@ export default ({ tipo, categoria }) => {
         <Echarts
           option={config2}
           style={{
-            height: categoria.quantidade.length > 12 ? "40vh" : "40vh",
+            height: abertasMes.quantidade.length > 12 ? "40vh" : "40vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
@@ -442,7 +466,7 @@ export default ({ tipo, categoria }) => {
         <Echarts
           option={config1}
           style={{
-            height: categoria.quantidade.length > 12 ? "60vh" : "48vh",
+            height: abertasMes.quantidade.length > 12 ? "60vh" : "48vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
@@ -453,7 +477,7 @@ export default ({ tipo, categoria }) => {
         <Echarts
           option={config4}
           style={{
-            height: categoria.quantidade.length > 12 ? "70vh" : "45vh",
+            height: abertasMes.quantidade.length > 12 ? "70vh" : "45vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
