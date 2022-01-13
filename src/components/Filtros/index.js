@@ -17,6 +17,9 @@ export default () => {
 
   const [valorOptionAno, setValorOptionAno] = useState('Selecionar')
   const [valorOptionPorte, setValorOptionPorte] = useState('Selecionar')
+  const [valorOptionSetor, setValorOptionSetor] = useState('Selecionar')
+  const [valorOptionMunicipio, setValorOptionMunicipio] = useState('Selecionar')
+  const [valorOptionAtividade, setValorOptionAtividade] = useState('Selecionar')
 
   const set_ano = () => {
     let arrAno = []
@@ -109,7 +112,12 @@ export default () => {
             </div>
             <div>
               <p>Setor de Atuação:</p>
-              <select className="filtros">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionSetor) {
+                  setValorOptionSetor(e.target.value)
+                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSetor.map((arr, index) => (
                   <option key={index}>{ arr[0]}</option>
@@ -118,7 +126,12 @@ export default () => {
             </div>
             <div>
               <p>Municipio:</p>
-              <select className="filtros">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionMunicipio) {
+                  setValorOptionMunicipio(e.target.value)
+                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosMunicipio.map((arr, index) => (
                   <option key={index}>{arr}</option>
@@ -129,7 +142,12 @@ export default () => {
           <div className="secao-bottom">
             <div>
               <p>Seção de Atividade:</p>
-              <select className="filtros">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionAtividade) {
+                  setValorOptionAtividade(e.target.value)
+                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosSecaoAtividade.map((arr, index) => (
                   <option key={index}>{arr[0]}</option>
@@ -147,7 +165,12 @@ export default () => {
             </div>
             <div>
               <p>Natureza:</p>
-              <select className="filtros">
+              <select className="filtros" onClick={(e) => {
+                if(e.target.value !== valorOptionSetor) {
+                  setValorOptionSetor(e.target.value)
+                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value})
+                }
+              }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
                 {filtrosNatureza.map(arr => (
                   <option>{arr[0]}</option>
