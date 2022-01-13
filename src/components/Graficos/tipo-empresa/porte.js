@@ -6,6 +6,7 @@ import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
 export default () => {
+  const context = useContext(ContextGlobal)
 
   const [dataPorte, setDataPorte] = useState([]);
   const [porte, setPorte] = useState({
@@ -14,13 +15,13 @@ export default () => {
     quantidade: []
   });
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchPorte = async () => {
-      var response = await getAbertas('porte', '2021');
+      var response = await getAbertas('porte');
       setDataPorte(response);
-      }
+    }
     fetchPorte()
-    }, []);
+  }, []);
 
   useEffect(() => {
     if(dataPorte !== undefined){
@@ -33,7 +34,14 @@ export default () => {
     }  
   }, [dataPorte]);
 
-  const context = useContext(ContextGlobal)
+  useEffect(() => {
+    const fetchPorte = async () => {
+      var response = await getAbertas('porte', context);
+      setDataPorte(response);
+      console.log(context, response)
+    }
+    fetchPorte()
+  }, [context]);;
 
   let datas = [];
   const colors = [

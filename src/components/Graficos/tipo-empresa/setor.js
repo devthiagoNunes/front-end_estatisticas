@@ -7,21 +7,15 @@ import "./style.css";
 
 export default () => {
 
+  const context = useContext(ContextGlobal)
+
   const [dataPorte, setDataPorte] = useState([]);
   const [porte, setPorte] = useState({
     classificacao: "Setor",
     empresas: [],
     quantidade: []
   });
-
-    useEffect(() => {
-    const fetchPorte = async () => {
-      var response = await getAbertas('setor', '2021');
-      setDataPorte(response);
-      }
-    fetchPorte()
-    }, []);
-
+ 
   useEffect(() => {
     if(dataPorte !== undefined){
       const obj = {classificacao: "Setor", empresas: [], quantidade: []}
@@ -33,7 +27,13 @@ export default () => {
     }  
   }, [dataPorte]);
 
-  const context = useContext(ContextGlobal)
+  useEffect(() => {
+    const fetchPorte = async () => {
+      var response = await getAbertas('setor', context);
+      setDataPorte(response);
+    }
+    fetchPorte()
+  }, [context]);
 
   let datas = [];
   const colors = [

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getDataInicial } from '../../../services/pinot'
 import { getAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
@@ -19,11 +18,11 @@ export default () => {
 
   useEffect(() => {
   const fetchNatureza = async () => {
-    var response = await getAbertas('natureza', '2021');
+    var response = await getAbertas('natureza', context);
     setDataNatureza(response);
     }
   fetchNatureza()
-  }, []);
+  }, [context]);
 
   useEffect(() => {
     if(dataNatureza !== undefined){
@@ -34,10 +33,6 @@ export default () => {
       });
       setNatureza(obj);
     }  
-
-    const get_data_inicial = async () => {
-      const response_data_inicial = await getDataInicial(context.state.natureza, context.state.setor, context.state.porte, context.state.natureza, context.state.secao_atividade, context.state.descricao_atividade, context.state.municipio_empresa, context.state.ano)
-    }
   }, [dataNatureza]);
 
   let datas = [];
@@ -48,7 +43,7 @@ export default () => {
     "orange",
     "#23f4d8",
     "blue",
-    "black",
+    "#84F2d4",
   ];
   for (let i = 0; i < natureza.quantidade.length; i++) {
     datas.push({
@@ -291,7 +286,7 @@ export default () => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: natureza.quantidade.length > 7 ? "96%" : "88%",
+      height: natureza.quantidade.length > 7 ? "40%" : "88%",
       width: natureza.quantidade.length >= 7 ? "90%" : '90%',
       top: natureza.quantidade.length > 7 ? "2%" : "9%",
       left: "3%",
@@ -320,15 +315,12 @@ export default () => {
     },
     label: {
       show: true,
-      position: natureza.quantidade.length > 7 ? "right" : "top",
+      position: "bottom",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: natureza.quantidade.length > 7 ? "value" : "category",
-      data:
-        natureza.quantidade.length > 7
-          ? natureza.quantidade
-          : natureza.empresas,
+      type: "category",
+      data: natureza.empresas,
       axisTick: {
         alignWithLabel: true,
         show: false,
@@ -336,7 +328,10 @@ export default () => {
       axisLabel: {
         fontSize: natureza.quantidade.length > 12 ? 12 : 11,
         fontWeight: "bold",
+        inside: true,
+        rotate: 90,
       },
+      z: 2
     },
     yAxis: {
       tipo: natureza.quantidade.length > 7 ? "category" : "value",
@@ -406,7 +401,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: natureza.quantidade.length > 7 ? "90vh" : "60vh",
+            height: natureza.quantidade.length > 7 ? "80vh" : "60vh",
             width: natureza.quantidade.length > 7 ? "60vw" : "60vw",
           }}
           opts={{ renderer: "canvas" }}
