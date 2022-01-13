@@ -1,5 +1,5 @@
 export const estadoGlobal = {
-  empresaAbertas: true,
+  empresasAbertas: true,
   ano: 2021, 
   setor: '' ,
   porte: '',
