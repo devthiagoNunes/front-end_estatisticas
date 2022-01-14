@@ -18,8 +18,10 @@ export const reducerFilter = (state, action) => {
       return {...state, municipio_empresa: action.payload}
 
     case actions.MUDAR_SECAO_ATIVIDADE:
-      console.log(state, action)
       return {...state, secao_atividade: action.payload}
+
+    case actions.MUDAR_ATIVIDADE:
+      return {...state, descricao_atividade: action.payload}
 
     default:
       return {...state}
