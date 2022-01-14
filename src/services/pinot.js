@@ -171,14 +171,14 @@ export const getAbertasPorMunicipio = async () => {
     .catch(err => err)
 }
 
-export const getQuantidadeAbertasPorMunicipio = async () => {
+export const getQuantidadeAbertasPorMunicipio = async (ano) => {
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
       'Target-URL': 'http://pinot-broker:8099',
     },
-      data: { "sql": `select municipio_empresa, count(*) from statistical where inicio_atividades between '2021-01-01' and '2021-12-31' group by municipio_empresa  limit 600000`}
+      data: { "sql": `select municipio_empresa, count(*) from statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by municipio_empresa  limit 600000`}
     })
     .then(res => {
       return res.data.resultTable
@@ -186,32 +186,17 @@ export const getQuantidadeAbertasPorMunicipio = async () => {
     .catch(err => err)
 }  
 
-export const getAbertasAnual = async () => {
+export const getAbertasAnual = async (ano) => {
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
     headers: {
       'Target-URL': 'http://pinot-broker:8099',
     },
-      data: { "sql": `select count(*) from statistical where inicio_atividades between  '2021-01-01' and '2021-12-31'`}
+      data: { "sql": `select count(*) from statistical where inicio_atividades between  '${ano}-01-01' and '${ano}-12-31'`}
     })
     .then(res => {
       return res.data.numDocsScanned
     })
     .catch(err => err)
 }
-
-export const getDataInicial = async (classificacao, setor, porte, natureza, secao_atividade, descricao_atividade, municipio_empresa, ano) => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://179.127.13.245:3000/query/sql', 
-    headers: {
-      'Target-URL': 'http://pinot-broker:8099',
-    },
-      data: { "sql": `select ${classificacao}, count(*) from statistical where setor = ${setor} and porte = ${porte} and natureza = ${natureza} and secao_atividade = ${secao_atividade} and descricao_atividade = ${descricao_atividade} and municipio_empresa = ${municipio_empresa} inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by ${classificacao}`}
-    })
-    .then(res => {
-      return res
-    })
-    .catch(err => err)
-  }
