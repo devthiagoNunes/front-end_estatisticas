@@ -11,18 +11,18 @@ export default () => {
 
   useEffect(() => {
     const get_abertura_ano = async () => {
-      const abertura_ano = await getAbertasAnual()
+      const abertura_ano = await getAbertasAnual(context.state.ano)
       setQuantidade(abertura_ano)
     }
 
     const get_qntd_por_municipio = async () => {
-      const response = await getQuantidadeAbertasPorMunicipio()
+      const response = await getQuantidadeAbertasPorMunicipio(context.state.ano)
       setMunicipio(response.rows)
     }
 
     get_abertura_ano()
     get_qntd_por_municipio()
-  }, [])
+  }, [context])
 
   return(
     <div className="content-municipio">
