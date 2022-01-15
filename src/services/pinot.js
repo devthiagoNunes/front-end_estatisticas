@@ -2,16 +2,19 @@ import axios from 'axios'
 
 export const getAbertas = async (classificacao, filtros) => {
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
-    return [];
+  return [];
 
-  var query = `select ${classificacao}, count(*) from statistical`
-  var filters = ' where '
+  let query = `select ${classificacao}, count(*) from statistical`
+  let filters = ' where '
 
   for (const key in filtros.state) {
+
+    if(filtros.state[key] == 'Selecionar') filtros.state[key] = ''
+    
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao}`
+          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} limit 700000`
           break;
         default:
           filters += `${key} = '${filtros.state[key]}' and `
@@ -19,7 +22,7 @@ export const getAbertas = async (classificacao, filtros) => {
       }
     }
   }
-  
+
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -36,6 +39,49 @@ export const getAbertas = async (classificacao, filtros) => {
   .catch(err => err)
 }
 
+export const getDataEmpresasAtivas = async (classificacao, filtros) => {
+  if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
+    return [];
+
+  let query = `select ${classificacao}, count(*) from statistical`
+  let filters = ' where '
+  const initial_date = new Date()
+  const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
+
+  for (const key in filtros.state) {
+    
+    if(filtros.state[key] == 'Selecionar') filtros.state[key] = ''
+    if(filtros.state[key] == 'ano' && filtros.state[key] == '' ) filtros.state[key] += date
+
+    if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
+      switch (key) {
+        case 'ano':
+          filters += `situacao_siarco = 'REGISTRO ATIVO' and ${classificacao} != 'null' group by ${classificacao} limit 700000`
+          break;
+        default:
+          filters += `${key} = '${filtros.state[key]}' and `
+          break;
+      }
+    }
+  }
+
+  console.log(query + filters)
+
+  return await axios({
+    method: 'POST', 
+    url: 'http://179.127.13.245:3000/query/sql', 
+    headers: {
+      'Target-URL': 'http://pinot-broker:8099',
+    },
+    data: {
+      "sql": query + filters
+    }
+  })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => err)
+}
 
 export const getFiltrosPorte = async () => {
   return await axios({
