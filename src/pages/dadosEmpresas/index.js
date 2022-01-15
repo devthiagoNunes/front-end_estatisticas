@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../components/Header/Header'
 import Filtros from '../../components/Filtros'
 import Municipio from '../../components/Graficos/municipio'
@@ -7,20 +7,20 @@ import Botoes from '../../components/Botoes'
 import Porte from '../../components/Graficos/tipo-empresa/porte'
 import Setor from '../../components/Graficos/tipo-empresa/setor'
 import Natureza from '../../components/Graficos/tipo-empresa/natureza'
-import { ContextProvider } from '../../contexts/GlobalContext/contextProvider'
+import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import s from './Layout.module.scss'
 import './style.css'
 import './styleGlobal.css'
 
-export default ({setState, tipo}) => {
+export default ({tipo}) => {
+  const context = useContext(ContextGlobal)
   return (
-    <ContextProvider>
       <div>
         <div className={s.wrap}>
           <Header />
           <Filtros />
           <div className='main'>
-            <Botoes setState={setState} tipo={tipo} />
+            <Botoes tipo={tipo} />
             <div className='content-data'>
               <div className='content-tipoEmpresa'>
                 <div className='tipoEmpresa'>
@@ -30,11 +30,10 @@ export default ({setState, tipo}) => {
                 </div>
                 <Municipio /> 
               </div>
-              <Mes />
+              {context.state.empresasAbertas !== false && <Mes />}
             </div>
           </div>
         </div>
       </div>
-    </ContextProvider>
   );
 }
