@@ -7,6 +7,8 @@ import './style.css'
 
 export default () => {
 
+  const content = useContext(ContextGlobal);
+
   const [filtrosPorte, setFiltrosPorte] = useState([])
   const [filtrosSetor, setFiltrosSetor] = useState([])
   const [filtrosNatureza, setFiltrosNatureza] = useState([])
@@ -24,7 +26,7 @@ export default () => {
 
   const set_ano = () => {
     let arrAno = []
-    for (let index = 2015; index <= new Date().getFullYear(); index++) {
+    for (let index = 2015; index <= content.state.ano; index++) {
       arrAno.push(index)      
     }
     setAno(arrAno)
@@ -83,7 +85,7 @@ export default () => {
             }}/></svg>
           </div>  
           <div className="secao-topo">
-            <div>
+            {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionAno) {
@@ -97,6 +99,7 @@ export default () => {
                 ))}
               </select>
             </div>
+            }
             <div>
               <p>Porte da Empresa:</p>
               <select className="filtros" onClick={(e) => {
@@ -178,8 +181,8 @@ export default () => {
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosNatureza.map(arr => (
-                  <option>{arr[0]}</option>
+                {filtrosNatureza.map((arr, index) => (
+                  <option key={index}>{arr[0]}</option>
                 ))}
               </select>
             </div>

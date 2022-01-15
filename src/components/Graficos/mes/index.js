@@ -74,7 +74,7 @@ export default () => {
       show: abertasMes.quantidade.length > 12 ? true : true,
       position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
       fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
-      fontSize: abertasMes.quantidade.length > 12 ? 9 : 9,
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 12,
       offset: [0, 2],
       color: "rgb(0, 0, 0)",
     },
