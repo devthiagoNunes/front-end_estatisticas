@@ -22,6 +22,9 @@ export const reducerFilter = (state, action) => {
 
     case actions.MUDAR_ATIVIDADE:
       return {...state, descricao_atividade: action.payload}
+    
+    case actions.MUDAR_ESTADO_INICIAL_EMPRESAS:
+      return {...state, empresasAbertas: action.payload}
 
     default:
       return {...state}
