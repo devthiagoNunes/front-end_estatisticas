@@ -89,8 +89,10 @@ export default () => {
               <p>Ano de Abertura:</p>
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionAno) {
+                  const initial_date = new Date()
+                  const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
+                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value == 'Selecionar' ? date : e.target.value})
                   setValorOptionAno(e.target.value)
-                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -105,7 +107,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionPorte) {
                   setValorOptionPorte(e.target.value)
-                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -119,7 +121,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSetor) {
                   setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -133,7 +135,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionMunicipio) {
                   setValorOptionMunicipio(e.target.value)
-                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -149,7 +151,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSecaoAtividade) {
                   setValorOptionSecaoAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -163,7 +165,7 @@ export default () => {
               <select className="filtros"  onClick={(e) => {
                 if(e.target.value !== valorOptionAtividade) {
                   setValorOptionAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_ATIVIDADE, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_ATIVIDADE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -177,7 +179,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSetor) {
                   setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value})
+                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
