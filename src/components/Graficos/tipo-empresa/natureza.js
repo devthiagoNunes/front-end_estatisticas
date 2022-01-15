@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getAbertas } from '../../../services/pinot'
+import { getAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -17,11 +17,20 @@ export default () => {
   const context = useContext(ContextGlobal)
 
   useEffect(() => {
-  const fetchNatureza = async () => {
-    var response = await getAbertas('natureza', context);
-    setDataNatureza(response);
+    const fetchNatureza = async () => {
+      switch (context.state.empresasAbertas) {
+        case false:
+          const empmresas_ativas_natureza = await getDataEmpresasAtivas('natureza', context);
+          setDataNatureza(empmresas_ativas_natureza.resultTable.rows)
+          break;
+      
+        default:
+          const response = await getAbertas('natureza', context);
+          setDataNatureza(response);
+          break;
+      }
     }
-  fetchNatureza()
+    fetchNatureza()
   }, [context]);
 
   useEffect(() => {
@@ -42,8 +51,20 @@ export default () => {
     "green",
     "orange",
     "#23f4d8",
-    "blue",
+    "#9b2226",
     "#84F2d4",
+    '#e9d8a6',
+    '#e56946',
+    '#e5989b',
+    '#480ca8',
+    '#283618',
+    '#6a040f',
+    '#faa307',
+    '#219ebc',
+    '#343a40',
+    '#fb5607',
+    '#fb1580',
+    '#db2607'
   ];
   for (let i = 0; i < natureza.quantidade.length; i++) {
     datas.push({
@@ -55,8 +76,8 @@ export default () => {
    const config1 = {
     grid: {
       containLabel: true,
-      width: natureza.quantidade.length > 7 ? "52%" : "95%",
-      height: "88%",
+      width: "92%",
+      height: "87%",
       left: "2%",
       top: "8%",
     },
@@ -68,26 +89,28 @@ export default () => {
     },
     label: {
       show: true,
-      position: natureza.quantidade.length > 7 ? "right" : "top",
+      position:  "bottom",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: natureza.quantidade.length > 7 ? "value" : "category",
-      data: natureza.quantidade.length > 7 ? null : natureza.empresas,
+      type: "category",
+      data: natureza.empresas,
       axisTick: {
         alignWithLabel: true,
       },
       axisLabel: {
-        fontSize: natureza.quantidade.length > 7 ? 10 : 10,
-        fontWeight: natureza.quantidade.length > 7 ? "normal" : "bold",
-        rotate:
-          window.innerWidth <= 1115 && natureza.quantidade.length > 7 ? 30 : 0,
+        fontSize: natureza.quantidade.length > 12 ? 12 : 11,
+        fontWeight: "bold",
+        inside: true,
+        rotate: 90,
+        height: 3
       },
+      z: 2
     },
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "right",
+      left: "95%",
       itemSize: 15,
       showTitle: true,
       feature: {
@@ -120,7 +143,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: natureza.quantidade.length > 7 ? "20%" : "35%",
+        barWidth: natureza.quantidade.length <= 2 ? '15%' : "45%",
       },
     ],
   };
@@ -361,7 +384,7 @@ export default () => {
       className="grafico natureza"
       style={{
         overflowX: "scroll",
-        overflowY: "hidden",
+        overflowY: "scroll",
       }}
     >
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por natureza`}</p>
@@ -370,7 +393,7 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            width: natureza.quantidade.length > 6 ? "145vw" : "90vw",
+            width: "145vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -391,7 +414,8 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            width: natureza.quantidade.length > 6 ? "90vw" : "55vw",
+            width: "90vw",
+            height: "50vh",
           }}
           opts={{ renderer: "canvas" }}
         />

@@ -8,15 +8,18 @@
   padding: 0.5rem 0;
   position: sticky;
   left: 0;
+  top: 0;
   font-size: 1.5rem;
   font-weight: bold;
   background: #007cc1;
   color: white;
   text-align: center;
+  z-index: 2;
 }
 .setor {
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
 }
 @media (max-width: 1024px) {
   .grafico p {

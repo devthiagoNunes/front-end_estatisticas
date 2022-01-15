@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getAbertas } from '../../../services/pinot'
+import { getAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -17,7 +17,7 @@ export default () => {
 
   useEffect(() => {
     const fetchPorte = async () => {
-      var response = await getAbertas('porte');
+      const response = await getAbertas('porte');
       setDataPorte(response);
     }
     fetchPorte()
@@ -36,9 +36,17 @@ export default () => {
 
   useEffect(() => {
     const fetchPorte = async () => {
-      var response = await getAbertas('porte', context);
-      setDataPorte(response);
-      console.log(context, response)
+      switch (context.state.empresasAbertas) {
+        case false:
+          const empmresas_ativas_porte = await getDataEmpresasAtivas('porte', context);
+          setDataPorte(empmresas_ativas_porte.resultTable.rows)
+          break;
+      
+        default:
+          const response = await getAbertas('porte', context);
+          setDataPorte(response);
+          break;
+      }
     }
     fetchPorte()
   }, [context]);;
@@ -63,8 +71,8 @@ export default () => {
    const config1 = {
     grid: {
       containLabel: true,
-      width: porte.quantidade.length > 7 ? "52%" : "95%",
-      height: "88%",
+      width: "92%",
+      height: "86%",
       left: "2%",
       top: "8%",
     },
@@ -366,12 +374,7 @@ export default () => {
 
   return (
     <div
-      className="grafico setor"
-      style={{
-        overflowX: "scroll",
-        overflowY: "hidden",
-      }}
-    >
+      className="grafico setor">
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Porte`}</p>
 
       {window.innerWidth >= 425 && window.innerWidth <= 768 && (
@@ -399,7 +402,7 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            width: porte.quantidade.length > 6 ? "90vw" : "55vw",
+            width: '50vw',
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -409,7 +412,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: porte.quantidade.length > 7 ? "90vh" : "60vh",
+            height: "40vh",
             width: porte.quantidade.length > 7 ? "60vw" : "60vw",
           }}
           opts={{ renderer: "canvas" }}
