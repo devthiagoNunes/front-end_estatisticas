@@ -176,10 +176,13 @@
     margin: auto;
     margin-bottom: 1rem;
   }
+  .total-empresasAbertas p:first-child {
+    font-size: 1rem;
+  }
   .content-dataMunicipio {
     width: 80%;
     margin: auto;
-    height: 80vh;
+    height: 120vh;
     overflow-y: scroll;
   }
   .content-dataMunicipio p:first-child {

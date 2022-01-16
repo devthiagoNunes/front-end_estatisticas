@@ -31,6 +31,7 @@ export default () => {
     }
     setAno(arrAno)
   }
+  set_ano()
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
@@ -69,7 +70,6 @@ export default () => {
     getFiltros_SecaoAtividade()
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
-    set_ano()
   }, [])
 
   const context = useContext(ContextGlobal)
@@ -79,10 +79,10 @@ export default () => {
         <div className="all-filtros">
           <div className="header-filters">
             <p className="txt-filtros">Filtros:</p>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" className="close-filters"
-            onClick={() => {
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000" onClick={() => {
               document.getElementById('content-filtros').style.display = 'none'
-            }}/></svg>
+            }}><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z" className="close-filters"
+            /></svg>
           </div>  
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
@@ -91,7 +91,7 @@ export default () => {
                 if(e.target.value !== valorOptionAno) {
                   const initial_date = new Date()
                   const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
-                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value == 'Selecionar' ? date : e.target.value})
+                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value === 'Selecionar' ? date : e.target.value})
                   setValorOptionAno(e.target.value)
                 }
               }}>
@@ -107,7 +107,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionPorte) {
                   setValorOptionPorte(e.target.value)
-                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -121,7 +121,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSetor) {
                   setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -135,7 +135,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionMunicipio) {
                   setValorOptionMunicipio(e.target.value)
-                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -151,7 +151,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSecaoAtividade) {
                   setValorOptionSecaoAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -165,7 +165,7 @@ export default () => {
               <select className="filtros"  onClick={(e) => {
                 if(e.target.value !== valorOptionAtividade) {
                   setValorOptionAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_ATIVIDADE, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_ATIVIDADE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>
@@ -179,7 +179,7 @@ export default () => {
               <select className="filtros" onClick={(e) => {
                 if(e.target.value !== valorOptionSetor) {
                   setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value == 'Selecionar' ? '' : e.target.value})
+                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
                 }
               }}>
                 <option defaultValue={"Selecionar"}>Selecionar</option>

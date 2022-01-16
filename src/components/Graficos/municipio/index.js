@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getAbertasAnual, getDataMunicipio, getDataEmpresasAtivas, getAbertas, getQuantidadeAbertasPorMunicipio } from '../../../services/pinot'
+import { getAbertasAnual, getDataEmpresasAtivas, getAbertas } from '../../../services/pinot'
 import './style.css'
 
 export default () => {
@@ -35,7 +35,9 @@ export default () => {
 
   return(
     <div className="content-municipio">
-      <div className="total-empresasAbertas">
+      <div className="total-empresasAbertas"  style={{
+          minHeight: window.innerWidth <= 768 ? '100px' : null
+        }}>
         <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div>
