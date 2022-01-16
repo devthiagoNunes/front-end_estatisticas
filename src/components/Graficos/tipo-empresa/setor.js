@@ -138,10 +138,10 @@ export default () => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: "90%",
-      height: setor.quantidade.length > 7 ? "80%" : "88%",
+      width: "95%",
+      height: "88%",
       top: "6%",
-      left: "3%",
+      left: "1%",
     },
     tooltip: {
       trigger: "axis",
@@ -152,7 +152,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "right",
+      left: "97%",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -169,11 +169,9 @@ export default () => {
     label: {
       show: true,
       align: "center",
-      position: setor.quantidade.length > 7 ? "bottom" : "top",
+      position:  "top",
       verticalAlign: "middle",
-      rotate: 0,
-      offset: setor.quantidade.length > 12 ? [0, 10] : null,
-      fontSize: setor.quantidade.length > 7 ? 10 : 12,
+      fontSize: 12,
       fontWeight: setor.quantidade.length > 12 ? "bold" : "normal",
       color: "rgb(0, 0, 0)",
     },
@@ -186,11 +184,8 @@ export default () => {
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: setor.quantidade.length > 7 ? 7 : 8,
         fontWeight: "bold",
-        rotate: setor.quantidade.length > 7 ? 90 : 0,
-        inside: setor.quantidade.length > 7 ? true : false,
-        fontSize: 9,
+        fontSize: window.innerWidth == 768 ? 8 : 9,
       },
     },
     yAxis: {
@@ -219,10 +214,10 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "92%",
-      height: setor.quantidade.length > 7 ? "73%" : "85%",
+      width: "95%",
+      height: "85%",
       top: "9%",
-      left: "3%",
+      left: "1%",
     },
     tooltip: {
       trigger: "axis",
@@ -233,7 +228,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      itemSize: 13,
+      itemSize: 12,
       showTitle: true,
       feature: {
         type: "png",
@@ -248,14 +243,12 @@ export default () => {
     },
     label: {
       show: true,
-      align: setor.quantidade.length > 7 ? "center" : "center",
+      align: "center",
       verticalAlign: "middle",
       margin: true,
-      position: setor.quantidade.length > 7 ? "bottom" : "top",
-      rotate: setor.quantidade.length > 7 ? 0 : 0,
-      offset: setor.quantidade.length > 7 ? [0, 8] : null,
-      fontWeight: setor.quantidade.length > 7 ? "bold" : "normal",
-      fontSize: setor.quantidade.length > 7 ? 9 : 10,
+      position: "top",
+      fontWeight: "normal",
+      fontSize: 10,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
@@ -263,14 +256,8 @@ export default () => {
       data: setor.empresas,
       zlevel: 5,
       axisLabel: {
-        fontSize: setor.quantidade.length > 7 ? 6 : 8,
         fontWeight: "bold",
-        rotate: setor.quantidade.length > 7 ? 90 : 0,
-        inside: setor.quantidade.length > 7 ? true : false,
         fontSize: 7,
-      },
-      axisTick: {
-        alignWithLabel: setor.quantidade.length > 7 ? true : true,
       },
     },
     yAxis: {
@@ -288,7 +275,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: "35%",
+        barWidth: "30%",
       },
     ],
   };
@@ -376,22 +363,22 @@ export default () => {
     >
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Setor`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
-            width: '80vw'
+            width: '210vw'
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
+      {window.innerWidth >= 768 && window.innerWidth <= 1024 && (
         <Echarts
           option={config2}
           style={{
-            width: setor.quantidade.length > 6 ? "100vw" : "65vw",
-            height: setor.quantidade.length > 7 ? "40vh" : "45vh"
+            width: window.innerWidth == 768 ? "130vw" : "110vw",
+            height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
         />

@@ -152,7 +152,7 @@ export default () => {
     grid: {
       containLabel: true,
       width: "90%",
-      height: natureza.quantidade.length > 7 ? "80%" : "88%",
+      height: "85%",
       top: "6%",
       left: "3%",
     },
@@ -165,7 +165,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "right",
+      left: "94%",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -182,12 +182,11 @@ export default () => {
     label: {
       show: true,
       align: "center",
-      position: natureza.quantidade.length > 7 ? "bottom" : "top",
+      position: "bottom",
       verticalAlign: "middle",
-      rotate: 0,
-      offset: natureza.quantidade.length > 12 ? [0, 10] : null,
-      fontSize: natureza.quantidade.length > 7 ? 10 : 12,
-      fontWeight: natureza.quantidade.length > 12 ? "bold" : "normal",
+      offset: [0, 10],
+      fontSize: 10,
+      fontWeight: "normal",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
@@ -199,21 +198,17 @@ export default () => {
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: natureza.quantidade.length > 7 ? 7 : 8,
         fontWeight: "bold",
-        rotate: natureza.quantidade.length > 7 ? 90 : 0,
-        inside: natureza.quantidade.length > 7 ? true : false,
+        inside: true,
         fontSize: 9,
+        rotate: 90,
       },
     },
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: natureza.quantidade.length > 7 ? 8 : 10,
+        fontSize: 9,
         fontWeight: "bold",
-      },
-      axisTick: {
-        alignWithLabel: natureza.quantidade.length > 7 ? true : null,
       },
     },
     series: [
@@ -232,9 +227,9 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "92%",
-      height: natureza.quantidade.length > 7 ? "73%" : "85%",
-      top: "9%",
+      width: "87%",
+      height: "85%",
+      top: "4%",
       left: "3%",
     },
     tooltip: {
@@ -246,6 +241,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: "92%",
       itemSize: 13,
       showTitle: true,
       feature: {
@@ -261,14 +257,13 @@ export default () => {
     },
     label: {
       show: true,
-      align: natureza.quantidade.length > 7 ? "center" : "center",
+      align: "center",
       verticalAlign: "middle",
       margin: true,
-      position: natureza.quantidade.length > 7 ? "bottom" : "top",
-      rotate: natureza.quantidade.length > 7 ? 0 : 0,
-      offset: natureza.quantidade.length > 7 ? [0, 8] : null,
-      fontWeight: natureza.quantidade.length > 7 ? "bold" : "normal",
-      fontSize: natureza.quantidade.length > 7 ? 9 : 10,
+      position: "bottom",
+      offset: [0, 8],
+      fontWeight: "bold",
+      fontSize: 9,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
@@ -276,10 +271,9 @@ export default () => {
       data: natureza.empresas,
       zlevel: 5,
       axisLabel: {
-        fontSize: natureza.quantidade.length > 7 ? 6 : 8,
         fontWeight: "bold",
-        rotate: natureza.quantidade.length > 7 ? 90 : 0,
-        inside: natureza.quantidade.length > 7 ? true : false,
+        rotate: 90,
+        inside: true,
         fontSize: 7,
       },
       axisTick: {
@@ -301,7 +295,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: "35%",
+        barWidth: "45%",
       },
     ],
   };
@@ -389,22 +383,23 @@ export default () => {
     >
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por natureza`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
-            width: "145vw",
+            width: "110vw",
+            height: "40vh"
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
+      {window.innerWidth >= 768 && window.innerWidth <= 1024 && (
         <Echarts
           option={config2}
           style={{
-            width: natureza.quantidade.length > 6 ? "100vw" : "65vw",
-            height: natureza.quantidade.length > 7 ? "40vh" : "45vh"
+            width: "65vw",
+            height: "48vh"
           }}
           opts={{ renderer: "canvas" }}
         />

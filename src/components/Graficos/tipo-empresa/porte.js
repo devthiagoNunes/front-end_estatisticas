@@ -145,7 +145,7 @@ export default () => {
     grid: {
       containLabel: true,
       width: "90%",
-      height: porte.quantidade.length > 7 ? "80%" : "88%",
+      height: "88%",
       top: "6%",
       left: "3%",
     },
@@ -159,7 +159,7 @@ export default () => {
       show: true,
       orient: "horizontal",
       left: "right",
-      itemSize: 14,
+      itemSize: 13,
       showTitle: true,
       feature: {
         type: "png",
@@ -175,12 +175,11 @@ export default () => {
     label: {
       show: true,
       align: "center",
-      position: porte.quantidade.length > 7 ? "bottom" : "top",
+      position: "top",
       verticalAlign: "middle",
       rotate: 0,
-      offset: porte.quantidade.length > 12 ? [0, 10] : null,
-      fontSize: porte.quantidade.length > 7 ? 10 : 12,
-      fontWeight: porte.quantidade.length > 12 ? "bold" : "normal",
+      fontSize: 10,
+      fontWeight: "normal",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
@@ -192,21 +191,15 @@ export default () => {
       },
       zlevel: 5,
       axisLabel: {
-        fontSize: porte.quantidade.length > 7 ? 7 : 8,
         fontWeight: "bold",
-        rotate: porte.quantidade.length > 7 ? 90 : 0,
-        inside: porte.quantidade.length > 7 ? true : false,
-        fontSize: 9,
+        fontSize: 10,
       },
     },
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: porte.quantidade.length > 7 ? 8 : 10,
+        fontSize: 10,
         fontWeight: "bold",
-      },
-      axisTick: {
-        alignWithLabel: porte.quantidade.length > 7 ? true : null,
       },
     },
     series: [
@@ -217,7 +210,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: porte.quantidade.length > 7 ? "35%" : "25%",
+        barWidth: "35%",
       },
     ],
   };
@@ -226,7 +219,7 @@ export default () => {
     grid: {
       containLabel: true,
       width: "92%",
-      height: porte.quantidade.length > 7 ? "73%" : "85%",
+      height: "85%",
       top: "9%",
       left: "3%",
     },
@@ -254,14 +247,12 @@ export default () => {
     },
     label: {
       show: true,
-      align: porte.quantidade.length > 7 ? "center" : "center",
+      align: "center",
       verticalAlign: "middle",
       margin: true,
-      position: porte.quantidade.length > 7 ? "bottom" : "top",
-      rotate: porte.quantidade.length > 7 ? 0 : 0,
-      offset: porte.quantidade.length > 7 ? [0, 8] : null,
-      fontWeight: porte.quantidade.length > 7 ? "bold" : "normal",
-      fontSize: porte.quantidade.length > 7 ? 9 : 10,
+      position: "top",
+      fontWeight: "normal",
+      fontSize: 10,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
@@ -269,14 +260,8 @@ export default () => {
       data: porte.empresas,
       zlevel: 5,
       axisLabel: {
-        fontSize: porte.quantidade.length > 7 ? 6 : 8,
         fontWeight: "bold",
-        rotate: porte.quantidade.length > 7 ? 90 : 0,
-        inside: porte.quantidade.length > 7 ? true : false,
-        fontSize: 7,
-      },
-      axisTick: {
-        alignWithLabel: porte.quantidade.length > 7 ? true : true,
+        fontSize: 9,
       },
     },
     yAxis: {
@@ -294,7 +279,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: "35%",
+        barWidth: "45%",
       },
     ],
   };
@@ -377,22 +362,22 @@ export default () => {
       className="grafico setor">
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Porte`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
-            width: porte.quantidade.length > 6 ? "145vw" : "90vw",
+            width: "70vw",
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
+      {window.innerWidth >= 768 && window.innerWidth <= 1024 && (
         <Echarts
           option={config2}
           style={{
-            width: porte.quantidade.length > 6 ? "100vw" : "65vw",
-            height: porte.quantidade.length > 7 ? "40vh" : "45vh"
+            width: "50vw",
+            height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
         />
