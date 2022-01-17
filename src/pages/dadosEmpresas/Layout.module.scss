@@ -1,4 +1,4 @@
-@import '../../styles/app';
+@import "../../styles/app";
 
 .root {
   height: 100%;
@@ -15,7 +15,8 @@
   left: 0;
   right: 0;
   transition: left $sidebar-transition-time ease-in-out;
-  
+  background: white;
+
   @media print {
     margin: 0;
   }
@@ -49,7 +50,6 @@
   @media (min-width: breakpoint-min(sm)) {
     user-select: auto !important;
   }
-  
 }
 
 .contentFooter {

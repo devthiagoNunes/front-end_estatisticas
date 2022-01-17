@@ -31,7 +31,6 @@ export default () => {
     }
     setAno(arrAno)
   }
-  set_ano()
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
@@ -70,6 +69,7 @@ export default () => {
     getFiltros_SecaoAtividade()
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
+    set_ano()
   }, [])
 
   const context = useContext(ContextGlobal)
