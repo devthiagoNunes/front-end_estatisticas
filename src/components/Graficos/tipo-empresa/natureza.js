@@ -303,7 +303,7 @@ export default () => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: "90%",
+      height: natureza.empresas.length > 12 ? "90%" : "86%",
       width: '90%',
       top: natureza.quantidade.length > 7 ? "2%" : "9%",
       left: "3%",
@@ -334,6 +334,8 @@ export default () => {
       show: true,
       position: "bottom",
       color: "rgb(0, 0, 0)",
+      fontWeight: "bold",
+      fontSize: 12
     },
     xAxis: {
       type: "category",
@@ -377,11 +379,11 @@ export default () => {
     <div
       className="grafico natureza"
       style={{
-        overflowX: "scroll",
+        overflowX: natureza.empresas.length > 12 ? "scroll" : "hidden",
         overflowY: "scroll",
       }}
     >
-      <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por natureza`}</p>
+      <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
 
       {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
@@ -420,7 +422,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: natureza.empresas.length > 12 ? "65vh" : "52vh",
+            height: natureza.empresas.length > 12 ? "60vh" : "48vh",
             width: natureza.empresas.length > 12 ? "80vw" : "50vw",
           }}
           opts={{ renderer: "canvas" }}
