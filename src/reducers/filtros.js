@@ -2,6 +2,8 @@ import * as actions from '../contexts/GlobalContext/actions'
 
 export const reducerFilter = (state, action) => {
   switch (action.type) {
+    case actions.LIMPAR_FILTROS:
+      return{...state, setor: '', porte: '', natureza: '', descricao_atividade: '', municipio_empresa: '', secao_atividade: ''}
     case actions.MUDAR_ANO: 
       return {...state, ano: action.payload}
 
