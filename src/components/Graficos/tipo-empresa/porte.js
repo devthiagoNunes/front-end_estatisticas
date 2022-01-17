@@ -198,7 +198,7 @@ export default () => {
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: 10,
+        fontSize: 9,
         fontWeight: "bold",
       },
     },
@@ -259,6 +259,9 @@ export default () => {
       type: "category",
       data: porte.empresas,
       zlevel: 5,
+      axisTick: {
+        alignWithLabel: true,
+      },
       axisLabel: {
         fontWeight: "bold",
         fontSize: 9,
@@ -397,8 +400,8 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: "40vh",
-            width: porte.quantidade.length > 7 ? "60vw" : "60vw",
+            height: "45vh",
+            width: "50vw",
           }}
           opts={{ renderer: "canvas" }}
         />

@@ -47,11 +47,11 @@ export default () => {
   let datas = [];
   const colors = [
     "#00b4d8",
-    "red",
+    "red",  
     "green",
     "orange",
-    "#23f4d8",
     "#9b2226",
+    "#23f4d8",
     "#84F2d4",
     '#e9d8a6',
     '#e56946',
@@ -227,7 +227,7 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "87%",
+      width: natureza.empresas.length > 12 ? "90%" : "87%",
       height: "85%",
       top: "4%",
       left: "3%",
@@ -241,7 +241,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "92%",
+      left: natureza.empresas.length > 12 ? "94%" : "92%",
       itemSize: 13,
       showTitle: true,
       feature: {
@@ -303,8 +303,8 @@ export default () => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: natureza.quantidade.length > 7 ? "40%" : "88%",
-      width: natureza.quantidade.length >= 7 ? "90%" : '90%',
+      height: "90%",
+      width: '90%',
       top: natureza.quantidade.length > 7 ? "2%" : "9%",
       left: "3%",
     },
@@ -354,7 +354,7 @@ export default () => {
       tipo: natureza.quantidade.length > 7 ? "category" : "value",
       data: natureza.quantidade.length > 7 ? natureza.empresas : null,
       axisLabel: {
-        fontSize: natureza.quantidade.length > 7 ? 9 : 12,
+        fontSize:  12,
         fontWeight: "bold",
         position: "top",
         verticalAlign: "middle",
@@ -387,8 +387,8 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            width: "110vw",
-            height: "40vh"
+            width: natureza.empresas.length > 12 ? "170vw" : "110vw",
+            height: natureza.empresas.length > 12 ? "60vh" : "40vh"
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -398,7 +398,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            width: "65vw",
+            width: window.innerWidth == 768 ? "100vw" : "65vw",
             height: "48vh"
           }}
           opts={{ renderer: "canvas" }}
@@ -420,8 +420,8 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: natureza.quantidade.length > 7 ? "80vh" : "60vh",
-            width: natureza.quantidade.length > 7 ? "60vw" : "60vw",
+            height: natureza.empresas.length > 12 ? "65vh" : "52vh",
+            width: natureza.empresas.length > 12 ? "80vw" : "50vw",
           }}
           opts={{ renderer: "canvas" }}
         />

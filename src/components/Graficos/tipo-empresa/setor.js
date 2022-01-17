@@ -185,7 +185,7 @@ export default () => {
       zlevel: 5,
       axisLabel: {
         fontWeight: "bold",
-        fontSize: window.innerWidth == 768 ? 8 : 9,
+        fontSize: 9,
       },
     },
     yAxis: {
@@ -193,10 +193,7 @@ export default () => {
       axisLabel: {
         fontSize: setor.quantidade.length > 7 ? 8 : 10,
         fontWeight: "bold",
-      },
-      axisTick: {
-        alignWithLabel: setor.quantidade.length > 7 ? true : null,
-      },
+      }
     },
     series: [
       {
@@ -259,6 +256,9 @@ export default () => {
         fontWeight: "bold",
         fontSize: 7,
       },
+      axisTick: {
+        alignWithLabel: true,
+      },
     },
     yAxis: {
       type: "value",
@@ -284,7 +284,7 @@ export default () => {
     grid: {
       containLabel: true,
       height: setor.quantidade.length > 7 ? "96%" : "88%",
-      width: setor.quantidade.length >= 7 ? "90%" : '90%',
+      width: "92%",
       top: setor.quantidade.length > 7 ? "2%" : "9%",
       left: "3%",
     },
@@ -297,6 +297,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: "96%",
       itemSize: 17,
       showTitle: true,
       feature: {
@@ -377,7 +378,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            width: window.innerWidth == 768 ? "130vw" : "110vw",
+            width: "140vw",
             height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
@@ -399,8 +400,8 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: setor.quantidade.length > 7 ? "90vh" : "60vh",
-            width: setor.quantidade.length > 7 ? "60vw" : "60vw",
+            height: "45vh",
+            width: "100vw",
           }}
           opts={{ renderer: "canvas" }}
         />
