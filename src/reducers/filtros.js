@@ -1,9 +1,12 @@
 import * as actions from '../contexts/GlobalContext/actions'
 
+const initial_date = new Date()
+const ano = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1 
+
 export const reducerFilter = (state, action) => {
   switch (action.type) {
     case actions.LIMPAR_FILTROS:
-      return{...state, setor: '', porte: '', natureza: '', descricao_atividade: '', municipio_empresa: '', secao_atividade: ''}
+      return{...state, ano: ano, setor: '', porte: '', natureza: '', descricao_atividade: '', municipio_empresa: '', secao_atividade: ''}
     case actions.MUDAR_ANO: 
       return {...state, ano: action.payload}
 
