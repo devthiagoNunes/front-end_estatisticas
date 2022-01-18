@@ -25,7 +25,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 54vh;
+  height: 45vh;
+  overflow-y: hidden;
+  margin-bottom: 1rem;
   position: relative;
 }
 .content-dataNatureza {
@@ -39,7 +41,7 @@
   top: 0;
   margin: 0;
   padding: 0.7rem 0;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   background: #007cc1;
   color: white;
@@ -51,14 +53,11 @@
 }
 .tabelas-natureza table:first-child {
   padding: 0 5px;
-  width: 80%;
+  width: 100%;
   height: inherit;
 }
-.tabelas-natureza table:last-child {
+.tabelas-natureza table thead tr th:first-child{
   text-align: center;
-  padding: 0 5px;
-  width: 20%;
-  height: inherit;
 }
 .tabelas-natureza table tr {
   font-size: 1.1rem;
@@ -73,12 +72,30 @@
     position: sticky;
     left: 0;
   }
+  .tabelas-natureza table thead th {
+    font-size: .9rem;
+  }
+  .tabelas-natureza tfoot tr td{
+    font-size: 1rem;
+  }
+  .tabelas-natureza thead tr th:first-child{
+    width: 75%;
+  }
 }
 @media (max-width: 768px) {
   .grafico p {
     font-size: 0.9rem;
     position: sticky;
     left: 0;
+  }
+  .tabelas-natureza table thead th {
+    font-size: .8rem;
+  }
+  .tabelas-natureza tfoot tr td{
+    font-size: .9rem;
+  }
+  .tabelas-natureza thead tr th:first-child{
+    width: 75%;
   }
 }
 @media (max-width: 425px) {
@@ -92,5 +109,18 @@
   .grafico p {
     position: sticky;
     left: 0;
+  }
+  .content-natureza{
+    width: 95%;
+    margin-left: .5rem;
+  }
+  .tabelas-natureza table thead th {
+    font-size: .7rem;
+  }
+  .tabelas-natureza tfoot tr td{
+    font-size: .85rem;
+  }
+  .tabelas-natureza thead tr th:first-child{
+    width: 75%;
   }
 }
