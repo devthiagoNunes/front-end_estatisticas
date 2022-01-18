@@ -125,7 +125,6 @@
 @media (max-width: 768px) {
   .content-municipio {
     width: 28vw;
-    height: 100%;
   }
   .total-empresasAbertas {
     height: 22vh;
@@ -136,6 +135,8 @@
   .content-dataMunicipio {
     height: 124.5vh;
     max-height: min-content;
+    padding-bottom: 1.8rem;
+
   }
   .content-dataMunicipio p:first-child {
     font-size: 0.8rem;

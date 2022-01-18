@@ -478,7 +478,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: abertasMes.quantidade.length > 12 ? "70vh" : "45vh",
+            height: "45vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}

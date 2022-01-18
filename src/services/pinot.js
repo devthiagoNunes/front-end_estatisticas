@@ -2,9 +2,25 @@ import axios from 'axios'
 
 export const getAbertas = async (classificacao, filtros) => {
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
-  return [];
+  return []
 
-  let query = `select ${classificacao}, count(*) from statistical`
+  const apelido_coluna_1 = 'natureza_empresa'
+  const apelido_coluna_2 = 'municipio'
+  let apelido_tabela = ''
+  let orderBy = ''
+
+  switch (classificacao) {
+    case 'natureza':
+      apelido_tabela = `as ${apelido_coluna_1}`
+      orderBy = `order by ${apelido_coluna_1} desc`
+      break
+    case 'municipio_empresa':
+      apelido_tabela = `as ${apelido_coluna_2}`
+      orderBy = `order by ${apelido_coluna_2} desc`
+      break;
+  }
+
+  let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
   let filters = ' where '
 
   for (const key in filtros.state) {
@@ -14,11 +30,11 @@ export const getAbertas = async (classificacao, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} limit 700000`
+          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
           break;
         default:
           filters += `${key} = '${filtros.state[key]}' and `
-          break;
+          break
       }
     }
   }
@@ -34,16 +50,32 @@ export const getAbertas = async (classificacao, filtros) => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
 
 export const getDataEmpresasAtivas = async (classificacao, filtros) => {
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
-    return [];
+    return []
 
-  let query = `select ${classificacao}, count(*) from statistical`
+  const apelido_coluna_1 = 'natureza_empresa'
+  const apelido_coluna_2 = 'municipio'
+  let apelido_tabela = ''
+  let orderBy = ''
+
+  switch (classificacao) {
+    case 'natureza':
+      apelido_tabela = `as ${apelido_coluna_1}`
+      orderBy = `order by ${apelido_coluna_1} desc`
+      break
+    case 'municipio_empresa':
+      apelido_tabela = `as ${apelido_coluna_2}`
+      orderBy = `order by ${apelido_coluna_2} desc`
+      break;
+  }
+
+  let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
   let filters = ' where '
   const initial_date = new Date()
   const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
@@ -56,11 +88,11 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `situacao_siarco = 'REGISTRO ATIVO' and ${classificacao} != 'null' group by ${classificacao} limit 700000`
-          break;
+          filters += `situacao_siarco = 'REGISTRO ATIVO' and ${classificacao} != 'null' group by ${classificacao} ${orderBy} limit 700000`
+          break
         default:
           filters += `${key} = '${filtros.state[key]}' and `
-          break;
+          break
       }
     }
   }
@@ -93,7 +125,7 @@ export const getFiltrosPorte = async () => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -110,7 +142,7 @@ export const getFiltrosSetor = async () => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -127,7 +159,7 @@ export const getFiltrosNatureza = async () => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -140,11 +172,11 @@ export const getFiltrosMunicipio = async () => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": "select distinct municipio_empresa from statistical limit 1420"
+      "sql": "select distinct municipio_empresa from statistical order by municipio_empresa limit 1420"
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -161,7 +193,7 @@ export const getFiltrosSecaoAtividade = async () => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -178,7 +210,7 @@ export const getFiltrosDescricaoAtividade = async () => {
     }
   })
   .then(res => {
-    return res.data.resultTable.rows;
+    return res.data.resultTable.rows
   })
   .catch(err => err)
 }
@@ -200,35 +232,6 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
   .catch(err => err)
 }
 
-export const getAbertasPorMunicipio = async () => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://179.127.13.245:3000/query/sql', 
-    headers: {
-      'Target-URL': 'http://pinot-broker:8099',
-    },
-      data: { "sql": 'select distinct municipio_empresa from statistical limit 1500'}
-    })
-    .then(res => {
-      return res.data.resultTable.rows
-    })
-    .catch(err => err)
-}
-
-export const getQuantidadeAbertasPorMunicipio = async (ano) => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://179.127.13.245:3000/query/sql', 
-    headers: {
-      'Target-URL': 'http://pinot-broker:8099',
-    },
-      data: { "sql": `select municipio_empresa, count(*) from statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by municipio_empresa  limit 600000`}
-    })
-    .then(res => {
-      return res.data.resultTable
-    })
-    .catch(err => err)
-}  
 
 export const getAbertasAnual = async (ano) => {
   return await axios({

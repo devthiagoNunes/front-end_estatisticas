@@ -20,7 +20,7 @@ export default () => {
     if(dataSetor !== undefined){
       const obj = {classificacao: "Setor", empresas: [], quantidade: []}
       dataSetor.forEach(element => {
-        obj.empresas.push(element[0])
+        obj.empresas.push(element[0].replace(' ', '\n'))
         obj.quantidade.push(element[1]);
       });
       setSetor(obj);
@@ -47,12 +47,11 @@ export default () => {
   let datas = [];
   const colors = [
     "#00b4d8",
-    "red",
-    "green",
+    "#8d8afd",
+    "#985f3b",
     "orange",
     "#23f4d8",
-    "blue",
-    "black",
+    "#83f2d1",
   ];
   
   for (let i = 0; i < setor.quantidade.length; i++) {
@@ -138,7 +137,7 @@ export default () => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: "95%",
+      width: "93%",
       height: "88%",
       top: "6%",
       left: "1%",
@@ -152,7 +151,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "97%",
+      left: "94%",
       itemSize: 14,
       showTitle: true,
       feature: {
@@ -169,29 +168,30 @@ export default () => {
     label: {
       show: true,
       align: "center",
-      position:  "top",
+      position:  "right",
       verticalAlign: "middle",
-      fontSize: 12,
-      fontWeight: setor.quantidade.length > 12 ? "bold" : "normal",
+      fontSize: 10,
+      fontWeight: "bold",
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: "category",
+      type: "value",
       show: true,
+      data: setor.quantidade,
+      zlevel: 5,
+      axisLabel: {
+        fontWeight: "bold",
+        fontSize: 10,
+      },
+    },
+    yAxis: {
+      tipo: "category",
       data: setor.empresas,
       axisTick: {
         alignWithLabel: true,
       },
-      zlevel: 5,
       axisLabel: {
-        fontWeight: "bold",
         fontSize: 9,
-      },
-    },
-    yAxis: {
-      tipo: "value",
-      axisLabel: {
-        fontSize: setor.quantidade.length > 7 ? 8 : 10,
         fontWeight: "bold",
       }
     },
@@ -203,7 +203,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: setor.quantidade.length > 7 ? "35%" : "25%",
+        barWidth: "50%",
       },
     ],
   };
@@ -211,10 +211,10 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "95%",
+      width: "90%",
       height: "85%",
-      top: "9%",
-      left: "1%",
+      top: "5%",
+      left: "3%",
     },
     tooltip: {
       trigger: "axis",
@@ -225,6 +225,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "horizontal",
+      left: "right",
       itemSize: 12,
       showTitle: true,
       feature: {
@@ -243,25 +244,26 @@ export default () => {
       align: "center",
       verticalAlign: "middle",
       margin: true,
-      position: "top",
+      position: "right",
       fontWeight: "normal",
       fontSize: 10,
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: "category",
-      data: setor.empresas,
+      type: "value",
+      data: setor.quantidade,
       zlevel: 5,
       axisLabel: {
         fontWeight: "bold",
-        fontSize: 7,
-      },
+        fontSize: 9,
+      }
+    },
+    yAxis: {
+      type: "category",
+      data: setor.empresas,
       axisTick: {
         alignWithLabel: true,
       },
-    },
-    yAxis: {
-      type: "value",
       axisLabel: {
         fontSize: 8,
         fontWeight: "bold",
@@ -275,7 +277,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: "30%",
+        barWidth: "50%",
       },
     ],
   };
@@ -283,9 +285,9 @@ export default () => {
   const config4 = {
     grid: {
       containLabel: true,
-      height: setor.quantidade.length > 7 ? "96%" : "88%",
+      height: "92%",
       width: "92%",
-      top: setor.quantidade.length > 7 ? "2%" : "9%",
+      top: "2%",
       left: "3%",
     },
     tooltip: {
@@ -313,27 +315,24 @@ export default () => {
     },
     label: {
       show: true,
-      position: setor.quantidade.length > 7 ? "right" : "top",
+      position: "right",
       color: "rgb(0, 0, 0)",
+      fontWeight: 'bold'
     },
     xAxis: {
-      type: setor.quantidade.length > 7 ? "value" : "category",
-      data:
-        setor.quantidade.length > 7
-          ? setor.quantidade
-          : setor.empresas,
-      axisTick: {
-        alignWithLabel: true,
-        show: false,
-      },
+      type: "value",
+      data: setor.quantidade,
       axisLabel: {
-        fontSize: setor.quantidade.length > 12 ? 12 : 11,
+        fontSize: 12,
         fontWeight: "bold",
       },
     },
     yAxis: {
-      tipo: setor.quantidade.length > 7 ? "category" : "value",
-      data: setor.quantidade.length > 7 ? setor.empresas : null,
+      tipo: "category",
+      data: setor.empresas,
+      axisTick: {
+        alignWithLabel: true,
+      },
       axisLabel: {
         fontSize: setor.quantidade.length > 7 ? 9 : 12,
         fontWeight: "bold",
@@ -349,7 +348,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.3)",
         },
-        barWidth: "35%",
+        barWidth: "50%",
       },
     ],
   };
@@ -358,7 +357,6 @@ export default () => {
     <div
       className="grafico setor"
       style={{
-        overflowX: "scroll",
         overflowY: "hidden",
       }}
     >
@@ -368,7 +366,7 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            width: '210vw'
+            width: '70vw'
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -378,7 +376,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            width: "140vw",
+            width: "50vw",
             height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
@@ -401,7 +399,7 @@ export default () => {
           option={config4}
           style={{
             height: "45vh",
-            width: "100vw",
+            width: "50vw",
           }}
           opts={{ renderer: "canvas" }}
         />

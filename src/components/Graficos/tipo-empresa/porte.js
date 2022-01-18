@@ -54,7 +54,7 @@ export default () => {
   let datas = [];
   const colors = [
     "#00b4d8",
-    "red",
+    "#121708",
     "green",
     "orange",
     "#23f4d8",

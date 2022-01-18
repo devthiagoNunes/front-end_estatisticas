@@ -21,6 +21,52 @@
   flex-direction: column;
   overflow-y: hidden;
 }
+.content-natureza {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 54vh;
+  position: relative;
+}
+.content-dataNatureza {
+  height: 100%;
+  border-radius: 15px;
+  border-bottom: 1px solid #000;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.content-dataNatureza p:first-child {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding: 0.7rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+  z-index: 9;
+}
+.tabelas-natureza {
+  display: flex;
+}
+.tabelas-natureza table:first-child {
+  padding: 0 5px;
+  width: 80%;
+  height: inherit;
+}
+.tabelas-natureza table:last-child {
+  text-align: center;
+  padding: 0 5px;
+  width: 20%;
+  height: inherit;
+}
+.tabelas-natureza table tr {
+  font-size: 1.1rem;
+  border-bottom: 1px solid black;
+}
+.tabelas-natureza table:last-child tr {
+  text-align: right;
+}
 @media (max-width: 1024px) {
   .grafico p {
     font-size: 1.2rem;
