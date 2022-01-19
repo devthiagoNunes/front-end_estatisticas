@@ -61,6 +61,7 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
 
   const apelido_coluna_1 = 'natureza_empresa'
   const apelido_coluna_2 = 'municipio'
+  const apelido_coluna_3 = 'atividade'
   let apelido_tabela = ''
   let orderBy = ''
 
@@ -72,6 +73,10 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
     case 'municipio_empresa':
       apelido_tabela = `as ${apelido_coluna_2}`
       orderBy = `order by ${apelido_coluna_2} desc`
+      break
+    case 'secao_atividade':
+      apelido_tabela = `as ${apelido_coluna_3}`
+      orderBy = `order by ${apelido_coluna_3} desc`
       break;
   }
 

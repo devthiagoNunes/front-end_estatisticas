@@ -7,6 +7,7 @@ import Botoes from '../../components/Botoes'
 import Porte from '../../components/Graficos/tipo-empresa/porte'
 import Setor from '../../components/Graficos/tipo-empresa/setor'
 import Natureza from '../../components/Graficos/tipo-empresa/natureza'
+import AtividadeEmpresa from '../../components/Graficos/tipo-empresa/atividade-empresa'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import s from './Layout.module.scss'
 import './style.css'
@@ -25,8 +26,9 @@ export default ({tipo}) => {
               <div className='content-tipoEmpresa'>
                 <div className='tipoEmpresa'>
                   <Porte />
-                  <Setor />
+                  {context.state.empresasAbertas == true && <Setor />}
                   <Natureza />
+                  {context.state.empresasAbertas == false && <AtividadeEmpresa />}
                 </div>
                 <Municipio /> 
               </div>

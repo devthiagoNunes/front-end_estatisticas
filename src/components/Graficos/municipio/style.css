@@ -42,16 +42,17 @@
   height: 100%;
   border-radius: 15px;
   overflow-y: hidden;
+  border-left: 1px solid #000;
   border-bottom: 1px solid #000;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
 .content-table {
   height: 100%;
   overflow-y: scroll;
+  padding: 0 0.4rem;
   padding-bottom: 1rem;
 }
 .content-table .tabelas {
-  border-left: 1px solid;
   position: relative;
   display: flex;
   padding-bottom: 2px;
@@ -136,7 +137,6 @@
     height: 124.5vh;
     max-height: min-content;
     padding-bottom: 1.8rem;
-
   }
   .content-dataMunicipio p:first-child {
     font-size: 0.8rem;
