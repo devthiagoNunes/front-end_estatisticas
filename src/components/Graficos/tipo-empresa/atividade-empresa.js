@@ -18,8 +18,114 @@ export default () => {
       }
     }
 
-    get_abertura_ano()
-  }, [context])
+  const config4 = {
+    grid: {
+      containLabel: true,
+      height: porte.quantidade.length > 7 ? "96%" : "88%",
+      width: porte.quantidade.length >= 7 ? "90%" : '90%',
+      top: porte.quantidade.length > 7 ? "2%" : "9%",
+      left: "3%",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "none",
+      },
+    },
+    toolbox: {
+      show: true,
+      orient: "horizontal",
+      itemSize: 17,
+      showTitle: true,
+      feature: {
+        type: "png",
+        saveAsImage: {
+          show: true,
+          title: "Download",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+      },
+    },
+    label: {
+      show: true,
+      position: porte.quantidade.length > 7 ? "right" : "top",
+      color: "rgb(0, 0, 0)",
+    },
+    xAxis: {
+      type: porte.quantidade.length > 7 ? "value" : "category",
+      data:
+        porte.quantidade.length > 7
+          ? porte.quantidade
+          : porte.empresas,
+      axisTick: {
+        alignWithLabel: true,
+        show: false,
+      },
+      axisLabel: {
+        fontSize: porte.quantidade.length > 12 ? 12 : 11,
+        fontWeight: "bold",
+      },
+    },
+    yAxis: {
+      tipo: porte.quantidade.length > 7 ? "category" : "value",
+      data: porte.quantidade.length > 7 ? porte.empresas : null,
+      axisLabel: {
+        fontSize: porte.quantidade.length > 7 ? 9 : 12,
+        fontWeight: "bold",
+        position: "top",
+        verticalAlign: "middle",
+      },
+    },
+    series: [
+      {
+        data: datas,
+        type: "bar",
+        showBackground: true,
+        backgroundStyle: {
+          color: "rgba(180, 180, 180, 0.3)",
+        },
+        barWidth: "35%",
+      },
+    ],
+  };
+
+  return (
+    <div
+      className="grafico setor">
+      <p>{`Empresas Ativas Por Atividade`}</p>
+
+      {window.innerWidth >= 425 && window.innerWidth < 768 && (
+        <Echarts
+          option={config3}
+          style={{
+            width: "70vw",
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+
+      {window.innerWidth >= 768 && window.innerWidth <= 1024 && (
+        <Echarts
+          option={config2}
+          style={{
+            width: "50vw",
+            height: "45vh"
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+
+      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
+        <Echarts
+          option={config1}
+          style={{
+            width: '50vw',
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
 
   return(
     <div className="content-natureza" style={{
