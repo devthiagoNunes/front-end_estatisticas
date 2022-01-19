@@ -22,25 +22,26 @@
   overflow-y: hidden;
 }
 .content-natureza {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 45vh;
+  border-radius: 15px;
+  border: none;
   overflow-y: hidden;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
-  position: relative;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
 .content-dataNatureza {
   height: 100%;
   border-radius: 15px;
-  border-bottom: 1px solid #000;
-  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
 .content-dataNatureza p:first-child {
   position: sticky;
   top: 0;
   margin: 0;
-  padding: 0.7rem 0;
+  padding: 0.5rem 0;
   font-size: 1.5rem;
   font-weight: bold;
   background: #007cc1;
@@ -56,7 +57,7 @@
   width: 100%;
   height: inherit;
 }
-.tabelas-natureza table thead tr th:first-child{
+.tabelas-natureza table thead tr th:first-child {
   text-align: center;
 }
 .tabelas-natureza table tr {
@@ -66,6 +67,11 @@
 .tabelas-natureza table:last-child tr {
   text-align: right;
 }
+@media (max-width: 1366px) {
+  .content-natureza {
+    height: 54vh;
+  }
+}
 @media (max-width: 1024px) {
   .grafico p {
     font-size: 1.2rem;
@@ -73,12 +79,12 @@
     left: 0;
   }
   .tabelas-natureza table thead th {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  .tabelas-natureza tfoot tr td{
+  .tabelas-natureza tfoot tr td {
     font-size: 1rem;
   }
-  .tabelas-natureza thead tr th:first-child{
+  .tabelas-natureza thead tr th:first-child {
     width: 75%;
   }
 }
@@ -89,12 +95,12 @@
     left: 0;
   }
   .tabelas-natureza table thead th {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
-  .tabelas-natureza tfoot tr td{
-    font-size: .9rem;
+  .tabelas-natureza tfoot tr td {
+    font-size: 0.9rem;
   }
-  .tabelas-natureza thead tr th:first-child{
+  .tabelas-natureza thead tr th:first-child {
     width: 75%;
   }
 }
@@ -110,17 +116,17 @@
     position: sticky;
     left: 0;
   }
-  .content-natureza{
+  .content-natureza {
     width: 95%;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
   .tabelas-natureza table thead th {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
-  .tabelas-natureza tfoot tr td{
-    font-size: .85rem;
+  .tabelas-natureza tfoot tr td {
+    font-size: 0.85rem;
   }
-  .tabelas-natureza thead tr th:first-child{
+  .tabelas-natureza thead tr th:first-child {
     width: 75%;
   }
 }

@@ -30,11 +30,6 @@ export default () => {
   useEffect(() => {
     const fetchsetor = async () => {
       switch (context.state.empresasAbertas) {
-        case false:
-          const empmresas_ativas_setor = await getDataEmpresasAtivas('setor', context);
-          setdataSetor(empmresas_ativas_setor.resultTable.rows)
-          break;
-      
         default:
           const response = await getAbertas('setor', context);
           setdataSetor(response);
@@ -51,7 +46,7 @@ export default () => {
     "#985f3b",
     "orange",
     "#23f4d8",
-    "#83f2d1",
+    "#40916c",
   ];
   
   for (let i = 0; i < setor.quantidade.length; i++) {
@@ -67,7 +62,7 @@ export default () => {
       width: "92%",
       height: "90%",
       left: "2%",
-      top: "8%",
+      top: "4%",
     },
     tooltip: {
       trigger: "axis",
@@ -77,21 +72,17 @@ export default () => {
     },
     label: {
       show: true,
-      position: "top",
+      position: "right",
+      fontWeight: 'bold',
       color: "rgb(0, 0, 0)",
     },
     xAxis: {
-      type: "category",
-      data: setor.quantidade.length > 7 ? null : setor.empresas,
-      axisTick: {
-        alignWithLabel: true,
-      },
+      type: "value",
+      data: setor.quantidade,
       axisLabel: {
-        fontSize: setor.quantidade.length > 7 ? 10 : 10,
+        fontSize: 12,
         fontWeight: setor.quantidade.length > 7 ? "normal" : "bold",
-        rotate:
-          window.innerWidth <= 1115 && setor.quantidade.length > 7 ? 30 : 0,
-      },
+      }
     },
     toolbox: {
       show: true,
@@ -111,14 +102,14 @@ export default () => {
       },
     },
     yAxis: {
-      tipo: setor.quantidade.length > 7 ? "category" : "value",
-      data: setor.quantidade.length > 7 ? setor.empresas : null,
+      tipo: "category",
+      data: setor.empresas,
       axisLabel: {
         fontSize: 12,
         fontWeight: setor.quantidade.length > 7 ? "normal" : "bold",
       },
       axisTick: {
-        alignWithLabel: setor.quantidade.length > 7 ? true : null,
+        alignWithLabel: true,
       },
     },
     series: [
@@ -129,7 +120,7 @@ export default () => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: setor.quantidade.length > 7 ? "20%" : "35%",
+        barWidth: "45%",
       },
     ],
   };
@@ -360,13 +351,13 @@ export default () => {
         overflowY: "hidden",
       }}
     >
-      <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Setor`}</p>
+      <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas Por Setor' : 'Ativas Por Atividade'}`}</p>
 
       {window.innerWidth >= 425 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
-            width: '70vw'
+            width: '70vw',
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -387,8 +378,8 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            width: "90vw",
-            height: "40vh"
+            width: "50vw",
+            height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
         />

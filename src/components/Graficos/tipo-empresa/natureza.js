@@ -31,6 +31,7 @@ export default () => {
   return(
     <div className="content-natureza" style={{
       marginBottom: context.state.empresasAbertas !== true ? 0 : null,
+      height: context.state.empresasAbertas == true ? '50vh' : '54vh'
     }}>
       <div className="content-dataNatureza" style={{
         overflowX: context.state.empresasAbertas !== true ? 'hidden' : 'hidden',
@@ -40,15 +41,17 @@ export default () => {
           <div className="tabelas-natureza">
             <table>
               <thead>
-                <tr style={{
-                  textAlign: 'center'
-                }}>
-                  <th>Natureza da empresa</th>
-                  <th>Quantidade</th>
+                <tr>
+                  <th style={{
+                    textAlign: 'center'
+                  }}>Natureza da Empersa</th>
+                  <th style={{
+                    textAlign: 'center'
+                  }}>Quantidade</th>
                 </tr>
               </thead>
               {natureza.map((natureza, index) => (
-                <tfoot>
+                <tbody>
                   <tr key={index}>
                     <td style={{
                       textAlign: "left",
@@ -58,7 +61,7 @@ export default () => {
                       textAlign: 'center'
                     }}>{natureza[1]}</td>
                   </tr> 
-                </tfoot>
+                </tbody>
               ))}
               </table>
           </div>
