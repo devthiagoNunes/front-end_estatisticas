@@ -81,11 +81,11 @@
   .tabelas-natureza table thead th {
     font-size: 0.9rem;
   }
-  .tabelas-natureza tfoot tr td {
-    font-size: 1rem;
-  }
   .tabelas-natureza thead tr th:first-child {
     width: 75%;
+  }
+  .tabelas-natureza table tbody tr td {
+    font-size: 0.9rem;
   }
 }
 @media (max-width: 768px) {
@@ -102,6 +102,9 @@
   }
   .tabelas-natureza thead tr th:first-child {
     width: 75%;
+  }
+  .tabelas-natureza table tbody tr td {
+    font-size: 0.85rem;
   }
 }
 @media (max-width: 425px) {
@@ -128,5 +131,8 @@
   }
   .tabelas-natureza thead tr th:first-child {
     width: 75%;
+  }
+  .tabelas-natureza table tbody tr td {
+    font-size: 0.8rem;
   }
 }
