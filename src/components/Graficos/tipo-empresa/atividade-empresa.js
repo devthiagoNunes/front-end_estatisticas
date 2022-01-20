@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react"
-import Echarts from "echarts-for-react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
 import { getDataEmpresasAtivas } from '../../../services/pinot'
 import './style.css'
@@ -17,6 +16,7 @@ export default () => {
         case false:
           const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
           const quantidade_ativas =  await getDataEmpresasAtivas('secao_atividade', context)
+          console.log(quantidade_ativas)
           quantidade_ativas.resultTable.rows.forEach(element => {
             obj.empresas.push(element[0])
             obj.quantidade.push(element[1])
@@ -53,23 +53,23 @@ export default () => {
                   }}>Quantidade</th>
                 </tr>
               </thead>
-              {atividade.map((atividade, index) => (
+              {atividade.quantidade.map((quantidade, index) => (
                 <tbody>
                   <tr key={index}>
                     <td style={{
                       textAlign: "left",
                       borderRight: '1px solid black'
-                    }}>{atividade[0]}</td>
+                    }}>{atividade.empresas[index]}</td>
                     <td style={{
                       textAlign: 'center',
                       background: colors[index]
-                    }}>{atividade[1]}</td>
+                    }}>{quantidade}</td>
                   </tr> 
                 </tbody>
               ))}
               </table>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   )

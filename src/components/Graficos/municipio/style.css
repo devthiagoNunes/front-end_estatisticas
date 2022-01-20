@@ -109,7 +109,8 @@
     margin-bottom: 2rem;
   }
   .total-empresasAbertas {
-    height: 25vh;
+    min-height: 16vh;
+    min-height: 100px;
   }
   .total-empresasAbertas p:last-child {
     font-size: 2.5rem;
@@ -130,7 +131,8 @@
     width: 28vw;
   }
   .total-empresasAbertas {
-    height: 22vh;
+    height: 20vh;
+    min-height: 15px;
   }
   .total-empresasAbertas p:last-child {
     font-size: 2.5rem;
@@ -175,6 +177,8 @@
   }
   .total-empresasAbertas {
     width: 80%;
+    min-height: 16vh;
+    min-height: 100px;
     margin: auto;
     margin-bottom: 1rem;
   }

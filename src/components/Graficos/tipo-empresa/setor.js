@@ -130,7 +130,7 @@ export default () => {
       containLabel: true,
       width: "93%",
       height: "88%",
-      top: "6%",
+      top: "3%",
       left: "1%",
     },
     tooltip: {
@@ -182,7 +182,7 @@ export default () => {
         alignWithLabel: true,
       },
       axisLabel: {
-        fontSize: 9,
+        fontSize: 8,
         fontWeight: "bold",
       }
     },
