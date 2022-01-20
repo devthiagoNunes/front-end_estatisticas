@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
+import { getAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -41,12 +41,12 @@ export default () => {
 
   let datas = [];
   const colors = [
+    "#48cae4",
     "#00b4d8",
-    "#8d8afd",
-    "#985f3b",
-    "orange",
-    "#23f4d8",
-    "#40916c",
+    "#0096c7",
+    "#0077b6",
+    "#90e0ef",
+    "#5c677d",
   ];
   
   for (let i = 0; i < setor.quantidade.length; i++) {
@@ -389,7 +389,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: "45vh",
+            height: "50vh",
             width: "50vw",
           }}
           opts={{ renderer: "canvas" }}

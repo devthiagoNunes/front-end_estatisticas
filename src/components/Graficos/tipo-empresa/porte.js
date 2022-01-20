@@ -53,14 +53,12 @@ export default () => {
 
   let datas = [];
   const colors = [
-    "#00b4d8",
-    "#121708",
-    "green",
-    "orange",
-    "#23f4d8",
-    "blue",
-    "black",
-  ];
+    "#748cab",
+    "#124559",
+    "#1d2d44",
+    "#0d1321"
+  ]
+
   for (let i = 0; i < porte.quantidade.length; i++) {
     datas.push({
       value: porte.quantidade[i],

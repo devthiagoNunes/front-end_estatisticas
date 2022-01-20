@@ -35,13 +35,12 @@ export default () => {
 
   return(
     <div className="content-municipio">
-      <div className="total-empresasAbertas"  style={{
-          minHeight: window.innerWidth <= 768 ? '100px' : null
-        }}>
+      <div className="total-empresasAbertas">
         <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div>
-      <div className="content-dataMunicipio">
+      <div className="content-dataMunicipio" style={{
+      }}>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
         <div className="content-table">
           <div className="tabelas">

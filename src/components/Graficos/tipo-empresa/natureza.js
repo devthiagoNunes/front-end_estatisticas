@@ -28,13 +28,15 @@ export default () => {
     get_abertura_ano()
   }, [context])
 
+  const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']
+
   return(
     <div className="content-natureza" style={{
-      marginBottom: context.state.empresasAbertas !== true ? 0 : null,
-      height: context.state.empresasAbertas == true ? '50vh' : '54vh'
+      marginBottom: '1rem',
+      height: context.state.empresasAbertas !== true ? '40vh' : '54vh'
     }}>
       <div className="content-dataNatureza" style={{
-        overflowX: context.state.empresasAbertas !== true ? 'hidden' : 'hidden',
+        overflowX: 'hidden',
       }}>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
         <div className="content-table-natureza">
@@ -58,7 +60,8 @@ export default () => {
                       borderRight: '1px solid black'
                     }}>{natureza[0]}</td>
                     <td style={{
-                      textAlign: 'center'
+                      textAlign: 'center',
+                      background: colors[index]
                     }}>{natureza[1]}</td>
                   </tr> 
                 </tbody>
