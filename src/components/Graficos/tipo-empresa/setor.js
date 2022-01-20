@@ -121,6 +121,7 @@ export default () => {
           color: "rgba(180, 180, 180, 0.2)",
         },
         barWidth: "45%",
+        barMaxWidth: datas.length <= 2 ? "25%" : "50%",
       },
     ],
   };
@@ -195,6 +196,7 @@ export default () => {
           color: "rgba(180, 180, 180, 0.2)",
         },
         barWidth: "50%",
+        barMaxWidth: datas.length <= 2 ? "25%" : "50%",
       },
     ],
   };
@@ -269,6 +271,7 @@ export default () => {
           color: "rgba(180, 180, 180, 0.2)",
         },
         barWidth: "50%",
+        barMaxWidth: datas.length <= 2 ? "25%" : "50%",
       },
     ],
   };
@@ -340,6 +343,7 @@ export default () => {
           color: "rgba(180, 180, 180, 0.3)",
         },
         barWidth: "50%",
+        barMaxWidth: datas.length <= 2 ? "25%" : "50%",
       },
     ],
   };
