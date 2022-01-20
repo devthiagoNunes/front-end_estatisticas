@@ -71,6 +71,7 @@
 }
 .content-table-natureza {
   height: 100%;
+  max-height: 15%;
 }
 .tabelas-natureza {
   height: 100%;
