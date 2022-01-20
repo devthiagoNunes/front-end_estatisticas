@@ -1,24 +1,32 @@
 import React, { useContext, useEffect, useState } from "react"
+import Echarts from "echarts-for-react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAtivas, getAbertas } from '../../../services/pinot'
+import { getDataEmpresasAtivas } from '../../../services/pinot'
 import './style.css'
 
 export default () => {
 
   const context = useContext(ContextGlobal)
-  const [atividade, setAtividade] = useState([])
+  const [atividade, setAtividade] = useState({
+    classificacao: "Atividade", empresas: [], quantidade: []
+  })
 
   useEffect(() => {
-    const get_abertura_ano = async () => {
+    const get_ativas_secao_atividade = async () => {
       switch (context.state.empresasAbertas) {
         case false:
+          const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
           const quantidade_ativas =  await getDataEmpresasAtivas('secao_atividade', context)
-          setAtividade(quantidade_ativas.resultTable.rows)
+          quantidade_ativas.resultTable.rows.forEach(element => {
+            obj.empresas.push(element[0])
+            obj.quantidade.push(element[1])
+          });
+          setAtividade(obj);
           return
       }
     }
 
-    get_abertura_ano()
+    get_ativas_secao_atividade()
   }, [context])
 
   const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']

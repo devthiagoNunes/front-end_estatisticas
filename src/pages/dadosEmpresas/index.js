@@ -27,8 +27,8 @@ export default ({tipo}) => {
                 <div className='tipoEmpresa'>
                   <Porte />
                   {context.state.empresasAbertas == true && <Setor />}
-                  <Natureza />
                   {context.state.empresasAbertas == false && <AtividadeEmpresa />}
+                  <Natureza />
                 </div>
                 <Municipio /> 
               </div>
