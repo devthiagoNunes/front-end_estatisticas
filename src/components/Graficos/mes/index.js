@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 import echarts from "echarts";
-import { getAbertasMes } from '../../../services/pinot'
+import { getAbertas, getAbertasMes } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -22,10 +22,10 @@ export default () => {
     }
     var fetchAbertasMes = async () => {
       for (let index = 1; index < 13; index++)
-        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), String(index).padStart(2, "0"), 31));
+        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31));
       setAbertasMes(newAbertasMes);
     }
-    fetchAbertasMes();
+    fetchAbertasMes()
   }, [context]);
 
 
@@ -445,7 +445,7 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            height: abertasMes.quantidade.length > 12 ? "45vh" : "45vh",
+            height:  "40vh",
             width: abertasMes.quantidade.length > 12 ? "200vw" : "110vw",
           }}
           opts={{ renderer: "canvas" }}

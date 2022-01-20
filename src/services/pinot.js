@@ -17,7 +17,11 @@ export const getAbertas = async (classificacao, filtros) => {
     case 'municipio_empresa':
       apelido_tabela = `as ${apelido_coluna_2}`
       orderBy = `order by ${apelido_coluna_2} desc`
-      break;
+      break
+    default:
+      apelido_tabela = `empresas_abertas`
+      orderBy = `order by ${apelido_tabela} desc`
+      break
   }
 
   let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
@@ -77,7 +81,11 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
     case 'secao_atividade':
       apelido_tabela = `as ${apelido_coluna_3}`
       orderBy = `order by ${apelido_coluna_3} desc`
-      break;
+      break
+    default:
+      apelido_tabela = `empresas_ativas`
+      orderBy = `order by ${apelido_tabela} desc`
+      break
   }
 
   let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
@@ -236,7 +244,6 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
   })
   .catch(err => err)
 }
-
 
 export const getAbertasAnual = async (ano) => {
   return await axios({
