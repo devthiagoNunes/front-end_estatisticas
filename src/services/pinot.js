@@ -228,7 +228,33 @@ export const getFiltrosDescricaoAtividade = async () => {
   .catch(err => err)
 }
 
-export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
+export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => {
+  if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
+  return []
+
+  const apelido_coluna_1 = 'natureza_empresa'
+  const apelido_coluna_2 = 'municipio'
+
+  let query = `select count(*) from statistical `
+  let filters = ' where '
+
+  let arrDatasFIlters = []
+
+  for (const key in filtros.state) {
+    if(filtros.state[key] == 'Selecionar') filtros.state[key] = ''
+    if(filtros.state[key] !== '') arrDatasFIlters.push(filtros.state[key])
+    
+    if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
+      switch (key) {
+        case 'ano':
+          filters += `inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
+          break;
+        default:
+          filters += `${key} = '${filtros.state[key]}' and `
+          break
+      }
+    }
+  }
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -236,7 +262,7 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal) => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": `select count(*) as qtd_empresas from statistical where inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
+      "sql": query+filters
     }
   })
   .then(res => {
@@ -295,8 +321,6 @@ export const getAbertasAnual = async (classificacao, filtros) => {
       }
     }
   }
-
-  console.log(query+filters)
 
   return await axios({
     method: 'POST', 

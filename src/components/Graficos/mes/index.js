@@ -21,8 +21,9 @@ export default () => {
       quantidade: [],
     }
     var fetchAbertasMes = async () => {
-      for (let index = 1; index < 13; index++)
-        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31));
+      for (let index = 1; index < 13; index++){
+        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31, context))
+      }
       setAbertasMes(newAbertasMes);
     }
     fetchAbertasMes()
