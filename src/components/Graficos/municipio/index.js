@@ -19,7 +19,8 @@ export default () => {
           return
 
         default:
-          const abertura_ano =  await getAbertasAnual(context.state.ano)
+          const abertura_ano =  await getAbertasAnual('inicio_atividades', context)
+          console.log(abertura_ano)
           setQuantidade(abertura_ano)
       }
     }
@@ -38,7 +39,7 @@ export default () => {
       <div className="total-empresasAbertas">
         <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
-      </div>
+      </div> 
       <div className="content-dataMunicipio" style={{
       }}>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
