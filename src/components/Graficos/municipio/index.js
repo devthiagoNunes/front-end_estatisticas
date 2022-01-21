@@ -20,7 +20,6 @@ export default () => {
 
         default:
           const abertura_ano =  await getAbertasAnual('inicio_atividades', context)
-          console.log(abertura_ano)
           setQuantidade(abertura_ano)
       }
     }
