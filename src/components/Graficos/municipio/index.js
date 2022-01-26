@@ -54,7 +54,7 @@ export default () => {
             <table>
             {municipios.map((municipio, index) => (
                 <tbody key={index}>
-                  <tr>{municipio[1]}</tr>
+                  <tr>{municipio[1].toLocaleString('pt-BR')}</tr>
                 </tbody>
               ))}
             </table>
