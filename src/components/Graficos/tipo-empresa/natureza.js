@@ -31,16 +31,16 @@ export default () => {
   const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']
 
   return(
-    <div className="content-natureza" style={{
+    <div className="content-tables" style={{
       marginBottom: '1rem',
-      height: context.state.empresasAbertas !== true ? '40vh' : '54vh'
+      height: context.state.empresasAbertas !== true ? '52vh' : '54vh'
     }}>
-      <div className="content-dataNatureza" style={{
+      <div className="content-dataTables" style={{
         overflowX: 'hidden',
       }}>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
-        <div className="content-table-natureza">
-          <div className="tabelas-natureza">
+        <div className="content-table-empresas">
+          <div className="tables-empresas">
             <table>
               <thead>
                 <tr>
@@ -62,7 +62,7 @@ export default () => {
                     <td style={{
                       textAlign: 'center',
                       background: colors[index]
-                    }}>{natureza[1]}</td>
+                    }}>{natureza[1].toLocaleString('pt-BR')}</td>
                   </tr> 
                 </tbody>
               ))}

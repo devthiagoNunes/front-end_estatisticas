@@ -21,7 +21,7 @@
   flex-direction: column;
   overflow-y: hidden;
 }
-.content-natureza {
+.content-tables {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -33,12 +33,12 @@
   margin-bottom: 1rem;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
-.content-dataNatureza {
+.content-dataTables {
   height: 100%;
   border-radius: 15px;
   border-left: 1px solid rgb(0, 0, 0, 0.4);
 }
-.content-dataNatureza p:first-child {
+.content-dataTables p:first-child {
   position: sticky;
   top: 0;
   margin: 0;
@@ -50,34 +50,34 @@
   text-align: center;
   z-index: 9;
 }
-.tabelas-natureza {
+.tables-empresas {
   display: flex;
-  padding: 0 0 0 0.5rem;
+  padding: 0 0.5rem 0 0.5rem;
 }
-.tabelas-natureza table:first-child {
+.tables-empresas table:first-child {
   padding: 0 5px;
   width: 100%;
   height: inherit;
 }
-.tabelas-natureza table thead tr th:first-child {
+.tables-empresas table thead tr th:first-child {
   text-align: center;
 }
-.tabelas-natureza table tr {
+.tables-empresas table tr {
   font-size: 1.1rem;
   border-bottom: 1px solid black;
 }
-.tabelas-natureza table:last-child tr {
+.tables-empresas table:last-child tr {
   text-align: right;
 }
-.content-table-natureza {
+.content-table-empresas {
   height: 100%;
   max-height: 15%;
 }
-.tabelas-natureza {
+.tables-empresas {
   height: 100%;
 }
 @media (max-width: 1366px) {
-  .content-natureza {
+  .content-tables {
     height: 45vh;
   }
 }
@@ -87,16 +87,16 @@
     position: sticky;
     left: 0;
   }
-  .tabelas-natureza table thead th {
+  .tables-empresas table thead th {
     font-size: 0.9rem;
   }
-  .tabelas-natureza thead tr th:first-child {
+  .tables-empresas thead tr th:first-child {
     width: 75%;
   }
-  .tabelas-natureza table tbody tr td {
+  .tables-empresas table tbody tr td {
     font-size: 0.8rem;
   }
-  .content-dataNatureza p:first-child {
+  .content-dataTables p:first-child {
     font-size: 1.2rem;
   }
 }
@@ -106,16 +106,16 @@
     position: sticky;
     left: 0;
   }
-  .tabelas-natureza table thead th {
+  .tables-empresas table thead th {
     font-size: 0.8rem;
   }
-  .tabelas-natureza thead tr th:first-child {
+  .tables-empresas thead tr th:first-child {
     width: 75%;
   }
-  .tabelas-natureza table tbody tr td {
+  .tables-empresas table tbody tr td {
     font-size: 0.65rem;
   }
-  .content-dataNatureza p:first-child {
+  .content-dataTables p:first-child {
     font-size: 1rem;
   }
 }
@@ -131,23 +131,23 @@
     position: sticky;
     left: 0;
   }
-  .content-natureza {
+  .content-tables {
     width: 95%;
     margin-left: 0.5rem;
   }
-  .content-table-natureza {
+  .content-table-empresas {
     height: 90%;
   }
-  .tabelas-natureza {
+  .tables-empresas {
     height: 100%;
   }
-  .tabelas-natureza table thead th {
+  .tables-empresas table thead th {
     font-size: 0.7rem;
   }
-  .tabelas-natureza thead tr th:first-child {
+  .tables-empresas thead tr th:first-child {
     width: 75%;
   }
-  .tabelas-natureza table tbody tr td {
+  .tables-empresas table tbody tr td {
     font-size: 0.65rem;
     font-weight: bold;
   }
