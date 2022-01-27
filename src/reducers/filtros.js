@@ -8,7 +8,11 @@ export const reducerFilter = (state, action) => {
     case actions.LIMPAR_FILTROS:
       return{...state, ano: ano, setor: '', porte: '', natureza: '', descricao_atividade: '', municipio_empresa: '', secao_atividade: ''}
     case actions.MUDAR_ANO: 
-      return {...state, ano: action.payload}
+      if(action.payload.length == 1){
+        return {...state, ano: action.payload[0].Country}
+      } else {
+        return {...state, ano: action.payload}
+      }
 
     case actions.MUDAR_PORTE: 
       return {...state, porte: action.payload}

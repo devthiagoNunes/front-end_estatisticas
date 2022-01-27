@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react"
+import {Multiselect} from 'multiselect-react-dropdown'
 
 import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade} from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
@@ -26,8 +27,13 @@ export default () => {
 
   const set_ano = () => {
     let arrAno = []
+    let counter = 0
     for (let index = 2015; index <= content.state.ano; index++) {
-      arrAno.push(index)      
+      arrAno.push({
+        Country: index,
+        id: counter++
+      })     
+      counter++ 
     }
     setAno(arrAno)
   }
@@ -35,32 +41,74 @@ export default () => {
   useEffect(() => {
     const getFiltros_Porte = async () => {
       const get_filtros_porte =  await getFiltrosPorte()
-      setFiltrosPorte(get_filtros_porte)
+      let options_filters = []
+      get_filtros_porte.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosPorte(options_filters)
     }
 
     const getFiltros_Setor = async () => {
       const get_filtros_setor  =  await getFiltrosSetor()
-      setFiltrosSetor(get_filtros_setor)
+      let options_filters = []
+      get_filtros_setor.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosSetor(options_filters)
     }
 
     const getFiltros_Natureza = async () => {
       const get_filtros_natureza  =  await getFiltrosNatureza()
-      setFiltrosNatureza(get_filtros_natureza)
+      let options_filters = []
+      get_filtros_natureza.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosNatureza(options_filters)
     }
     
     const getFiltros_SecaoAtividade = async () => {
       const get_filtros_secaoAtividade  =  await getFiltrosSecaoAtividade()
-      setFiltrosSecaoAtividade(get_filtros_secaoAtividade)
+      let options_filters = []
+      get_filtros_secaoAtividade.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosSecaoAtividade(options_filters)
     }
 
     const getFiltros_municipio = async () => {
       const get_filtros_municipio  =  await getFiltrosMunicipio()
-      setFiltrosMunicipio(get_filtros_municipio)
+      let options_filters = []
+      get_filtros_municipio.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosMunicipio(options_filters)
     }
 
     const getFiltros_descricaoAtividade = async () => {
       const get_descricao_atividade  =  await getFiltrosDescricaoAtividade()
-      setFiltrosDescricaoAtividade(get_descricao_atividade)
+      let options_filters = []
+      get_descricao_atividade.map((arr, index) => (
+        options_filters.push({
+          Country: arr[0],
+          id: index
+        })
+      ))
+      setFiltrosDescricaoAtividade(options_filters)
     }
 
     getFiltros_Porte()
@@ -87,106 +135,56 @@ export default () => {
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionAno) {
-                  const initial_date = new Date()
-                  const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
-                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value === 'Selecionar' ? date : e.target.value})
-                  setValorOptionAno(e.target.value)
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {ano.map((ano, index) => (
-                  <option key={index}>{ano}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={ano}
+                displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
+              />
             </div>
             }
             <div>
               <p>Porte da Empresa:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionPorte) {
-                  setValorOptionPorte(e.target.value)
-                  context.dispatch({type: action.MUDAR_PORTE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosPorte.map((arr, index) => (
-                  <option key={index}>{arr[0]}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosPorte}
+                displayValue="Country"
+              />
             </div>
             <div>
               <p>Setor de Atuação:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionSetor) {
-                  setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_SETOR, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosSetor.map((arr, index) => (
-                  <option key={index}>{ arr[0]}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosSetor}
+                displayValue="Country"
+              />
             </div>
             <div>
               <p>Municipio:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionMunicipio) {
-                  setValorOptionMunicipio(e.target.value)
-                  context.dispatch({type: action.MUDAR_MUNICIPIO, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosMunicipio.map((arr, index) => (
-                  <option key={index}>{arr}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosMunicipio}
+                displayValue="Country"
+              />
             </div>
           </div>
           <div className="secao-bottom">
             <div>
               <p>Seção de Atividade:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionSecaoAtividade) {
-                  setValorOptionSecaoAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_SECAO_ATIVIDADE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosSecaoAtividade.map((arr, index) => (
-                  <option key={index}>{arr[0]}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosSecaoAtividade}
+                displayValue="Country"
+              />
             </div>
             <div>
               <p>Atividade:</p>
-              <select className="filtros"  onClick={(e) => {
-                if(e.target.value !== valorOptionAtividade) {
-                  setValorOptionAtividade(e.target.value)
-                  context.dispatch({type: action.MUDAR_ATIVIDADE, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosDescricaoAtividade.map((arr, index) => (
-                  <option key={index}>{arr[0]}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosDescricaoAtividade}
+                displayValue="Country"
+              />
             </div>
             <div>
               <p>Natureza:</p>
-              <select className="filtros" onClick={(e) => {
-                if(e.target.value !== valorOptionSetor) {
-                  setValorOptionSetor(e.target.value)
-                  context.dispatch({type: action.MUDAR_NATUREZA, payload: e.target.value === 'Selecionar' ? '' : e.target.value})
-                }
-              }}>
-                <option defaultValue={"Selecionar"}>Selecionar</option>
-                {filtrosNatureza.map((arr, index) => (
-                  <option key={index}>{arr[0]}</option>
-                ))}
-              </select>
+              <Multiselect
+                options={filtrosNatureza}
+                displayValue="Country"
+              />
             </div>
           </div>
         </div>
