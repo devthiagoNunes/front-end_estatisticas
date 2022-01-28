@@ -35,14 +35,14 @@
 .secao-bottom div p {
   margin: 0;
 }
-.secao-topo div select,
+/* .secao-topo div select,
 .secao-bottom div select {
   width: 100%;
   padding: 5px 0;
   border: none;
   border-bottom: 1px solid rgb(0, 0, 0, 0.5);
   background: transparent;
-}
+} */
 .secao-bottom {
   width: 100%;
   display: flex;

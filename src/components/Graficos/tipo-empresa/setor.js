@@ -20,7 +20,7 @@ export default () => {
     if(dataSetor !== undefined){
       const obj = {classificacao: "Setor", empresas: [], quantidade: []}
       dataSetor.forEach(element => {
-        obj.empresas.push(element[0].replace(' ', '\n'))
+        obj.empresas.push(element[0].length > 20 ? element[0].replace(' ', '\n') : element[0])
         obj.quantidade.push(element[1]);
       });
       setSetor(obj);

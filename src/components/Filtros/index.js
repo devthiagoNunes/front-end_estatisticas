@@ -139,6 +139,7 @@ export default () => {
                 options={ano}
                 displayValue="Country"
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
               />
             </div>
             }
@@ -147,6 +148,8 @@ export default () => {
               <Multiselect
                 options={filtrosPorte}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
               />
             </div>
             <div>
@@ -154,6 +157,8 @@ export default () => {
               <Multiselect
                 options={filtrosSetor}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
               />
             </div>
             <div>
@@ -161,6 +166,8 @@ export default () => {
               <Multiselect
                 options={filtrosMunicipio}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
               />
             </div>
           </div>
@@ -170,6 +177,8 @@ export default () => {
               <Multiselect
                 options={filtrosSecaoAtividade}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
               />
             </div>
             <div>
@@ -177,6 +186,8 @@ export default () => {
               <Multiselect
                 options={filtrosDescricaoAtividade}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
               />
             </div>
             <div>
@@ -184,6 +195,8 @@ export default () => {
               <Multiselect
                 options={filtrosNatureza}
                 displayValue="Country"
+                onSelect={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
               />
             </div>
           </div>
