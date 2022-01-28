@@ -26,22 +26,43 @@ export const getAbertas = async (classificacao, filtros) => {
 
   let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
   let filters = ' where '
+  let otherFilters = ''
 
   for (const key in filtros.state) {
-
     if(filtros.state[key] == 'Selecionar') filtros.state[key] = ''
     
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
+      
       switch (key) {
         case 'ano':
-          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
-          break;
+          if(filtros.state[key].length > 1){
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFilters +=  ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' ` : otherFilters += `inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' `
+            })
+            const finalityQuery = ` group by ${classificacao} ${orderBy} limit 700000`
+            filters += `(${otherFilters}) ${finalityQuery}`
+            break
+          } else {
+            filters += ` inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
+            break
+          }
         default:
-          filters += `${key} = '${filtros.state[key]}' and `
-          break
+          if(filtros.state[key].length > 1){
+            if(typeof filtros.state[key] == 'object') {
+              filtros.state[key].map((element, index) => {
+                index !== 0 ? otherFilters += ` or ${key} = '${element.Country}' ` : otherFilters += `${key} = '${element.Country}' `
+              })
+            }
+            filters += otherFilters !== '' ? `(${otherFilters})  and ` : ''
+            break
+          } else {
+            filters += `${key} = '${filtros.state[key]}' and `
+            break
+          }
       }
     }
   }
+  console.log(query+filters)
 
   return await axios({
     method: 'POST', 
