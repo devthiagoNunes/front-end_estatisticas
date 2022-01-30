@@ -135,9 +135,11 @@ export default () => {
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
-              <Multiselect
+              <Multiselect 
                 options={ano}
                 displayValue="Country"
+                placeholder='Selecionar'    
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
               />
@@ -148,6 +150,8 @@ export default () => {
               <Multiselect
                 options={filtrosPorte}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
               />
@@ -157,6 +161,8 @@ export default () => {
               <Multiselect
                 options={filtrosSetor}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
               />
@@ -166,6 +172,8 @@ export default () => {
               <Multiselect
                 options={filtrosMunicipio}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
               />
@@ -177,6 +185,8 @@ export default () => {
               <Multiselect
                 options={filtrosSecaoAtividade}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
               />
@@ -186,6 +196,8 @@ export default () => {
               <Multiselect
                 options={filtrosDescricaoAtividade}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
               />
@@ -195,6 +207,8 @@ export default () => {
               <Multiselect
                 options={filtrosNatureza}
                 displayValue="Country"
+                placeholder='Selecionar'                
+                showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
               />
