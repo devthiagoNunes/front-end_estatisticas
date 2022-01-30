@@ -25,8 +25,9 @@ export const getAbertas = async (classificacao, filtros) => {
   }
 
   let query = `select ${classificacao}, count(*) ${apelido_tabela} from statistical `
-  let filters = ' where '
   let otherFilters = ''
+  let filters = ' where '
+  let allFilters = []
 
   for (const key in filtros.state) {
 
@@ -36,23 +37,26 @@ export const getAbertas = async (classificacao, filtros) => {
       switch (key) {
         case 'ano':
           if(filtros.state[key].length > 1){
+            allFilters.push(filtros.state[key])
+
             filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFilters += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'`
-               : otherFilters += ` inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'  `
+              index !== 0 ? otherFilters += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' ${index == filtros.state[key].length - 1 ? ')' : ''}`
+               : otherFilters += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'  `
             })
-            filters +=  otherFilters + ` group by ${classificacao} ${orderBy} limit 700000 `
+            filters = 'where ' + otherFilters +  `group by ${classificacao} ${orderBy} limit 700000`
             break
           } else {
             filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
             break
           }
         default:
-          if(typeof filtros.state[key] == 'object' && typeof filtros.state[key] !== 'string'){
-            console.log(filtros.state[key])
+          if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
+            allFilters.push(filtros.state[key])
+
             filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFilters += ` or ${key} = '${element.Country}' and ` : otherFilters += ` ${key} = '${element.Country}' `
+              index !== 0 ? otherFilters += `or ${key} = '${element.Country}' ${index == filtros.state[key].length - 1 ? ') and ' : ''}` : otherFilters += `(${key} = '${element.Country}' `
             })
-            filters += otherFilters
+            filters = 'where ' + otherFilters
             break
           } else {
             filters += `${key} = '${filtros.state[key]}' and `
@@ -61,7 +65,6 @@ export const getAbertas = async (classificacao, filtros) => {
       }
     }
   }
-  console.log(query+filters)
 
   return await axios({
     method: 'POST', 
@@ -252,9 +255,6 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
   return []
 
-  const apelido_coluna_1 = 'natureza_empresa'
-  const apelido_coluna_2 = 'municipio'
-
   let query = `select count(*) from statistical `
   let filters = ' where '
 
@@ -300,6 +300,8 @@ export const getAbertasAnual = async (classificacao, filtros) => {
   const apelido_coluna_3 = 'atividade'
   let apelido_tabela = ''
   let orderBy = ''
+  let allFiltersAnual = []
+  let otherFiltersAnual = ''
 
   switch (classificacao) {
     case 'natureza':
@@ -333,11 +335,31 @@ export const getAbertasAnual = async (classificacao, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' `
-          break
+          if(filtros.state[key].length > 1){
+            allFiltersAnual.push(filtros.state[key])
+
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFiltersAnual += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'` : otherFiltersAnual += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'`
+            })
+            filters += `${otherFiltersAnual})` + ' limit 700000'
+            break 
+          } else { 
+            filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' limit 700000`
+            break
+          }
         default:
-          filters += `${key} = '${filtros.state[key]}' and `
-          break
+          if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
+            allFiltersAnual.push(filtros.state[key])
+
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFiltersAnual += ` or ${key} = '${element.Country}') ${filtros.state[key].length > 1 ? ' and ' : ''} ` : otherFiltersAnual += `(${key} = '${element.Country}' `
+            })
+            filters = 'where ' + otherFiltersAnual
+            break
+          } else {
+            filters += `${key} = '${filtros.state[key]}' and `
+            break
+          }
       }
     }
   }

@@ -29,7 +29,7 @@ export const reducerFilter = (state, action) => {
 
     case actions.MUDAR_SETOR: 
       if(action.payload.length == 0){
-        return {...state, stor: ''}
+        return {...state, setor: ''}
       }
       if(action.payload.length == 1){
         return {...state, setor: action.payload[0].Country}
