@@ -17,7 +17,8 @@ export const reducerFilter = (state, action) => {
         return {...state, ano: action.payload}
       }
 
-    case actions.MUDAR_PORTE: 
+
+    case actions.MUDAR_PORTE:  
       if(action.payload.length == 0){
         return {...state, porte: ''}
       }
@@ -37,7 +38,7 @@ export const reducerFilter = (state, action) => {
         return {...state, setor: action.payload}
       }
 
-    case actions.MUDAR_NATUREZA: 
+    case actions.MUDAR_NATUREZA:
       if(action.payload.length == 0){
         return {...state, natureza: ''}
       }

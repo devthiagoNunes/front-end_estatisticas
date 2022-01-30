@@ -30,10 +30,10 @@ export const getAbertas = async (classificacao, filtros) => {
   let allFilters = []
 
   for (const key in filtros.state) {
-
     if(filtros.state[key] == 'Selecionar') filtros.state[key] = ''
     
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
+      
       switch (key) {
         case 'ano':
           if(filtros.state[key].length > 1){
