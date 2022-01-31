@@ -302,7 +302,7 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
   .catch(err => err)
 }
 
-export const getAbertasAnual = async (classificacao, filtros) => {
+export const getAbertasAnual = async (classificacao, filtros) => {allFiltersMensal
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
   return []
 

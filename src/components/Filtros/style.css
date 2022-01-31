@@ -25,11 +25,10 @@
   display: flex;
   margin-top: -2rem;
   margin-bottom: 1rem;
-  padding: 0.5rem 0;
 }
 .secao-topo div {
   width: 100%;
-  margin: 0 10px 0 0;
+  margin: 0 8px 0 0;
 }
 .secao-topo div p,
 .secao-bottom div p {
@@ -38,14 +37,14 @@
 .secao-bottom {
   width: 100%;
   display: flex;
-  padding: 0.5rem 0;
 }
 .secao-bottom div {
   width: 100%;
+  max-width: 26vw;
   margin: 0 10px 0 0;
 }
 .secao-bottom div:first-child {
-  max-width: 26vw;
+  width: 100%;
 }
 .close-filters {
   display: none;
@@ -75,12 +74,16 @@
   .secao-bottom div select {
     font-size: 0.7rem;
   }
+  .secao-bottom div {
+    width: 100%;
+    margin: 0 8px 0 0;
+  }
   .content .txt-filtros {
     margin-top: -1.85rem;
     font-size: 1rem;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 375px) {
   .content {
     display: none;
     width: 100%;
@@ -88,14 +91,14 @@
     position: fixed;
     z-index: 99;
     right: 0;
-    margin-top: 3.8rem;
+    margin-top: 0;
     padding-bottom: 2rem;
     border: none;
     background: rgba(0, 0, 0, 0.3);
     padding-top: 0;
   }
   .header-filters {
-    margin-top: -2rem;
+    margin-top: -2.4rem;
     display: flex;
     justify-content: space-between;
   }
@@ -124,10 +127,18 @@
     display: block;
     font-size: 0.9rem;
     margin-bottom: 0;
+    max-width: 100vw;
   }
   .secao-topo div,
   .secao-bottom div {
     width: 100%;
+    max-width: none;
+  }
+  .secao-bottom div:first-child {
+    max-width: none;
+  }
+  .secao-topo div p, .secao-bottom div p {
+    margin: 5px 0 5px 5px;
   }
   .secao-topo div p,
   .secao-bottom div p,
