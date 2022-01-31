@@ -54,6 +54,9 @@
   display: flex;
   padding: 0 0.5rem 0 0.5rem;
 }
+.tables-empresas table {
+  max-height: 50px;
+}
 .tables-empresas table:first-child {
   padding: 0 5px;
   width: 100%;
@@ -71,14 +74,13 @@
 }
 .content-table-empresas {
   height: 100%;
-  max-height: 15%;
 }
 .tables-empresas {
   height: 100%;
 }
 @media (max-width: 1366px) {
   .content-tables {
-    height: 45vh;
+    height: 4vh;
   }
 }
 @media (max-width: 1024px) {
@@ -119,11 +121,11 @@
     font-size: 1rem;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 375px) {
   .grafico {
     width: 65vh;
     max-width: 75vw;
-    max-height: 40vh;
+    height: 40vh;
     margin: auto;
     margin-bottom: 1rem;
   }
@@ -134,9 +136,6 @@
   .content-tables {
     width: 95%;
     margin-left: 0.5rem;
-  }
-  .content-table-empresas {
-    height: 90%;
   }
   .tables-empresas {
     height: 100%;
