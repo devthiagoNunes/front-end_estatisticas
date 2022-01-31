@@ -33,7 +33,7 @@ export default () => {
   return(
     <div className="content-tables" style={{
       marginBottom: '1rem',
-      height: context.state.empresasAbertas !== true ? '52vh' : '54vh'
+      height: context.state.empresasAbertas !== true ? '45vh' : '45vh'
     }}>
       <div className="content-dataTables" style={{
         overflowX: 'hidden',
@@ -57,11 +57,11 @@ export default () => {
                   <tr key={index}>
                     <td style={{
                       textAlign: "left",
-                      borderRight: '1px solid black'
+                      borderRight: '1px solid black',
                     }}>{natureza[0]}</td>
                     <td style={{
                       textAlign: 'center',
-                      background: colors[index]
+                      background: colors[index],
                     }}>{natureza[1].toLocaleString('pt-BR')}</td>
                   </tr> 
                 </tbody>

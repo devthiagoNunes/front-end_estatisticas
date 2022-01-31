@@ -25,6 +25,7 @@ export default () => {
         newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31, context))
       }
       setAbertasMes(newAbertasMes);
+      console.log(newAbertasMes)
     }
     fetchAbertasMes()
   }, [context]);
@@ -64,7 +65,22 @@ export default () => {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Download",
+          title: "Baixar",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: "Limpar",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -166,7 +182,22 @@ export default () => {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Download",
+          title: "Baixar",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: "Limpar",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -241,8 +272,8 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "93%", 
-      height: abertasMes.quantidade.length > 12 ? "80%" : "90%",
+      width: "90%", 
+      height:  "90%",
       top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
     },
@@ -254,14 +285,29 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
+      orient: "vertical",
       itemSize: 15,
       showTitle: true,
       feature: {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Download",
+          title: "Baixar",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: "Limpar",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -273,8 +319,8 @@ export default () => {
       align: abertasMes.quantidade.length > 12 ? "center" : "center",
       verticalAlign: "middle",
       position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: abertasMes.quantidade.length > 12 ? 9 : 10,
-      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      fontSize: 12,
+      fontWeight: 'normal',
       offset: abertasMes.quantidade.length > 12 ? [0, 5] : null,
       color: "rgb(0, 0, 0)",
     },
@@ -341,7 +387,7 @@ export default () => {
     grid: {
       top: "8%",
       left: abertasMes.quantidade.length > 12 ? "6%" : "5%",
-      right: "4%",
+      right: "6%",
       bottom: abertasMes.quantidade.length > 12 ? "10%" : "14%",
     },
     tooltip: {
@@ -352,14 +398,29 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
+      orient: "vertical",
       left: "95%",
       showTitle: true,
       feature: {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Download",
+          title: "Baixar",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: "Limpar",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -368,9 +429,9 @@ export default () => {
     },
     label: {
       show: true,
-      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      position: "top",
       fontSize: abertasMes.quantidade.length > 12 ? 12 : 12,
-      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      fontWeight: "normal" ,
       color: "black",
     },
     xAxis: {
@@ -384,7 +445,7 @@ export default () => {
         fontSize: abertasMes.quantidade.length > 12 ? 11 : 12,
         fontWeight: "bold",
         rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
-        inside: abertasMes.quantidade.length > 12 ? true : false,
+        inside: false,
       },
     },
     yAxis: {
@@ -395,6 +456,9 @@ export default () => {
         position: "top",
         verticalAlign: "middle",
       },
+      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
     series: [
       {
@@ -437,18 +501,18 @@ export default () => {
     <div
       className="grafico-mes"
       style={{
-        height: abertasMes.quantidade.length > 12 ? "45vh" : "45vh",
+        height: '35vh',
         marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,
       }}
     >
       <p>Empresas {context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Mes</p>
-      {window.innerWidth >= 425 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 375 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
             height:  "40vh",
-            width: abertasMes.quantidade.length > 12 ? "200vw" : "110vw",
-          }}
+            width: window.innerWidth == 768 ? '90vw' : '200vw',
+          }} 
           opts={{ renderer: "canvas" }}
         />
       )}
@@ -457,7 +521,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            height: abertasMes.quantidade.length > 12 ? "40vh" : "40vh",
+            height: "40vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}

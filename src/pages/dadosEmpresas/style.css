@@ -50,6 +50,9 @@
   .main {
     margin-top: 3rem;
   }
+  .wrap {
+    margin-top: 4rem;
+  }
   .content-data {
     display: flex;
     flex-wrap: wrap;

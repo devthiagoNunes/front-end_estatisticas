@@ -268,6 +268,9 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
 
   let query = `select count(*) from statistical `
   let filters = ' where '
+  let otherFiltersMensal = ''
+  let allFiltersMensal = []
+  let allFilters = []
 
   let arrDatasFIlters = []
 
@@ -278,14 +281,36 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
-          break;
+          if(filtros.state[key].length > 1){
+            allFilters.push(filtros.state[key])
+
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFiltersMensal += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' ${index == filtros.state[key].length - 1 ? ')' : ''}`
+               : otherFiltersMensal += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'  `
+            })
+            filters = 'where ' + otherFiltersMensal + ` limit 700000`
+            break
+          } else {
+            filters += `inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
+            break
+          }
         default:
-          filters += `${key} = '${filtros.state[key]}' and `
-          break
+          if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
+            allFiltersMensal.push(filtros.state[key])
+
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFiltersMensal += ` or ${key} = '${element.Country}' ${index == filtros.state[key].length - 1 ? ') and ' : ''} ` : otherFiltersMensal += `(${key} = '${element.Country}' `
+            })
+            filters = 'where ' + otherFiltersMensal
+            break
+          } else {
+            filters += `${key} = '${filtros.state[key]}' and `
+            break
+          }
       }
     }
   }
+  
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 

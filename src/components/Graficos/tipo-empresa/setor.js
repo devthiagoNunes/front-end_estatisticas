@@ -357,7 +357,7 @@ export default () => {
     >
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas Por Setor' : 'Ativas Por Atividade'}`}</p>
 
-      {window.innerWidth >= 425 && window.innerWidth < 768 && (
+      {window.innerWidth >= 375 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{

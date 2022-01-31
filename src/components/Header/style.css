@@ -1,11 +1,14 @@
-.header {
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Roboto&display=swap");
+ .header {
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1366px;
   margin: auto;
+  background-color: #0A4B78;
+  color: #fff;
+  font-weight: bold;
   z-index: 109;
 }
 .header .menu-mobile {
@@ -19,8 +22,16 @@
 .header img {
   position: absolute;
   width: 10vw;
-  margin: 0;
+  margin-right: 2rem;
   right: 0;
+}
+.header section {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
 }
 @media (max-width: 1024px) {
   .header h2 {
@@ -36,6 +47,10 @@
   }
 }
 @media (max-width: 425px) {
+  .header{
+    position: fixed;
+    top: 0;
+  }
   .header .menu-mobile {
     display: block;
   }
