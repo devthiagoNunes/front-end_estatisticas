@@ -91,6 +91,8 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
   const apelido_coluna_3 = 'atividade'
   let apelido_tabela = ''
   let orderBy = ''
+  let otherFiltersEmpresasAtivas = ''
+  let allFiltersEmpresasAtivas = []
 
   switch (classificacao) {
     case 'natureza':
@@ -127,12 +129,21 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
           filters += `situacao_siarco = 'REGISTRO ATIVO' and ${classificacao} != 'null' group by ${classificacao} ${orderBy} limit 700000`
           break
         default:
-          filters += `${key} = '${filtros.state[key]}' and `
-          break
+          if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
+            allFiltersEmpresasAtivas.push(filtros.state[key])
+
+            filtros.state[key].map((element, index) => {
+              index !== 0 ? otherFiltersEmpresasAtivas += `or ${key} = '${element.Country}' ${index == filtros.state[key].length - 1 ? ') and ' : ''}` : otherFiltersEmpresasAtivas += `(${key} = '${element.Country}' `
+            })
+            filters = 'where ' + otherFiltersEmpresasAtivas
+            break
+          } else {
+            filters += `${key} = '${filtros.state[key]}' and `
+            break
+          }
       }
     }
   }
-
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -352,7 +363,7 @@ export const getAbertasAnual = async (classificacao, filtros) => {
             allFiltersAnual.push(filtros.state[key])
 
             filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFiltersAnual += ` or ${key} = '${element.Country}') ${filtros.state[key].length > 1 ? ' and ' : ''} ` : otherFiltersAnual += `(${key} = '${element.Country}' `
+              index !== 0 ? otherFiltersAnual += ` or ${key} = '${element.Country}' ${index == filtros.state[key].length - 1 ? ') and ' : ''} ` : otherFiltersAnual += `(${key} = '${element.Country}' `
             })
             filters = 'where ' + otherFiltersAnual
             break
