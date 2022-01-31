@@ -44,7 +44,13 @@
   width: 100%;
   margin: 0 10px 0 0;
 }
+.secao-bottom div:first-child {
+  max-width: 26vw;
+}
 .close-filters {
+  display: none;
+}
+.filtros span {
   display: none;
 }
 @media (max-width: 1024px) {

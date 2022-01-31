@@ -18,13 +18,6 @@ export default () => {
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
   const [ano, setAno] = useState([])
 
-  const [valorOptionAno, setValorOptionAno] = useState('Selecionar')
-  const [valorOptionPorte, setValorOptionPorte] = useState('Selecionar')
-  const [valorOptionSetor, setValorOptionSetor] = useState('Selecionar')
-  const [valorOptionMunicipio, setValorOptionMunicipio] = useState('Selecionar')
-  const [valorOptionSecaoAtividade, setValorOptionSecaoAtividade] = useState('Selecionar')
-  const [valorOptionAtividade, setValorOptionAtividade] = useState('Selecionar')
-
   const set_ano = () => {
     let arrAno = []
     let counter = 0
@@ -135,7 +128,8 @@ export default () => {
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
-              <Multiselect 
+              <Multiselect
+                className='filtros'
                 options={ano}
                 displayValue="Country"
                 placeholder='Selecionar'    
@@ -148,9 +142,10 @@ export default () => {
             <div>
               <p>Porte da Empresa:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosPorte}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.porte == 'object' && context.state.porte.length >= 1 ? context.state.porte.length + ' Itens Selecionados' : 'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
@@ -159,9 +154,10 @@ export default () => {
             <div>
               <p>Setor de Atuação:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosSetor}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.setor == 'object' && context.state.setor.length >= 1 ? context.state.setor.length + ' Itens Selecionados' : 'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
@@ -170,9 +166,10 @@ export default () => {
             <div>
               <p>Municipio:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosMunicipio}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.municipio_empresa == 'object' && context.state.municipio_empresa.length >= 1 ? context.state.municipio_empresa.length + ' Itens Selecionados' : 'Selecionar'}       
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
@@ -183,9 +180,10 @@ export default () => {
             <div>
               <p>Seção de Atividade:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosSecaoAtividade}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.secao_atividade == 'object' && context.state.secao_atividade.length >= 1 ? context.state.secao_atividade.length + ' Itens Selecionados' : 'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
@@ -194,9 +192,10 @@ export default () => {
             <div>
               <p>Atividade:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosDescricaoAtividade}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.descricao_atividade == 'object' && context.state.descricao_atividade.length >= 1 ? context.state.descricao_atividade.length + ' Itens Selecionados' : 'Selecionar'}      
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
@@ -205,9 +204,10 @@ export default () => {
             <div>
               <p>Natureza:</p>
               <Multiselect
+                className='filtros'
                 options={filtrosNatureza}
                 displayValue="Country"
-                placeholder='Selecionar'                
+                placeholder={typeof context.state.natureza == 'object' && context.state.natureza.length >= 1 ? context.state.natureza.length + ' Itens Selecionados' : 'Selecionar'}  
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
