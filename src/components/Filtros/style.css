@@ -34,13 +34,16 @@
 .secao-bottom div p {
   margin: 0;
 }
+.select-ano{
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+}
 .secao-bottom {
   width: 100%;
   display: flex;
 }
 .secao-bottom div {
   width: 100%;
-  max-width: 26vw;
   margin: 0 10px 0 0;
 }
 .secao-bottom div:first-child {
@@ -137,7 +140,8 @@
   .secao-bottom div:first-child {
     max-width: none;
   }
-  .secao-topo div p, .secao-bottom div p {
+  .secao-topo div p,
+  .secao-bottom div p {
     margin: 5px 0 5px 5px;
   }
   .secao-topo div p,
