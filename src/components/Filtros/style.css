@@ -34,10 +34,24 @@
 .secao-bottom div p {
   margin: 0;
 }
+.filtro-ano {
+  width: 100%;
+  padding: 0.52rem 0.4rem;
+  border: 1px solid rgba(204, 204, 204);
+  border-radius: 5px;
+  text-decoration: none;
+}
 .secao-bottom {
   width: 100%;
   display: flex;
 }
+/* select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+select::-ms-expand {
+  display: none;
+} */
 .secao-bottom div {
   width: 100%;
   max-width: 26vw;
@@ -137,7 +151,8 @@
   .secao-bottom div:first-child {
     max-width: none;
   }
-  .secao-topo div p, .secao-bottom div p {
+  .secao-topo div p,
+  .secao-bottom div p {
     margin: 5px 0 5px 5px;
   }
   .secao-topo div p,

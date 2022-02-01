@@ -8,8 +8,9 @@ import './style.css'
 
 export default () => {
 
-  const content = useContext(ContextGlobal);
+  const content = useContext(ContextGlobal)
 
+  const [valorOptionAno, setValorOptionAno] = useState('Selecionar')
   const [filtrosPorte, setFiltrosPorte] = useState([])
   const [filtrosSetor, setFiltrosSetor] = useState([])
   const [filtrosNatureza, setFiltrosNatureza] = useState([])
@@ -20,13 +21,8 @@ export default () => {
 
   const set_ano = () => {
     let arrAno = []
-    let counter = 0
     for (let index = 2015; index <= content.state.ano; index++) {
-      arrAno.push({
-        Country: index,
-        id: counter++
-      })     
-      counter++ 
+      arrAno.push(index)     
     }
     setAno(arrAno)
   }
@@ -104,13 +100,13 @@ export default () => {
       setFiltrosDescricaoAtividade(options_filters)
     }
 
+    set_ano()
     getFiltros_Porte()
     getFiltros_Setor()
     getFiltros_Natureza()
     getFiltros_SecaoAtividade()
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
-    set_ano()
   }, [])
 
   const context = useContext(ContextGlobal)
@@ -128,14 +124,19 @@ export default () => {
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
-              <Multiselect
-                className='filtros'
-                options={ano}
-                displayValue="Country"
-                placeholder='Selecionar'    
-                showCheckbox={true}
-                onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
-              />
+              <select className='filtro-ano' onClick={(e) => {
+                if(e.target.value !== valorOptionAno) {
+                  const initial_date = new Date()
+                  const date = initial_date.getMonth() >= 2 ? initial_date.getFullYear() : initial_date.getFullYear()-1
+                  context.dispatch({type: action.MUDAR_ANO, payload: e.target.value === 'Selecionar' ? date : e.target.value})
+                  setValorOptionAno(e.target.value)
+                }
+              }}>
+                <option defaultValue='Selecionar'>Selecionar</option>
+                {ano.map((ano, index) => (
+                  <option key={index}>{ano}</option>
+                ))}
+              </select>
             </div>
             }
             <div>
@@ -152,11 +153,15 @@ export default () => {
             </div>
             <div>
               <p>Setor de Atuação:</p>
-                <select>
-                  {ano.map((ano, index) => (
-                    <option key={index} onClick={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e.target.value})}>{ano}</option>
-                  ))}
-                </select>
+              <Multiselect
+                className='filtros'
+                options={filtrosSetor}
+                displayValue="Country"
+                placeholder={typeof context.state.setor == 'object' && context.state.setor.length >= 1 ? context.state.setor.length + ' Itens Selecionados' : 'Selecionar'} 
+                showCheckbox={true}
+                onSelect={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
+              />
             </div>
             <div>
               <p>Municipio:</p>
@@ -164,7 +169,7 @@ export default () => {
                 className='filtros'
                 options={filtrosMunicipio}
                 displayValue="Country"
-                placeholder={typeof context.state.municipio_empresa == 'object' && context.state.municipio_empresa.length >= 1 ? context.state.municipio_empresa.length + ' Itens Selecionados' : context.state.municipio_empresa !== '' ? context.state.municipio_empresa : 'Selecionar'}       
+                placeholder={typeof context.state.municipio_empresa == 'object' && context.state.municipio_empresa.length >= 1 ? context.state.municipio_empresa.length + ' Itens Selecionados' : 'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
@@ -178,7 +183,7 @@ export default () => {
                 className='filtros'
                 options={filtrosSecaoAtividade}
                 displayValue="Country"
-                placeholder={typeof context.state.secao_atividade == 'object' && context.state.secao_atividade.length >= 1 ? context.state.secao_atividade.length + ' Itens Selecionados' : context.state.secao_atividade !== '' ? context.state.secao_atividade : 'Selecionar'} 
+                placeholder={typeof context.state.secao_atividade == 'object' && context.state.secao_atividade.length >= 1 ? context.state.secao_atividade.length + ' Itens Selecionados' : context.state.secao_atividade !== '' ? context.state.secao_atividade : 'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
@@ -190,7 +195,7 @@ export default () => {
                 className='filtros'
                 options={filtrosDescricaoAtividade}
                 displayValue="Country"
-                placeholder={typeof context.state.descricao_atividade == 'object' && context.state.descricao_atividade.length >= 1 ? context.state.descricao_atividade.length + ' Itens Selecionados' : context.state.descricao_atividade !== '' ? context.state.descricao_atividade : 'Selecionar'}      
+                placeholder={typeof context.state.descricao_atividade == 'object' && context.state.descricao_atividade.length >= 1 ? context.state.descricao_atividade.length + ' Itens Selecionados' : context.state.descricao_atividade !== '' ? context.state.descricao_atividade : 'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
@@ -202,7 +207,7 @@ export default () => {
                 className='filtros'
                 options={filtrosNatureza}
                 displayValue="Country"
-                placeholder={typeof context.state.natureza == 'object' && context.state.natureza.length >= 1 ? context.state.natureza.length + ' Itens Selecionados' : context.state.natureza !== '' ? context.state.natureza : 'Selecionar'}  
+                placeholder={typeof context.state.natureza == 'object' && context.state.natureza.length >= 1 ? context.state.natureza.length + ' Itens Selecionados' : context.state.natureza !== '' ? context.state.natureza : 'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
