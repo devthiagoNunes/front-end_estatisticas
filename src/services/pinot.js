@@ -36,19 +36,8 @@ export const getAbertas = async (classificacao, filtros) => {
       
       switch (key) {
         case 'ano':
-          if(filtros.state[key].length > 1){
-            allFilters.push(filtros.state[key])
-
-            filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFilters += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' ${index == filtros.state[key].length - 1 ? ')' : ''}`
-               : otherFilters += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'  `
-            })
-            filters = 'where ' + otherFilters +  `group by ${classificacao} ${orderBy} limit 700000`
-            break
-          } else {
-            filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
-            break
-          }
+          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' group by ${classificacao} ${orderBy} limit 700000`
+          break
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
             allFilters.push(filtros.state[key])
@@ -270,7 +259,6 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
   let filters = ' where '
   let otherFiltersMensal = ''
   let allFiltersMensal = []
-  let allFilters = []
 
   let arrDatasFIlters = []
 
@@ -281,19 +269,8 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          if(filtros.state[key].length > 1){
-            allFilters.push(filtros.state[key])
-
-            filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFiltersMensal += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31' ${index == filtros.state[key].length - 1 ? ')' : ''}`
-               : otherFiltersMensal += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'  `
-            })
-            filters = 'where ' + otherFiltersMensal + ` limit 700000`
-            break
-          } else {
             filters += `inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
             break
-          }
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
             allFiltersMensal.push(filtros.state[key])
@@ -371,18 +348,8 @@ export const getAbertasAnual = async (classificacao, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          if(filtros.state[key].length > 1){
-            allFiltersAnual.push(filtros.state[key])
-
-            filtros.state[key].map((element, index) => {
-              index !== 0 ? otherFiltersAnual += ` or inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'` : otherFiltersAnual += `(inicio_atividades between '${element.Country}-01-01' and '${element.Country}-12-31'`
-            })
-            filters += `${otherFiltersAnual})` + ' limit 700000'
-            break 
-          } else { 
-            filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' limit 700000`
-            break
-          }
+          filters += `inicio_atividades between '${filtros.state[key]}-01-01' and '${filtros.state[key]}-12-31' limit 700000`
+          break
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
             allFiltersAnual.push(filtros.state[key])
