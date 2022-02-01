@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 import echarts from "echarts";
-import { getAbertas, getAbertasMes } from '../../../services/pinot'
+import { getAbertasMes } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -25,7 +25,6 @@ export default () => {
         newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31, context))
       }
       setAbertasMes(newAbertasMes);
-      console.log(newAbertasMes)
     }
     fetchAbertasMes()
   }, [context]);
@@ -58,21 +57,21 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
+      orient: "vertical",
       left: "right",
       showTitle: true,
       feature: {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Baixar",
+          title: ' ',
           iconStyle: {
             borderWidth: 1.5,
           },
         },
         magicType: { 
           show: true,
-          title: "...",
+          title: ' ',
           type: ['line'],
           iconStyle: {
             borderWidth: 1.5,
@@ -80,7 +79,7 @@ export default () => {
         },
         restore: {
           show: true,
-          title: "Limpar",
+          title: ' ',
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -119,6 +118,9 @@ export default () => {
       axisTick: {
         alignWithLabel: true,
       },
+      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
     series: [
       {
@@ -345,6 +347,9 @@ export default () => {
         fontSize: abertasMes.quantidade.length > 11 ? 9 : 8,
         fontWeight: "bold",
       },
+      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
     series: [
       {
@@ -501,7 +506,7 @@ export default () => {
     <div
       className="grafico-mes"
       style={{
-        height: '35vh',
+        width: '100%',
         marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,
       }}
     >
@@ -510,8 +515,8 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            height:  "40vh",
-            width: window.innerWidth == 768 ? '90vw' : '200vw',
+            height:  "30vh",
+            width: window.innerWidth == 375 ? '150vw' : '200vw',
           }} 
           opts={{ renderer: "canvas" }}
         />
@@ -532,7 +537,7 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            height: abertasMes.quantidade.length > 12 ? "60vh" : "48vh",
+            height:  "43vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}
@@ -543,7 +548,7 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: "45vh",
+            height: "40vh",
             width: "80vw",
           }}
           opts={{ renderer: "canvas" }}

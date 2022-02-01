@@ -52,6 +52,7 @@
 }
 .tables-empresas {
   display: flex;
+  overflow: hidden;
   padding: 0 0.5rem 0 0.5rem;
 }
 .tables-empresas table {
@@ -78,9 +79,14 @@
 .tables-empresas {
   height: 100%;
 }
+@media (min-width: 1367px) {
+  .content-tables {
+    height: 55vh;
+  }
+}
 @media (max-width: 1366px) {
   .content-tables {
-    height: 4vh;
+    height: 50vh;
   }
 }
 @media (max-width: 1024px) {
@@ -135,6 +141,7 @@
   }
   .content-tables {
     width: 95%;
+    height: 35vh;
     margin-left: 0.5rem;
   }
   .tables-empresas {

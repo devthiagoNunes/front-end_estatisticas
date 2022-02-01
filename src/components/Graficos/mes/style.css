@@ -21,7 +21,7 @@
 }
 @media (max-width: 768px) {
   .grafico-mes {
-    height: 70vh;
+    height: 30vh;
     overflow-x: scroll;
   }
   .grafico-mes p {

@@ -33,7 +33,6 @@ export default () => {
   return(
     <div className="content-tables" style={{
       marginBottom: '1rem',
-      height: context.state.empresasAbertas !== true ? '45vh' : '45vh'
     }}>
       <div className="content-dataTables" style={{
         overflowX: 'hidden',
