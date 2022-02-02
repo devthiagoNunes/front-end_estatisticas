@@ -53,6 +53,7 @@
 .tables-empresas {
   display: flex;
   overflow: hidden;
+  height: 100%;
   padding: 0 0.5rem 0 0.5rem;
 }
 .tables-empresas table {
@@ -74,9 +75,6 @@
   text-align: right;
 }
 .content-table-empresas {
-  height: 100%;
-}
-.tables-empresas {
   height: 100%;
 }
 @media (min-width: 1367px) {

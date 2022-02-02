@@ -274,7 +274,7 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "90%", 
+      width: "93%", 
       height:  "90%",
       top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
@@ -288,7 +288,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "vertical",
-      itemSize: 15,
+      itemSize: 12,
       showTitle: true,
       feature: {
         type: "png",
@@ -321,7 +321,7 @@ export default () => {
       align: abertasMes.quantidade.length > 12 ? "center" : "center",
       verticalAlign: "middle",
       position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: 12,
+      fontSize: 10,
       fontWeight: 'normal',
       offset: abertasMes.quantidade.length > 12 ? [0, 5] : null,
       color: "rgb(0, 0, 0)",
@@ -516,7 +516,7 @@ export default () => {
           option={config3}
           style={{
             height:  "30vh",
-            width: window.innerWidth == 375 ? '150vw' : '200vw',
+            width: window.innerWidth == 375 ? '150vw' : '80vw',
           }} 
           opts={{ renderer: "canvas" }}
         />

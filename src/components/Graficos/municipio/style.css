@@ -48,13 +48,12 @@
 .content-table {
   height: 100%;
   overflow-y: scroll;
-  padding: 0 0.4rem;
-  padding-bottom: 1rem;
+  padding: 0.2rem 0.4rem;
 }
 .content-table .tabelas {
   position: relative;
   display: flex;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
 }
 .content-dataMunicipio p:first-child {
   margin: 0;
