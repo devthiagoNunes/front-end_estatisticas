@@ -131,13 +131,14 @@ export default () => {
                 styles={{
                   control: (base, state) => ({
                     ...base,
-                    minHeight: '35px',
+                    fontSize: window.innerWidth <= 768 ? '0.8rem' : '1rem',
+                    minHeight: window.innerWidth <= 768 ? '30px' : '35px',
                     minWidth: '100px',
-                    paddingTop: '3px',
-                    border: state.isFocused ? 0 : 0,
-                    boxShadow: state.isFocused ? 0 : 0,
+                    paddingTop: '4px',
+                    border: 0,
+                    boxShadow: 0,
                     '&:hover': {
-                       border: state.isFocused ? 0 : 0
+                       border: 0
                     }
                   }),
                 }}

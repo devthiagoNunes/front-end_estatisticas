@@ -34,8 +34,8 @@
 .secao-bottom div p {
   margin: 0;
 }
-.select-ano{
-  border: 1px solid #CCCCCC;
+.select-ano {
+  border: 1px solid #cccccc;
   border-radius: 5px;
 }
 .secao-bottom {
@@ -84,6 +84,12 @@
   .content .txt-filtros {
     margin-top: -1.85rem;
     font-size: 1rem;
+  }
+  .secao-topo div {
+    max-width: 21vw;
+  }
+  .filtros {
+    font-size: 0.8rem;
   }
 }
 @media (max-width: 375px) {
