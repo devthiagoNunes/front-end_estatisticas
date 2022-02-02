@@ -29,6 +29,11 @@ export default () => {
     setAno(arrAno)
   }
 
+  const verifyWIdth = () => {
+    if(context.state.empresasAbertas == false && (window.innerWidth >= 375 || window.innerWidth < 768)) return '26.5vw'
+    else if (context.state.empresasAbertas == true && (window.innerWidth >= 375 || window.innerWidth < 768)) return '21vw'
+  } 
+
   useEffect(() => {
     const getFiltros_Porte = async () => {
       const get_filtros_porte =  await getFiltrosPorte()
@@ -150,7 +155,7 @@ export default () => {
             </div>
             }
             <div style={{
-              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+              minWidth: verifyWIdth(),
             }}>
               <p>Porte da Empresa:</p>
               <Multiselect
@@ -164,7 +169,7 @@ export default () => {
               />
             </div>
             <div style={{
-              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+              minWidth: verifyWIdth(),
             }}>
               <p>Setor de Atuação:</p>
               <Multiselect
@@ -178,7 +183,7 @@ export default () => {
               />
             </div>
             <div style={{
-              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+              minWidth: verifyWIdth(),
             }}>
               <p>Municipio:</p>
               <Multiselect
@@ -205,9 +210,7 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
               />
             </div>
-            <div style={{
-              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
-            }}>
+            <div>
               <p>Atividade:</p>
               <Multiselect
                 className='filtros'
