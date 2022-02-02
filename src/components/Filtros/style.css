@@ -52,6 +52,9 @@
 .close-filters {
   display: none;
 }
+.filtros, .select-ano{
+  font-size: .8rem;
+}
 .filtros span {
   display: none;
 }

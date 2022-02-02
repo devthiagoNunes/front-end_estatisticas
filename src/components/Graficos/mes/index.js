@@ -321,7 +321,7 @@ export default () => {
       align: abertasMes.quantidade.length > 12 ? "center" : "center",
       verticalAlign: "middle",
       position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
-      fontSize: 12,
+      fontSize: 10,
       fontWeight: 'normal',
       offset: abertasMes.quantidade.length > 12 ? [0, 5] : null,
       color: "rgb(0, 0, 0)",

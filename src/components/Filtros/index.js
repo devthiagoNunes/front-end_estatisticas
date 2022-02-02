@@ -131,7 +131,7 @@ export default () => {
                 styles={{
                   control: (base, state) => ({
                     ...base,
-                    minHeight: '35px',
+                    minHeight: '30px',
                     minWidth: '100px',
                     paddingTop: '3px',
                     border: state.isFocused ? 0 : 0,
@@ -149,7 +149,9 @@ export default () => {
               />
             </div>
             }
-            <div>
+            <div style={{
+              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+            }}>
               <p>Porte da Empresa:</p>
               <Multiselect
                 className='filtros'
@@ -161,7 +163,9 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
               />
             </div>
-            <div>
+            <div style={{
+              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+            }}>
               <p>Setor de Atuação:</p>
               <Multiselect
                 className='filtros'
@@ -173,8 +177,8 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
               />
             </div>
-            <div   sstyle={{
-              maxWidth: context.state.empresasAbertas == true && window.innerWidth >= 768 || window.innerWidth <= 820 ? '20vw' : '100%'
+            <div style={{
+              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
             }}>
               <p>Municipio:</p>
               <Multiselect
@@ -201,7 +205,9 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
               />
             </div>
-            <div>
+            <div style={{
+              maxWidth: window.innerWidth >= 768 || window.innerWidth <= 820 && context.state.empresasAbertas ? '21vw' : '26vw'
+            }}>
               <p>Atividade:</p>
               <Multiselect
                 className='filtros'
