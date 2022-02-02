@@ -36,6 +36,7 @@ export default () => {
     }}>
       <div className="content-dataTables" style={{
         overflowX: 'hidden',
+        overflowY: context.state.empresasAbertas ? 'hidden' : 'scroll',
       }}>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
         <div className="content-table-empresas">
