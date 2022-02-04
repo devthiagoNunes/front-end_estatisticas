@@ -44,7 +44,7 @@ export default () => {
   const config1 = {
     grid: {
       containLabel: true,
-      width: "93%", 
+      width: "95%", 
       height: "90%",
       top: abertasMes.quantidade.length > 12 ? "10%" : "6%",   
       left: "2%",
@@ -163,7 +163,7 @@ export default () => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: "93%", 
+      width: "95%", 
       height:  abertasMes.quantidade.length > 12 ? "80%" : "90%",
       top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
@@ -184,7 +184,7 @@ export default () => {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Baixar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -199,7 +199,7 @@ export default () => {
         },
         restore: {
           show: true,
-          title: "Limpar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -274,9 +274,13 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
+<<<<<<< HEAD
       width: "93%", 
+=======
+      width: "95%", 
+>>>>>>> 665373940f56ddbf9612aa53e413218fa8abb1e3
       height:  "90%",
-      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
+      top: "6%",
       left: "2%",
     },
     tooltip: {
@@ -288,13 +292,18 @@ export default () => {
     toolbox: {
       show: true,
       orient: "vertical",
+<<<<<<< HEAD
       itemSize: 12,
+=======
+      left: "right",
+      itemSize: 15,
+>>>>>>> 665373940f56ddbf9612aa53e413218fa8abb1e3
       showTitle: true,
       feature: {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Baixar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -309,7 +318,7 @@ export default () => {
         },
         restore: {
           show: true,
-          title: "Limpar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -390,10 +399,12 @@ export default () => {
 
   const config4 = {
     grid: {
+      containLabel: true,
+      width: "94%",
       top: "8%",
-      left: abertasMes.quantidade.length > 12 ? "6%" : "5%",
+      left: "2%",
       right: "6%",
-      bottom: abertasMes.quantidade.length > 12 ? "10%" : "14%",
+      bottom: "5%",
     },
     tooltip: {
       trigger: "axis",
@@ -404,13 +415,13 @@ export default () => {
     toolbox: {
       show: true,
       orient: "vertical",
-      left: "95%",
+      left: "right",
       showTitle: true,
       feature: {
         type: "png",
         saveAsImage: {
           show: true,
-          title: "Baixar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },
@@ -425,7 +436,7 @@ export default () => {
         },
         restore: {
           show: true,
-          title: "Limpar",
+          title: " ",
           iconStyle: {
             borderWidth: 1.5,
           },

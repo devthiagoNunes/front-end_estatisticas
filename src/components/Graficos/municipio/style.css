@@ -48,7 +48,13 @@
 .content-table {
   height: 100%;
   overflow-y: scroll;
+<<<<<<< HEAD
   padding: 0.2rem 0.4rem;
+=======
+  padding: 0 0.4rem;
+  padding-top: .2rem;
+  padding-bottom: 3.8rem;
+>>>>>>> 665373940f56ddbf9612aa53e413218fa8abb1e3
 }
 .content-table .tabelas {
   position: relative;
