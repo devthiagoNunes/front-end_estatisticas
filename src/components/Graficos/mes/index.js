@@ -274,11 +274,7 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-<<<<<<< HEAD
       width: "93%", 
-=======
-      width: "95%", 
->>>>>>> 665373940f56ddbf9612aa53e413218fa8abb1e3
       height:  "90%",
       top: "6%",
       left: "2%",
@@ -292,12 +288,8 @@ export default () => {
     toolbox: {
       show: true,
       orient: "vertical",
-<<<<<<< HEAD
       itemSize: 12,
-=======
       left: "right",
-      itemSize: 15,
->>>>>>> 665373940f56ddbf9612aa53e413218fa8abb1e3
       showTitle: true,
       feature: {
         type: "png",
