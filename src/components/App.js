@@ -14,8 +14,8 @@ class App extends React.PureComponent {
           <BrowserRouter>
               <Switch>
                   <Route path="/" exact render={() => <Redirect to="/estatisticas/empresas-abertas"/>}/>
-                  <Route path="/estatisticas/empresas-abertas" component={LayoutComponent}/>
-                  <Route path="/estatisticas/empresas-ativas" component={LayoutComponent}/>
+                  <Route  path="/estatisticas/empresas-abertas" exact component={LayoutComponent}/>
+                  <Route  path="/estatisticas/empresas-ativas" exact component={LayoutComponent}/>
                   <Redirect from="*" to="/"/>
               </Switch>
           </BrowserRouter>
