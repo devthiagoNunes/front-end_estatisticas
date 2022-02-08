@@ -1,17 +1,17 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import { Switch, Route, Redirect } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 
-import LayoutComponent from '../components/Layout';
+import LayoutComponent from '../components/Layout'
 import { ContextProvider } from '../contexts/GlobalContext/contextProvider'
+import history from '../services/history'
 import '../styles/theme.scss';
 
 class App extends React.PureComponent {
   render() {
     return (
-      <div>
         <ContextProvider>
-          <BrowserRouter>
+          <BrowserRouter history={history}>
               <Switch>
                   <Route path="/" exact render={() => <Redirect to="/estatisticas/empresas-abertas"/>}/>
                   <Route  path="/estatisticas/empresas-abertas" exact component={LayoutComponent}/>
@@ -20,7 +20,6 @@ class App extends React.PureComponent {
               </Switch>
           </BrowserRouter>
         </ContextProvider>
-      </div>
     );
   }
 }
