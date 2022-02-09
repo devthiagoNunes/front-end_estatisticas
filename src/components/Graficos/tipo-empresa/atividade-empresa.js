@@ -16,6 +16,7 @@ export default () => {
         case false:
           const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
           const quantidade_ativas =  await getDataEmpresasAtivas('secao_atividade', context)
+          console.log(quantidade_ativas)
           quantidade_ativas.resultTable.rows.forEach(element => {
             obj.empresas.push(element[0])
             obj.quantidade.push(element[1])
@@ -36,11 +37,15 @@ export default () => {
       marginBottom: '1rem',
     }}>
       <div className="content-dataTables" style={{
-        overflowX: 'hidden',
+        paddingBottom: '3.5rem'
       }}>
         <p>{`Empresas Ativas Por Atividade `}</p>
         <div className="content-table-empresas">
-          <div className="tables-empresas">
+          <div className="tables-empresas" style={{
+            overflowX: 'hidden',
+            overflowY: 'scroll',
+            paddingBottom: '.5rem'
+          }}>
             <table>
               <thead>
                 <tr>

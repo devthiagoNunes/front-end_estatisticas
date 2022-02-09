@@ -32,15 +32,16 @@ export default () => {
 
   return(
     <div className="content-tables" style={{
+      marginTop: '.5rem',
       marginBottom: '1rem',
     }}>
-      <div className="content-dataTables" style={{
-        overflowX: 'hidden',
-        overflowY: context.state.empresasAbertas ? 'hidden' : 'scroll',
-      }}>
+      <div className="content-dataTables" >
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
         <div className="content-table-empresas">
-          <div className="tables-empresas">
+          <div className="tables-empresas" style={{
+            overflowX: 'hidden',
+            overflowY: context.state.empresasAbertas ? 'hidden' : 'scroll',
+          }}>
             <table>
               <thead>
                 <tr>
