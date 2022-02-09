@@ -21,10 +21,11 @@ export default () => {
       quantidade: [],
     }
     var fetchAbertasMes = async () => {
-      for (let index = 1; index < 13; index++){
-        newAbertasMes.quantidade.push(await getAbertasMes(context.state.ano, String(index).padStart(2, "0"), '01', 31, context))
-      }
-      setAbertasMes(newAbertasMes);
+      const response = await getAbertasMes(context.state.ano, context)
+      response.resultTable.rows.forEach(element => {
+        newAbertasMes.quantidade.push(element[1])
+      })
+      setAbertasMes(newAbertasMes)
     }
     fetchAbertasMes()
   }, [context]);

@@ -252,10 +252,11 @@ export const getFiltrosDescricaoAtividade = async () => {
   .catch(err => err)
 }
 
-export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => {
+export const getAbertasMes = async (ano, filtros) => {
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
   return []
 
+  let query_ano = ''
   let query = `select count(*) from statistical `
   let filters = ' where '
   let otherFiltersMensal = ''
@@ -270,7 +271,7 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-            filters += `inicio_atividades between '${ano}-${mes}-${diaInicial}' and '${ano}-${mes}-${diaFinal}'`
+            query_ano += `select month(FromDateTime(inicio_atividades, 'YYYY-MM-dd'), 'UTC') AS month, count(month) FROM statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by month limit 700000`
             break
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
@@ -296,11 +297,15 @@ export const getAbertasMes = async (ano, mes, diaInicial, diaFinal, filtros) => 
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": query+filters
+      "sql": query_ano !== '' ? query_ano : query+filters
     }
   })
   .then(res => {
-    return res.data.numDocsScanned
+    if(query_ano !== '' ) {
+      return res.data
+    } else {
+      return res.data.numDocsScanned
+    }
   })
   .catch(err => err)
 }
