@@ -136,8 +136,8 @@ export default () => {
                 styles={{
                   control: (base, state) => ({
                     ...base,
-                    fontSize: window.innerWidth <= 768 ? '0.8rem' : '1rem',
-                    minHeight: window.innerWidth <= 768 ? '30px' : '35px',
+                    fontSize: '0.8rem',
+                    minHeight: '30px',
                     minHeight: '30px',
                     minWidth: '100px',
                     paddingTop: '4px',
