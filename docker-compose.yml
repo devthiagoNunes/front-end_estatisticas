@@ -4,6 +4,8 @@ services:
     image: jucema/painelestatisticas
     container_name: painel_estatisticas
     build:
+      network: host
       context: .
     ports:
-      - '80:80'
+      - '8080:8080'
+    dns: 8.8.8.8
