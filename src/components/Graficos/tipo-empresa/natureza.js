@@ -41,6 +41,7 @@ export default () => {
           <div className="tables-empresas" style={{
             overflowX: 'hidden',
             overflowY: context.state.empresasAbertas ? 'hidden' : 'scroll',
+            paddingBottom: '4rem'
           }}>
             <table>
               <thead>

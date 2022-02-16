@@ -133,7 +133,7 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
       }
     }
   }
-  console.log(query+filters)
+
   return await axios({
     method: 'POST', 
     url: 'http://179.127.13.245:3000/query/sql', 
@@ -158,7 +158,7 @@ export const getFiltrosPorte = async () => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": "select distinct porte from statistical"
+      "sql": "select distinct porte from statistical where setor != 'null'"
     }
   })
   .then(res => {
@@ -192,7 +192,7 @@ export const getFiltrosNatureza = async () => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": "select distinct natureza from statistical limit 50"
+      "sql": "select distinct natureza from statistical where setor != 'null' limit 50"
     }
   })
   .then(res => {
@@ -243,7 +243,7 @@ export const getFiltrosDescricaoAtividade = async () => {
       'Target-URL': 'http://pinot-broker:8099',
     },
     data: {
-      "sql": "select distinct descricao_atividade from statistical limit 1500"
+      "sql": "select distinct descricao_atividade from statistical where setor != 'null' limit 1500"
     }
   })
   .then(res => {

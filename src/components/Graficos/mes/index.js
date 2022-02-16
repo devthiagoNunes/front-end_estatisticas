@@ -118,7 +118,7 @@ export default () => {
       axisTick: {
         alignWithLabel: true,
       },
-      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
       minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
       max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
@@ -237,6 +237,9 @@ export default () => {
         fontSize: 9,
         fontWeight: "bold",
       },
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
     series: [
       {
@@ -348,7 +351,7 @@ export default () => {
         fontSize: abertasMes.quantidade.length > 11 ? 9 : 8,
         fontWeight: "bold",
       },
-      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
       minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
       max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },
@@ -464,7 +467,7 @@ export default () => {
         position: "top",
         verticalAlign: "middle",
       },
-      min: abertasMes.quantidade[0] > 1500 ? 1000 : null,
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
       minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
       max: abertasMes.quantidade[0] > 1500 ? 6000 : null
     },

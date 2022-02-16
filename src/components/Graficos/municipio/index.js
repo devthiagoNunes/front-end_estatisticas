@@ -39,8 +39,7 @@ export default () => {
         <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div> 
-      <div className="content-dataMunicipio" style={{
-      }}>
+      <div className="content-dataMunicipio">
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
         <div className="content-table">
           <div className="tabelas">
