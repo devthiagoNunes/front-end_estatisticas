@@ -195,7 +195,7 @@
     overflow-y: scroll;
   }
   .content-dataMunicipio p:first-child {
-    font-size: 1rem;
+    font-size: 0.9rem;
     position: sticky;
     top: 0;
   }
@@ -205,7 +205,7 @@
     padding-bottom: 0;
   }
   .tabelas table tr {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
   .tabelas table td {
     font-weight: bold;

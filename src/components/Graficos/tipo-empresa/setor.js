@@ -206,7 +206,7 @@ export default () => {
       containLabel: true,
       width: "90%",
       height: "85%",
-      top: "5%",
+      top: "8%",
       left: "3%",
     },
     tooltip: {
@@ -217,8 +217,9 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
+      orient: "vertical",
       left: "right",
+      top: '-3rem',
       itemSize: 12,
       showTitle: true,
       feature: {
@@ -248,7 +249,7 @@ export default () => {
       zlevel: 5,
       axisLabel: {
         fontWeight: "bold",
-        fontSize: 9,
+        fontSize: 8,
       }
     },
     yAxis: {
@@ -258,7 +259,7 @@ export default () => {
         alignWithLabel: true,
       },
       axisLabel: {
-        fontSize: 8,
+        fontSize: 7,
         fontWeight: "bold",
       },
     },
@@ -357,7 +358,7 @@ export default () => {
     >
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas Por Setor' : 'Ativas Por Atividade'}`}</p>
 
-      {window.innerWidth >= 375 && window.innerWidth < 768 && (
+      {window.innerWidth >= 320 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{

@@ -16,7 +16,6 @@ export default () => {
         case false:
           const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
           const quantidade_ativas =  await getDataEmpresasAtivas('secao_atividade', context)
-          console.log(quantidade_ativas)
           quantidade_ativas.resultTable.rows.forEach(element => {
             obj.empresas.push(element[0])
             obj.quantidade.push(element[1])

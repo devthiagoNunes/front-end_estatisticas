@@ -292,7 +292,7 @@ export default () => {
     toolbox: {
       show: true,
       orient: "vertical",
-      itemSize: 12,
+      itemSize: 10,
       left: "right",
       showTitle: true,
       feature: {
@@ -340,7 +340,7 @@ export default () => {
         alignWithLabel: abertasMes.quantidade.length > 12 ? true : true,
       },
       axisLabel: {
-        fontSize: abertasMes.quantidade.length > 12 ? 7 : 9,
+        fontSize: 7,
         fontWeight: "bold",
         rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
         inside: abertasMes.quantidade.length > 12 ? true : false,
@@ -518,12 +518,12 @@ export default () => {
       }}
     >
       <p>Empresas {context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Mes</p>
-      {window.innerWidth >= 375 && window.innerWidth <= 768 && (
+      {window.innerWidth >= 320 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
           style={{
             height:  "30vh",
-            width: window.innerWidth == 375 ? '150vw' : '80vw',
+            width: window.innerWidth == 320 ? '180vw' : '80vw',
           }} 
           opts={{ renderer: "canvas" }}
         />

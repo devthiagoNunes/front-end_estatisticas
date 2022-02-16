@@ -231,8 +231,10 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
-      itemSize: 13,
+      oorient: "vertical",
+      left: "right",
+      top: '-2.5rem',
+      itemSize: 12,
       showTitle: true,
       feature: {
         type: "png",
@@ -367,7 +369,7 @@ export default () => {
       className="grafico setor">
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Porte`}</p>
 
-      {window.innerWidth >= 375 && window.innerWidth < 768 && (
+      {window.innerWidth >= 320 && window.innerWidth < 768 && (
         <Echarts
           option={config3}
           style={{
