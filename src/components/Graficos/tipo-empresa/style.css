@@ -1,0 +1,158 @@
+.grafico {
+  margin: 0;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+.grafico p {
+  padding: 0.5rem 0;
+  position: sticky;
+  left: 0;
+  top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+  z-index: 2;
+}
+.setor {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+.content-tables {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 15px;
+  border: none;
+  overflow-y: hidden;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.content-dataTables {
+  height: 100%;
+  border-radius: 15px;
+  border-left: 1px solid rgb(0, 0, 0, 0.4);
+}
+.content-dataTables p:first-child {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+  z-index: 9;
+}
+.tables-empresas {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.tables-empresas table {
+  max-height: 50px;
+}
+.tables-empresas table:first-child {
+  padding: 0 5px;
+  width: 100%;
+  height: inherit;
+}
+.tables-empresas table thead tr th:first-child {
+  text-align: center;
+}
+.tables-empresas table tr {
+  font-size: 1.1rem;
+  border-bottom: 1px solid black;
+}
+.tables-empresas table:last-child tr {
+  text-align: right;
+}
+.content-table-empresas {
+  height: 100%;
+}
+@media (min-width: 1367px) {
+  .content-tables {
+    height: 55vh;
+  }
+}
+@media (max-width: 1366px) {
+  .content-tables {
+    height: 51vh;
+  }
+}
+@media (max-width: 1024px) {
+  .grafico p {
+    font-size: 1.2rem;
+    position: sticky;
+    left: 0;
+  }
+  .tables-empresas table thead th {
+    font-size: 0.9rem;
+  }
+  .tables-empresas thead tr th:first-child {
+    width: 75%;
+  }
+  .tables-empresas table tbody tr td {
+    font-size: 0.8rem;
+  }
+  .content-dataTables p:first-child {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .grafico p {
+    font-size: 0.9rem;
+    position: sticky;
+    left: 0;
+  }
+  .tables-empresas table thead th {
+    font-size: 0.8rem;
+  }
+  .tables-empresas thead tr th:first-child {
+    width: 75%;
+  }
+  .tables-empresas table tbody tr td {
+    font-size: 0.65rem;
+  }
+  .content-dataTables p:first-child {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 375px) {
+  .grafico {
+    width: 65vh;
+    max-width: 75vw;
+    height: 40vh;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .grafico p {
+    position: sticky;
+    left: 0;
+  }
+  .content-tables {
+    width: 95%;
+    height: 35vh;
+    margin-left: 0.5rem;
+  }
+  .tables-empresas {
+    height: 100%;
+  }
+  .tables-empresas table thead th {
+    font-size: 0.7rem;
+  }
+  .tables-empresas thead tr th:first-child {
+    width: 75%;
+  }
+  .tables-empresas table tbody tr td {
+    font-size: 0.65rem;
+    font-weight: bold;
+  }
+}

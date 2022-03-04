@@ -1,0 +1,213 @@
+.content-municipio {
+  display: flex;
+  flex-direction: column;
+  width: 26vw;
+  height: 100%;
+  position: relative;
+  padding: 0 0.5rem 0.9rem 0;
+  overflow-y: hidden;
+}
+.total-empresasAbertas {
+  position: relative;
+  margin: 0 0 2rem 0;
+  width: 100%;
+  height: 12vh;
+  min-height: 130px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.total-empresasAbertas p:first-child {
+  position: static;
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+}
+.total-empresasAbertas p:last-child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  top: 40%;
+  text-align: center;
+  color: #2190dc;
+  font-size: 3.5rem;
+}
+.content-dataMunicipio {
+  height: 100%;
+  border-radius: 15px;
+  overflow-y: hidden;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.content-table {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 0 0.4rem;
+  padding-top: 0.2rem;
+  padding-bottom: 3.8rem;
+}
+.content-table .tabelas {
+  position: relative;
+  display: flex;
+  padding-bottom: 1px;
+}
+.content-dataMunicipio p:first-child {
+  margin: 0;
+  padding: 0.7rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+  z-index: 9;
+}
+.tabelas table:first-child {
+  padding: 0 5px;
+  width: 80%;
+  height: inherit;
+}
+.tabelas table:last-child {
+  text-align: center;
+  padding: 0 5px;
+  width: 20%;
+  height: inherit;
+}
+.tabelas table tr {
+  font-size: 1.1rem;
+  border-bottom: 1px solid black;
+}
+.tabelas table:last-child tr {
+  text-align: right;
+}
+@media (max-width: 1366px) {
+  .content-table {
+    height: 100%;
+  }
+}
+@media (max-width: 1210px) {
+  .tabelas table tr {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 1024px) {
+  .content-municipio {
+    width: 28vw;
+    height: 100%;
+  }
+  .content-dataMunicipio {
+    height: 160vh;
+  }
+  .content-table {
+    max-height: 100%;
+  }
+  .tabelas {
+    margin-bottom: 2rem;
+  }
+  .total-empresasAbertas {
+    min-height: 16vh;
+    min-height: 100px;
+  }
+  .total-empresasAbertas p:last-child {
+    font-size: 2.5rem;
+  }
+  .total-empresasAbertas p:first-child {
+    font-size: 1.2rem;
+  }
+  .content-dataMunicipio p:first-child {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+  }
+  .tabelas table tr {
+    font-size: 0.73rem;
+  }
+}
+@media (max-width: 768px) {
+  .content-municipio {
+    width: 28vw;
+  }
+  .total-empresasAbertas {
+    height: 20vh;
+    min-height: 15px;
+  }
+  .total-empresasAbertas p:last-child {
+    font-size: 2.5rem;
+  }
+  .content-dataMunicipio {
+    height: 124.5vh;
+    max-height: min-content;
+    padding-bottom: 1.8rem;
+  }
+  .content-dataMunicipio p:first-child {
+    font-size: 0.8rem;
+  }
+  .total-empresasAbertas p:first-child {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+  .tabelas table tr {
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+}
+@media (max-width: 650px) {
+  .total-empresasAbertas p:first-child {
+    font-size: 0.7rem;
+  }
+  .total-empresasAbertas p:last-child {
+    font-size: 2.2rem;
+  }
+  .content-dataMunicipio p:first-child {
+    font-size: 0.55rem;
+  }
+  .tabelas table tr {
+    font-size: 0.43rem;
+    font-weight: bold;
+  }
+}
+@media (max-width: 425px) {
+  .content-municipio {
+    width: 100%;
+    margin: auto;
+    max-height: 95vh;
+  }
+  .total-empresasAbertas {
+    width: 90%;
+    min-height: 16vh;
+    min-height: 100px;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .total-empresasAbertas p:first-child {
+    font-size: 1rem;
+  }
+  .total-empresasAbertas p:last-child {
+    font-size: 2.6rem;
+  }
+  .content-dataMunicipio {
+    width: 90%;
+    margin: auto;
+    overflow-y: scroll;
+  }
+  .content-dataMunicipio p:first-child {
+    font-size: 0.9rem;
+    position: sticky;
+    top: 0;
+  }
+  .content-table,
+  .content-table .tabelas {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .tabelas table tr {
+    font-size: 0.6rem;
+  }
+  .tabelas table td {
+    font-weight: bold;
+  }
+}
