@@ -1,7 +1,4 @@
 node_modules
 
 build
-<<<<<<< HEAD
-=======
 deploy.sh
->>>>>>> develop
