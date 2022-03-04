@@ -1,0 +1,46 @@
+.grafico-mes {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem 2rem 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.grafico-mes p {
+  padding: 5px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+}
+@media (max-width: 1024px) {
+  .grafico-mes p {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .grafico-mes {
+    height: 30vh;
+    overflow-x: scroll;
+  }
+  .grafico-mes p {
+    font-size: 0.9rem;
+    position: sticky;
+    left: 0;
+  }
+}
+@media (max-width: 425px) {
+  .grafico-mes {
+    position: relative;
+    width: 80%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  .grafico-mes div {
+    position: sticky;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+  }
+}

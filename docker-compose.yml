@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  app-painel:
+    image: jucema/painelestatisticas
+    container_name: painel_estatisticas
+    build:
+      network: host
+      context: .
+    ports:
+      - '8080:8080'
+    dns: 8.8.8.8
