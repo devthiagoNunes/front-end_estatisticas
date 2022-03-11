@@ -115,7 +115,7 @@ export const getDataEmpresasAtivas = async (classificacao, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-          filters += `situacao_siarco = 'REGISTRO ATIVO' and ${classificacao} != 'null' group by ${classificacao} ${orderBy} limit 700000`
+          filters += `(situacao_siarco = 'REGISTRO ATIVO' or situacao_siarco = 'REGISTRO ATIVO PROVISÓRIO') and ${classificacao} != 'null' group by ${classificacao} ${orderBy} limit 700000`
           break
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
