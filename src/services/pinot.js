@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { filter } from 'lodash'
 
 export const getAbertas = async (classificacao, filtros) => {
   if(filtros == undefined || filtros == null || filtros.state == undefined || filtros.state == null)
@@ -271,7 +272,7 @@ export const getAbertasMes = async (ano, filtros) => {
     if(key !== 'empresasAbertas' && filtros.state[key] !== ''){
       switch (key) {
         case 'ano':
-            query_ano += `select month(FromDateTime(inicio_atividades, 'YYYY-MM-dd'), 'UTC') AS month, count(month) FROM statistical where inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by month limit 700000`
+            query_ano += `select month(FromDateTime(inicio_atividades, 'YYYY-MM-dd'), 'UTC') AS month, count(month) FROM statistical ${filters} inicio_atividades between '${ano}-01-01' and '${ano}-12-31' group by month limit 700000`
             break
         default:
           if(typeof filtros.state[key] == 'object' &&   filtros.state[key].length > 1){
