@@ -514,6 +514,8 @@ export default () => {
       className="grafico-mes"
       style={{
         width: '100%',
+        height: '100%',
+        maxHeight: '350px',
         marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,
       }}
     >
@@ -523,6 +525,7 @@ export default () => {
           option={config3}
           style={{
             height:  "30vh",
+            maxHeight: "30vh",
             width: window.innerWidth == 320 ? '180vw' : '80vw',
           }} 
           opts={{ renderer: "canvas" }}
@@ -534,7 +537,9 @@ export default () => {
           option={config2}
           style={{
             height: "40vh",
+            maxHeight: "40vh",
             width: "80vw",
+            maxWidth: "80vh",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -545,7 +550,9 @@ export default () => {
           option={config1}
           style={{
             height:  "43vh",
+            maxHeight: "43vh",
             width: "80vw",
+            maxWidth: "80vw",
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -556,7 +563,9 @@ export default () => {
           option={config4}
           style={{
             height: "40vh",
+            maxHeight: "40vh",
             width: "80vw",
+            maxWidth: "100%",
           }}
           opts={{ renderer: "canvas" }}
         />

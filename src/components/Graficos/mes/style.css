@@ -1,5 +1,6 @@
 .grafico-mes {
   display: flex;
+  height: 40vh;
   flex-direction: column;
   margin: 0 1rem 2rem 1rem;
   border-radius: 15px;
