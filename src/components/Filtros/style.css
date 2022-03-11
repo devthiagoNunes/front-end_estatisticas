@@ -55,9 +55,6 @@
 .filtros, .select-ano{
   font-size: .8rem;
 }
-.filtros span {
-  display: none;
-}
 @media (max-width: 1024px) {
   .secao-topo div p,
   .secao-bottom div p,

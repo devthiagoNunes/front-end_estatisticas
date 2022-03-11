@@ -157,7 +157,7 @@ export default () => {
             </div>
             }
             <div style={{
-              minWidth: verifyWIdth(),
+              minWidth: verifyWIdth()
             }}>
               <p>Porte da Empresa:</p>
               <Multiselect
