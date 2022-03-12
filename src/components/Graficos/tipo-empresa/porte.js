@@ -406,6 +406,7 @@ export default () => {
           style={{
             height: "45vh",
             width: "50vw",
+            maxWidth: '100%'
           }}
           opts={{ renderer: "canvas" }}
         />
