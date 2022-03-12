@@ -29,11 +29,6 @@ export default () => {
     setAno(arrAno)
   }
 
-  const verifyWIdth = () => {
-    if(context.state.empresasAbertas == false && (window.innerWidth >= 375 || window.innerWidth < 768)) return '26.5vw'
-    else if (context.state.empresasAbertas == true && (window.innerWidth >= 375 || window.innerWidth < 768)) return '21vw'
-  } 
-
   useEffect(() => {
     const getFiltros_Porte = async () => {
       const get_filtros_porte =  await getFiltrosPorte()
@@ -156,9 +151,7 @@ export default () => {
               />
             </div>
             }
-            <div style={{
-              minWidth: verifyWIdth()
-            }}>
+            <div>
               <p>Porte da Empresa:</p>
               <Multiselect
                 className='filtros'
@@ -170,9 +163,7 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
               />
             </div>
-            <div style={{
-              minWidth: verifyWIdth(),
-            }}>
+            <div>
               <p>Setor de Atuação:</p>
               <Multiselect
                 className='filtros'
@@ -184,9 +175,7 @@ export default () => {
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
               />
             </div>
-            <div style={{
-              minWidth: verifyWIdth(),
-            }}>
+            <div>
               <p>Municipio:</p>
               <Multiselect
                 className='filtros'
