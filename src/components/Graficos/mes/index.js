@@ -22,7 +22,7 @@ export default () => {
     }
     var fetchAbertasMes = async () => {
       const response = await getAbertasMes(context.state.ano, context)
-      response.resultTable.rows.forEach(element => {
+      response.data.resultTable.rows.forEach(element => {
         newAbertasMes.quantidade.push(element[1])
       })
       setAbertasMes(newAbertasMes)
