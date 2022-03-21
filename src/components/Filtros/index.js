@@ -22,7 +22,7 @@ export default () => {
   const set_ano = () => {
     let arrAno = []
     for (let index = 2014; index <= content.state.ano; index++) {
-      arrAno.push({
+      arrAno.unshift({
         value: index, label: index
       })     
     }
