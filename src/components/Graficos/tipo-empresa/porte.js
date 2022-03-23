@@ -17,7 +17,7 @@ export default () => {
 
   useEffect(() => {
     const fetchPorte = async () => {
-      const response = await getAbertas('porte');
+      const response = await getAbertas('porte', context);
       setDataPorte(response);
     }
     fetchPorte()
