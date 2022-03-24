@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getAbertas } from '../../../services/pinot'
+import { getDataEmpresasAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -15,7 +15,16 @@ export default () => {
     empresas: [],
     quantidade: []
   });
- 
+  
+  useEffect(() => {
+    const fetchsetor = async () => {
+      var filtros = {classificacao: "setor", ...context.state};
+      const response = await getDataEmpresasAbertas(filtros);
+      setdataSetor(response.values);
+    }
+    fetchsetor()
+  }, [context]);
+  
   useEffect(() => {
     if(dataSetor !== undefined){
       const obj = {classificacao: "Setor", empresas: [], quantidade: []}
@@ -26,18 +35,6 @@ export default () => {
       setSetor(obj);
     }  
   }, [dataSetor]);
-
-  useEffect(() => {
-    const fetchsetor = async () => {
-      switch (context.state.empresasAbertas) {
-        default:
-          const response = await getAbertas('setor', context);
-          setdataSetor(response);
-          break;
-      }
-    }
-    fetchsetor()
-  }, [context]);
 
   let datas = [];
   const colors = [

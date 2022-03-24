@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getAbertasAnual, getDataEmpresasAtivas, getAbertas } from '../../../services/pinot'
+import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
 import './style.css'
 
 export default () => {
@@ -10,28 +10,41 @@ export default () => {
   const [municipios, setMunicipio] = useState([])
 
   useEffect(() => {
-    const get_abertura_ano = async () => {
-      switch (context.state.empresasAbertas) {
-        case false:
-          const quantidade_ativas =  await getDataEmpresasAtivas('municipio_empresa', context)
-          setMunicipio(quantidade_ativas.resultTable.rows)
-          setQuantidade(quantidade_ativas.numDocsScanned)
-          return
+    const getQtdAbertas = async () => {
+      var filtros = {classificacao: "", ...context.state};
+      const response = await getDataEmpresasAbertas(filtros);
+      setQuantidade(response.values[0]);
+    }
 
-        default:
-          const abertura_ano =  await getAbertasAnual('inicio_atividades', context)
-          setQuantidade(abertura_ano)
+    const getQtdAtivas = async () => {
+      var filtros = {classificacao: "", ...context.state};
+      const response = await getDataEmpresasAtivas(filtros);
+      setQuantidade(response.values[0]);
+    }
+
+    const getAbertasMunicipio = async (filtros) => { 
+      const response = await getDataEmpresasAbertas(filtros);
+      setMunicipio(response.values);
+      getQtdAbertas();
+    }
+
+    const getAtivasMunicipio = async (filtros) => { 
+      const response =  await getDataEmpresasAtivas(filtros);
+      setMunicipio(response.values);
+      getQtdAtivas();
+    }
+    
+    const fetchMunicipio = async () => {
+      var filtros = {classificacao: "municipio_empresa", ...context.state};
+      if(context.state.empresasAbertas) {
+        getAbertasMunicipio(filtros);
+      }else{
+        getAtivasMunicipio(filtros);
       }
     }
-
-    const get_qntd_por_municipio = async () => {
-      const response = await getAbertas('municipio_empresa', context)
-      setMunicipio(response)
-    }
-      
-    get_abertura_ano()
-    if(context.state.empresasAbertas == true) get_qntd_por_municipio()
-  }, [context])
+    
+    fetchMunicipio();
+  }, [context]);
 
   return(
     <div className="content-municipio">

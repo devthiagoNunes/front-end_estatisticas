@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
-import { getAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
+import { getDataEmpresasAtivas, getDataEmpresasAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -16,12 +16,26 @@ export default () => {
   });
 
   useEffect(() => {
+    const getAbertasPorte = async (filtros) => { 
+      const response = await getDataEmpresasAbertas(filtros);
+      setDataPorte(response.values);
+    }
+
+    const getAtivasPorte = async (filtros) => { 
+      const response = await getDataEmpresasAtivas(filtros);
+      setDataPorte(response.values)
+    }
+
     const fetchPorte = async () => {
-      const response = await getAbertas('porte', context);
-      setDataPorte(response);
+      var filtros = {classificacao: "porte", ...context.state}
+      if(context.state.empresasAbertas){
+        getAbertasPorte(filtros);
+      }else{
+        getAtivasPorte(filtros);
+      }
     }
     fetchPorte()
-  }, []);
+  }, [context]);
 
   useEffect(() => {
     if(dataPorte !== undefined){
@@ -33,23 +47,6 @@ export default () => {
       setPorte(obj);
     }  
   }, [dataPorte]);
-
-  useEffect(() => {
-    const fetchPorte = async () => {
-      switch (context.state.empresasAbertas) {
-        case false:
-          const empmresas_ativas_porte = await getDataEmpresasAtivas('porte', context);
-          setDataPorte(empmresas_ativas_porte.resultTable.rows)
-          break;
-      
-        default:
-          const response = await getAbertas('porte', context);
-          setDataPorte(response);
-          break;
-      }
-    }
-    fetchPorte()
-  }, [context]);;
 
   let datas = [];
   const colors = [

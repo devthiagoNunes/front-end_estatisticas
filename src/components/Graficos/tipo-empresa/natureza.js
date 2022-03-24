@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAtivas, getAbertas } from '../../../services/pinot'
+import { getDataEmpresasAtivas, getDataEmpresasAbertas } from '../../../services/pinot'
 import './style.css'
 
 export default () => {
@@ -9,23 +9,25 @@ export default () => {
   const [natureza, setNatureza] = useState([])
 
   useEffect(() => {
-    const get_qntd_por_municipio = async () => {
-      const response = await getAbertas('natureza', context)
-      setNatureza(response)
+    const getAbertasNatureza = async (filtros) => {
+      const response = await getDataEmpresasAbertas(filtros);
+      setNatureza(response.values)
+    }
+    
+    const getAtivasNatureza = async (filtros) => {
+      const response =  await getDataEmpresasAtivas(filtros);
+      setNatureza(response.values);
     }
 
-    const get_abertura_ano = async () => {
-      switch (context.state.empresasAbertas) {
-        case false:
-          const quantidade_ativas =  await getDataEmpresasAtivas('natureza', context)
-          setNatureza(quantidade_ativas.resultTable.rows)
-          return
-        case true:
-          get_qntd_por_municipio()
-      }
+    const fetchNatureza = async () => {
+      var filtros = {classificacao: "natureza", ...context.state};
+      if(context.state.empresasAbertas)
+        getAbertasNatureza(filtros);
+      else
+        getAtivasNatureza(filtros);
     }
-
-    get_abertura_ano()
+    
+    fetchNatureza();
   }, [context])
 
   const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']
