@@ -15,8 +15,9 @@ export default () => {
       switch (context.state.empresasAbertas) {
         case false:
           const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
-          const quantidade_ativas =  await getDataEmpresasAtivas('secao_atividade', context)
-          quantidade_ativas.resultTable.rows.forEach(element => {
+          var filtros = {classificacao: "secao_atividade", ...context.state};
+          const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
+          quantidade_ativas.values.forEach(element => {
             obj.empresas.push(element[0])
             obj.quantidade.push(element[1])
           });

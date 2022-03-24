@@ -1,40 +1,39 @@
 import axios from 'axios'
 
-export const getAbertas = async (classificacao, filtros) => {
+const backend_endpoint = 'http://localhost:3001';
+
+export const getDataEmpresasAbertas = async (filtros) => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/getEmpresasAbertas', 
-    data: {
-      classificacao, filtros
-    }
+    url: backend_endpoint + '/getEmpresasAbertas', 
+    data: filtros
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data;
   })
   .catch(err => err)
 }
 
-export const getDataEmpresasAtivas = async (classificacao, filtros) => {
+export const getDataEmpresasAtivas = async (filtros) => {
   return await axios({
     method: 'POST', 
-    url: 'http://localhost:3000/getEmpresasAtivas', 
-    data: {
-      classificacao, filtros
-    }
+    url: backend_endpoint + '/getEmpresasAtivas', 
+    data: filtros
   })
   .then(res => {
-    return res.data
+    return res.data;
   })
   .catch(err => err)
 }
 
+//Obtencao dos dados dos Filtros
 export const getFiltrosPorte = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getPorte', 
+    url: backend_endpoint + '/getPorte', 
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data.values;
   })
   .catch(err => err)
 }
@@ -42,10 +41,10 @@ export const getFiltrosPorte = async () => {
 export const getFiltrosSetor = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getSetor', 
+    url: backend_endpoint + '/getSetor', 
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data.values;
   })
   .catch(err => err)
 }
@@ -53,10 +52,10 @@ export const getFiltrosSetor = async () => {
 export const getFiltrosNatureza = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getNatureza', 
+    url: backend_endpoint + '/getNatureza', 
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data.values;
   })
   .catch(err => err)
 }
@@ -64,10 +63,10 @@ export const getFiltrosNatureza = async () => {
 export const getFiltrosMunicipio = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getMunicipios'
+    url: backend_endpoint + '/getMunicipios'
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data.values;
   })
   .catch(err => err)
 }
@@ -75,10 +74,10 @@ export const getFiltrosMunicipio = async () => {
 export const getFiltrosSecaoAtividade = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getSecaoAtividade'
+    url: backend_endpoint + '/getSecaoAtividade'
   })
   .then(res => {
-    return res.data.resultTable.rows
+    return res.data.values;
   })
   .catch(err => err)
 }
@@ -86,38 +85,10 @@ export const getFiltrosSecaoAtividade = async () => {
 export const getFiltrosDescricaoAtividade = async () => {
   return await axios({
     method: 'GET', 
-    url: 'http://localhost:3000/getDescricaoAtividade'
+    url: backend_endpoint + '/getDescricaoAtividade'
   })
   .then(res => {
-    return res.data.resultTable.rows
-  })
-  .catch(err => err)
-}
-
-export const getAbertasMes = async (ano, filtros) => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://localhost:3000/getAbertasMensal', 
-    data: {
-      ano, filtros
-    }
-  })
-  .then(res => {
-    return res
-  })
-  .catch(err => err)
-}
-
-export const getAbertasAnual = async (classificacao, filtros) => {
-  return await axios({
-    method: 'POST', 
-    url: 'http://localhost:3000/getAbertasAnual', 
-    data: {
-      classificacao, filtros
-    }
-  })
-  .then(res => {
-    return res.data.numDocsScanned
+    return res.data.values;
   })
   .catch(err => err)
 }

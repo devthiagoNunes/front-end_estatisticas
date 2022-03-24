@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 import echarts from "echarts";
-import { getAbertasMes } from '../../../services/pinot'
+import { getDataEmpresasAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
@@ -21,8 +21,9 @@ export default () => {
       quantidade: [],
     }
     var fetchAbertasMes = async () => {
-      const response = await getAbertasMes(context.state.ano, context)
-      response.data.resultTable.rows.forEach(element => {
+      var filtros = {classificacao: "abertas_mes", ...context.state};
+      const response = await getDataEmpresasAbertas(filtros);
+      response.values.forEach(element => {
         newAbertasMes.quantidade.push(element[1])
       })
       setAbertasMes(newAbertasMes)
