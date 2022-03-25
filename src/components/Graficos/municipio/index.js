@@ -13,25 +13,23 @@ export default () => {
     const getQtdAbertas = async () => {
       var filtros = {classificacao: "", ...context.state};
       const response = await getDataEmpresasAbertas(filtros);
-      setQuantidade(response.values[0]);
+      if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
     }
 
     const getQtdAtivas = async () => {
       var filtros = {classificacao: "", ...context.state};
       const response = await getDataEmpresasAtivas(filtros);
-      setQuantidade(response.values[0]);
+      if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
     }
 
     const getAbertasMunicipio = async (filtros) => { 
       const response = await getDataEmpresasAbertas(filtros);
       setMunicipio(response.values);
-      getQtdAbertas();
     }
 
     const getAtivasMunicipio = async (filtros) => { 
       const response =  await getDataEmpresasAtivas(filtros);
       setMunicipio(response.values);
-      getQtdAtivas();
     }
     
     const fetchMunicipio = async () => {
@@ -42,7 +40,8 @@ export default () => {
         getAtivasMunicipio(filtros);
       }
     }
-    
+    getQtdAbertas()
+    getQtdAtivas()
     fetchMunicipio();
   }, [context]);
 
