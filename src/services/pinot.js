@@ -5,7 +5,7 @@ const backend_endpoint = 'http://localhost:3001';
 export const getDataEmpresasAbertas = async (filtros) => {
   return await axios({
     method: 'POST', 
-    url: backend_endpoint + '/getEmpresasAbertas', 
+    url: backend_endpoint + '/empresasAbertas', 
     data: filtros
   })
   .then(res => {
@@ -17,7 +17,7 @@ export const getDataEmpresasAbertas = async (filtros) => {
 export const getDataEmpresasAtivas = async (filtros) => {
   return await axios({
     method: 'POST', 
-    url: backend_endpoint + '/getEmpresasAtivas', 
+    url: backend_endpoint + '/empresasAtivas', 
     data: filtros
   })
   .then(res => {
@@ -55,6 +55,7 @@ export const getFiltrosNatureza = async () => {
     url: backend_endpoint + '/getNatureza', 
   })
   .then(res => {
+    console.log(res)
     return res.data.values;
   })
   .catch(err => err)
