@@ -53,7 +53,7 @@
   display: none;
 }
 .filtros div:nth-child(1) {
-  max-height: 4.8vh;
+  max-height: 3.4vh;
   overflow-x: hidden;
   overflow-y: scroll;
 }
