@@ -30,7 +30,7 @@ export const getDataEmpresasAtivas = async (filtros) => {
 export const getFiltrosPorte = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getPorte', 
+    url: backend_endpoint + '/porte', 
   })
   .then(res => {
     return res.data.values;
@@ -41,7 +41,7 @@ export const getFiltrosPorte = async () => {
 export const getFiltrosSetor = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getSetor', 
+    url: backend_endpoint + '/setor', 
   })
   .then(res => {
     return res.data.values;
@@ -52,7 +52,7 @@ export const getFiltrosSetor = async () => {
 export const getFiltrosNatureza = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getNatureza', 
+    url: backend_endpoint + '/natureza', 
   })
   .then(res => {
     console.log(res)
@@ -64,7 +64,7 @@ export const getFiltrosNatureza = async () => {
 export const getFiltrosMunicipio = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getMunicipios'
+    url: backend_endpoint + '/municipios'
   })
   .then(res => {
     return res.data.values;
@@ -75,7 +75,7 @@ export const getFiltrosMunicipio = async () => {
 export const getFiltrosSecaoAtividade = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getSecaoAtividade'
+    url: backend_endpoint + '/secaoAtividade'
   })
   .then(res => {
     return res.data.values;
@@ -86,7 +86,7 @@ export const getFiltrosSecaoAtividade = async () => {
 export const getFiltrosDescricaoAtividade = async () => {
   return await axios({
     method: 'GET', 
-    url: backend_endpoint + '/getDescricaoAtividade'
+    url: backend_endpoint + '/descricaoAtividade'
   })
   .then(res => {
     return res.data.values;
