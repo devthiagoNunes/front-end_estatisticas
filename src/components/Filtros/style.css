@@ -58,6 +58,15 @@
   overflow-y: scroll;
 }
 
+.filtros div:nth-child(1)::-webkit-scrollbar {
+  display: none;
+}
+
+.filtros span {
+  font-size: 1rem;
+  max-height: 2.5vh;
+}
+
 .filtros,
 .select-ano {
   font-size: 0.8rem;
