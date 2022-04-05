@@ -55,7 +55,6 @@ export const getFiltrosNatureza = async () => {
     url: backend_endpoint + '/natureza', 
   })
   .then(res => {
-    console.log(res)
     return res.data.values;
   })
   .catch(err => err)
