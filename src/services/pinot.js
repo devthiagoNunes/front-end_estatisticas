@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backend_endpoint = 'http://localhost:3001';
+const backend_endpoint = 'http://179.127.13.245:3333';
 
 export const getDataEmpresasAbertas = async (filtros) => {
   return await axios({
