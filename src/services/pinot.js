@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backend_endpoint = 'http://estatisticas.jucema.ma.gov.br';
+const backend_endpoint = 'http://localhost:3333';
 
 export const getDataEmpresasAbertas = async (filtros) => {
   return await axios({
