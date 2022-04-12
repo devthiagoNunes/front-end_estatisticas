@@ -50,7 +50,7 @@ export default () => {
                 <tr>
                   <th style={{
                     textAlign: 'center'
-                  }}>Natureza da Empersa</th>
+                  }}>Natureza da Empresa</th>
                   <th style={{
                     textAlign: 'center'
                   }}>Quantidade</th>
