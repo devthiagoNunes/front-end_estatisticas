@@ -3,6 +3,7 @@ services:
   front-painel:
     image: jucema/estatisticas_frontend
     container_name: estatisticas_frontend
+    restart: unless-stopped
     build:
       network: host
       context: .
@@ -12,6 +13,7 @@ services:
   backend-painel:
     image: jucema/estatisticas_backend
     container_name: estatisticas_backend
+    restart: unless-stopped
     build:
       network: host
       context: ../backend_estatisticas
