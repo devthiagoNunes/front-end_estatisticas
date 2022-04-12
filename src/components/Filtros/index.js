@@ -109,6 +109,7 @@ export default () => {
     getFiltros_SecaoAtividade()
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
+    //eslint-disable-next-line
   }, [])
 
   const context = useContext(ContextGlobal)
