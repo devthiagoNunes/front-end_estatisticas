@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
-import { CreateTable } from '../../tabelas'
+import { CreateTable } from '../../tabelas/municipio'
 import './style.css'
 
 export default () => {
 
   const context = useContext(ContextGlobal)
   const [quantidade, setQuantidade] = useState(null)
+  const [municipios, setMunicipio] = useState([])
 
   useEffect(() => {
     const getQtdAbertas = async () => {
@@ -22,9 +23,29 @@ export default () => {
       if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
     }
 
+    const getAbertasMunicipio = async (filtros) => { 
+      const response = await getDataEmpresasAbertas(filtros);
+      setMunicipio(response.values);
+    }
+
+    const getAtivasMunicipio = async (filtros) => { 
+      const response =  await getDataEmpresasAtivas(filtros);
+      setMunicipio(response.values);
+    }
+    
+    const fetchMunicipio = async () => {
+      var filtros = {classificacao: "municipio_empresa", ...context.state};
+      if(context.state.empresasAbertas) {
+        getAbertasMunicipio(filtros);
+      }else{
+        getAtivasMunicipio(filtros);
+      }
+    }
+
     getQtdAbertas()
     getQtdAtivas()
-  }, [context]);
+    fetchMunicipio()
+  }, [context.state]);
 
   return(
     <div className="content-municipio">
@@ -33,32 +54,11 @@ export default () => {
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div> 
       }
-      {/* <div className="content-dataMunicipio">
-        <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        <div className="content-table">
-          <div className="tabelas">
-            <table>
-              {municipios.map((municipio, index) => (
-                <tbody key={index}>
-                  <tr>{municipio[0]}</tr>
-                </tbody>
-              ))}
-            </table>
-            <table>
-            {municipios.map((municipio, index) => (
-                <tbody key={index}>
-                  <tr>{municipio[1].toLocaleString('pt-BR')}</tr>
-                </tbody>
-              ))}
-            </table>
-          </div>
-        </div>
-      </div> */}
       <div className="content-dataMunicipio">
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        <div className="content-table">
-          <CreateTable quantidade_linhas={35}/>
-        </div>
+        {municipios.length && <div className="content-table">
+          <CreateTable arr_dados={municipios} quantidade_linhas={35}/>
+        </div>}
       </div>
     </div>
   )
