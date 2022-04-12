@@ -91,6 +91,7 @@
     "react-router-hash-link": "^1.2.2",
     "react-select": "^5.2.2",
     "react-sparklines": "^1.7.0",
+    "react-table": "^7.7.0",
     "react-toastify": "^7.0.3",
     "react-transition-group": "^4.4.1",
     "reactstrap": "8.5.1",
