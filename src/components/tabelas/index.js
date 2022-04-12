@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useTable, usePagination } from 'react-table'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
+import './style.css'
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, quantidade_linhas }) => {
   const {
     getTableProps, getTableBodyProps, headerGroups, page, state, prepareRow, nextPage, previousPage, canPreviousPage, canNextPage, setPageSize, pageOptions
   } = useTable({
@@ -12,8 +13,8 @@ const Table = ({ columns, data }) => {
   }, usePagination)
 
   useEffect(() => {
-    setPageSize(35)
-  },[setPageSize])
+    setPageSize(quantidade_linhas)
+  },[quantidade_linhas, setPageSize])
 
   const { pageIndex } = state 
 
@@ -29,7 +30,7 @@ const Table = ({ columns, data }) => {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {page.map((row, i) => {
+        {page.map((row) => {
           prepareRow(row)
           return (
             <tr {...row.getRowProps()}>
@@ -40,16 +41,16 @@ const Table = ({ columns, data }) => {
           )
         })}
       </tbody>
-      <div>
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>voltar</button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>passar</button>
-        <span>{pageIndex + 1}/{pageOptions.length}</span>
+      <div className='buttons'>
+        <span>Página {pageIndex + 1} de {pageOptions.length}</span>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>anterior</button>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>próxima</button>
       </div>
     </table>
   )
 }
 
-export const CreateTable = ({data}) => {
+export const CreateTable = ({quantidade_linhas}) => {
   const context = useContext(ContextGlobal)
   const [municipios, setMunicipio] = useState([])
 
@@ -82,36 +83,29 @@ export const CreateTable = ({data}) => {
       municipios.forEach(arr_municipio => {
         parse_datas.push({
           municipio: arr_municipio[0],
-          quantidade: arr_municipio[1]
+          quantidade: arr_municipio[1].toLocaleString('pt-br')
         })
       })
     }
     return parse_datas
   }
 
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
-        Header: 'Name',
-        columns: [
-          {
-            Header: 'Município',
-            accessor: 'municipio',
-          },
-          {
-            Header: 'Quantidade',
-            accessor: 'quantidade',
-          },
-        ],
+        Header: 'Município',
+        accessor: 'municipio',
       },
-    ],
-    []
-  )
+      {
+        Header: 'Quantidade',
+        accessor: 'quantidade',
+      },
+    ], [])
 
   //eslint-disable-next-line
   const data_memo = useMemo(() => generate_data_table(), [municipios])
 
   return (
-    <Table columns={columns} data={data_memo} />
+    <Table columns={columns} data={data_memo} quantidade_linhas={quantidade_linhas} />
   )
 }
