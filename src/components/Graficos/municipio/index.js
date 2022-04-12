@@ -8,7 +8,6 @@ export default () => {
 
   const context = useContext(ContextGlobal)
   const [quantidade, setQuantidade] = useState(null)
-  const [municipios, setMunicipio] = useState([])
 
   useEffect(() => {
     const getQtdAbertas = async () => {
@@ -23,28 +22,8 @@ export default () => {
       if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
     }
 
-    const getAbertasMunicipio = async (filtros) => { 
-      const response = await getDataEmpresasAbertas(filtros);
-      setMunicipio(response.values);
-    }
-
-    const getAtivasMunicipio = async (filtros) => { 
-      const response =  await getDataEmpresasAtivas(filtros);
-      setMunicipio(response.values);
-    }
-    
-    const fetchMunicipio = async () => {
-      var filtros = {classificacao: "municipio_empresa", ...context.state};
-      if(context.state.empresasAbertas) {
-        getAbertasMunicipio(filtros);
-      }else{
-        getAtivasMunicipio(filtros);
-      }
-    }
-
     getQtdAbertas()
     getQtdAtivas()
-    fetchMunicipio()
   }, [context.state]);
 
   return(
@@ -56,9 +35,9 @@ export default () => {
       }
       <div className="content-dataMunicipio">
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        {municipios.length && <div className="content-table">
-          <CreateTable arr_dados={municipios} quantidade_linhas={35}/>
-        </div>}
+        <div className="content-table">
+          <CreateTable quantidade_linhas={35}/>
+        </div>
       </div>
     </div>
   )

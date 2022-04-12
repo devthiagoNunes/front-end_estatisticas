@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useTable, usePagination } from 'react-table'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
+import { getDataEmpresasAtivas } from '../../../services/pinot'
 import './style.css'
 
 const Table = ({ columns, data, quantidade_linhas }) => {
@@ -50,38 +50,35 @@ const Table = ({ columns, data, quantidade_linhas }) => {
   )
 }
 
-export const CreateTable = ({quantidade_linhas}) => {
+export const CreateTableAtividade = ({quantidade_linhas}) => {
   const context = useContext(ContextGlobal)
-  const [municipios, setMunicipio] = useState([])
+  const [atividade, setAtividade] = useState({
+    classificacao: "Atividade", empresas: [], quantidade: []
+  })
 
   useEffect(() => {
-
-    const getAbertasMunicipio = async (filtros) => { 
-      const response = await getDataEmpresasAbertas(filtros);
-      setMunicipio(response.values);
-    }
-
-    const getAtivasMunicipio = async (filtros) => { 
-      const response =  await getDataEmpresasAtivas(filtros);
-      setMunicipio(response.values);
-    }
-    
-    const fetchMunicipio = async () => {
-      var filtros = {classificacao: "municipio_empresa", ...context.state};
-      if(context.state.empresasAbertas) {
-        getAbertasMunicipio(filtros);
-      }else{
-        getAtivasMunicipio(filtros);
+    const get_ativas_secao_atividade = async () => {
+      //eslint-disable-next-line
+      switch (context.state.empresasAbertas) {
+        case false:
+          var filtros = {classificacao: "secao_atividade", ...context.state};
+          const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
+          setAtividade(quantidade_ativas.values);
+          return
       }
     }
-    fetchMunicipio()
-  }, [context.state]);
+
+    get_ativas_secao_atividade()
+  }, [context])
+
+  console.log(atividade)
+
 
   const generate_data_table = () => {
     const parse_datas = []
 
-    if(municipios.length) {
-      municipios.forEach(arr_atividade => {
+    if(atividade.length) {
+      atividade.forEach(arr_atividade => {
         parse_datas.push({
           atividade: arr_atividade[0],
           quantidade: arr_atividade[1].toLocaleString('pt-br')
@@ -94,7 +91,7 @@ export const CreateTable = ({quantidade_linhas}) => {
   const columns = useMemo(
     () => [
       {
-        Header: 'Municipio',
+        Header: 'Atividade',
         accessor: 'atividade',
       },
       {
@@ -104,7 +101,7 @@ export const CreateTable = ({quantidade_linhas}) => {
     ], [])
 
   //eslint-disable-next-line
-  const data_memo = useMemo(() => generate_data_table(), [municipios])
+  const data_memo = useMemo(() => generate_data_table(), [atividade])
 
   return (
     <Table columns={columns} data={data_memo} quantidade_linhas={quantidade_linhas} />
