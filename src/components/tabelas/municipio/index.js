@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useTable, usePagination } from 'react-table'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
-import './style.css'
 
 const Table = ({ columns, data, quantidade_linhas }) => {
   const {
@@ -42,7 +41,7 @@ const Table = ({ columns, data, quantidade_linhas }) => {
         })}
       </tbody>
       <div className='buttons'>
-        <span>Página {pageIndex + 1} de {pageOptions.length}</span>
+        <span>Página {pageIndex + 1}/{pageOptions.length}</span>
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>anterior</button>
         <button onClick={() => nextPage()} disabled={!canNextPage}>próxima</button>
       </div>

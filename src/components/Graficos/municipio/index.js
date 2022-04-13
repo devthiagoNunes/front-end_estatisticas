@@ -33,11 +33,9 @@ export default () => {
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div> 
       }
-      <div className="content-dataMunicipio">
+      <div className='municipios'>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        <div className="content-table">
-          <CreateTable quantidade_linhas={35}/>
-        </div>
+        <CreateTable quantidade_linhas={37}/>
       </div>
     </div>
   )
