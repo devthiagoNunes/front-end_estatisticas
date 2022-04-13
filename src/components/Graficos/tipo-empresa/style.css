@@ -199,6 +199,20 @@
   .content-dataTables p:first-child {
     font-size: 1.2rem;
   }
+
+  .content-dataTables table thead,
+  .content-dataTables table tbody {
+    font-size: .9rem;
+  }
+
+  .content-dataTables .buttons span {
+    font-size: .95rem;
+  }
+
+  .content-dataTables .buttons button {
+    width: 6vw;
+    font-size: .9rem;
+  }
 }
 @media (max-width: 768px) {
   .grafico p {

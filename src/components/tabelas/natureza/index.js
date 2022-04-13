@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useTable, usePagination } from 'react-table'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
-import './style.css'
 
 const Table = ({ columns, data, quantidade_linhas }) => {
   const {
