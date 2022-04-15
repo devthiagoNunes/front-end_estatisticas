@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
-import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
 
 const Table = ({ columns, data, quantidade_linhas }) => {
   const {
@@ -49,40 +47,21 @@ const Table = ({ columns, data, quantidade_linhas }) => {
   )
 }
 
-export const CreateTable = ({quantidade_linhas}) => {
-  const context = useContext(ContextGlobal)
-  const [municipios, setMunicipio] = useState([])
-
-  useEffect(() => {
-
-    const getAbertasMunicipio = async (filtros) => { 
-      const response = await getDataEmpresasAbertas(filtros);
-      setMunicipio(response.values);
-    }
-
-    const getAtivasMunicipio = async (filtros) => { 
-      const response =  await getDataEmpresasAtivas(filtros);
-      setMunicipio(response.values);
-    }
-    
-    const fetchMunicipio = async () => {
-      var filtros = {classificacao: "municipio_empresa", ...context.state};
-      if(context.state.empresasAbertas) {
-        getAbertasMunicipio(filtros);
-      }else{
-        getAtivasMunicipio(filtros);
-      }
-    }
-    fetchMunicipio()
-  }, [context.state]);
+/**
+ * Parametros de CreateTable:
+ * - quantidade_linhas -> é a quantidade de linhas que sará criada e exibida na tabela
+ * - table_name -> nome que aparecerá acima das linhas a esquerda da tabela
+ * - arr_dados -> deve ser um array onde os dados são vários array com pelo menos duas posições, sendo a primeira uma string e a segunda um numero
+ *  */
+export const CreateTable = ({quantidade_linhas, table_name, arr_dados}) => {
 
   const generate_data_table = () => {
     const parse_datas = []
 
-    if(municipios.length) {
-      municipios.forEach(arr_atividade => {
+    if(arr_dados.length) {
+      arr_dados.forEach(arr_atividade => {
         parse_datas.push({
-          atividade: arr_atividade[0],
+          tableData: arr_atividade[0],
           quantidade: arr_atividade[1].toLocaleString('pt-br')
         })
       })
@@ -93,17 +72,17 @@ export const CreateTable = ({quantidade_linhas}) => {
   const columns = useMemo(
     () => [
       {
-        Header: 'Municipio',
-        accessor: 'atividade',
+        Header: table_name,
+        accessor: 'tableData',
       },
       {
         Header: 'Quantidade',
         accessor: 'quantidade',
       },
-    ], [])
+    ], [table_name])
 
   //eslint-disable-next-line
-  const data_memo = useMemo(() => generate_data_table(), [municipios])
+  const data_memo = useMemo(() => generate_data_table(), [arr_dados])
 
   return (
     <Table columns={columns} data={data_memo} quantidade_linhas={quantidade_linhas} />
