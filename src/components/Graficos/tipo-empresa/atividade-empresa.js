@@ -35,7 +35,7 @@ export default () => {
         paddingBottom: '3.5rem'
       }}>
         <p>{`Empresas Ativas Por Atividade `}</p>
-        <CreateTable arr_dados={atividade} table_name='Atividade' quantidade_linhas={10} />
+        <CreateTable arr_dados={atividade} table_name='Atividade' />
       </div>
     </div>
   )

@@ -38,7 +38,7 @@ export default () => {
     }}>
       <div className="content-dataTables" >
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
-        <CreateTable table_name='Natureza' arr_dados={natureza} quantidade_linhas={10} />
+        <CreateTable table_name='Natureza' arr_dados={natureza} />
       </div>
     </div>
   )

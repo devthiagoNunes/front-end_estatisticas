@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext } from "react"
 import {Multiselect} from 'multiselect-react-dropdown'
 import SelectOptions from 'react-select'
 
-import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade} from '../../services/pinot'
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, filtersBuild} from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import * as action from '../../contexts/GlobalContext/actions'
 import './style.css'
 
 export default () => {
 
-  const content = useContext(ContextGlobal)
+  const context = useContext(ContextGlobal)
 
   const [filtrosPorte, setFiltrosPorte] = useState([])
   const [filtrosSetor, setFiltrosSetor] = useState([])
@@ -21,7 +21,7 @@ export default () => {
 
   const set_ano = () => {
     let arrAno = []
-    for (let index = 2014; index <= content.state.ano; index++) {
+    for (let index = 2014; index <= context.state.ano; index++) {
       arrAno.unshift({
         value: index, label: index
       })     
@@ -31,6 +31,7 @@ export default () => {
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
+      filtersBuild(context)
       const get_filtros_porte =  await getFiltrosPorte()
       let options_filters = []
       get_filtros_porte.map((arr, index) => (
@@ -110,9 +111,7 @@ export default () => {
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
     //eslint-disable-next-line
-  }, [])
-
-  const context = useContext(ContextGlobal)
+  }, [context])
 
   return(
       <div className="content" id="content-filtros">

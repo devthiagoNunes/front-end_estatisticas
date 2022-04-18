@@ -1,19 +1,13 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
 
-const Table = ({ columns, data, quantidade_linhas }) => {
+const Table = ({ columns, data }) => {
   const {
-    getTableProps, getTableBodyProps, headerGroups, page, state, prepareRow, nextPage, previousPage, canPreviousPage, canNextPage, setPageSize, pageOptions
+    getTableProps, getTableBodyProps, headerGroups, rows, prepareRow
   } = useTable({
     columns,
     data,
   }, usePagination)
-
-  useEffect(() => {
-    setPageSize(quantidade_linhas)
-  },[quantidade_linhas, setPageSize])
-
-  const { pageIndex } = state 
 
   return (
     <table {...getTableProps()}>
@@ -27,7 +21,7 @@ const Table = ({ columns, data, quantidade_linhas }) => {
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
-        {page.map((row) => {
+        {rows.map((row) => {
           prepareRow(row)
           return (
             <tr {...row.getRowProps()}>
@@ -38,11 +32,6 @@ const Table = ({ columns, data, quantidade_linhas }) => {
           )
         })}
       </tbody>
-      <div className='buttons'>
-        <span>Página {pageIndex + 1}/{pageOptions.length}</span>
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>anterior</button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>próxima</button>
-      </div>
     </table>
   )
 }
@@ -53,7 +42,7 @@ const Table = ({ columns, data, quantidade_linhas }) => {
  * - table_name -> nome que aparecerá acima das linhas a esquerda da tabela
  * - arr_dados -> deve ser um array onde os dados são vários array com pelo menos duas posições, sendo a primeira uma string e a segunda um numero
  *  */
-export const CreateTable = ({quantidade_linhas, table_name, arr_dados}) => {
+export const CreateTable = ({table_name, arr_dados}) => {
 
   const generate_data_table = () => {
     const parse_datas = []
@@ -85,6 +74,6 @@ export const CreateTable = ({quantidade_linhas, table_name, arr_dados}) => {
   const data_memo = useMemo(() => generate_data_table(), [arr_dados])
 
   return (
-    <Table columns={columns} data={data_memo} quantidade_linhas={quantidade_linhas} />
+    <Table columns={columns} data={data_memo} />
   )
 }

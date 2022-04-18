@@ -56,7 +56,7 @@ export default () => {
       }
       <div className='municipios'>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        <CreateTable arr_dados={municipios} table_name='Município' quantidade_linhas={37}/>
+        <CreateTable arr_dados={municipios} table_name='Município' />
       </div>
     </div>
   )
