@@ -97,6 +97,12 @@
   height: 100%;
 }
 
+.content-dataTables table thead {
+  background-color: rgb(0, 125, 212, .7);
+  color: white;
+  letter-spacing: .1rem;
+}
+
 .content-dataTables table thead,
 .content-dataTables table tbody tr td:last-child {
   text-align: center;
@@ -104,7 +110,6 @@
 
 .content-dataTables table tbody tr td:first-child {
   padding-left: .5rem;
-  border-right: 1px solid black;
 }
 
 .content-dataTables table thead,
