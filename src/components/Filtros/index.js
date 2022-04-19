@@ -32,6 +32,8 @@ export default () => {
   useEffect(() => {
     const getFiltros_Porte = async () => {
       const get_filtros_porte =  await getFiltrosPorte()
+      getFiltersBuild(context )
+
       let options_filters = []
       get_filtros_porte.map((arr, index) => (
         options_filters.push({

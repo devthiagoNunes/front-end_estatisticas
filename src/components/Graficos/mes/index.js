@@ -515,6 +515,7 @@ export default () => {
       className="grafico-mes"
       style={{
         width: '100%',
+        maxWidth: '96%',
         height: '100%',
         maxHeight: '350px',
         marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,

@@ -117,6 +117,10 @@
   border-bottom: 1px solid black;
 }
 
+.content-dataTables table tbody tr:last-child {
+  border-bottom: none;
+}
+
 .content-table .tabelas {
   position: relative;
   display: flex;
