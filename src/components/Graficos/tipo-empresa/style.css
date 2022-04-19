@@ -97,6 +97,12 @@
   height: 100%;
 }
 
+.content-dataTables table thead {
+  background-color: rgb(0, 125, 212, .7);
+  color: white;
+  letter-spacing: .1rem;
+}
+
 .content-dataTables table thead,
 .content-dataTables table tbody tr td:last-child {
   text-align: center;
@@ -104,7 +110,6 @@
 
 .content-dataTables table tbody tr td:first-child {
   padding-left: .5rem;
-  border-right: 1px solid black;
 }
 
 .content-dataTables table thead,
@@ -129,12 +134,36 @@
 
 .buttons button {
   color: white;
-  width: 4vw;
+  cursor: pointer;
+  width: 5vw;
   border: none;
   border-radius: 5px;
   overflow: hidden;
   background: #117CC1;
   margin: 0 .5rem;
+  position: relative;
+  outline: none;
+  z-index: 1;
+}
+
+.buttons button::before {
+  content: '';
+  position: absolute;
+
+  width: 0%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  transition: 250ms all ease-in-out;
+
+  background: #0c99e5;
+  z-index: -1;
+}
+
+.buttons button:hover:before {
+  width: 100%;
 }
 
 .content-table .tabelas {
