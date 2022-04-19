@@ -52,7 +52,7 @@ export default ({tipo}) => {
                   {context.state.empresasAbertas == false && <AtividadeEmpresa />}
                   <Natureza />
                 </div>
-                <Municipio /> 
+              <Municipio />
               </div>
               {context.state.empresasAbertas !== false && <Mes />}
             </div>
