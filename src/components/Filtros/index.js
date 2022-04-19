@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react"
 import {Multiselect} from 'multiselect-react-dropdown'
 import SelectOptions from 'react-select'
 
-import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, filtersBuild} from '../../services/pinot'
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, getFiltersBuild} from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import * as action from '../../contexts/GlobalContext/actions'
 import './style.css'
@@ -31,7 +31,6 @@ export default () => {
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
-      filtersBuild(context)
       const get_filtros_porte =  await getFiltrosPorte()
       let options_filters = []
       get_filtros_porte.map((arr, index) => (

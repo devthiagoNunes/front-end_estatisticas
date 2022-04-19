@@ -279,7 +279,8 @@
   .grafico {
     width: 65vh;
     max-width: 75vw;
-    height: 40vh;
+    height: 38vh;
+    max-height: 38vh;
     margin: auto;
     margin-bottom: 1rem;
   }

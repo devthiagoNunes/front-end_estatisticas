@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backend_endpoint = 'http://localhost:3333';
+const backend_endpoint = 'http://localhost:3030';
 
 export const getDataEmpresasAbertas = async (filtros) => {
   return await axios({
@@ -27,6 +27,20 @@ export const getDataEmpresasAtivas = async (filtros) => {
 }
 
 //Obtencao dos dados dos Filtros
+export const getFiltersBuild = async (context) => {
+  return await axios({
+    method: 'POST',
+    data: {
+      state: context.state
+    },
+    url: backend_endpoint + '/filtersBuild', 
+  })
+  .then(res => {
+    return res.data.values;
+  })
+  .catch(err => err)
+}
+
 export const getFiltrosPorte = async () => {
   return await axios({
     method: 'GET', 

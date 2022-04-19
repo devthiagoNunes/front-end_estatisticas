@@ -165,7 +165,7 @@ export default () => {
   const config2 = {
     grid: {
       containLabel: true,
-      width: "95%", 
+      width: "94%", 
       height:  abertasMes.quantidade.length > 12 ? "80%" : "90%",
       top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
       left: "2%",
@@ -178,9 +178,9 @@ export default () => {
     },
     toolbox: {
       show: true,
-      orient: "horizontal",
+      orient: "vertical",
       left: "right",
-      itemSize: 14,
+      itemSize: 12,
       showTitle: true,
       feature: {
         type: "png",
@@ -236,7 +236,7 @@ export default () => {
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: 9,
+        fontSize: 10,
         fontWeight: "bold",
       },
       min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
@@ -527,7 +527,7 @@ export default () => {
           style={{
             height:  "30vh",
             maxHeight: "30vh",
-            width: window.innerWidth == 320 ? '180vw' : '120vw',
+            width: window.innerWidth == 425 ? '120vw' : '100%',
           }} 
           opts={{ renderer: "canvas" }}
         />
@@ -539,8 +539,7 @@ export default () => {
           style={{
             height: "40vh",
             maxHeight: "40vh",
-            width: "80vw",
-            maxWidth: "80vh",
+            width: "100%",
           }}
           opts={{ renderer: "canvas" }}
         />
