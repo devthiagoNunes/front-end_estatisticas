@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAtivas, getDataEmpresasAbertas } from '../../../services/pinot'
+import { CreateTable } from '../../tabelas/model_table';
+import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot';
 import './style.css'
 
 export default () => {
@@ -30,8 +31,6 @@ export default () => {
     fetchNatureza();
   }, [context])
 
-  const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']
-
   return(
     <div className="content-tables" style={{
       marginTop: '.5rem',
@@ -39,40 +38,7 @@ export default () => {
     }}>
       <div className="content-dataTables" >
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
-        <div className="content-table-empresas">
-          <div className="tables-empresas" style={{
-            overflowX: 'hidden',
-            overflowY: context.state.empresasAbertas ? 'hidden' : 'scroll',
-            paddingBottom: '4rem'
-          }}>
-            <table>
-              <thead>
-                <tr>
-                  <th style={{
-                    textAlign: 'center'
-                  }}>Natureza da Empresa</th>
-                  <th style={{
-                    textAlign: 'center'
-                  }}>Quantidade</th>
-                </tr>
-              </thead>
-              {natureza.map((natureza, index) => (
-                <tbody>
-                  <tr key={index}>
-                    <td style={{
-                      textAlign: "left",
-                      borderRight: '1px solid black',
-                    }}>{natureza[0]}</td>
-                    <td style={{
-                      textAlign: 'center',
-                      background: colors[index],
-                    }}>{natureza[1].toLocaleString('pt-BR')}</td>
-                  </tr> 
-                </tbody>
-              ))}
-              </table>
-          </div>
-        </div>
+        <CreateTable table_name='Natureza' arr_dados={natureza} />
       </div>
     </div>
   )

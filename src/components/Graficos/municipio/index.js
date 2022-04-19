@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ContextGlobal } from '../../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot'
+import { CreateTable } from '../../tabelas/model_table';
 import './style.css'
 
 export default () => {
@@ -40,10 +41,11 @@ export default () => {
         getAtivasMunicipio(filtros);
       }
     }
+
     getQtdAbertas()
     getQtdAtivas()
-    fetchMunicipio();
-  }, [context]);
+    fetchMunicipio()
+  }, [context.state]);
 
   return(
     <div className="content-municipio">
@@ -52,26 +54,9 @@ export default () => {
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div> 
       }
-      <div className="content-dataMunicipio">
+      <div className='municipios'>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
-        <div className="content-table">
-          <div className="tabelas">
-            <table>
-              {municipios.map((municipio, index) => (
-                <tbody key={index}>
-                  <tr>{municipio[0]}</tr>
-                </tbody>
-              ))}
-            </table>
-            <table>
-            {municipios.map((municipio, index) => (
-                <tbody key={index}>
-                  <tr>{municipio[1].toLocaleString('pt-BR')}</tr>
-                </tbody>
-              ))}
-            </table>
-          </div>
-        </div>
+        <CreateTable arr_dados={municipios} table_name='Município' />
       </div>
     </div>
   )

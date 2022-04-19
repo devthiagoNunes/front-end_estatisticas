@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ContextGlobal } from '../../../contexts/GlobalContext/context'
-import { getDataEmpresasAtivas } from '../../../services/pinot'
+import { CreateTable } from '../../tabelas/model_table';
+import { ContextGlobal } from '../../../contexts/GlobalContext/context';
+import { getDataEmpresasAtivas } from '../../../services/pinot';
 import './style.css'
 
 export default () => {
@@ -12,24 +13,18 @@ export default () => {
 
   useEffect(() => {
     const get_ativas_secao_atividade = async () => {
+      //eslint-disable-next-line
       switch (context.state.empresasAbertas) {
         case false:
-          const obj = {classificacao: "Atividade", empresas: [], quantidade: []}
           var filtros = {classificacao: "secao_atividade", ...context.state};
           const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
-          quantidade_ativas.values.forEach(element => {
-            obj.empresas.push(element[0])
-            obj.quantidade.push(element[1])
-          });
-          setAtividade(obj);
+          setAtividade(quantidade_ativas.values);
           return
       }
     }
 
     get_ativas_secao_atividade()
   }, [context])
-
-  const colors = ['#4592E6', '#99c1de', '#bcd4e6', '#d7e3fc']
 
   return(
     <div className="content-tables" style={{
@@ -40,40 +35,7 @@ export default () => {
         paddingBottom: '3.5rem'
       }}>
         <p>{`Empresas Ativas Por Atividade `}</p>
-        <div className="content-table-empresas">
-          <div className="tables-empresas" style={{
-            overflowX: 'hidden',
-            overflowY: 'scroll',
-            paddingBottom: '.5rem'
-          }}>
-            <table>
-              <thead>
-                <tr>
-                  <th style={{
-                    textAlign: 'center'
-                  }}>Atividade da Empersa</th>
-                  <th style={{
-                    textAlign: 'center'
-                  }}>Quantidade</th>
-                </tr>
-              </thead>
-              {atividade.quantidade.map((quantidade, index) => (
-                <tbody>
-                  <tr key={index}>
-                    <td style={{
-                      textAlign: "left",
-                      borderRight: '1px solid black'
-                    }}>{atividade.empresas[index]}</td>
-                    <td style={{
-                      textAlign: 'center',
-                      background: colors[index]
-                    }}>{quantidade.toLocaleString('pt-BR')}</td>
-                  </tr> 
-                </tbody>
-              ))}
-              </table>
-          </div>
-        </div> 
+        <CreateTable arr_dados={atividade} table_name='Atividade' />
       </div>
     </div>
   )

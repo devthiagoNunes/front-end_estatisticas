@@ -141,7 +141,7 @@ export default () => {
       show: true,
       orient: "horizontal",
       left: "94%",
-      itemSize: 14,
+      itemSize: 12,
       showTitle: true,
       feature: {
         type: "png",
@@ -201,7 +201,7 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "90%",
+      width: "95%",
       height: "85%",
       top: "8%",
       left: "3%",
@@ -369,7 +369,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            width: "50vw",
+            width: "48.5vw",
             height: "45vh"
           }}
           opts={{ renderer: "canvas" }}

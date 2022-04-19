@@ -194,7 +194,7 @@ export default () => {
     yAxis: {
       tipo: "value",
       axisLabel: {
-        fontSize: 9,
+        fontSize: 10,
         fontWeight: "bold",
       },
     },
@@ -215,7 +215,7 @@ export default () => {
   const config3 = {
     grid: {
       containLabel: true,
-      width: "92%",
+      width: "98%",
       height: "85%",
       top: "9%",
       left: "3%",
@@ -380,7 +380,7 @@ export default () => {
         <Echarts
           option={config2}
           style={{
-            width: "50vw",
+            width: "48.5vw",
             height: "45vh"
           }}
           opts={{ renderer: "canvas" }}

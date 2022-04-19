@@ -80,6 +80,81 @@
 .content-table-empresas {
   height: 100%;
 }
+.content-dataMunicipio {
+  height: 100%;
+  border-radius: 15px;
+  overflow-y: hidden;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.content-dataTables {
+  height: 100%;
+  padding-bottom: 3.8rem; 
+}
+.content-dataTables table {
+  width: 100%;
+  height: 100%;
+}
+
+.content-dataTables table thead {
+  background-color: rgb(0, 125, 212, .7);
+  color: white;
+  letter-spacing: .1rem;
+}
+
+.content-dataTables table thead,
+.content-dataTables table tbody tr td:last-child {
+  text-align: center;
+}
+
+.content-dataTables table tbody tr td:first-child {
+  padding-left: .5rem;
+}
+
+.content-dataTables table thead,
+.content-dataTables table tbody tr {
+  border-bottom: 1px solid black;
+}
+
+.content-dataTables table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.content-table .tabelas {
+  position: relative;
+  display: flex;
+  padding-bottom: 1px;
+}
+.content-dataMunicipio p:first-child {
+  margin: 0;
+  padding: 0.7rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+  z-index: 9;
+}
+.tabelas table:first-child {
+  padding: 0 5px;
+  width: 80%;
+  height: inherit;
+}
+.tabelas table:last-child {
+  text-align: center;
+  padding: 0 5px;
+  width: 20%;
+  height: inherit;
+}
+.tabelas table tr {
+  font-size: 1.1rem;
+  border-bottom: 1px solid black;
+}
+.tabelas table:last-child tr {
+  text-align: right;
+}
+
 @media (min-width: 1367px) {
   .content-tables {
     height: 55vh;
@@ -108,6 +183,20 @@
   .content-dataTables p:first-child {
     font-size: 1.2rem;
   }
+
+  .content-dataTables table thead,
+  .content-dataTables table tbody {
+    font-size: .9rem;
+  }
+
+  .content-dataTables .buttons span {
+    font-size: .95rem;
+  }
+
+  .content-dataTables .buttons button {
+    width: 6vw;
+    font-size: .9rem;
+  }
 }
 @media (max-width: 768px) {
   .grafico p {
@@ -127,12 +216,26 @@
   .content-dataTables p:first-child {
     font-size: 1rem;
   }
+  .content-dataTables table thead,
+  .content-dataTables table tbody {
+    font-size: .77rem;
+  }
+
+  .content-dataTables .buttons span {
+    font-size: .9rem;
+  }
+
+  .content-dataTables .buttons button {
+    width: 8vw;
+    font-size: .85rem;
+  }
 }
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   .grafico {
     width: 65vh;
     max-width: 75vw;
-    height: 40vh;
+    height: 38vh;
+    max-height: 38vh;
     margin: auto;
     margin-bottom: 1rem;
   }
@@ -157,5 +260,26 @@
   .tables-empresas table tbody tr td {
     font-size: 0.65rem;
     font-weight: bold;
+  }
+  .content-dataTables table thead,
+  .content-dataTables table tbody {
+    font-size: .7rem;
+  }
+
+  .content-dataTables table thead tr th:first-child {
+    width: 75%;
+  }
+
+  .content-dataTables .buttons span {
+    font-size: .75rem;
+  }
+
+  .content-dataTables .buttons button {
+    width: 14vw;
+    font-size: .7rem;
+    margin: 0;
+  }
+  .content-dataTables .buttons button:last-child {
+    margin-left: .4rem;
   }
 }

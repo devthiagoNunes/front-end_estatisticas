@@ -12,7 +12,6 @@
   margin: 0 0 2rem 0;
   width: 100%;
   max-height: 50%;
-  /* height: 12vh; */
   min-height: 130px;
   overflow: hidden;
   border-radius: 15px;
@@ -38,27 +37,17 @@
   color: #2190dc;
   font-size: 3.5rem;
 }
-.content-dataMunicipio {
+.municipios {
   height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
   border-radius: 15px;
-  overflow-y: hidden;
-  border-left: 1px solid #000;
-  border-bottom: 1px solid #000;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
-.content-table {
-  height: 100%;
-  overflow-y: scroll;
-  padding: 0 0.4rem;
-  padding-top: 0.2rem;
-  padding-bottom: 3.8rem;
-}
-.content-table .tabelas {
-  position: relative;
-  display: flex;
-  padding-bottom: 1px;
-}
-.content-dataMunicipio p:first-child {
+.municipios p {
+  position: sticky;
+  top: 0;
+  left: 0;
   margin: 0;
   padding: 0.7rem 0;
   font-size: 1.2rem;
@@ -68,27 +57,45 @@
   text-align: center;
   z-index: 9;
 }
-.tabelas table:first-child {
-  padding: 0 5px;
-  width: 80%;
-  height: inherit;
+.municipios table{
+  width: 100%;
+  height: 100%;
 }
-.tabelas table:last-child {
+
+.municipios table thead tr th:first-child {
+  width: 70%;
+  padding-left: .5rem;
+}
+
+.municipios table thead tr th:last-child,
+.municipios table tbody tr td:last-child {
+  padding-right: .5rem;
+}
+
+.municipios table thead tr th,
+.municipios table tbody tr td {
+  border-bottom: 1px solid rgb(0, 0, 0, 0.7);
+}
+
+.municipios table thead {
+  text-align: left;
+  background-color: rgb(0, 125, 212, .7);
+  color: white;
+  letter-spacing: .1rem;
+}
+
+.municipios table tbody tr td {
+  padding-left: .5rem;
+}
+
+.municipios table tbody tr td:last-child {
   text-align: center;
-  padding: 0 5px;
-  width: 20%;
-  height: inherit;
 }
-.tabelas table tr {
-  font-size: 1.1rem;
-  border-bottom: 1px solid black;
-}
-.tabelas table:last-child tr {
-  text-align: right;
-}
+
 @media (max-width: 1366px) {
   .content-table {
     height: 100%;
+    overflow: hidden;
   }
 }
 @media (max-width: 1210px) {
@@ -100,9 +107,6 @@
   .content-municipio {
     width: 28vw;
     height: 100%;
-  }
-  .content-dataMunicipio {
-    height: 160vh;
   }
   .content-table {
     max-height: 100%;
@@ -120,12 +124,26 @@
   .total-empresasAbertas p:first-child {
     font-size: 1.2rem;
   }
-  .content-dataMunicipio p:first-child {
+  .municipios p:first-child {
     padding: 0.7rem 0;
     font-size: 1rem;
   }
-  .tabelas table tr {
-    font-size: 0.73rem;
+  .municipios table thead tr th,
+  .municipios table tbody tr td {
+    font-size: .85rem;
+  }
+  
+  .municipios table .buttons span {
+    font-size: .85rem;
+  }
+
+  .municipios table .buttons button {
+    width: 7vw;
+    font-size: .9rem;
+    margin: 0;
+  }
+  .municipios table .buttons button:last-child {
+    margin-left: .4rem;
   }
 }
 @media (max-width: 768px) {
@@ -139,21 +157,35 @@
   .total-empresasAbertas p:last-child {
     font-size: 2.5rem;
   }
-  .content-dataMunicipio {
+  .municipios {
     height: 124.5vh;
     max-height: min-content;
     padding-bottom: 1.8rem;
   }
-  .content-dataMunicipio p:first-child {
+  .municipios p:first-child {
     font-size: 0.8rem;
   }
   .total-empresasAbertas p:first-child {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     padding: 0.5rem 0;
   }
-  .tabelas table tr {
-    font-size: 0.7rem;
-    font-weight: bold;
+
+  .municipios {
+    overflow-x: scroll;
+  }
+
+  .municipios table thead tr th,
+  .municipios table tbody tr td {
+    font-size: .75rem;
+  }
+
+  .municipios table .buttons span {
+    font-size: .8rem;
+  }
+
+  .municipios table .buttons button {
+    width: 7vw;
+    font-size: .8rem;
   }
 }
 @media (max-width: 650px) {
@@ -190,15 +222,23 @@
   .total-empresasAbertas p:last-child {
     font-size: 2.6rem;
   }
-  .content-dataMunicipio {
+  .municipios {
     width: 90%;
     margin: auto;
     overflow-y: scroll;
   }
-  .content-dataMunicipio p:first-child {
+  .municipios p:first-child {
     font-size: 0.9rem;
     position: sticky;
     top: 0;
+  }
+  .municipios table thead tr th:first-child {
+    width: 65%;
+  }
+
+  .municipios table .buttons button {
+    width: 12vw;
+    font-size: .75rem;
   }
   .content-table,
   .content-table .tabelas {
