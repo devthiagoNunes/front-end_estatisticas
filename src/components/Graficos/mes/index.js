@@ -528,7 +528,7 @@ export default () => {
           style={{
             height:  "30vh",
             maxHeight: "30vh",
-            width: window.innerWidth == 425 ? '120vw' : '100%',
+            width: window.innerWidth == 425 || window.innerWidth == 375 || window.innerWidth == 320 ? '120vw' : '100%',
           }} 
           opts={{ renderer: "canvas" }}
         />
