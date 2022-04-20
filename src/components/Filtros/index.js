@@ -125,6 +125,7 @@ export default () => {
               <Multiselect
                 className='filtros'
                 options={ano}
+                singleSelect={true}
                 displayValue="Country"
                 selectionLimit={1}
                 placeholder={context.state.ano} 

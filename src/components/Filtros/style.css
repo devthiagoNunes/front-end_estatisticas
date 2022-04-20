@@ -99,6 +99,10 @@
   max-height: 2.5vh;
 }
 
+.filtros .singleSelect img {
+  display: none;
+}
+
 .select-ano {
 
   display: flex;
