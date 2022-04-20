@@ -1,4 +1,5 @@
 .content {
+  position: relative;
   width: 85%;
   max-width: 1366px;
   margin: auto;
@@ -11,19 +12,34 @@
   z-index: 99;
 }
 .content .txt-filtros {
-  position: relative;
-  max-width: min-content;
-  margin-top: -2rem;
+  position: absolute;
+  min-height: min-content;
+  min-width: min-content;
   margin-left: 1.5rem;
   font-size: 1.2rem;
+  top: 0;
+  left: 0;
   font-weight: bold;
   color: #007cc1;
   background: white;
-  padding: 0 8px;
+  padding: 0;
 }
+
+.all-filtros {
+  padding-top: 1rem;
+}
+
+.filtros {
+  border-bottom: 1px solid #2963AA;
+}
+
+.filtros div span {
+  margin-bottom: .6rem;
+}
+
 .secao-topo {
   display: flex;
-  margin-top: -2rem;
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 .secao-topo div {
@@ -36,7 +52,6 @@
 }
 .select-ano {
   border: 1px solid #cccccc;
-  border-radius: 5px;
 }
 .secao-bottom {
   width: 100%;
@@ -48,15 +63,31 @@
 }
 .secao-bottom div:first-child {
   width: 100%;
+  max-width: 26.7vw;
 }
+
+.secao-bottom div:first-child span {
+  max-width: 94%;
+}
+
 .close-filters {
   display: none;
 }
 .filtros div:nth-child(1) {
-  min-height: 32px;
-  max-height: 3.4vh;
+  display: flex;
+  flex-direction: column;
+
+  border: none;
+  
+  min-height: 3.7vh;
+  max-height: 3.7vh;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.filtros div:nth-child(1) span {
+  width: min-content;
+  padding: .5rem .4rem;
 }
 
 .filtros div:nth-child(1)::-webkit-scrollbar {
@@ -66,6 +97,17 @@
 .filtros span {
   font-size: 1rem;
   max-height: 2.5vh;
+}
+
+.select-ano {
+
+  display: flex;
+  flex-direction: column;
+
+  border: none;
+  border-bottom: 1px solid #2963AA;
+  min-height: 3.7vh;
+  max-height: 3.7vh;
 }
 
 .filtros,

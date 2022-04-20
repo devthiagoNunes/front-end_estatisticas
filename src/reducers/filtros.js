@@ -22,7 +22,11 @@ export const reducerFilter = (state, action) => {
       return{...state, ano: ano, setor: '', porte: '', natureza: '', descricao_atividade: '', municipio_empresa: '', secao_atividade: ''}
     
     case actions.MUDAR_ANO: 
-      return {...state, ano: action.payload}
+      if(action.payload.length == 0) {
+        return {...state, ano}
+      } else {
+        return {...state, ano: mapFilters(action.payload)}
+      }
 
     case actions.MUDAR_PORTE:  
       if(action.payload.length == 0){

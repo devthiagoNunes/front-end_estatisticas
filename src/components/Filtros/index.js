@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react"
 import {Multiselect} from 'multiselect-react-dropdown'
-import SelectOptions from 'react-select'
 
 import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, getFiltersBuild} from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
@@ -23,7 +22,7 @@ export default () => {
     let arrAno = []
     for (let index = 2014; index <= context.state.ano; index++) {
       arrAno.unshift({
-        value: index, label: index
+        Country: index, label: index
       })     
     }
     setAno(arrAno)
@@ -112,7 +111,7 @@ export default () => {
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
     //eslint-disable-next-line
-  }, [context])
+  }, [])
 
   return(
       <div className="content" id="content-filtros">
@@ -123,28 +122,14 @@ export default () => {
           <div className="secao-topo">
             {context.state.empresasAbertas !== false && <div>
               <p>Ano de Abertura:</p>
-              <SelectOptions className='select-ano'
-                isMulti={false}
-                styles={{
-                  control: (base, state) => ({
-                    ...base,
-                    fontSize: '0.8rem',
-                    minHeight: '30px',
-                    minHeight: '30px',
-                    minWidth: '100px',
-                    paddingTop: '4px',
-                    border: 0,
-                    boxShadow: 0,
-                    '&:hover': {
-                       border: 0
-                    }
-                  }),
-                }}
+              <Multiselect
+                className='filtros'
                 options={ano}
-                defaultValue={context.state.ano}
-                onChange={(e) => context.dispatch({type: action.MUDAR_ANO, payload: e.value})}
-                placeholder={'Selecionar'}
-                components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                displayValue="Country"
+                selectionLimit={1}
+                placeholder={context.state.ano} 
+                onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
               />
             </div>
             }
@@ -154,7 +139,7 @@ export default () => {
                 className='filtros'
                 options={filtrosPorte}
                 displayValue="Country"
-                placeholder={typeof context.state.porte == 'object' && context.state.porte.length >= 1 ? context.state.porte.length + ' Itens Selecionados' : context.state.porte !== '' ? context.state.porte : 'Selecionar'} 
+                placeholder={'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
@@ -166,7 +151,7 @@ export default () => {
                 className='filtros'
                 options={filtrosSetor}
                 displayValue="Country"
-                placeholder={typeof context.state.setor == 'object' && context.state.setor.length >= 1 ? context.state.setor.length + ' Itens Selecionados' : context.state.setor !== '' ? context.state.setor : 'Selecionar'} 
+                placeholder={'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SETOR, payload: e})}
@@ -178,7 +163,7 @@ export default () => {
                 className='filtros'
                 options={filtrosMunicipio}
                 displayValue="Country"
-                placeholder={typeof context.state.municipio_empresa == 'object' && context.state.municipio_empresa.length >= 1 ? context.state.municipio_empresa.length + ' Itens Selecionados' : context.state.municipio_empresa !== '' ? context.state.municipio_empresa : 'Selecionar'} 
+                placeholder={'Selecionar'} 
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_MUNICIPIO, payload: e})}
@@ -192,7 +177,7 @@ export default () => {
                 className='filtros'
                 options={filtrosSecaoAtividade}
                 displayValue="Country"
-                placeholder={typeof context.state.secao_atividade == 'object' && context.state.secao_atividade.length >= 1 ? context.state.secao_atividade.length + ' Itens Selecionados' : context.state.secao_atividade !== '' ? context.state.secao_atividade : 'Selecionar'}
+                placeholder={'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
@@ -204,7 +189,7 @@ export default () => {
                 className='filtros'
                 options={filtrosDescricaoAtividade}
                 displayValue="Country"
-                placeholder={typeof context.state.descricao_atividade == 'object' && context.state.descricao_atividade.length >= 1 ? context.state.descricao_atividade.length + ' Itens Selecionados' : context.state.descricao_atividade !== '' ? context.state.descricao_atividade : 'Selecionar'}
+                placeholder={'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ATIVIDADE, payload: e})}
@@ -216,7 +201,7 @@ export default () => {
                 className='filtros'
                 options={filtrosNatureza}
                 displayValue="Country"
-                placeholder={typeof context.state.natureza == 'object' && context.state.natureza.length >= 1 ? context.state.natureza.length + ' Itens Selecionados' : context.state.natureza !== '' ? context.state.natureza : 'Selecionar'}
+                placeholder={'Selecionar'}
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_NATUREZA, payload: e})}
