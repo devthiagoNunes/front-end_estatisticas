@@ -30,8 +30,7 @@ export default () => {
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
-      const get_filtros_porte =  await getFiltrosPorte()
-      getFiltersBuild(context )
+      const get_filtros_porte =  await getFiltrosPorte(context)
 
       let options_filters = []
       get_filtros_porte.map((arr, index) => (
@@ -44,7 +43,7 @@ export default () => {
     }
 
     const getFiltros_Setor = async () => {
-      const get_filtros_setor  =  await getFiltrosSetor()
+      const get_filtros_setor  =  await getFiltrosSetor(context)
       let options_filters = []
       get_filtros_setor.map((arr, index) => (
         options_filters.push({
@@ -56,7 +55,7 @@ export default () => {
     }
 
     const getFiltros_Natureza = async () => {
-      const get_filtros_natureza  =  await getFiltrosNatureza()
+      const get_filtros_natureza  =  await getFiltrosNatureza(context)
       let options_filters = []
       get_filtros_natureza.map((arr, index) => (
         options_filters.push({
@@ -68,7 +67,7 @@ export default () => {
     }
     
     const getFiltros_SecaoAtividade = async () => {
-      const get_filtros_secaoAtividade  =  await getFiltrosSecaoAtividade()
+      const get_filtros_secaoAtividade  =  await getFiltrosSecaoAtividade(context)
       let options_filters = []
       get_filtros_secaoAtividade.map((arr, index) => (
         options_filters.push({
@@ -80,7 +79,7 @@ export default () => {
     }
 
     const getFiltros_municipio = async () => {
-      const get_filtros_municipio  =  await getFiltrosMunicipio()
+      const get_filtros_municipio  =  await getFiltrosMunicipio(context)
       let options_filters = []
       get_filtros_municipio.map((arr, index) => (
         options_filters.push({
@@ -92,7 +91,7 @@ export default () => {
     }
 
     const getFiltros_descricaoAtividade = async () => {
-      const get_descricao_atividade  =  await getFiltrosDescricaoAtividade()
+      const get_descricao_atividade  =  await getFiltrosDescricaoAtividade(context)
       let options_filters = []
       get_descricao_atividade.map((arr, index) => (
         options_filters.push({
@@ -111,7 +110,7 @@ export default () => {
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
     //eslint-disable-next-line
-  }, [])
+  }, [context])
 
   return(
       <div className="content" id="content-filtros">
