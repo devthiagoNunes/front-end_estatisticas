@@ -42,9 +42,12 @@ export const getFiltersBuild = async (context) => {
   .catch(err => err)
 }
 
-export const getFiltrosPorte = async () => {
+export const getFiltrosPorte = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST', 
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/porte', 
   })
   .then(res => {
@@ -53,9 +56,12 @@ export const getFiltrosPorte = async () => {
   .catch(err => err)
 }
 
-export const getFiltrosSetor = async () => {
+export const getFiltrosSetor = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST', 
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/setor', 
   })
   .then(res => {
@@ -64,9 +70,12 @@ export const getFiltrosSetor = async () => {
   .catch(err => err)
 }
 
-export const getFiltrosNatureza = async () => {
+export const getFiltrosNatureza = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST',
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/natureza', 
   })
   .then(res => {
@@ -75,9 +84,12 @@ export const getFiltrosNatureza = async () => {
   .catch(err => err)
 }
 
-export const getFiltrosMunicipio = async () => {
+export const getFiltrosMunicipio = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST', 
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/municipios'
   })
   .then(res => {
@@ -86,9 +98,12 @@ export const getFiltrosMunicipio = async () => {
   .catch(err => err)
 }
 
-export const getFiltrosSecaoAtividade = async () => {
+export const getFiltrosSecaoAtividade = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST', 
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/secaoAtividade'
   })
   .then(res => {
@@ -97,9 +112,12 @@ export const getFiltrosSecaoAtividade = async () => {
   .catch(err => err)
 }
 
-export const getFiltrosDescricaoAtividade = async () => {
+export const getFiltrosDescricaoAtividade = async (context) => {
   return await axios({
-    method: 'GET', 
+    method: 'POST', 
+    data: {
+      ...context.state
+    },
     url: backend_endpoint + '/descricaoAtividade'
   })
   .then(res => {
