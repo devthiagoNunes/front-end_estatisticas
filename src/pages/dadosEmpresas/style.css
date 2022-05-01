@@ -36,6 +36,10 @@
 }
 
 @media (max-width:540px) {
+  .main {
+    margin-top: 6rem;
+  }
+
   .content-tipoEmpresa {
     flex-direction: column;
     max-height: none;
