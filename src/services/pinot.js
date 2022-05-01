@@ -27,21 +27,6 @@ export const getDataEmpresasAtivas = async (filtros) => {
   .catch(err => err)
 }
 
-//Obtencao dos dados dos Filtros
-export const getFiltersBuild = async (context) => {
-  return await axios({
-    method: 'POST',
-    data: {
-      state: context.state
-    },
-    url: backend_endpoint + '/filtersBuild', 
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
 export const getFiltrosPorte = async (context) => {
   return await axios({
     method: 'POST', 
