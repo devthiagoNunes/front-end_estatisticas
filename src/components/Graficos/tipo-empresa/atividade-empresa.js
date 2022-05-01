@@ -27,7 +27,7 @@ export default () => {
   }, [context])
 
   return(
-    <div className="content-dataTables">
+    <div className="atividade">
       <div className="table">
         <p>{`Empresas Ativas Por Atividade `}</p>
         <CreateTable arr_dados={atividade} table_name='Atividade' />

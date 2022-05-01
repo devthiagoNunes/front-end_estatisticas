@@ -32,11 +32,13 @@ export default () => {
   }, [context])
 
   return(
-    <div className="natureza">
+    <React.Fragment>
+    {context.state.empresasAbertas && <div className="natureza">
       <div className='table'>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}</p>
         <CreateTable table_name='Natureza' arr_dados={natureza} />
       </div>
-    </div>
+    </div>}
+    </React.Fragment>
   )
 }
