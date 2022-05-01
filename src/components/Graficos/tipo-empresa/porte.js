@@ -363,7 +363,7 @@ export default () => {
 
   return (
     <div
-      className="grafico setor">
+      className="grafico">
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Porte`}</p>
 
       {window.innerWidth >= 320 && window.innerWidth < 768 && (
@@ -391,7 +391,7 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            width: '50vw',
+            width: '100%',
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -402,7 +402,7 @@ export default () => {
           option={config4}
           style={{
             height: "45vh",
-            width: "50vw",
+            width: "100%",
             maxWidth: '100%'
           }}
           opts={{ renderer: "canvas" }}

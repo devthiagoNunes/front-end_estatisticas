@@ -48,13 +48,13 @@ export default () => {
   }, [context.state]);
 
   return(
-    <div className="content-municipio">
+    <div className="municipio">
       {(window.innerWidth >= 320 && window.innerWidth < 768) ? null : <div className="total-empresasAbertas">
         <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
         <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
       </div> 
       }
-      <div className='municipios'>
+      <div className='table'>
         <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Município`}</p>
         <CreateTable arr_dados={municipios} table_name='Município' />
       </div>

@@ -348,7 +348,7 @@ export default () => {
 
   return (
     <div
-      className="grafico setor"
+      className="grafico"
       style={{
         overflowY: "hidden",
       }}
@@ -380,7 +380,7 @@ export default () => {
         <Echarts
           option={config1}
           style={{
-            width: "50vw",
+            width: "100%",
             height: "45vh"
           }}
           opts={{ renderer: "canvas" }}
@@ -392,7 +392,7 @@ export default () => {
           option={config4}
           style={{
             height: "50vh",
-            width: "50vw",
+            width: "100%",
             maxWidth: '100%'
           }}
           opts={{ renderer: "canvas" }}

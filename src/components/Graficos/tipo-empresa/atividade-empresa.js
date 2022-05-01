@@ -27,13 +27,8 @@ export default () => {
   }, [context])
 
   return(
-    <div className="content-tables" style={{
-      height: '52vh',
-      marginBottom: '1rem',
-    }}>
-      <div className="content-dataTables" style={{
-        paddingBottom: '3.5rem'
-      }}>
+    <div className="content-dataTables">
+      <div className="table">
         <p>{`Empresas Ativas Por Atividade `}</p>
         <CreateTable arr_dados={atividade} table_name='Atividade' />
       </div>
