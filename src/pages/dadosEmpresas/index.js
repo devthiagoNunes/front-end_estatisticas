@@ -34,30 +34,28 @@ export default ({tipo}) => {
   getQtdAtivas()
 
   return (
-      <div>
-        <div className={s.wrap}>
-          <Header />
-          <Filtros />
-          <div className='main'>
-            <Botoes tipo={tipo} />
-            <div className='content-data'>
-              <div className='content-tipoEmpresa'>
-                {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
-                  <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-                  <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
-                </div> : null}
-                <div className='tipoEmpresa'>
-                  <Porte />
-                  {context.state.empresasAbertas == true && <Setor />}
-                  {context.state.empresasAbertas == false && <AtividadeEmpresa />}
-                  <Natureza />
-                </div>
-              <Municipio />
-              </div>
-              {context.state.empresasAbertas !== false && <Mes />}
+    <div className={s.wrap}>
+      <Header />
+      <Filtros />
+      <div className='main'>
+        <Botoes tipo={tipo} />
+        <div className='content-data'>
+          <div className='content-tipoEmpresa'>
+            {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
+              <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
+              <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
+            </div> : null}
+            <div className='tipoEmpresa'>
+              <Porte />
+              {context.state.empresasAbertas == true && <Setor />}
+              {context.state.empresasAbertas == false && <AtividadeEmpresa />}
+              <Natureza />
             </div>
+          <Municipio />
           </div>
+          {context.state.empresasAbertas !== false && <Mes />}
         </div>
       </div>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import {Multiselect} from 'multiselect-react-dropdown'
 
-import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, getFiltersBuild} from '../../services/pinot'
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade } from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import * as action from '../../contexts/GlobalContext/actions'
 import './style.css'
