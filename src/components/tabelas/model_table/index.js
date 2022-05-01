@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
+import './style.css'
 
 const Table = ({ columns, data }) => {
   const {
@@ -74,6 +75,8 @@ export const CreateTable = ({table_name, arr_dados}) => {
   const data_memo = useMemo(() => generate_data_table(), [arr_dados])
 
   return (
-    <Table columns={columns} data={data_memo} />
+    <div className='contentTable'>
+      <Table columns={columns} data={data_memo} />
+    </div>
   )
 }
