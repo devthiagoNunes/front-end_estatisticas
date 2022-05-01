@@ -34,3 +34,16 @@
   height: 100%;
   left: 0;
 }
+
+@media (max-width:540px) {
+  .content-tipoEmpresa {
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .tipoEmpresa {
+    width: 95%;
+    max-width: none;
+    margin: auto;
+  }
+}

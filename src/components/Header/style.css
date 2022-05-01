@@ -46,7 +46,7 @@
     width: 14vw;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 540px) {
   .header{
     position: fixed;
     top: 0;
@@ -55,8 +55,7 @@
     display: block;
   }
   .header h2 {
-    font-size: 0.8rem;
-    margin-left: -10px;
+    font-size: 1rem;
   }
   .header img {
     display: none;

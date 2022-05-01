@@ -155,7 +155,7 @@
     font-size: 0.8rem;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 540px) {
   .content {
     display: none;
     width: 100%;
@@ -166,9 +166,8 @@
     margin-top: 0;
     padding-bottom: 2rem;
     border: none;
-    background: rgba(0, 0, 0, 0.3);
+    background: white;
     padding-top: 0;
-    transition: 550ms all ease-in-out;
   }
   .header-filters {
     margin-top: -2.4rem;
@@ -186,11 +185,11 @@
   }
   .all-filtros {
     width: 100%;
-    height: inherit;
+    height: 100%;
     right: 0;
     position: absolute;
     background-color: white;
-    padding-top: 2rem;
+    margin-top: 6rem;
   }
   .secao-topo {
     margin-top: 0.5rem;
@@ -220,7 +219,7 @@
   .secao-bottom div p,
   .secao-topo div select,
   .secao-bottom div select {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
   .close-filters {
     display: block;
@@ -232,7 +231,9 @@
   }
 
   .filtros, .secao-topo .select-ano {
-    border: 1px solid;
     border-radius: 5px;
+    height: 5vh;
+    min-height: 5vh;
+    max-height: 5vh;
   }
 }
