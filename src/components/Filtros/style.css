@@ -163,6 +163,8 @@
     position: fixed;
     z-index: 99;
     right: 0;
+    left: 100%;
+    animation: animationMenu .5s linear forwards;
     margin-top: 0;
     padding-bottom: 2rem;
     border: none;
@@ -236,4 +238,12 @@
     min-height: 5vh;
     max-height: 5vh;
   }
+}
+
+@keyframes animationMenu {
+    from {
+      left: 100%;
+    } to {
+      left: 0%;
+    }
 }
