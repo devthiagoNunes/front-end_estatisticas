@@ -83,6 +83,18 @@
   letter-spacing: .1rem;
 }
 
+@media (min-width: 1366px) {
+  .natureza {
+    height: 45vh;
+    max-height: 450px;
+  }
+  .atividade {
+    height: 52vh;
+    max-height: 510px;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (max-width: 540px) {
   .natureza {
     height: 60vh;

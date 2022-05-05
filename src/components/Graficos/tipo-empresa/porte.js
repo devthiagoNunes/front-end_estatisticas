@@ -402,6 +402,7 @@ export default () => {
           option={config4}
           style={{
             height: "45vh",
+            maxHeight: "450px",
             width: "100%",
             maxWidth: '100%'
           }}

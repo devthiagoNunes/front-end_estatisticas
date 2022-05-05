@@ -391,8 +391,8 @@ export default () => {
         <Echarts
           option={config4}
           style={{
-            height: "50vh",
-            width: "100%",
+            height: "45vh",
+            maxHeight: "450px",
             maxWidth: '100%'
           }}
           opts={{ renderer: "canvas" }}

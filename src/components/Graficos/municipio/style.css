@@ -47,6 +47,19 @@
   font-size: 3.5rem;
 } 
 
+@media (min-width: 1366px) {
+  .municipio {
+    height: 152vh;
+    max-height: 1510px;
+  }
+
+  .municipio .table {
+    height: 135vh;
+    max-height: 1347px;
+  }
+
+}
+
 @media (max-width: 540px) {
   .municipio {
     margin: 1rem 0;

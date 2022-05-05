@@ -35,6 +35,12 @@
   left: 0;
 }
 
+@media (min-width: 1366px) {
+  .content-tipoEmpresa {
+    padding-bottom: 1.5rem;
+  }
+}
+
 @media (max-width:540px) {
   .main {
     margin-top: 6rem;
