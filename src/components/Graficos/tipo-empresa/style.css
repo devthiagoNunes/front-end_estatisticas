@@ -13,3 +13,10 @@
   padding: .8rem 0;
   background: #007CC1;
 }
+
+@media (max-width: 768px) {
+  .grafico p {
+    font-size: 1rem;
+  }
+
+}
