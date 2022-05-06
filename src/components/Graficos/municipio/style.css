@@ -59,6 +59,30 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .total-empresasAbertas {
+    min-height: 100px;
+  }
+  
+  .total-empresasAbertas p:first-child {
+    font-size: 1rem;
+  }
+
+  .total-empresasAbertas p:last-child {
+    font-size: 2.5rem;
+  }
+
+  .municipio {
+    height: 174vh;
+    max-height: 1350px;
+  }
+
+  .municipio .table {
+    height: 147.5vh;
+    max-height: 1200px;
+  }
+}
+
 @media (max-width: 768px) {
   .total-empresasAbertas {
     min-height: 100px;
