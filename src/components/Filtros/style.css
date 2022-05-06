@@ -79,8 +79,10 @@
 
   border: none;
   
-  min-height: 3.7vh;
-  max-height: 3.7vh;
+  min-height: 25px;
+  max-height: 25px;
+  padding: 0;
+  padding-left: .5rem;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -126,33 +128,12 @@
     font-size: 0.8rem;
   }
   .content .txt-filtros {
-    margin-top: -1.9rem;
     font-size: 1rem;
   }
 }
 @media (max-width: 768px) {
-  .content {
-    margin-top: 2rem;
-  }
-  .secao-topo div p,
-  .secao-bottom div p,
-  .secao-topo div select,
-  .secao-bottom div select {
-    font-size: 0.7rem;
-  }
-  .secao-bottom div {
-    width: 100%;
-    margin: 0 8px 0 0;
-  }
-  .content .txt-filtros {
-    margin-top: -1.85rem;
-    font-size: 1rem;
-  }
   .secao-topo div {
-    max-width: 21vw;
-  }
-  .filtros {
-    font-size: 0.8rem;
+    width: 19.6vw;
   }
 }
 @media (max-width: 540px) {
