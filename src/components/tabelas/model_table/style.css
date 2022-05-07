@@ -85,12 +85,12 @@
 
 @media (min-width: 1366px) {
   .natureza {
-    height: 45vh;
+    height: 50vh;
     max-height: 450px;
   }
   .atividade {
-    height: 52vh;
-    max-height: 510px;
+    height: 54.6vh;
+    max-height: 520px;
     margin-bottom: 1rem;
   }
 }
