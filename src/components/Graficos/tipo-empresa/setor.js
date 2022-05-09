@@ -246,7 +246,7 @@ export default () => {
       zlevel: 5,
       axisLabel: {
         fontWeight: "bold",
-        fontSize: 8,
+        fontSize: 9,
       }
     },
     yAxis: {
@@ -256,7 +256,7 @@ export default () => {
         alignWithLabel: true,
       },
       axisLabel: {
-        fontSize: 7,
+        fontSize: 8,
         fontWeight: "bold",
       },
     },
@@ -359,7 +359,7 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            width: '70vw',
+            width: '90%',
           }}
           opts={{ renderer: "canvas" }}
         />

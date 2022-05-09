@@ -269,7 +269,7 @@ export default () => {
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: 8,
+        fontSize: 9,
         fontWeight: "bold",
       },
     },
@@ -370,7 +370,7 @@ export default () => {
         <Echarts
           option={config3}
           style={{
-            width: "70vw",
+            width: "90%",
           }}
           opts={{ renderer: "canvas" }}
         />
