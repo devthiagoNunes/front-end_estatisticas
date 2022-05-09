@@ -11,6 +11,11 @@
   font-weight: bold;
   z-index: 109;
 }
+.header section {
+  width: 85%;
+  max-width: 1366px;
+  position: relative;
+}
 .header .menu-mobile {
   display: none;
 }
@@ -21,7 +26,7 @@
 }
 .header img {
   position: absolute;
-  width: 10vw;
+  width: 150px;
   margin-right: 2rem;
   right: 0;
 }
