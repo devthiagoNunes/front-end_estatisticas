@@ -50,12 +50,12 @@
 @media (min-width: 1366px) {
   .municipio {
     height: 166vh;
-    max-height: 1505px;
+    max-height: 1480px;
   }
 
   .municipio .table {
     height: 139.5vh;
-    max-height: 1332px;
+    max-height: 1302px;
   }
 }
 
@@ -111,13 +111,17 @@
   .municipio {
     margin: 1rem 0;
     max-width: none;
+    max-height: 80vh;
     padding: 0;
     padding-bottom: 1rem;
   }
   .municipio .table {
     width: 95%;
     margin: auto;
-    max-height: 155vh;
+    max-height: 78vh;
+  }
+  .municipio .table table {
+    max-height: 15px;
   }
   .total-empresasAbertas {
     width: 95%;
