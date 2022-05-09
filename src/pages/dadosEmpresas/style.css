@@ -51,6 +51,7 @@
   .content-tipoEmpresa {
     flex-direction: column;
     max-height: none;
+    padding-left: 0;
   }
 
   .tipoEmpresa {
