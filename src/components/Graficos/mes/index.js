@@ -341,7 +341,7 @@ export default () => {
         alignWithLabel: abertasMes.quantidade.length > 12 ? true : true,
       },
       axisLabel: {
-        fontSize: 7,
+        fontSize: 9,
         fontWeight: "bold",
         rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
         inside: abertasMes.quantidade.length > 12 ? true : false,
@@ -350,7 +350,7 @@ export default () => {
     yAxis: {
       type: "value",
       axisLabel: {
-        fontSize: abertasMes.quantidade.length > 11 ? 9 : 8,
+        fontSize: 9,
         fontWeight: "bold",
       },
       min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
@@ -527,7 +527,7 @@ export default () => {
           style={{
             height:  "30vh",
             maxHeight: "30vh",
-            width: window.innerWidth == 425 || window.innerWidth == 375 || window.innerWidth == 320 ? '120vw' : '100%',
+            width: window.innerWidth <= 540 || window.innerWidth <= 320 ? '120vw' : '100%',
           }} 
           opts={{ renderer: "canvas" }}
         />

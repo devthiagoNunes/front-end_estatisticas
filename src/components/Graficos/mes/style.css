@@ -31,14 +31,18 @@
     left: 0;
   }
 }
-@media (max-width: 425px) {
+@media (max-width: 540px) {
   .grafico-mes {
     position: relative;
-    width: 80%;
+    width: 95%;
     overflow-x: scroll;
     overflow-y: scroll;
   }
-  .grafico-mes div {
+  .grafico-mes p {
+    font-size: 1rem;
+    padding: .8rem 0;
+  }
+    .grafico-mes div {
     position: sticky;
     left: 0;
     width: 100%;
