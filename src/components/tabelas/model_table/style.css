@@ -23,6 +23,9 @@
   overflow: hidden;
 }
 
+.municipio .table .contentTable table {
+  max-height: 10px;
+}
 .atividade {
   overflow-y: scroll;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
