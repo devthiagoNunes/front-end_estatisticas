@@ -50,10 +50,11 @@ export const CreateTable = ({table_name, arr_dados}) => {
 
     if(arr_dados.length) {
       arr_dados.forEach(arr_atividade => {
-        parse_datas.push({
-          tableData: arr_atividade[0],
-          quantidade: arr_atividade[1].toLocaleString('pt-br')
-        })
+        if(arr_atividade[0] !== "null")
+          parse_datas.push({
+            tableData: arr_atividade[0],
+            quantidade: arr_atividade[1].toLocaleString('pt-br')
+          })
       })
     }
     return parse_datas
