@@ -50,12 +50,12 @@
 @media (min-width: 1366px) {
   .municipio {
     height: 166vh;
-    max-height: 1480px;
+    max-height: 1500px;
   }
 
   .municipio .table {
     height: 139.5vh;
-    max-height: 1302px;
+    max-height: 1338px;
   }
 }
 
