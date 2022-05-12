@@ -4,7 +4,8 @@ WORKDIR /src
 
 COPY . /src/
 
-RUN npm i
+RUN git config --global url."https://github.com/".insteadOf "git://github.com/"
+
 RUN npm i --silent
 RUN npm i react-scripts@3.0.1 -g --silent
 
