@@ -15,7 +15,7 @@ services:
     container_name: estatisticas_backend
     restart: unless-stopped
     environment:
-      - PINOT_ENDPOINT: $PINOT_ENDPOINT
+      - PINOT_ENDPOINT=$PINOT_ENDPOINT
     build:
       network: host
       context: ../backend_estatisticas
