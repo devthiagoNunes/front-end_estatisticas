@@ -12,7 +12,6 @@ export default () => {
   useEffect(() => {
     const getAbertasNatureza = async (filtros) => {
       const response = await getDataEmpresasAbertas(filtros);
-      console.log('natureza', natureza)
       setNatureza(response.values)
     }
     

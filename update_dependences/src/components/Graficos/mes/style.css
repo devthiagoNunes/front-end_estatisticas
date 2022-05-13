@@ -8,7 +8,7 @@
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
 .grafico-mes p {
-  padding: 5px 0;
+  padding: .8rem 0;
   font-size: 1.5rem;
   font-weight: bold;
   background: #007cc1;
