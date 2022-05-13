@@ -3,6 +3,7 @@
 }
 .content-buttons button{
   outline: none;
+  cursor: pointer;
 }
 .content-buttons button:first-child{
   border: 1.5px solid #007CC1;

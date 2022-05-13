@@ -49,13 +49,13 @@
 
 @media (min-width: 1366px) {
   .municipio {
-    height: 166vh;
-    max-height: 1500px;
+    height: 147vh;
+    max-height: 1400px;
   }
 
   .municipio .table {
-    height: 139.5vh;
-    max-height: 1338px;
+    height: 127.7vh;
+    max-height: 1212px;
   }
 }
 

@@ -9,10 +9,9 @@ import Setor from '../../components/Graficos/tipo-empresa/setor'
 import Natureza from '../../components/Graficos/tipo-empresa/natureza'
 import AtividadeEmpresa from '../../components/Graficos/tipo-empresa/atividade-empresa'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
-import s from './Layout.module.scss'
+import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
 import './style.css'
 import './styleGlobal.css'
-import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
@@ -34,12 +33,12 @@ export default ({tipo}) => {
   getQtdAtivas()
 
   return (
-    <div className={s.wrap}>
+    <div className='wrap'>
       <Header />
       <Filtros />
       <div className='main'>
         <Botoes tipo={tipo} />
-        <div className='content-data'>
+      <div className='content-data'>
           <div className='content-tipoEmpresa'>
             {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
               <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
@@ -51,11 +50,11 @@ export default ({tipo}) => {
               {context.state.empresasAbertas == false && <AtividadeEmpresa />}
               <Natureza />
             </div>
-          <Municipio />
+            <Municipio />
           </div>
           {context.state.empresasAbertas !== false && <Mes />}
         </div>
-      </div>
+      </div> 
     </div>
   );
 }
