@@ -1,0 +1,575 @@
+import React, { useContext, useEffect, useState } from "react";
+import Echarts from "echarts-for-react";
+import echarts from "echarts";
+import { getDataEmpresasAbertas } from '../../../services/pinot'
+import { ContextGlobal } from '../../../contexts/GlobalContext/context';
+import "./style.css";
+
+export default () => {
+
+  const context = useContext(ContextGlobal)
+  const [abertasMes, setAbertasMes] = useState({
+      classificacao: "Mes",
+      tipo: [],
+      quantidade: [],
+    })
+
+  useEffect(() => {
+    var newAbertasMes = {
+      classificacao: "Mes",
+      tipo: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
+      quantidade: [],
+    }
+    var fetchAbertasMes = async () => {
+      var filtros = {classificacao: "abertas_mes", ...context.state};
+      const response = await getDataEmpresasAbertas(filtros);
+      response.values.forEach(element => {
+        newAbertasMes.quantidade.push(element[1])
+      })
+      setAbertasMes(newAbertasMes)
+    }
+    fetchAbertasMes()
+  }, [context]);
+
+
+  let dataGraficoMes = [];
+  let dataForLegend = [];
+  for (let i = 0; i < abertasMes.tipo.length; i++) {
+    dataGraficoMes.push({
+      name: abertasMes.tipo[i],
+      type: "bar",
+      data: [abertasMes.quantidade[i]],
+    });
+    dataForLegend.push({ name: abertasMes.tipo[i] });
+  }
+
+  const config1 = {
+    grid: {
+      containLabel: true,
+      width: "95%", 
+      height: "90%",
+      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",   
+      left: "2%",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "none",
+      },
+    },
+    toolbox: {
+      show: true,
+      orient: "vertical",
+      left: "right",
+      showTitle: true,
+      feature: {
+        type: "png",
+        saveAsImage: {
+          show: true,
+          title: ' ',
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: ' ',
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: ' ',
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+      },
+    },
+    label: {
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 12,
+      offset: [0, 2],
+      color: "rgb(0, 0, 0)",
+    },
+    xAxis: {
+      type: "category",
+      data: abertasMes.tipo,
+      axisTick: {
+        alignWithLabel: true,
+      },
+      zlevel: 5,
+      axisLabel: {
+        fontSize: abertasMes.quantidade.length > 12 ? 8 : 12,
+        fontWeight: "bold",
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
+      },
+      minInterval: 50000,
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        fontSize: abertasMes.quantidade.length > 12 ? 10 : 12,
+        fontWeight: "bold",
+      },
+      axisTick: {
+        alignWithLabel: true,
+      },
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
+    },
+    series: [
+      {
+        color: "#023e8a",
+        data: abertasMes.quantidade,
+        type: "bar",
+        showBackground: true,
+        backgroundStyle: {
+          color: "rgba(180, 180, 180, 0.2)",
+        },
+        barWidth: "40%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#00b4d8",
+            },
+            {
+              offset: 1,
+              color: "#1767cd",
+            },
+          ]),
+        },
+        emphasis: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0.7,
+              color: "#44C0C1",
+            },
+            {
+              offset: 1,
+              color: "#06B5D7",
+            },
+          ]),
+        },
+      },
+    ],
+  };
+
+  const config2 = {
+    grid: {
+      containLabel: true,
+      width: "94%", 
+      height:  abertasMes.quantidade.length > 12 ? "80%" : "90%",
+      top: abertasMes.quantidade.length > 12 ? "10%" : "6%",
+      left: "2%",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "none",
+      },
+    },
+    toolbox: {
+      show: true,
+      orient: "vertical",
+      left: "right",
+      itemSize: 12,
+      showTitle: true,
+      feature: {
+        type: "png",
+        saveAsImage: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+      },
+    },
+    label: {
+      show: true,
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      offset: abertasMes.quantidade.length > 12 ? [0, 6] : null,
+      fontSize: abertasMes.quantidade.length > 12 ? 9 : 12,
+      fontWeight: abertasMes.quantidade.length > 12 ? "bold" : "normal",
+      color: "black",
+      align: "center",
+      verticalAlign: "middle",
+      rotate: 0,
+    },
+    xAxis: {
+      type: "category",
+      data: abertasMes.tipo,
+      axisTick: {
+        alignWithLabel: true,
+      },
+      zlevel: 5,
+      axisLabel: {
+        fontSize: abertasMes.quantidade.length > 12 ? 7 : 10,
+        fontWeight: "bold",
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
+      },
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        fontSize: 10,
+        fontWeight: "bold",
+      },
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
+    },
+    series: [
+      {
+        type: "bar",
+        data: abertasMes.quantidade,
+        barWidth: abertasMes.quantidade.length > 12 ? "35%" : "45%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#00b4d8",
+            },
+            {
+              offset: 1,
+              color: "#1767cd",
+            },
+          ]),
+        },
+        emphasis: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0.7,
+              color: "#44C0C1",
+            },
+            {
+              offset: 1,
+              color: "#06B5D7",
+            },
+          ]),
+        },
+      },
+    ],
+  };
+
+  const config3 = {
+    grid: {
+      containLabel: true,
+      width: "93%", 
+      height:  "90%",
+      top: "6%",
+      left: "2%",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "none",
+      },
+    },
+    toolbox: {
+      show: true,
+      orient: "vertical",
+      itemSize: 10,
+      left: "right",
+      showTitle: true,
+      feature: {
+        type: "png",
+        saveAsImage: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+      },
+    },
+    label: {
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      align: abertasMes.quantidade.length > 12 ? "center" : "center",
+      verticalAlign: "middle",
+      position: abertasMes.quantidade.length > 12 ? "bottom" : "top",
+      fontSize: 10,
+      fontWeight: 'normal',
+      offset: abertasMes.quantidade.length > 12 ? [0, 5] : null,
+      color: "rgb(0, 0, 0)",
+    },
+    xAxis: {
+      type: "category",
+      data: abertasMes.tipo,
+      show: abertasMes.quantidade.length > 12 ? true : true,
+      zlevel: abertasMes.quantidade.length > 12 ? true : true,
+      axisTick: {
+        alignWithLabel: abertasMes.quantidade.length > 12 ? true : true,
+      },
+      axisLabel: {
+        fontSize: 9,
+        fontWeight: "bold",
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: abertasMes.quantidade.length > 12 ? true : false,
+      },
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        fontSize: 9,
+        fontWeight: "bold",
+      },
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
+    },
+    series: [
+      {
+        data: abertasMes.quantidade,
+        type: "bar",
+        showBackground: true,
+        backgroundStyle: {
+          color: "rgba(180, 180, 180, 0.2)",
+        },
+        barWidth: "60%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#00b4d8",
+            },
+            {
+              offset: 1,
+              color: "#1767cd",
+            },
+          ]),
+        },
+        emphasis: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0.7,
+              color: "#44C0C1",
+            },
+            {
+              offset: 1,
+              color: "#06B5D7",
+            },
+          ]),
+        },
+      },
+    ],
+  };
+
+  const config4 = {
+    grid: {
+      containLabel: true,
+      width: "94%",
+      top: "8%",
+      left: "2%",
+      right: "6%",
+      bottom: "5%",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "none",
+      },
+    },
+    toolbox: {
+      show: true,
+      orient: "vertical",
+      left: "right",
+      showTitle: true,
+      feature: {
+        type: "png",
+        saveAsImage: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        magicType: { 
+          show: true,
+          title: "...",
+          type: ['line'],
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+        restore: {
+          show: true,
+          title: " ",
+          iconStyle: {
+            borderWidth: 1.5,
+          },
+        },
+      },
+    },
+    label: {
+      show: true,
+      position: "top",
+      fontSize: abertasMes.quantidade.length > 12 ? 12 : 12,
+      fontWeight: "normal" ,
+      color: "black",
+    },
+    xAxis: {
+      type: "category",
+      data: abertasMes.tipo,
+      axisTick: {
+        alignWithLabel: true,
+      },
+      zlevel: 5,
+      axisLabel: {
+        fontSize: abertasMes.quantidade.length > 12 ? 11 : 12,
+        fontWeight: "bold",
+        rotate: abertasMes.quantidade.length > 12 ? 90 : 0,
+        inside: false,
+      },
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        fontSize: 12,
+        fontWeight: "bold",
+        position: "top",
+        verticalAlign: "middle",
+      },
+      min: abertasMes.quantidade[1] < 1500 ? 0 : 1000,
+      minInterval: abertasMes.quantidade[0] > 1500 ? 500 : null,
+      max: abertasMes.quantidade[0] > 1500 ? 6000 : null
+    },
+    series: [
+      {
+        data: abertasMes.quantidade,
+        type: "bar",
+        showBackground: true,
+        backgroundStyle: {
+          color: "rgba(180, 180, 180, 0.3)",
+        },
+        barWidth: "45%",
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: "#00b4d8",
+            },
+            {
+              offset: 1,
+              color: "#1767cd",
+            },
+          ]),
+        },
+        emphasis: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0.7,
+              color: "#44C0C1",
+            },
+            {
+              offset: 1,
+              color: "#06B5D7",
+            },
+          ]),
+        },
+      },
+    ],
+  };
+
+  return (
+    <div
+      className="grafico-mes"
+      style={{
+        width: '100%',
+        height: '100%',
+        maxHeight: '350px',
+        marginTop: abertasMes.quantidade.length > 12 ? 0 : -25,
+      }}
+    >
+      <p>Empresas {context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Mes</p>
+      {window.innerWidth >= 320 && window.innerWidth <= 768 && (
+        <Echarts
+          option={config3}
+          style={{
+            height:  "30vh",
+            maxHeight: "30vh",
+            width: window.innerWidth <= 540 || window.innerWidth <= 320 ? '120vw' : '100%',
+          }} 
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+
+      {window.innerWidth > 768 && window.innerWidth <= 1024 && (
+        <Echarts
+          option={config2}
+          style={{
+            height: "40vh",
+            maxHeight: "40vh",
+            width: "100%",
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+
+      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
+        <Echarts
+          option={config1}
+          style={{
+            height:  "43vh",
+            maxHeight: "43vh",
+            width: "80vw",
+            maxWidth: "80vw",
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+
+      {window.innerWidth > 1366 && (
+        <Echarts
+          option={config4}
+          style={{
+            height: "40vh",
+            maxHeight: "400px",
+            width: "100%",
+            maxWidth: "100%",
+          }}
+          opts={{ renderer: "canvas" }}
+        />
+      )}
+    </div>
+  );
+};

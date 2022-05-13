@@ -1,0 +1,131 @@
+.municipio {
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  max-height: 2100px;
+  border-radius: 15px;
+  padding: 0 1rem 0 0;
+}
+
+.municipio .table {
+  width: 100%;
+  height: 100%;
+  max-height: 157vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-radius: 15px;
+  border-left: 1px solid #000;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+
+.total-empresasAbertas {
+  position: relative;
+  margin: 0 0 2rem 0;
+  width: 100%;
+  min-height: 130px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+}
+.total-empresasAbertas p:first-child {
+  margin: 0;
+  padding: 0.8rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #007cc1;
+  color: white;
+  text-align: center;
+}
+ .total-empresasAbertas p:last-child {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  text-align: center;
+  color: #2190dc;
+  font-size: 3.5rem;
+} 
+
+@media (min-width: 1366px) {
+  .municipio {
+    height: 147vh;
+    max-height: 1400px;
+  }
+
+  .municipio .table {
+    height: 127.7vh;
+    max-height: 1212px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .total-empresasAbertas {
+    min-height: 100px;
+  }
+  
+  .total-empresasAbertas p:first-child {
+    font-size: 1rem;
+  }
+
+  .total-empresasAbertas p:last-child {
+    font-size: 2.5rem;
+  }
+
+  .municipio {
+    height: 174vh;
+    max-height: 1350px;
+  }
+
+  .municipio .table {
+    height: 147.5vh;
+    max-height: 1200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .total-empresasAbertas {
+    min-height: 100px;
+  }
+  
+  .total-empresasAbertas p:first-child {
+    font-size: 1rem;
+  }
+
+  .total-empresasAbertas p:last-child {
+    font-size: 2.5rem;
+  }
+
+  .municipio {
+    height: 173vh;
+    max-height: 1510px;
+  }
+
+  .municipio .table {
+    height: 147vh;
+    max-height: 1200px;
+  }
+}
+
+@media (max-width: 540px) {
+  .municipio {
+    margin: 1rem 0;
+    max-width: none;
+    max-height: 80vh;
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+  .municipio .table {
+    width: 95%;
+    margin: auto;
+    max-height: 78vh;
+  }
+  .municipio .table table {
+    max-height: 15px;
+  }
+  .total-empresasAbertas {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 0;
+  }
+}

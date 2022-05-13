@@ -1,0 +1,27 @@
+.grafico {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+.grafico p {
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: bold;
+  padding: .8rem 0;
+  background: #007CC1;
+}
+
+@media (max-width: 1024px) {
+  .grafico p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grafico p {
+    font-size: 1rem;
+  }
+}
