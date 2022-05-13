@@ -9,6 +9,7 @@
     "axios": "^0.27.2",
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
+    "env-cmd": "^10.1.0",
     "history": "^5.3.0",
     "multiselect-react-dropdown": "^2.0.22",
     "react": "^18.1.0",
@@ -20,8 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts start env-cmd -f .env node ",
+    "build": "react-scripts build env-cmd -f .env node",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
