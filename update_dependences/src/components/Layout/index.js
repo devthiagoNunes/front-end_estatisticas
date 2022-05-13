@@ -12,12 +12,11 @@ export default () => {
           tipo={"Abertas"}
         />
       )}
-      {/* {context.state.empresasAbertas !== true && (
-        <div>Ativas</div>
-        // <RenderDatas
-        //   tipo={"Ativas"}
-        // />
-      )} */}
+      {context.state.empresasAbertas !== true && (
+        <RenderDatas
+          tipo={"Ativas"}
+        />
+      )}
     </div>
   );
 };

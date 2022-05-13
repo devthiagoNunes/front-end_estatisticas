@@ -56,7 +56,6 @@ export default () => {
 
     const getFiltros_Natureza = async () => {
       const get_filtros_natureza  =  await getFiltrosNatureza(context)
-      console.log('get_filtros_natureza', get_filtros_natureza)
       let options_filters = []
       get_filtros_natureza.map((arr, index) => (
         options_filters.push({
