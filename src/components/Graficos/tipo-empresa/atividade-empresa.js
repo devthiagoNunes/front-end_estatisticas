@@ -16,7 +16,7 @@ export default () => {
       //eslint-disable-next-line
       switch (context.state.empresasAbertas) {
         case false:
-          var filtros = {classificacao: "secao_atividade", ...context.state};
+          var filtros = {classificacao: "descricao_atividade", ...context.state};
           const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
           setAtividade(quantidade_ativas.values);
           return
