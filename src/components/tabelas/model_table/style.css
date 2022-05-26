@@ -27,9 +27,9 @@
   overflow: hidden;
 }
 
-.municipio .table .contentTable table {
+/* .municipio .table .contentTable table {
   max-height: 10px;
-}
+} */
 .atividade {
   overflow: hidden;
   overflow-y: scroll;
@@ -37,8 +37,8 @@
 }
 
 .natureza {
-  height: 66.5vh;
-  max-height: 530px;
+  /* height: 66.5vh;
+  max-height: 530px; */
   overflow-y: scroll;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
@@ -98,12 +98,12 @@
 
 @media (min-width: 1366px) {
   .natureza {
-    height: 50vh;
-    max-height: 439px;
+    height: 43.5vh;
+    max-height: 440px;
   }
   .atividade {
-    height: 50vh;
-    max-height: 451px;
+    height: 51vh;
+    max-height: 450px;
     margin-bottom: 1rem;
   }
 }
@@ -114,8 +114,8 @@
     max-height: 460px;
   }
   .atividade {
-    height: 55vh;
-    max-height: 420px;
+    height: 49vh;
+    max-height: 405px;
     margin-bottom: 1rem;
   }
 
