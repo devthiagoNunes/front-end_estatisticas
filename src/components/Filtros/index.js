@@ -18,9 +18,11 @@ export default () => {
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
   const [ano, setAno] = useState([])
 
+  const year = (new Date().getMonth() >= 1 && new Date().getDate() >= 1) ? new Date().getFullYear() : new Date().getFullYear()-1
+
   const set_ano = () => {
     let arrAno = []
-    for (let index = 2014; index <= context.state.ano; index++) {
+    for (let index = 2014; index <= year; index++) {
       arrAno.unshift({
         Country: index, label: index
       })     
@@ -111,7 +113,7 @@ export default () => {
     getFiltros_descricaoAtividade()
     //eslint-disable-next-line
   }, [context])
-
+  
   return(
       <div className="content" id="content-filtros">
         <div className="all-filtros">
@@ -126,7 +128,6 @@ export default () => {
                 options={ano}
                 singleSelect={true}
                 displayValue="Country"
-                selectionLimit={1}
                 placeholder={context.state.ano} 
                 onSelect={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_ANO, payload: e})}
