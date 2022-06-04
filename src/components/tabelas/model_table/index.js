@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
+import { DownloadCSV } from '../../download-csv'
 import './style.css'
 
 const Table = ({ columns, data }) => {
@@ -45,6 +46,8 @@ const Table = ({ columns, data }) => {
  *  */
 export const CreateTable = ({table_name, arr_dados}) => {
 
+  console.log(table_name, arr_dados)
+
   const generate_data_table = () => {
     const parse_datas = []
 
@@ -59,6 +62,11 @@ export const CreateTable = ({table_name, arr_dados}) => {
     }
     return parse_datas
   }
+
+  const dataToDownload = [
+    [table_name, 'quantidade'],
+    ...arr_dados
+  ]
 
   const columns = useMemo(
     () => [
@@ -78,6 +86,7 @@ export const CreateTable = ({table_name, arr_dados}) => {
   return (
     <div className='contentTable'>
       <Table columns={columns} data={data_memo} />
+      <DownloadCSV data_to_download={dataToDownload} />
     </div>
   )
 }

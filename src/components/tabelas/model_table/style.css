@@ -27,9 +27,6 @@
   overflow: hidden;
 }
 
-/* .municipio .table .contentTable table {
-  max-height: 10px;
-} */
 .atividade {
   overflow: hidden;
   overflow-y: scroll;
@@ -37,8 +34,6 @@
 }
 
 .natureza {
-  /* height: 66.5vh;
-  max-height: 530px; */
   overflow-y: scroll;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
