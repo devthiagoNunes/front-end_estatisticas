@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 
+import { DownloadCSV } from '../../download-csv'
 import { getDataEmpresasAtivas, getDataEmpresasAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
@@ -361,11 +362,16 @@ export default () => {
     ],
   };
 
+  const dataToDownload = [
+    ['porte', 'quantidade'],
+    ...dataPorte
+  ]
+
   return (
     <div
       className="grafico">
       <p>{`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Porte`}</p>
-
+      <DownloadCSV data_to_download={dataToDownload}/>
       {window.innerWidth >= 320 && window.innerWidth < 768 && (
         <Echarts
           option={config3}

@@ -7,9 +7,7 @@ import './style.css'
 export default () => {
 
   const context = useContext(ContextGlobal)
-  const [atividade, setAtividade] = useState({
-    classificacao: "Atividade", empresas: [], quantidade: []
-  })
+  const [atividade, setAtividade] = useState([])
 
   useEffect(() => {
     const get_ativas_secao_atividade = async () => {
