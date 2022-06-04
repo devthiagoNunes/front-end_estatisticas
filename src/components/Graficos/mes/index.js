@@ -4,6 +4,7 @@ import echarts from "echarts";
 import { getDataEmpresasAbertas } from '../../../services/pinot'
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
+import { DownloadCSV } from "../../download-csv";
 
 export default () => {
 
@@ -13,6 +14,8 @@ export default () => {
       tipo: [],
       quantidade: [],
     })
+  const [dataToCSVComponent, setDataToCSVComponent] = useState([])
+
 
   useEffect(() => {
     var newAbertasMes = {
@@ -23,6 +26,7 @@ export default () => {
     var fetchAbertasMes = async () => {
       var filtros = {classificacao: "abertas_mes", ...context.state};
       const response = await getDataEmpresasAbertas(filtros);
+      setDataToCSVComponent(response.values)
       response.values.forEach(element => {
         newAbertasMes.quantidade.push(element[1])
       })
@@ -510,6 +514,11 @@ export default () => {
     ],
   };
 
+  const dataToDownload = [
+    ['mes', 'quantidade'],
+    ...dataToCSVComponent
+  ]
+
   return (
     <div
       className="grafico-mes"
@@ -521,6 +530,7 @@ export default () => {
       }}
     >
       <p>Empresas {context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Mes</p>
+      <DownloadCSV data_to_download={dataToDownload}/>
       {window.innerWidth >= 320 && window.innerWidth <= 768 && (
         <Echarts
           option={config3}
