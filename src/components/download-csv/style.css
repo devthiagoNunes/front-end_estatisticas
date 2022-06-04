@@ -1,0 +1,16 @@
+.csvlink {
+    text-decoration: none;
+}
+  
+.csvlink div {
+    text-align: center;
+    padding: .3rem 0 .3rem .5rem;
+    background: #4CA3E1;
+    color: white;
+}
+  
+.csvlink div:hover {
+    background: hsl(210, 71%, 59%);
+    transition: 200ms all ease-in-out;
+}
+  
