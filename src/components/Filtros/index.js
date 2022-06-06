@@ -16,6 +16,7 @@ export default () => {
   const [filtrosSecaoAtividade, setFiltrosSecaoAtividade] = useState([])
   const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
+  const [validMonths, setValidMonthss] = useState([])
   const [ano, setAno] = useState([])
 
   const year = (new Date().getMonth() >= 1 && new Date().getDate() >= 1) ? new Date().getFullYear() : new Date().getFullYear()-1
@@ -104,6 +105,28 @@ export default () => {
       setFiltrosDescricaoAtividade(options_filters)
     }
 
+    const monthlyFilterBuilder = () => {
+      const allMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+      const allValidMonths = []
+
+      if(context.state.ano < new Date().getFullYear()) {
+        allMonths.forEach((month, index) => {
+          allValidMonths.push({
+            Country: month,
+            label: index
+          })
+        })
+      } else {
+        for (let monthIndex = 0; monthIndex <= new Date().getMonth(); monthIndex++) {
+          allValidMonths.push({
+            Country: allMonths[monthIndex],
+            label: monthIndex
+          })
+        }
+      }
+      setValidMonthss(allValidMonths)
+    }
+    
     set_ano()
     getFiltros_Porte()
     getFiltros_Setor()
@@ -111,6 +134,7 @@ export default () => {
     getFiltros_SecaoAtividade()
     getFiltros_municipio()
     getFiltros_descricaoAtividade()
+    monthlyFilterBuilder()
     //eslint-disable-next-line
   }, [context])
   
@@ -135,15 +159,15 @@ export default () => {
             </div>
             }
             <div>
-              <p>Porte da Empresa:</p>
+              <p>Mês:</p>
               <Multiselect
                 className='filtros'
-                options={filtrosPorte}
+                options={validMonths}
                 displayValue="Country"
-                placeholder={'Selecionar'} 
+                placeholder={'Selecionar'}
                 showCheckbox={true}
-                onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
-                onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
+                onSelect={(e) => context.dispatch({type:action.MUDAR_MES, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_MES, payload: e})}
               />
             </div>
             <div>
@@ -182,6 +206,18 @@ export default () => {
                 showCheckbox={true}
                 onSelect={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
                 onRemove={(e) => context.dispatch({type:action.MUDAR_SECAO_ATIVIDADE, payload: e})}
+              />
+            </div>
+            <div>
+              <p>Porte da Empresa:</p>
+              <Multiselect
+                className='filtros'
+                options={filtrosPorte}
+                displayValue="Country"
+                placeholder={'Selecionar'} 
+                showCheckbox={true}
+                onSelect={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
+                onRemove={(e) => context.dispatch({type:action.MUDAR_PORTE, payload: e})}
               />
             </div>
             <div>

@@ -76,6 +76,13 @@ export const reducerFilter = (state, action) => {
       } else {
         return {...state, empresasAbertas: mapFilters(action.payload)}
       }
+
+    case actions.MUDAR_MES:
+      if(action.payload.length == 0){
+        return {...state, mes: ''}
+      } else {
+        return {...state, mes: `${action.payload[0].label + 1}`}
+      }
     
     default:
       return {...state}
