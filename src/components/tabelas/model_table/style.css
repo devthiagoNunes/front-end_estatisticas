@@ -125,9 +125,20 @@
   .natureza p {
     font-size: 1rem;
   }
-
 }
 
+
+@media (max-width: 768px) {
+  .natureza {
+    height: 55vh;
+    max-height: 350px;
+  }
+
+  .atividade {
+    height: 58.5vh;    
+    max-height: 400px;
+  }
+}
 
 @media (max-width: 540px) {
   .natureza {

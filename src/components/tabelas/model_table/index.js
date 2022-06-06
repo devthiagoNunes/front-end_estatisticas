@@ -46,8 +46,6 @@ const Table = ({ columns, data }) => {
  *  */
 export const CreateTable = ({table_name, arr_dados}) => {
 
-  console.log(table_name, arr_dados)
-
   const generate_data_table = () => {
     const parse_datas = []
 
