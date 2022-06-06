@@ -38,6 +38,11 @@
     overflow-x: scroll;
     overflow-y: scroll;
   }
+  .grafico-mes .csvlink {
+    position: sticky;
+    left: 0;
+  }
+
   .grafico-mes p {
     font-size: 1rem;
     padding: .8rem 0;

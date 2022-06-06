@@ -60,6 +60,12 @@
     padding-bottom: 1.5rem;
   }
 }
+@media (max-width:768px) {
+  .content-tipoEmpresa {
+    height: 185vh;
+    max-height: 1330px;
+  }
+}
 
 @media (max-width:540px) {
   .main {
