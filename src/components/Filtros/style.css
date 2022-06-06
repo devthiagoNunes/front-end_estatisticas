@@ -135,6 +135,10 @@
   .secao-topo div {
     width: 19.6vw;
   }
+
+  .secao-bottom div {
+    width: 19.1vw;
+  }
 }
 @media (max-width: 540px) {
   .content {
