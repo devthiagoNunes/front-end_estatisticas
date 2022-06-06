@@ -1,4 +1,5 @@
 export const MUDAR_ANO = 'MUDAR_ANO'
+export const MUDAR_MES = 'MUDAR_MES'
 export const MUDAR_PORTE = 'MUDAR_PORTE'
 export const MUDAR_SETOR = 'MUDAR_SETOR'
 export const MUDAR_NATUREZA = 'MUDAR_NATUREZA'
