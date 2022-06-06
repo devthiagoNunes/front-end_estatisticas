@@ -52,7 +52,7 @@ export default ({tipo}) => {
             </div>
             <Municipio />
           </div>
-          {context.state.empresasAbertas !== false && <Mes />}
+          {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
         </div>
       </div> 
     </div>
