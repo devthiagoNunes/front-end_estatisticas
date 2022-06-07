@@ -400,7 +400,7 @@ export default () => {
           option={config4}
           style={{
             height: "45vh",
-            maxHeight: "400px",
+            maxHeight: "372px",
             maxWidth: '100%'
           }}
           opts={{ renderer: "canvas" }}
