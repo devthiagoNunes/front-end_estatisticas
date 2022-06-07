@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Filtros from '../../components/Filtros'
 import Municipio from '../../components/Graficos/municipio'
@@ -17,20 +17,22 @@ export default ({tipo}) => {
   const context = useContext(ContextGlobal)
   const [quantidade, setQuantidade] = useState(null)
 
-  const getQtdAbertas = async () => {
-    var filtros = {classificacao: "", ...context.state};
-    const response = await getDataEmpresasAbertas(filtros);
-    if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
-  }
-
-  const getQtdAtivas = async () => {
-    var filtros = {classificacao: "", ...context.state};
-    const response = await getDataEmpresasAtivas(filtros);
-    if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
-  }
-
-  getQtdAbertas()
-  getQtdAtivas()
+  useEffect(() => {
+    const getQtdAbertas = async () => {
+      var filtros = {classificacao: "", ...context.state};
+      const response = await getDataEmpresasAbertas(filtros);
+      if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
+    }
+  
+    const getQtdAtivas = async () => {
+      var filtros = {classificacao: "", ...context.state};
+      const response = await getDataEmpresasAtivas(filtros);
+      if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
+    }
+  
+    getQtdAbertas()
+    getQtdAtivas()
+  }, [context])
 
   return (
     <div className='wrap'>
