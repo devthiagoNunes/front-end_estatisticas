@@ -48,13 +48,13 @@
 
   @media (min-width: 1366px) {
     .municipio {
-      height: 181vh;
-      max-height: 1415px;
+      height: 170vh;
+      max-height: 1360px;
     }
 
     .municipio .table {
-      height: 150vh;
-      max-height: 1240px;
+      height: 140vh;
+      max-height: 1180px;
     }
   }
 
@@ -95,14 +95,20 @@
       font-size: 2.5rem;
     }
 
+    .municipio .table p {
+      font-size: .8rem;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
     .municipio {
-      height: 180vh;
-      max-height: 1230px;
+      height: 150vh;
+      max-height: 1205px;
     }
 
     .municipio .table {
-      height: 153.5vh;
-      max-height: 1085px;
+      height: 140vh;
+      max-height: 1060px;
     }
   }
 
@@ -125,6 +131,7 @@
     .total-empresasAbertas {
       width: 95%;
       margin: auto;
+      top: 1rem;
       margin-bottom: 0;
     }
   }

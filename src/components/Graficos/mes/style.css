@@ -8,6 +8,7 @@
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
 }
 .grafico-mes p {
+  position: relative;
   padding: .8rem 0;
   font-size: 1.5rem;
   font-weight: bold;
@@ -15,9 +16,32 @@
   color: white;
   text-align: center;
 }
+
+.grafico-mes p .icon-download-csv {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
+@media (min-width: 1366px) {
+  .grafico-mes p .icon-download-csv {
+    position: absolute;
+    width: 35px;
+    right: 10px;
+    top: 8px;
+  }
+}
+
 @media (max-width: 1024px) {
   .grafico-mes p {
     font-size: 1rem;
+  }
+  
+  .grafico-mes p .icon-download-csv {
+    position: absolute;
+    width: 28px;
+    right: 10px;
+    top: 8px;
   }
 }
 @media (max-width: 768px) {
@@ -29,6 +53,13 @@
     font-size: 0.9rem;
     position: sticky;
     left: 0;
+  }
+  
+  .grafico-mes p .icon-download-csv {
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    top: 8px;
   }
 }
 @media (max-width: 540px) {
@@ -52,5 +83,12 @@
     left: 0;
     width: 100%;
     z-index: 9;
+  }
+
+  .grafico-mes p .icon-download-csv {
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    top: 8px;
   }
 }

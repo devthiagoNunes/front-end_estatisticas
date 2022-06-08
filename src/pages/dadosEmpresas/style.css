@@ -74,7 +74,8 @@
 
   .content-tipoEmpresa {
     flex-direction: column;
-    max-height: none;
+    max-height: 1900px;
+    min-height: 1900px;
     padding-left: 0;
   }
 
