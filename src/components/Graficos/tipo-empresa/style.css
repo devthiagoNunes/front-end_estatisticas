@@ -27,6 +27,17 @@
   cursor: pointer;
 }
 
+.grafico p div {
+  position: absolute;
+  background: #666666;
+  right: 40px;
+
+  top: 2px;
+  font-size: .6rem;
+  padding: .2rem;
+  border-radius: 20%;
+}
+
 @media (min-width: 1366px) {
   .grafico p .icon-download-csv {
     width: 35px;

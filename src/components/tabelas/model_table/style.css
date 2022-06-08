@@ -52,6 +52,11 @@
   background: #007cc1;
 }
 
+.atividade .table p div,
+.natureza .table p div
+.municipio .table p div{
+
+}
 .atividade .table p svg,
 .municipio .table p svg,
 .natureza p svg {
