@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import {Multiselect} from 'multiselect-react-dropdown'
 
-import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade } from '../../services/pinot'
+import {getFiltrosPorte, getFiltrosSetor, getFiltrosNatureza, getFiltrosSecaoAtividade, getFiltrosMunicipio, getFiltrosDescricaoAtividade, getFilter } from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import * as action from '../../contexts/GlobalContext/actions'
 import './style.css'
@@ -33,7 +33,7 @@ export default () => {
 
   useEffect(() => {
     const getFiltros_Porte = async () => {
-      const get_filtros_porte =  await getFiltrosPorte(context)
+      const get_filtros_porte =  await getFilter(context, '/porte')
 
       let options_filters = []
       get_filtros_porte.map((arr, index) => (
@@ -46,7 +46,7 @@ export default () => {
     }
 
     const getFiltros_Setor = async () => {
-      const get_filtros_setor  =  await getFiltrosSetor(context)
+      const get_filtros_setor  =  await getFilter(context, '/setor')
       let options_filters = []
       get_filtros_setor.map((arr, index) => (
         options_filters.push({
@@ -58,7 +58,7 @@ export default () => {
     }
 
     const getFiltros_Natureza = async () => {
-      const get_filtros_natureza  =  await getFiltrosNatureza(context)
+      const get_filtros_natureza  =  await getFilter(context, '/natureza')
       let options_filters = []
       get_filtros_natureza.map((arr, index) => (
         options_filters.push({
@@ -70,7 +70,7 @@ export default () => {
     }
     
     const getFiltros_SecaoAtividade = async () => {
-      const get_filtros_secaoAtividade  =  await getFiltrosSecaoAtividade(context)
+      const get_filtros_secaoAtividade  =  await getFilter(context, '/secaoAtividade')
       let options_filters = []
       get_filtros_secaoAtividade.map((arr, index) => (
         options_filters.push({
@@ -82,7 +82,7 @@ export default () => {
     }
 
     const getFiltros_municipio = async () => {
-      const get_filtros_municipio  =  await getFiltrosMunicipio(context)
+      const get_filtros_municipio  =  await getFilter(context, '/municipios')
       let options_filters = []
       get_filtros_municipio.map((arr, index) => (
         options_filters.push({
@@ -94,7 +94,7 @@ export default () => {
     }
 
     const getFiltros_descricaoAtividade = async () => {
-      const get_descricao_atividade  =  await getFiltrosDescricaoAtividade(context)
+      const get_descricao_atividade  =  await getFilter(context, '/descricaoAtividade')
       let options_filters = []
       get_descricao_atividade.map((arr, index) => (
         options_filters.push({

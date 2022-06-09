@@ -26,83 +26,13 @@ export const getDataEmpresasAtivas = async (filtros) => {
   .catch(err => err)
 }
 
-export const getFiltrosPorte = async (context) => {
-  return await axios({
-    method: 'POST', 
-    data: {
-      ...context.state
-    },
-    url: backend_endpoint + '/porte', 
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
-export const getFiltrosSetor = async (context) => {
-  return await axios({
-    method: 'POST', 
-    data: {
-      ...context.state
-    },
-    url: backend_endpoint + '/setor', 
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
-export const getFiltrosNatureza = async (context) => {
+export const getFilter = async (context, endPoint) => {
   return await axios({
     method: 'POST',
     data: {
       ...context.state
     },
-    url: backend_endpoint + '/natureza', 
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
-export const getFiltrosMunicipio = async (context) => {
-  return await axios({
-    method: 'POST', 
-    data: {
-      ...context.state
-    },
-    url: backend_endpoint + '/municipios'
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
-export const getFiltrosSecaoAtividade = async (context) => {
-  return await axios({
-    method: 'POST', 
-    data: {
-      ...context.state
-    },
-    url: backend_endpoint + '/secaoAtividade'
-  })
-  .then(res => {
-    return res.data.values;
-  })
-  .catch(err => err)
-}
-
-export const getFiltrosDescricaoAtividade = async (context) => {
-  return await axios({
-    method: 'POST', 
-    data: {
-      ...context.state
-    },
-    url: backend_endpoint + '/descricaoAtividade'
+    url: `${backend_endpoint}${endPoint}`,
   })
   .then(res => {
     return res.data.values;
