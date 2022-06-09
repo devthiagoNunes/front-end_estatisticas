@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Filters from '../../client/filters'
-import Municipio from '../../components/Graficos/municipio'
-import Mes from "../../components/Graficos/mes"
+import Mes from "../../client/graphics/mes"
 import Botoes from '../../components/Botoes'
-import Porte from '../../components/Graficos/tipo-empresa/porte'
-import Setor from '../../components/Graficos/tipo-empresa/setor'
-import Natureza from '../../components/Graficos/tipo-empresa/natureza'
-import AtividadeEmpresa from '../../components/Graficos/tipo-empresa/atividade-empresa'
+import GraphicCompany from '../../components/graphic/model'
+import CompanyActivity from '../../client/tables/company-activity'
+import CompanyNature from '../../client/tables/company-nature'
+import Counties from '../../client/tables/counties'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
+
 import './style.css'
 import './styleGlobal.css'
+import companyActivity from '../../client/tables/company-activity'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
@@ -47,12 +48,14 @@ export default ({tipo}) => {
               <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
             </div> : null}
             <div className='tipoEmpresa'>
-              <Porte />
-              {context.state.empresasAbertas == true && <Setor />}
-              {context.state.empresasAbertas == false && <AtividadeEmpresa />}
-              <Natureza />
+              <div className='containerGraphics'>
+                <GraphicCompany classificationGraphic='porte' isVetical={true} />
+                {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
+              </div>
+              {context.state.empresasAbertas == false && <CompanyActivity />}
+              <CompanyNature />
             </div>
-            <Municipio />
+            <Counties />
           </div>
           {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
         </div>
