@@ -1,0 +1,65 @@
+.grafico {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+}
+
+.grafico p {
+    position: relative;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    padding: .8rem 0;
+    background: #007CC1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grafico p .icon-download-csv {
+    position: absolute;
+    right: 0;
+    margin: auto;
+    margin-right: 10px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.grafico p div {
+    position: absolute;
+    background: #666666;
+    right: 40px;
+
+    top: 2px;
+    font-size: .6rem;
+    padding: .2rem;
+    border-radius: 20%;
+}
+
+@media (min-width: 1366px) {
+    .grafico p .icon-download-csv {
+        width: 35px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .grafico p {
+        font-size: 1rem;
+    }
+
+    .grafico p .icon-download-csv {
+        width: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grafico p {
+        font-size: 1rem;
+    }
+
+    .grafico p .icon-download-csv {
+        width: 25px;
+    }
+}
