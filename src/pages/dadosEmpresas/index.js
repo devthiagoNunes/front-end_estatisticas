@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
-import Filtros from '../../components/Filtros'
+import Filters from '../../client/filters'
 import Municipio from '../../components/Graficos/municipio'
 import Mes from "../../components/Graficos/mes"
 import Botoes from '../../components/Botoes'
@@ -37,7 +37,7 @@ export default ({tipo}) => {
   return (
     <div className='wrap'>
       <Header />
-      <Filtros />
+      <Filters />
       <div className='main'>
         <Botoes tipo={tipo} />
       <div className='content-data'>
