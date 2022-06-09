@@ -90,7 +90,7 @@
     }
 
     .total-empresasAbertas p:first-child {
-        font-size: 1rem;
+        font-size: .85rem;
     }
 
     .total-empresasAbertas p:last-child {
@@ -98,13 +98,13 @@
     }
 
     .municipio {
-        height: 180vh;
-        max-height: 1230px;
+        height: 160vh;
+        max-height: 1200px;
     }
 
     .municipio .table {
-        height: 153.5vh;
-        max-height: 1085px;
+        height: 130vh;
+        max-height: 1058px;
     }
 }
 

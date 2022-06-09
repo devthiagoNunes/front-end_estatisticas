@@ -117,7 +117,7 @@ export default ({classificationGraphic, isVetical}) => {
         backgroundStyle: {
           color: "rgba(180, 180, 180, 0.2)",
         },
-        barWidth: "3z5%",
+        barWidth: "35%",
         barMaxWidth: dataColumn.length <= 2 ? "25%" : "50%",
       },
     ],
@@ -392,7 +392,8 @@ export default ({classificationGraphic, isVetical}) => {
           option={config2}
           style={{
             width: "100%",
-            height: "45vh"
+            height: "44vh",
+            maxHeight: "362px"
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -403,8 +404,8 @@ export default ({classificationGraphic, isVetical}) => {
           option={config1}
           style={{
             width: "100%",
-            height: "10%",
-            maxHeight: "450px"
+            height: "45vh",
+            maxHeight: "373px"
           }}
           opts={{ renderer: "canvas" }}
         />
@@ -415,8 +416,8 @@ export default ({classificationGraphic, isVetical}) => {
           option={config4}
           style={{
             width: '100%',
-            height: "40vh",
-            maxHeight: "355px",
+            height: "45vh",
+            maxHeight: "373px",
           }}
           opts={{ renderer: "canvas" }}
         />

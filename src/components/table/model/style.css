@@ -176,6 +176,18 @@
   .municipio .table p svg {
     margin-right: -6px;
   }
+
+  .municipio .table .contentTable table tbody tr td,
+  .atividade .table .contentTable table tbody tr td,
+  .natureza .table .contentTable table tbody tr td {
+    font-size: .85rem;
+  }
+
+  .atividade .table p,
+  .municipio .table p,
+  .natureza p {
+    font-size: .85rem;
+  }
 }
 
 @media (max-width: 540px) {

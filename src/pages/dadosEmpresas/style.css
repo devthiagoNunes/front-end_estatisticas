@@ -61,9 +61,13 @@
   }
 }
 @media (max-width:768px) {
+  .tipoEmpresa {
+    min-width: 44vw;
+  }
+
   .content-tipoEmpresa {
     height: 185vh;
-    max-height: 1330px;
+    max-height: 1220px;
   }
 }
 

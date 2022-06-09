@@ -12,7 +12,6 @@ import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pi
 
 import './style.css'
 import './styleGlobal.css'
-import companyActivity from '../../client/tables/company-activity'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
