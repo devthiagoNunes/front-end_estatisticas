@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Header from '../../components/Header/Header'
+import Header from '../../client/Header'
 import Filters from '../../client/filters'
 import Mes from "../../client/graphics/mes"
 import Botoes from '../../components/Botoes'
