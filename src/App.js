@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
-import LayoutComponent from './components/Layout'
+import LayoutComponent from './client/page-visible'
 import { ContextProvider } from './contexts/GlobalContext/contextProvider'
 import history from './services/history'
 

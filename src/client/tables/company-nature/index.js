@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { CSVLink } from "react-csv";
 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context"; 
-import { CreateTable } from "../../../components/tabelas/model_table"; 
+import { CreateTable } from "../../../components/table/model"; 
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../../services/pinot';
 
 export default () => {

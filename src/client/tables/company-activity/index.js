@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { CSVLink } from "react-csv";
 
-import { CreateTable } from "../../../components/tabelas/model_table"; 
+import { CreateTable } from "../../../components/table/model"; 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context"; 
 import { getDataEmpresasAtivas } from "../../../services/pinot"; 
 
