@@ -32,7 +32,7 @@ export const getFilter = async (context, endPoint) => {
     data: {
       ...context.state
     },
-    url: `${backend_endpoint}${endPoint}`,
+    url: `${backend_endpoint}/filter${endPoint}`,
   })
   .then(res => {
     return res.data.values;

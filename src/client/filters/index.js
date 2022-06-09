@@ -46,10 +46,10 @@ export default () => {
     }
 
     const getFiltros_Setor = async () => {
-      const get_filtros_porte =  await getFilter(context, '/setor')
+      const get_filtros_setor =  await getFilter(context, '/setor')
 
       let options_filters = []
-      get_filtros_porte.map((arr, index) => (
+      get_filtros_setor.map((arr, index) => (
         options_filters.push({
           Country: arr[0],
           id: index
@@ -59,10 +59,10 @@ export default () => {
     }
 
     const getFiltros_Natureza = async () => {
-      const get_filtros_porte =  await getFilter(context, '/natureza')
+      const get_filtros_natureza =  await getFilter(context, '/natureza')
 
       let options_filters = []
-      get_filtros_porte.map((arr, index) => (
+      get_filtros_natureza.map((arr, index) => (
         options_filters.push({
           Country: arr[0],
           id: index
@@ -72,10 +72,10 @@ export default () => {
     }
 
     const getFiltros_SecaoAtividade = async () => {
-      const get_filtros_porte =  await getFilter(context, '/secaoAtividade')
+      const get_filtros_secao_atividade = await getFilter(context, '/secao_atividade')
 
       let options_filters = []
-      get_filtros_porte.map((arr, index) => (
+      get_filtros_secao_atividade.map((arr, index) => (
         options_filters.push({
           Country: arr[0],
           id: index
@@ -85,10 +85,10 @@ export default () => {
     }
 
     const getFiltros_municipio = async () => {
-      const get_filtros_porte =  await getFilter(context, '/municipios')
+      const get_filtros_municipio =  await getFilter(context, '/municipio_empresa')
 
       let options_filters = []
-      get_filtros_porte.map((arr, index) => (
+      get_filtros_municipio.map((arr, index) => (
         options_filters.push({
           Country: arr[0],
           id: index
@@ -98,10 +98,10 @@ export default () => {
     }
 
     const getFiltros_descricaoAtividade = async () => {
-      const get_filtros_porte =  await getFilter(context, '/descricaoAtividade')
+      const get_filtros_descticao_atividade =  await getFilter(context, '/descricao_atividade')
 
       let options_filters = []
-      get_filtros_porte.map((arr, index) => (
+      get_filtros_descticao_atividade.map((arr, index) => (
         options_filters.push({
           Country: arr[0],
           id: index
