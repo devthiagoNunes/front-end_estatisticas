@@ -2,7 +2,7 @@
   display: flex;
   height: 40vh;
   flex-direction: column;
-  margin: 0 1rem 2rem 1rem;
+  margin: 0 1.15rem 2rem 1.28rem;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
@@ -24,6 +24,10 @@
 }
 
 @media (min-width: 1366px) {
+  .grafico-mes {
+    margin: 0 1rem 2rem 1rem;
+  }
+
   .grafico-mes p .icon-download-csv {
     position: absolute;
     width: 35px;
@@ -33,6 +37,10 @@
 }
 
 @media (max-width: 1024px) {
+  .grafico-mes {
+    margin: 0 1rem 2rem 1rem;
+  }
+  
   .grafico-mes p {
     font-size: 1rem;
   }
@@ -48,6 +56,7 @@
   .grafico-mes {
     height: 30vh;
     overflow-x: scroll;
+    margin: 0 1rem 2rem 1rem;
   }
   .grafico-mes p {
     font-size: 0.9rem;
@@ -65,10 +74,12 @@
 @media (max-width: 540px) {
   .grafico-mes {
     position: relative;
-    width: 95%;
+    width: 100%;
+    margin: 0 .65rem 2rem .7rem;
     overflow-x: scroll;
     overflow-y: scroll;
   }
+
   .grafico-mes .csvlink {
     position: sticky;
     left: 0;
