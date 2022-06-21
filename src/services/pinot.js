@@ -8,7 +8,8 @@ export const getDataEmpresasAbertas = async (filtros) => {
     url: backend_endpoint + '/empresasAbertas', 
     data: filtros
   })
-  .then(res => {
+    .then(res => {
+    console.log(res.data)
     return res.data;
   })
   .catch(err => err)
@@ -25,6 +26,21 @@ export const getDataEmpresasAtivas = async (filtros) => {
   })
   .catch(err => err)
 }
+
+export const getCapitalSocial = async (context, endPoint) => {
+  return await axios({
+    method: 'POST',
+    data: {
+      ...context.state
+    },
+    url: `${backend_endpoint}/estatisticas${endPoint}`,
+  })
+  .then(res => {
+    return res.data.values;
+  })
+  .catch(err => err)
+}
+
 
 export const getFilter = async (context, endPoint) => {
   return await axios({

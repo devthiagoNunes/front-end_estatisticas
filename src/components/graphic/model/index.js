@@ -32,7 +32,7 @@ export default ({classificationGraphic, isVetical}) => {
       setDataGraphic(response.values)
     }
     fetchDataGraphic()
-  }, [context, dataGraphic]);
+  }, [context]);
 
   let dataColumn = [];
   const colors = [
