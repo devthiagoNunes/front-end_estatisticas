@@ -70,7 +70,7 @@ export const LayoutStyle = styled.div`
 
   .content-tipoEmpresa {
     height: 185vh;
-    max-height: 1220px;
+    max-height: 1150px;
   }
 }
 

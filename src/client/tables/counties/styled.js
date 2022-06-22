@@ -56,18 +56,24 @@ export const AlternationTablesStyle = styled.section`
 
 @media (max-width: 768px) {
     .municipio {
-        height: 144vh;
-        max-height: 1200px;
+      height: ${({ stateempresasAbertas }) => {
+        if (stateempresasAbertas === true) return '166vh'
+        return '173vh'
+      }};
+      max-height: ${({ stateempresasAbertas }) => {
+        if (stateempresasAbertas === true) return '1110px'
+        return '1150px'
+      }};
     }
 
     .municipio .table {
         height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '127.5vh'
-          return '83vh'
+          if (stateempresasAbertas === true) return '140.5vh'
+          return '89vh'
         }};
         max-height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '1060px'
-          return '690px'
+          if (stateempresasAbertas === true) return '965px'
+          return '663px'
         }};
     }
 }

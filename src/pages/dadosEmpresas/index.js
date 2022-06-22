@@ -10,7 +10,7 @@ import Counties from '../../client/tables/counties'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
 
-import './style.css'
+import {LayoutStyle} from './styled'
 import './styleGlobal.css'
 
 export default ({tipo}) => {
@@ -35,30 +35,32 @@ export default ({tipo}) => {
   }, [context])
 
   return (
-    <div className='wrap'>
-      <Header />
-      <Filters />
-      <div className='main'>
-        <Botoes tipo={tipo} />
-      <div className='content-data'>
-          <div className='content-tipoEmpresa'>
-            {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
-              <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-              <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
-            </div> : null}
-            <div className='tipoEmpresa'>
-              <div className='containerGraphics'>
-                <GraphicCompany classificationGraphic='porte' isVetical={true} />
-                {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
+    <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
+      <div className='wrap'>
+        <Header />
+        <Filters />
+        <div className='main'>
+          <Botoes tipo={tipo} />
+        <div className='content-data'>
+            <div className='content-tipoEmpresa'>
+              {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
+                <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
+                <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
+              </div> : null}
+              <div className='tipoEmpresa'>
+                <div className='containerGraphics'>
+                  <GraphicCompany classificationGraphic='porte' isVetical={true} />
+                  {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
+                </div>
+                {context.state.empresasAbertas == false && <CompanyActivity />}
+                <CompanyNature />
               </div>
-              {context.state.empresasAbertas == false && <CompanyActivity />}
-              <CompanyNature />
+              <Counties />
             </div>
-            <Counties />
+            {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
           </div>
-          {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
-        </div>
-      </div> 
-    </div>
+        </div> 
+      </div>
+    </LayoutStyle>
   );
 }

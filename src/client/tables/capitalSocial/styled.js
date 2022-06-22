@@ -25,13 +25,15 @@ export const StyleCapitalSocial = styled.section`
 
 @media (max-width: 768px) {
   .table-capital {
-    height: 38vh;
-    max-height: 350px;
+    height: ${({empresasAbertas}) => {
+      if(!empresasAbertas) return '50vh'
+    }};
+    max-height: 365px;
   }
 
   .table-capital .table {
-    height: 42vh;
-    max-height: 350px;
+    height: 55vh;
+    max-height: 355px;
   }
 }
 
@@ -39,7 +41,7 @@ export const StyleCapitalSocial = styled.section`
   .table-capital {
     height: 63vh;
     max-height: ${({empresasAbertas}) => {
-        if(!empresasAbertas) return '1930px'
+      if(!empresasAbertas) return '1930px'
     }};
     margin-top: 1rem;
   }
