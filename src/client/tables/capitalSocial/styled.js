@@ -21,8 +21,8 @@ export const StyleCapitalSocial = styled.section`
   }
 
   .table-capital .table {
-    height: 55vh;
-    max-height: 380px;
+    height: 54vh;
+    max-height: 350px;
   }
 }
 
