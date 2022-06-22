@@ -40,18 +40,21 @@ export const AlternationTablesStyle = styled.section`
 }
 
 @media (max-width: 1024px) {
+  .municipio {
+    height: 170vh;
+    max-height: 1190px;
+  }
 
-    .municipio .table {
-        height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '153.5vh'
-          return '85vh'
-        }};
-        max-height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '1170px'
-          return '698px'
-        }};
-    }
-    
+  .municipio .table {
+    height: ${({ stateempresasAbertas }) => {
+      if (stateempresasAbertas === true) return '141.5vh'
+      return '85.7vh'
+    }};
+    max-height: ${({ stateempresasAbertas }) => {
+      if (stateempresasAbertas === true) return '1172px'
+      return '720px'
+    }};
+  }
 }
 
 @media (max-width: 768px) {

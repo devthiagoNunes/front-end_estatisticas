@@ -63,6 +63,13 @@ export const LayoutStyle = styled.div`
     padding-bottom: 1.5rem;
   }
 }
+
+@media (min-width: 1024px) {
+  .tipoEmpresa {
+    width: 55vw;
+  }
+}
+
 @media (max-width:768px) {
   .tipoEmpresa {
     min-width: 44vw;
