@@ -36,7 +36,7 @@ export default () => {
 
   return(
     <React.Fragment>
-      <StyleCapitalSocial>
+      <StyleCapitalSocial empresasAbertas={context.state.empresasAbertas}>
         <div className="table-capital">
           <div className='table'>
             <p>
