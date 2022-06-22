@@ -37,14 +37,16 @@ export const StyleCapitalSocial = styled.section`
 
 @media (max-width: 540px) {
   .table-capital {
-    height: 78vh;
-    max-height: 800px;
+    height: 63vh;
+    max-height: ${({empresasAbertas}) => {
+        if(!empresasAbertas) return '1930px'
+    }};
     margin-top: 1rem;
   }
 
   .table-capital .table {
-    height: 78vh;
-    max-height: 700px;
+    height: 63vh;
+    max-height: 670px;
   }
 }
 `
