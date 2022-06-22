@@ -60,6 +60,8 @@ export const LayoutStyle = styled.div`
 
 @media (min-width: 1366px) {
   .content-tipoEmpresa {
+    height: 170vh;
+    max-height: 1300px;
     padding-bottom: 1.5rem;
   }
 }

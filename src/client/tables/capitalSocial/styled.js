@@ -11,6 +11,21 @@ export const StyleCapitalSocial = styled.section`
   max-height: 441px;
 }
 
+@media (min-width: 1366px) {
+   .table-capital {
+    height:  ${({empresasAbertas}) => {
+      if(!empresasAbertas) return '54vh'
+    }};
+    max-height: 380px;
+    margin-top: 15px;
+  }
+
+  .table-capital .table {
+    height: 55vh;
+    max-height: 380px;
+  }
+}
+
 @media (max-width: 1024px) {
   .table-capital {
     height:  ${({empresasAbertas}) => {

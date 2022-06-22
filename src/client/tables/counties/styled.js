@@ -23,18 +23,18 @@ export const AlternationTablesStyle = styled.section`
 
 @media (min-width: 1366px) {
     .municipio {
-        height: 181vh;
-        max-height: 1330px;
+      height: 168vh;
+      max-height: 1280px;
     }
 
     .municipio .table {
       height:  ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '150vh'
-        return '110vh'
+        if (stateempresasAbertas === true) return '140.5vh'
+        return '83.7vh'
       }};
       max-height: ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '1158px'
-        return '700px'      
+        if (stateempresasAbertas === true) return '1100px'
+        return '648px'      
       }};
     }
 }
