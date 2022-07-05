@@ -67,7 +67,7 @@ export const CreateTable = ({table_name, arr_dados}) => {
         accessor: 'tableData',
       },
       {
-        Header: 'Quantidade',
+        Header: table_name !== 'Capital Social' ? 'Quantidade' : 'Valor',
         accessor: 'quantidade',
       },
     ], [table_name])

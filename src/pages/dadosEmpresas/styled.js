@@ -42,6 +42,7 @@ export const LayoutStyle = styled.div`
         display: flex;
         justify-content: space-between;
         margin: 0 1rem;
+        gap: 1rem;
         margin-bottom: 2rem;
         max-height: 185vh;
         overflow: hidden;
@@ -52,7 +53,6 @@ export const LayoutStyle = styled.div`
         flex-direction: column;
         align-content: space-between;
         width: 100%;
-        max-width: 800px;
         height: 100%;
         left: 0;
     }
