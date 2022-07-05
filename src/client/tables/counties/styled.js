@@ -32,7 +32,6 @@ export const AlternationTablesStyle = styled.section`
     .municipio .table {
       height:  ${({ stateempresasAbertas }) => {
         if (stateempresasAbertas === true) return '140.5vh'
-        return '83.7vh'
       }};
       max-height: ${({ stateempresasAbertas }) => {
         if (stateempresasAbertas === true) return '1035px'

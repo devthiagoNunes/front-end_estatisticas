@@ -20,12 +20,7 @@ export default () => {
       console.log('response',response)
       
       response.forEach(arr_data => {
-        replyToCorporateNameParsed.push([arr_data[0], `${new Intl.NumberFormat('pt-BR',{
-          currency: 'BRL',
-          style: 'currency',
-          currencyDisplay: 'symbol',
-
-        }).format(arr_data[1]/1000000000)} BI`])
+        replyToCorporateNameParsed.push([arr_data[0], `${Math.floor(arr_data[1]/1000000000)} BI`])
       })
 
       setEmpresasPorCapital(response)
