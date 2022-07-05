@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Logo from '../../assets/Governo-Maranhao-MA.png'
 import './style.css'
 
 export default () => {
@@ -8,7 +9,7 @@ export default () => {
     <div className='header'>
       <section>
         <h2>PAINEL DE EMPRESAS DO MARANHÃO - {window.innerWidth <= 540 ? 'JUCEMA' : 'Junta Comercial do Maranhão'}</h2>
-        <img src="http://api.jucema.ma.gov.br/files/1632146487_logo.svg" alt="logo-jucema"/>
+        <img src={Logo} alt="logo-jucema"/>
         <svg xmlns="http:www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#fff"
           onClick={() => {
             setFiltersBlock(!filtersBlock)

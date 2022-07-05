@@ -19,7 +19,12 @@ export default () => {
       let replyToCorporateNameParsed = []
       
       response.forEach(arr_data => {
-        replyToCorporateNameParsed.push([arr_data[0], `R$ ${arr_data[1].toLocaleString('pt-BR')}`])
+        replyToCorporateNameParsed.push([arr_data[0], `${new Intl.NumberFormat('pt-BR',{
+          currency: 'BRL',
+          style: 'currency',
+          currencyDisplay: 'symbol',
+
+        }).format(arr_data[1])}`])
       })
 
       setEmpresasPorCapital(response)

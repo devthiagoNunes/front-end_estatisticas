@@ -140,7 +140,7 @@ export default ({classificationGraphic, isVetical}) => {
     toolbox: {
       show: true,
       orient: "horizontal",
-      left: "94%",
+      left: "90%",
       itemSize: 12,
       showTitle: true,
       feature: {

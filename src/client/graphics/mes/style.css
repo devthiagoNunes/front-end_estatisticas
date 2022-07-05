@@ -1,8 +1,9 @@
 .grafico-mes {
   display: flex;
   height: 40vh;
+  margin: 0 1rem;
+  margin-right: 1.3rem;
   flex-direction: column;
-  margin: 0 1.15rem 2rem 1.28rem;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
@@ -24,10 +25,7 @@
 }
 
 @media (min-width: 1366px) {
-  .grafico-mes {
-    margin: 0 1rem 2rem 1rem;
-  }
-
+ 
   .grafico-mes p .icon-download-csv {
     position: absolute;
     width: 35px;
@@ -75,7 +73,7 @@
   .grafico-mes {
     position: relative;
     width: 100%;
-    margin: 0 .65rem 2rem .7rem;
+    margin: 0 1.5rem;
     overflow-x: scroll;
     overflow-y: scroll;
   }

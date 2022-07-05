@@ -22,7 +22,7 @@ export const StyleCapitalSocial = styled.section`
 
   .table-capital .table {
     height: 54vh;
-    max-height: 350px;
+    max-height: 374px;
   }
 }
 
@@ -31,13 +31,13 @@ export const StyleCapitalSocial = styled.section`
     height:  ${({empresasAbertas}) => {
       if(!empresasAbertas) return '54vh'
     }};
-    max-height: 440px;
+    max-height: 350px;
     margin-top: 15px;
   }
 
   .table-capital .table {
-    height: 55vh;
-    max-height: 460px;
+    height: 50vh;
+    max-height: 345px;
   }
 }
 
@@ -46,12 +46,12 @@ export const StyleCapitalSocial = styled.section`
     height: ${({empresasAbertas}) => {
       if(!empresasAbertas) return '50vh'
     }};
-    max-height: 365px;
+    max-height: 360px;
   }
 
   .table-capital .table {
     height: 55vh;
-    max-height: 355px;
+    max-height: 349px;
   }
 }
 
@@ -59,14 +59,14 @@ export const StyleCapitalSocial = styled.section`
   .table-capital {
     height: 63vh;
     max-height: ${({empresasAbertas}) => {
-      if(!empresasAbertas) return '1930px'
+      if(!empresasAbertas) return '455px'
     }};
     margin-top: 1rem;
   }
 
   .table-capital .table {
     height: 63vh;
-    max-height: 670px;
+    max-height: 450px;
   }
 }
 `

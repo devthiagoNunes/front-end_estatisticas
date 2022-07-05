@@ -40,9 +40,8 @@ export const LayoutStyle = styled.div`
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        padding-left: 1rem;
+        justify-content: space-between;
+        margin: 0 1rem;
         margin-bottom: 2rem;
         max-height: 185vh;
         overflow: hidden;
@@ -70,16 +69,23 @@ export const LayoutStyle = styled.div`
   .tipoEmpresa {
     width: 55vw;
   }
+  .content-tipoEmpresa {
+    height: 150vh;
+    max-height: 1220px;
+  }
+  .tipoEmpresa {
+    width: 45vw;
+  }
 }
 
 @media (max-width:768px) {
   .tipoEmpresa {
-    min-width: 44vw;
+    width: 44vw;
   }
 
   .content-tipoEmpresa {
     height: 185vh;
-    max-height: 1150px;
+    max-height: 1220px;
   }
 }
 
@@ -99,8 +105,6 @@ export const LayoutStyle = styled.div`
         return '2400px'
     }};
     padding-left: 0;
-
-    border: 1px solid;
   }
 
   .tipoEmpresa {

@@ -63,3 +63,9 @@
         width: 25px;
     }
 }
+
+@media (max-width: 540px) {
+    .grafico p {
+        font-size: 1rem;
+    }
+}

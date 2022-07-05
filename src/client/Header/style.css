@@ -27,7 +27,7 @@
 }
 .header img {
   position: absolute;
-  width: 150px;
+  width: 8rem;
   margin-right: 2rem;
   right: 0;
 }
@@ -42,6 +42,9 @@
 @media (max-width: 1024px) {
   .header h2 {
     font-size: 1.1rem;
+  }
+  .header img {
+    width: 6rem;
   }
 }
 @media (max-width: 768px) {
