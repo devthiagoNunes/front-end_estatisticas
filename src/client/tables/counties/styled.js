@@ -16,7 +16,6 @@ export const AlternationTablesStyle = styled.section`
     overflow: hidden;
     overflow-y: scroll;
     border-radius: 15px;
-    border-left: 1px solid #000;
     box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
     margin-bottom: 1rem;
 }

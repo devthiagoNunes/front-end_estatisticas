@@ -99,6 +99,10 @@
   letter-spacing: .1rem;
 }
 
+.municipio .contentTable {
+  max-height: 25px;
+}
+
 @media (min-width: 1366px) {
   .natureza {
     height: 55vh;
