@@ -159,12 +159,12 @@ export default () => {
               action={action.MUDAR_ANO}
             />
           }
-            <FiLter
+            {context.state.empresasAbertas && <FiLter
               descriptionFilter='Mês:'
               options={validMonths}
               selectionLimit={1}
               action={action.MUDAR_MES}
-            />
+            />}
             <FiLter
               descriptionFilter='Setor de Atuação:'
               options={filtrosSetor}
