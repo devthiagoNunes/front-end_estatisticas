@@ -2,22 +2,17 @@ import styled from 'styled-components'
 
 export const StyleCapitalSocial = styled.section`
   .table-capital {
-    height: 53vh;
     max-height: 441px;
   }
 
 .table-capital .table {
-  height: 51vh;
   max-height: 441px;
 }
 
 @media (min-width: 1366px) {
-   .table-capital {
-    height:  ${({empresasAbertas}) => {
-      if(!empresasAbertas) return '54vh'
-    }};
+  .table-capital {
     max-height: 380px;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
   .table-capital .table {

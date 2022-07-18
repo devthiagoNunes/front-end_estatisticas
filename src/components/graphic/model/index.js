@@ -417,7 +417,7 @@ export default ({classificationGraphic, isVetical}) => {
           style={{
             width: '100%',
             height: "45vh",
-            maxHeight: "373px",
+            maxHeight: "341px",
           }}
           opts={{ renderer: "canvas" }}
         />

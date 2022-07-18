@@ -2,12 +2,14 @@ import styled from "styled-components"
 
 export const AlternationTablesStyle = styled.section`
 .municipio {
-    width: 40vw;
+    width: 100%;
     max-width: 500px;
     height: 100%;
-    max-height: 2100px;
     border-radius: 15px;
     padding-right: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .municipio .table {
@@ -17,25 +19,11 @@ export const AlternationTablesStyle = styled.section`
     overflow-y: scroll;
     border-radius: 15px;
     box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
-    margin-bottom: 1rem;
 }
 
 @media (min-width: 1366px) {
-    .municipio {
-      width: 45vw;
-      max-width: 550px;
-      height: 168vh;
-      max-height: 1210px;
-    }
-
     .municipio .table {
-      height:  ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '140.5vh'
-      }};
-      max-height: ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '1035px'
-        return '644px'      
-      }};
+      margin-bottom: .35rem;
     }
 }
 

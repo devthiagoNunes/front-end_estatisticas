@@ -28,7 +28,6 @@
 .header img {
   position: absolute;
   width: 8rem;
-  margin-right: 2rem;
   right: 0;
 }
 .header section {
@@ -36,8 +35,8 @@
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 1rem;
+  width: 85%;
+  padding: 1rem 0;
 }
 @media (max-width: 1024px) {
   .header h2 {
