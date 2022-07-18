@@ -11,6 +11,7 @@ export const StyleCapitalSocial = styled.section`
 
 @media (min-width: 1366px) {
   .table-capital {
+    height: 55vh;
     max-height: 380px;
     margin-top: 10px;
   }
