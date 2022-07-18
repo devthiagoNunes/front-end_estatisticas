@@ -24,16 +24,12 @@ export const StyleCapitalSocial = styled.section`
 
 @media (max-width: 1024px) {
   .table-capital {
-    height:  ${({empresasAbertas}) => {
-      if(!empresasAbertas) return '54vh'
-    }};
-    max-height: 350px;
+    max-height: 375px;
     margin-top: 15px;
   }
 
   .table-capital .table {
-    height: 50vh;
-    max-height: 345px;
+    max-height: 300px;
   }
 }
 

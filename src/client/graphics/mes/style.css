@@ -35,10 +35,6 @@
 }
 
 @media (max-width: 1024px) {
-  .grafico-mes {
-    margin: 0 1rem 2rem 1rem;
-  }
-  
   .grafico-mes p {
     font-size: 1rem;
   }
