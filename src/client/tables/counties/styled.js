@@ -47,50 +47,26 @@ export const AlternationTablesStyle = styled.section`
 }
 
 @media (max-width: 768px) {
-    .municipio {
-      max-width: 270px;
-      height: ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '166vh'
-        return '173vh'
-      }};
-      max-height: ${({ stateempresasAbertas }) => {
-        if (stateempresasAbertas === true) return '1205px'
-        return '1200px'
-      }};
-    }
+  .municipio {
+    width: 100%;
+    max-width: none;
+    height: max-content;
+    max-height: none;
+    margin: 0 auto;
 
-    .municipio .table {
-        height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '140.5vh'
-          return '89vh'
-        }};
-        max-height: ${({ stateempresasAbertas }) => {
-          if (stateempresasAbertas === true) return '1057px'
-          return '688px'
-        }};
-    }
-}
+    display: block;
+    margin-top: 1rem;
+    padding-right: 0;
+    padding-bottom: .5rem;
+  }
+  
+  .municipio .table {
+      width: 95%;
+      margin: auto;
+  }
 
-@media (max-width: 540px) {
-    .municipio {
-        margin: 1rem 0;
-        max-width: none;
-        width: 100%;
-        max-height: ${({stateempresasAbertas}) => {
-            if(stateempresasAbertas) return '600px'
-        }};
-        padding: 0;
-        padding-bottom: 1rem;
-    }
-    
-    .municipio .table {
-        width: 95%;
-        margin: auto;
-        max-height: 78vh;
-    }
-
-    .municipio .table table {
-        max-height: 15px;
-    }
+  .municipio .table table {
+      max-height: 15px;
+  }
 }
 `

@@ -54,7 +54,6 @@
   .grafico-mes {
     height: 30vh;
     overflow-x: scroll;
-    margin: 0 1rem 2rem 1rem;
   }
   .grafico-mes p {
     font-size: 0.9rem;
@@ -69,10 +68,9 @@
     top: 8px;
   }
 }
-@media (max-width: 540px) {
+ @media (max-width: 540px) {
   .grafico-mes {
     position: relative;
-    width: 100%;
     margin: 0 1.5rem;
     overflow-x: scroll;
     overflow-y: scroll;

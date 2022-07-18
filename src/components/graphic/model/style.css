@@ -55,17 +55,16 @@
 }
 
 @media (max-width: 768px) {
+    .grafico {
+        width: 95%;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
     .grafico p {
         font-size: .85rem;
     }
 
     .grafico p .icon-download-csv {
         width: 25px;
-    }
-}
-
-@media (max-width: 540px) {
-    .grafico p {
-        font-size: 1rem;
     }
 }

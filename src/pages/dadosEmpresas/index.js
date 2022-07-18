@@ -42,6 +42,10 @@ export default ({tipo}) => {
           <Botoes tipo={tipo} />
           <AllCharts>
             <TypeCompany>
+              {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
+                <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
+                <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
+              </div> : null}
               <section>
                 <GraphicCompany classificationGraphic='porte' isVetical={true} />
                 {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
