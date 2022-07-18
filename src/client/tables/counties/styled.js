@@ -52,6 +52,26 @@ export const AlternationTablesStyle = styled.section`
   .municipio {
     width: 100%;
     max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: .1rem;
+    padding-right: .5rem;
+  }
+  
+  .municipio .table {
+    width: 100%;
+    height: 100%;
+  }
+
+  .municipio .table table {
+    max-height: 15px;
+  }
+}
+
+@media (max-width: 540px) {
+  .municipio {
+    width: 100%;
+    max-width: none;
     height: max-content;
     max-height: none;
     margin: 0 auto;

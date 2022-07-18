@@ -26,6 +26,12 @@ export const TypeCompany = styled.section`
   }
 
 @media (max-width: 768px) {
+  section:first-child {
+    width: 75%;
+  }
+}
+
+@media (max-width: 540px) {
   flex-direction: column;
 
   section {

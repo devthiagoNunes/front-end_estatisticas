@@ -35,6 +35,18 @@ export const StyleCapitalSocial = styled.section`
 
 @media (max-width: 768px) {
   .table-capital {
+    height: 54.5vh;
+    max-height: 360px;
+  }
+
+  .table-capital .table {
+    height: 54.5vh;
+    max-height: 345px;
+  }
+}
+
+@media (max-width: 540px) {
+  .table-capital {
     max-height: 360px;
   }
 
@@ -42,5 +54,4 @@ export const StyleCapitalSocial = styled.section`
     max-height: 349px;
   }
 }
-
 `
