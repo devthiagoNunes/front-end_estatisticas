@@ -1,61 +1,18 @@
 import styled from "styled-components";
 
 export const LayoutStyle = styled.div`
-    .main {
-        display: flex;
-        flex-direction: column;
-        width: 85%;
-        max-width: 1366px;
-        margin: auto;
-        margin-top: 17rem;
-        margin-bottom: 2rem;
-    }
-    .root {
-        height: 100%;
-        position: relative;
-        left: 0;
-    }
-
-    .wrap {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        left: 0;
-        right: 0;
-        margin-top: 0;
-        background: white;
-    }
-    .content-data {
-        position: relative;
-        display: flex;
-        flex-flow: wrap;
-        justify-content: space-evenly;
-        border: 1px solid #00b0d7;
-        padding: 1rem 0;
-    }
-
-    .content-tipoEmpresa {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin: 0 1rem;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        max-height: 185vh;
-        overflow: hidden;
-    }
-
-    .tipoEmpresa {
-        display: flex;
-        flex-direction: column;
-        align-content: space-between;
-        width: 100%;
-        height: 100%;
-        left: 0;
-    }
+  #content-filtros {
+    position: relative;
+    margin: 0 auto;
+    transform: translateY(5rem);
+  }
+  main {
+    width: 85%;
+    margin: 0 auto;
+    transform: translateY(7rem);
+    max-width: 1366px;
+    margin-bottom: 150px;
+  }
 
 @media (min-width: 1366px) {
   .content-tipoEmpresa {
@@ -126,4 +83,20 @@ export const LayoutStyle = styled.div`
     margin-top: 4rem;
   }
 }
+`
+export const TypeCompany = styled.section`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 3rem;
+  
+  section:first-child {
+    width: 62%;
+    margin-right: 1rem;
+  }
+  `
+
+export const AllCharts = styled.div`
+  padding: 1rem 0;
+  border: 1px solid #00b0d7;
 `

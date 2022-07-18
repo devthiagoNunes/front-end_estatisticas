@@ -10,7 +10,7 @@ import Counties from '../../client/tables/counties'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
 
-import {LayoutStyle} from './styled'
+import {AllCharts, LayoutStyle, TypeCompany} from './styled'
 import './styleGlobal.css'
 
 export default ({tipo}) => {
@@ -36,31 +36,23 @@ export default ({tipo}) => {
 
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
-      <div className='wrap'>
         <Header />
         <Filters />
-        <div className='main'>
+        <main>
           <Botoes tipo={tipo} />
-        <div className='content-data'>
-            <div className='content-tipoEmpresa'>
-              {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
-                <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-                <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
-              </div> : null}
-              <div className='tipoEmpresa'>
-                <div className='containerGraphics'>
-                  <GraphicCompany classificationGraphic='porte' isVetical={true} />
-                  {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
-                </div>
+          <AllCharts>
+            <TypeCompany>
+              <section>
+                <GraphicCompany classificationGraphic='porte' isVetical={true} />
+                {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
                 {context.state.empresasAbertas == false && <CompanyActivity />}
                 <CompanyNature />
-              </div>
-              <Counties />
-            </div>
+              </section>
+              <Counties />  
+            </TypeCompany>
             {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
-          </div>
-        </div> 
-      </div>
+          </AllCharts>
+        </main>
     </LayoutStyle>
   );
 }
