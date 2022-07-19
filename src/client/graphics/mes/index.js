@@ -3,11 +3,10 @@ import Echarts from "echarts-for-react";
 import { CSVLink } from "react-csv";
 import echarts from "echarts";
 
-import { getDataEmpresasAbertas } from "../../../services/pinot"; 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context"; 
 import "./style.css";
 
-export default () => {
+export default ({arr_data_month = []}) => {
 
   const context = useContext(ContextGlobal)
   const [popupVisible, setPopoupVisible] = useState(false);
@@ -16,26 +15,22 @@ export default () => {
       tipo: [],
       quantidade: [],
     })
-  const [dataToCSVComponent, setDataToCSVComponent] = useState([])
-
 
   useEffect(() => {
-    var newAbertasMes = {
+    let newAbertasMes = {
       classificacao: "Mes",
       tipo: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
       quantidade: [],
     }
-    var fetchAbertasMes = async () => {
-      var filtros = {classificacao: "abertas_mes", ...context.state};
-      const response = await getDataEmpresasAbertas(filtros);
-      setDataToCSVComponent(response.values)
-      response.values.forEach(element => {
+
+    let fetchAbertasMes = async () => {
+      arr_data_month.forEach(element => {
         newAbertasMes.quantidade.push(element[1])
       })
       setAbertasMes(newAbertasMes)
     }
     fetchAbertasMes()
-  }, [context]);
+  }, [arr_data_month]);
 
 
   let dataGraficoMes = [];
@@ -518,7 +513,7 @@ export default () => {
 
   const dataToDownload = [
     ['mes', 'quantidade'],
-    ...dataToCSVComponent
+    ...arr_data_month
   ]
 
   return (

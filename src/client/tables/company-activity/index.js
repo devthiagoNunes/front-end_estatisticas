@@ -3,7 +3,6 @@ import { CSVLink } from "react-csv";
 
 import { CreateTable } from "../../../components/table/model"; 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context"; 
-import { getDataEmpresasAtivas } from "../../../services/pinot"; 
 
 export default () => {
 
@@ -11,20 +10,20 @@ export default () => {
   const [activity, setActivity] = useState([])
   const [popupVisible, setPopoupVisible] = useState(false);
 
-  useEffect(() => {
-    const get_ativas_secao_atividade = async () => {
-      //eslint-disable-next-line
-      switch (context.state.empresasAbertas) {
-        case false:
-          var filtros = {classificacao: "descricao_atividade", ...context.state};
-          const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
-          setActivity(quantidade_ativas.values);
-          return
-      }
-    }
+  // useEffect(() => {
+  //   const get_ativas_secao_atividade = async () => {
+  //     //eslint-disable-next-line
+  //     switch (context.state.empresasAbertas) {
+  //       case false:
+  //         var filtros = {classificacao: "descricao_atividade", ...context.state};
+  //         const quantidade_ativas =  await getDataEmpresasAtivas(filtros)
+  //         setActivity(quantidade_ativas.values);
+  //         return
+  //     }
+  //   }
 
-    get_ativas_secao_atividade()
-  }, [context])
+  //   get_ativas_secao_atividade()
+  // }, [context])
 
   const dataToDownload = [
     ['atividade', 'quantidade'],

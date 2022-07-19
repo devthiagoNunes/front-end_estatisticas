@@ -1,30 +1,30 @@
 import axios from 'axios'
 
-const backend_endpoint = process.env.REACT_APP_BACKEND;
+const backend_endpoint = 'http://localhost:3333'
 
-export const getDataEmpresasAbertas = async (filtros) => {
-  return await axios({
-    method: 'POST', 
-    url: backend_endpoint + '/empresasAbertas', 
-    data: filtros
-  })
-    .then(res => {
-    return res.data;
-  })
-  .catch(err => err)
-}
+// export const getDataEmpresasAbertas = async (filtros) => {
+//   return await axios({
+//     method: 'POST', 
+//     url: backend_endpoint + '/empresasAbertas', 
+//     data: filtros
+//   })
+//     .then(res => {
+//     return res.data;
+//   })
+//   .catch(err => err)
+// }
 
-export const getDataEmpresasAtivas = async (filtros) => {
-  return await axios({
-    method: 'POST', 
-    url: backend_endpoint + '/empresasAtivas', 
-    data: filtros
-  })
-  .then(res => {
-    return res.data;
-  })
-  .catch(err => err)
-}
+// export const getDataEmpresasAtivas = async (filtros) => {
+//   return await axios({
+//     method: 'POST', 
+//     url: backend_endpoint + '/empresasAtivas', 
+//     data: filtros
+//   })
+//   .then(res => {
+//     return res.data;
+//   })
+//   .catch(err => err)
+// }
 
 export const getCapitalSocial = async (context, endPoint) => {
   return await axios({
@@ -40,7 +40,6 @@ export const getCapitalSocial = async (context, endPoint) => {
   .catch(err => err)
 }
 
-
 export const getFilter = async (context, endPoint) => {
   return await axios({
     method: 'POST',
@@ -51,6 +50,18 @@ export const getFilter = async (context, endPoint) => {
   })
   .then(res => {
     return res.data.values;
+  })
+  .catch(err => err)
+}
+
+export const allDataOfOpenCompanies = async (contextFilters) => {
+  return await axios({
+    method: 'POST',
+    data: contextFilters,
+    url: `${backend_endpoint}/estatisticas/company/open`,
+  })
+  .then(res => {
+    return res
   })
   .catch(err => err)
 }

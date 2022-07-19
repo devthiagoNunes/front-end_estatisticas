@@ -8,7 +8,7 @@ import CompanyActivity from '../../client/tables/company-activity'
 import CompanyNature from '../../client/tables/company-nature'
 import Counties from '../../client/tables/counties'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
-import { getDataEmpresasAbertas, getDataEmpresasAtivas } from '../../services/pinot'
+import { allDataOfOpenCompanies } from '../../services/pinot'
 
 import {AllCharts, LayoutStyle, TypeCompany} from './styled'
 import './styleGlobal.css'
@@ -16,47 +16,55 @@ import './styleGlobal.css'
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
   const [quantidade, setQuantidade] = useState(null)
+  const [allDatas, setALldData] = useState(null)
 
   useEffect(() => {
-    const getQtdAbertas = async () => {
-      var filtros = {classificacao: "", ...context.state};
-      const response = await getDataEmpresasAbertas(filtros);
-      if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
-    }
+    // const getQtdAbertas = async () => {
+    //   var filtros = {classificacao: "", ...context.state};
+    //   const response = await getDataEmpresasAbertas(filtros);
+    //   if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
+    // }
   
-    const getQtdAtivas = async () => {
-      var filtros = {classificacao: "", ...context.state};
-      const response = await getDataEmpresasAtivas(filtros);
-      if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
+    // const getQtdAtivas = async () => {
+    //   var filtros = {classificacao: "", ...context.state};
+    //   const response = await getDataEmpresasAtivas(filtros);
+    //   if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
+    // }
+
+    const datasOfOpenCompanies = async () => {
+      const response = await allDataOfOpenCompanies(context.state)
+      setALldData(response.data)
     }
+
+    datasOfOpenCompanies()
   
-    getQtdAbertas()
-    getQtdAtivas()
+    // getQtdAbertas()
+    // getQtdAtivas()
   }, [context])
 
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
-        <Header />
-        <Filters />
-        <main>
-          <Botoes tipo={tipo} />
-          <AllCharts>
-            <TypeCompany>
-              {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
-                <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-                <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
-              </div> : null}
-              <section>
-                <GraphicCompany classificationGraphic='porte' isVetical={true} />
-                {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' />}
-                {context.state.empresasAbertas == false && <CompanyActivity />}
-                <CompanyNature />
-              </section>
-              <Counties />  
-            </TypeCompany>
-            {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes />}
-          </AllCharts>
-        </main>
+      <Header />
+      {allDatas !== null && <Filters /> }
+      {allDatas !== null && <main>
+        <Botoes tipo={tipo} />
+        <AllCharts>
+          <TypeCompany>
+            {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
+              <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
+              <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
+            </div> : null}
+            <section>
+              <GraphicCompany classificationGraphic='porte' isVetical={true} arr_data_company={allDatas.porte} />
+              {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' arr_data_company={allDatas.setor} />}
+              {context.state.empresasAbertas == false && <CompanyActivity />}
+              <CompanyNature arr_dada_nature_company={allDatas.natureza} />
+            </section>
+            <Counties arr_data_counties={allDatas.municipio_empresa} />  
+          </TypeCompany>
+          {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes arr_data_month={allDatas.mes} />}
+        </AllCharts>
+      </main>}
     </LayoutStyle>
   );
 }

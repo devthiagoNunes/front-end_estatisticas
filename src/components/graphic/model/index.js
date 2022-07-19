@@ -2,15 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import Echarts from "echarts-for-react";
 import { CSVLink } from 'react-csv'
 
-import { getDataEmpresasAbertas } from "../../../services/pinot"; 
 import { ContextGlobal } from '../../../contexts/GlobalContext/context';
 import "./style.css";
 
-export default ({classificationGraphic, isVetical}) => {
-
+export default ({classificationGraphic, isVetical, arr_data_company = []}) => {
   const context = useContext(ContextGlobal)
 
-  const [dataGraphic, setDataGraphic] = useState([]);
   const [popupVisible, setPopoupVisible] = useState(false);
   const [data, setData] = useState({
     company: [],
@@ -18,21 +15,15 @@ export default ({classificationGraphic, isVetical}) => {
   });
 
   useEffect(() => {
-    const fetchDataGraphic = async () => {
-      var filters = {classificacao: classificationGraphic, ...context.state}
-      const response = await getDataEmpresasAbertas(filters)
-      const obj = {company: [], quantity: []}
+    const obj = {company: [], quantity: []}
 
-      response.values.forEach(element => {
-        obj.company.push(element[0].length > 20 ? element[0].replace(' ', '\n') : element[0])
-        obj.quantity.push(element[1]);
-      })
+    arr_data_company.forEach(element => {
+      obj.company.push(element[0].length > 20 ? element[0].replace(' ', '\n') : element[0])
+      obj.quantity.push(element[1]);
+    })
 
-      setData(obj);
-      setDataGraphic(response.values)
-    }
-    fetchDataGraphic()
-  }, [context]);
+    setData(obj);
+  }, [arr_data_company]);
 
   let dataColumn = [];
   const colors = [
@@ -353,7 +344,7 @@ export default ({classificationGraphic, isVetical}) => {
 
   const dataToDownload = [
     [classificationGraphic, '.quantidade'],
-    ...dataGraphic
+    ...arr_data_company
   ]
 
   return (
