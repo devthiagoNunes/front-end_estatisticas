@@ -7,7 +7,7 @@ import CapitalSocial from "../capitalSocial"
 import { AlternationTablesStyle } from "./styled"
 import './style.css'
 
-export default ({arr_data_counties = []}) => {
+export default ({arr_data_counties = [], total_quantity}) => {
 
   const context = useContext(ContextGlobal)
   const [quantity, setQuantity] = useState(null)
@@ -40,7 +40,7 @@ export default ({arr_data_counties = []}) => {
       <div className="municipio">
         {(window.innerWidth >= 320 && window.innerWidth < 768) ? null : <div className="total-empresasAbertas">
           <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-          <p>{quantity !== null && quantity.toLocaleString('pt-br')}</p>
+          <p>{total_quantity.toLocaleString('pt-br')}</p>
         </div>
         }
           <div className='table'>

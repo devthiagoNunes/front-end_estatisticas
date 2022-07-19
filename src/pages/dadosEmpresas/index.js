@@ -52,7 +52,7 @@ export default ({tipo}) => {
           <TypeCompany>
             {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
               <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-              <p>{quantidade !== null && quantidade.toLocaleString('pt-br')}</p>
+              <p>{quantidade !== null && allDatas.quantity[0][0].toLocaleString('pt-br')}</p>
             </div> : null}
             <section>
               <GraphicCompany classificationGraphic='porte' isVetical={true} arr_data_company={allDatas.porte} />
@@ -60,7 +60,7 @@ export default ({tipo}) => {
               {context.state.empresasAbertas == false && <CompanyActivity />}
               <CompanyNature arr_dada_nature_company={allDatas.natureza} />
             </section>
-            <Counties arr_data_counties={allDatas.municipio_empresa} />  
+            <Counties arr_data_counties={allDatas.municipio_empresa} total_quantity={allDatas.quantity[0][0]} />  
           </TypeCompany>
           {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes arr_data_month={allDatas.mes} />}
         </AllCharts>
