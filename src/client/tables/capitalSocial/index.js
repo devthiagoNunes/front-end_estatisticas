@@ -17,7 +17,6 @@ export default () => {
     const getEmpresasPorCapital = async () => {
       const response = await getCapitalSocial(context, '/capital')
       let replyToCorporateNameParsed = []
-      console.log('response',response)
       
       response.forEach(arr_data => {
         replyToCorporateNameParsed.push([arr_data[0], `R$ ${Math.floor(arr_data[1]/1000000000)} BI`])

@@ -15,31 +15,15 @@ import './styleGlobal.css'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
-  const [quantidade, setQuantidade] = useState(null)
   const [allDatas, setALldData] = useState(null)
 
   useEffect(() => {
-    // const getQtdAbertas = async () => {
-    //   var filtros = {classificacao: "", ...context.state};
-    //   const response = await getDataEmpresasAbertas(filtros);
-    //   if(context.state.empresasAbertas == true) await setQuantidade(response.values[0].toLocaleString())
-    // }
-  
-    // const getQtdAtivas = async () => {
-    //   var filtros = {classificacao: "", ...context.state};
-    //   const response = await getDataEmpresasAtivas(filtros);
-    //   if(context.state.empresasAbertas == false) await setQuantidade(response.values[0]);
-    // }
-
     const datasOfOpenCompanies = async () => {
       const response = await allDataOfOpenCompanies(context.state)
       setALldData(response.data)
     }
 
     datasOfOpenCompanies()
-  
-    // getQtdAbertas()
-    // getQtdAtivas()
   }, [context])
 
   return (
@@ -52,12 +36,12 @@ export default ({tipo}) => {
           <TypeCompany>
             {(window.innerWidth >= 320 && window.innerWidth < 768) ? <div className="total-empresasAbertas">
               <p>{`Total de Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'}`}</p>
-              <p>{quantidade !== null && allDatas.quantity[0][0].toLocaleString('pt-br')}</p>
+              <p>{allDatas.quantity[0][0].toLocaleString('pt-br')}</p>
             </div> : null}
             <section>
               <GraphicCompany classificationGraphic='porte' isVetical={true} arr_data_company={allDatas.porte} />
               {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' arr_data_company={allDatas.setor} />}
-              {context.state.empresasAbertas == false && <CompanyActivity />}
+              {context.state.empresasAbertas == false && <CompanyActivity arr_data_company_activity={allDatas.descricao_atividade} />}
               <CompanyNature arr_dada_nature_company={allDatas.natureza} />
             </section>
             <Counties arr_data_counties={allDatas.municipio_empresa} total_quantity={allDatas.quantity[0][0]} />  
