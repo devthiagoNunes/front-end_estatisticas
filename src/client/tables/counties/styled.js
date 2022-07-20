@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const AlternationTablesStyle = styled.section`
 .municipio {
-    width: 100%;
+    width: 45vw;
     max-width: 500px;
     height: 100%;
     border-radius: 15px;

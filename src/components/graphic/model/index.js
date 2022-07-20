@@ -361,7 +361,7 @@ export default ({classificationGraphic, isVetical, arr_data_company = []}) => {
           Baixar CSV
         </div>
         {`Empresas ${context.state.empresasAbertas ? `Abertas Por ${classificationGraphic}` : `Ativas Por ${classificationGraphic}`}`}
-        <CSVLink className='icon-download-csv' data={dataToDownload} filename={"porte-empresa"} 
+        <CSVLink className='icon-download-csv' data={dataToDownload} filename={`${classificationGraphic}-empresa`} 
           onMouseOver={() => setPopoupVisible(true)}
           onMouseOut={() => setPopoupVisible(false)}
         > 

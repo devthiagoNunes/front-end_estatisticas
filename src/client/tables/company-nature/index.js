@@ -32,7 +32,7 @@ export default ({arr_dada_nature_company = []}) => {
             Baixar CSV
           </div>
             {`Empresas ${context.state.empresasAbertas ? 'Abertas' : 'Ativas'} Por Natureza`}
-            <CSVLink className='icon-download-csv' data={dataToDownload} filename={"porte-empresa"} 
+            <CSVLink className='icon-download-csv' data={dataToDownload} filename={"natureza-empresa"} 
               onMouseOver={() => setPopoupVisible(true)}
               onMouseOut={() => setPopoupVisible(false)}
             > 

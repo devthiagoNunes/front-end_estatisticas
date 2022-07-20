@@ -29,7 +29,7 @@ export default ({arr_data_company_activity}) => {
             Baixar CSV
           </div>
           {`Empresas Ativas Por Atividade`}
-          <CSVLink className='icon-download-csv' data={dataToDownload} filename={"porte-empresa"} 
+          <CSVLink className='icon-download-csv' data={dataToDownload} filename={"atividade-empresa"} 
           onMouseOver={() => setPopoupVisible(true)}
           onMouseOut={() => setPopoupVisible(false)}
         > 

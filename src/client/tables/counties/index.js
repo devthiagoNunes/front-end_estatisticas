@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { CSVLink } from "react-csv"
 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context" 
@@ -10,29 +10,11 @@ import './style.css'
 export default ({arr_data_counties = [], total_quantity}) => {
 
   const context = useContext(ContextGlobal)
-  const [quantity, setQuantity] = useState(null)
   const [popupVisible, setPopoupVisible] = useState(false);
-
-  // useEffect(() => {
-  //   const getQtdAbertas = async () => {
-  //     var filtros = {classificacao: "", ...context.state};
-  //     const response = await getDataEmpresasAbertas(filtros);
-  //     if(context.state.empresasAbertas == true) await setQuantity(response.values[0].toLocaleString())
-  //   }
-
-  //   const getQtdAtivas = async () => {
-  //     var filtros = {classificacao: "", ...context.state};
-  //     const response = await getDataEmpresasAtivas(filtros);
-  //     if(context.state.empresasAbertas == false) await setQuantity(response.values[0]);
-  //   }
-
-  //   getQtdAbertas()
-  //   getQtdAtivas()
-  // }, [context.state]);
     
     const dataToDownload = [
-        ['municipio', 'quantidade'],
-        ...arr_data_counties
+      ['municipio', 'quantidade'],
+      ...arr_data_counties
     ]
 
   return(

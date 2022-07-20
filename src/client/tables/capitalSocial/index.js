@@ -30,7 +30,7 @@ export default () => {
   }, [context])
   
   const dataToDownload = [
-    ['razão social', 'quantidade'],
+    ['capital social', 'valor'],
     ...empresasPorCapital
   ]
 
