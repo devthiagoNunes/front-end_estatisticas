@@ -7,7 +7,7 @@ import CapitalSocial from "../capitalSocial"
 import { AlternationTablesStyle } from "./styled"
 import './style.css'
 
-export default ({arr_data_counties = [], total_quantity}) => {
+export default ({arr_data_counties = [], total_quantity, arr_data_capital = []}) => {
 
   const context = useContext(ContextGlobal)
   const [popupVisible, setPopoupVisible] = useState(false);
@@ -50,7 +50,7 @@ export default ({arr_data_counties = [], total_quantity}) => {
             </p>
             <CreateTable arr_dados={arr_data_counties} table_name='Município' />
           </div>
-        {!context.state.empresasAbertas && <CapitalSocial />}
+        {!context.state.empresasAbertas && <CapitalSocial arr_data_capital={arr_data_capital} />}
       </div>
     </AlternationTablesStyle>
   )

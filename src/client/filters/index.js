@@ -5,7 +5,7 @@ import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import FiLter from '../../components/filter/model'
 import * as action from '../../contexts/GlobalContext/actions'
 
-export default () => {
+export default ({ filtersData }) => {
 
   const context = useContext(ContextGlobal)
 
@@ -15,6 +15,7 @@ export default () => {
   const [filtrosSecaoAtividade, setFiltrosSecaoAtividade] = useState([])
   const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
   const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
+  let [filtersParsed, setFiltersParsed] = useState({})
   const [validMonths, setValidMonthss] = useState([])
   const [ano, setAno] = useState([])
 
@@ -30,85 +31,93 @@ export default () => {
     setAno(arrAno)
   }
 
+  for (const key in filtersData) {
+    const allFilters = []
+
+    filtersData[key].forEach((element, index) => {
+      allFilters.push({
+        Country: element[0],
+        id: index
+      })
+    })
+    
+    filtersParsed = {
+      ...filtersParsed,
+      [key]: allFilters
+    }
+  }
+
   useEffect(() => {
+    // const getFiltros_Porte = async () => {
+    //   const get_filtros_porte =  await getFilter(context, '/porte')
 
-    const getFiltros_Porte = async () => {
-      const get_filtros_porte =  await getFilter(context, '/porte')
+     
+    // }
 
-      let options_filters = []
-      get_filtros_porte.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosPorte(options_filters)
-    }
+    // const getFiltros_Setor = async () => {
+    //   const get_filtros_setor =  await getFilter(context, '/setor')
 
-    const getFiltros_Setor = async () => {
-      const get_filtros_setor =  await getFilter(context, '/setor')
+    //   let options_filters = []
+    //   get_filtros_setor.map((arr, index) => (
+    //     options_filters.push({
+    //       Country: arr[0],
+    //       id: index
+    //     })
+    //   ))
+    //   setFiltrosSetor(options_filters)
+    // }
 
-      let options_filters = []
-      get_filtros_setor.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosSetor(options_filters)
-    }
+    // const getFiltros_Natureza = async () => {
+    //   const get_filtros_natureza =  await getFilter(context, '/natureza')
 
-    const getFiltros_Natureza = async () => {
-      const get_filtros_natureza =  await getFilter(context, '/natureza')
+    //   let options_filters = []
+    //   get_filtros_natureza.map((arr, index) => (
+    //     options_filters.push({
+    //       Country: arr[0],
+    //       id: index
+    //     })
+    //   ))
+    //   setFiltrosNatureza(options_filters)
+    // }
 
-      let options_filters = []
-      get_filtros_natureza.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosNatureza(options_filters)
-    }
+    // const getFiltros_SecaoAtividade = async () => {
+    //   const get_filtros_secao_atividade = await getFilter(context, '/secao_atividade')
 
-    const getFiltros_SecaoAtividade = async () => {
-      const get_filtros_secao_atividade = await getFilter(context, '/secao_atividade')
+    //   let options_filters = []
+    //   get_filtros_secao_atividade.map((arr, index) => (
+    //     options_filters.push({
+    //       Country: arr[0],
+    //       id: index
+    //     })
+    //   ))
+    //   setFiltrosSecaoAtividade(options_filters)
+    // }
 
-      let options_filters = []
-      get_filtros_secao_atividade.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosSecaoAtividade(options_filters)
-    }
+    // const getFiltros_municipio = async () => {
+    //   const get_filtros_municipio =  await getFilter(context, '/municipio_empresa')
 
-    const getFiltros_municipio = async () => {
-      const get_filtros_municipio =  await getFilter(context, '/municipio_empresa')
+    //   let options_filters = []
+    //   get_filtros_municipio.map((arr, index) => (
+    //     options_filters.push({
+    //       Country: arr[0],
+    //       id: index
+    //     })
+    //   ))
+    //   setFiltrosMunicipio(options_filters)
+    // }
 
-      let options_filters = []
-      get_filtros_municipio.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosMunicipio(options_filters)
-    }
+    // const getFiltros_descricaoAtividade = async () => {
+    //   const get_filtros_descticao_atividade =  await getFilter(context, '/descricao_atividade')
 
-    const getFiltros_descricaoAtividade = async () => {
-      const get_filtros_descticao_atividade =  await getFilter(context, '/descricao_atividade')
-
-      let options_filters = []
-      get_filtros_descticao_atividade.map((arr, index) => (
-        options_filters.push({
-          Country: arr[0],
-          id: index
-        })
-      ))
-      setFiltrosDescricaoAtividade(options_filters)
-    }
+    //   let options_filters = []
+    //   get_filtros_descticao_atividade.map((arr, index) => (
+    //     options_filters.push({
+    //       Country: arr[0],
+    //       id: index
+    //     })
+    //   ))
+    //   setFiltrosDescricaoAtividade(options_filters)
+    // }
 
     const monthlyFilterBuilder = () => {
       const allMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
@@ -133,17 +142,18 @@ export default () => {
     }
 
     set_ano()
-    getFiltros_Porte()
-    getFiltros_Setor()
-    getFiltros_Natureza()
-    getFiltros_SecaoAtividade()
-    getFiltros_municipio()
-    getFiltros_descricaoAtividade()
+    // getFiltros_Porte()
+    // getFiltros_Setor()
+    // getFiltros_Natureza()
+    // getFiltros_SecaoAtividade()
+    // getFiltros_municipio()
+    // getFiltros_descricaoAtividade()
     monthlyFilterBuilder()
     //eslint-disable-next-line
   }, [context])
 
   return(
+    filtersParsed !== {} && (
       <div className="content" id="content-filtros">
         <div className="all-filtros">
           <div className="header-filters">
@@ -167,38 +177,39 @@ export default () => {
             />}
             <FiLter
               descriptionFilter='Setor de Atuação:'
-              options={filtrosSetor}
+              options={filtersParsed.setor}
               action={action.MUDAR_SETOR}
             />
             <FiLter
               descriptionFilter='Municipio:'
-              options={filtrosMunicipio}
+              options={filtersParsed.municipio_empresa}
               action={action.MUDAR_MUNICIPIO}
             />
           </div>
           <div className="secao-bottom">
             <FiLter
               descriptionFilter='Seção de Atividade:'
-              options={filtrosSecaoAtividade}
+              options={filtersParsed.secao_atividade}
               action={action.MUDAR_SECAO_ATIVIDADE}
             />
             <FiLter
               descriptionFilter='Porte da Empresa:'
-              options={filtrosPorte}
+              options={filtersParsed.porte}
               action={action.MUDAR_PORTE}
             />
             <FiLter
               descriptionFilter='Atividade:'
-              options={filtrosDescricaoAtividade}
+              options={filtersParsed.descricao_atividade}
               action={action.MUDAR_ATIVIDADE}
             />
             <FiLter
               descriptionFilter='Natureza:'
-              options={filtrosNatureza}
+              options={filtersParsed.natureza}
               action={action.MUDAR_NATUREZA}
             />
           </div>
         </div>
       </div>
+    )
   )
 }
