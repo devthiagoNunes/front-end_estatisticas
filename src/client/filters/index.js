@@ -1,21 +1,14 @@
 import React, { useEffect, useState, useContext } from "react"
 
-import { getFilter } from '../../services/pinot'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
 import FiLter from '../../components/filter/model'
 import * as action from '../../contexts/GlobalContext/actions'
 
-export default ({ filtersData }) => {
+export default ({ data }) => {
 
   const context = useContext(ContextGlobal)
 
-  const [filtrosPorte, setFiltrosPorte] = useState([])
-  const [filtrosSetor, setFiltrosSetor] = useState([])
-  const [filtrosNatureza, setFiltrosNatureza] = useState([])
-  const [filtrosSecaoAtividade, setFiltrosSecaoAtividade] = useState([])
-  const [filtrosMunicipio, setFiltrosMunicipio] = useState([])
-  const [filtrosDescricaoAtividade, setFiltrosDescricaoAtividade] = useState([])
-  let [filtersParsed, setFiltersParsed] = useState({})
+  let [filtersParsed] = useState({})
   const [validMonths, setValidMonthss] = useState([])
   const [ano, setAno] = useState([])
 
@@ -31,10 +24,11 @@ export default ({ filtersData }) => {
     setAno(arrAno)
   }
 
-  for (const key in filtersData) {
+  if(data !== undefined)
+  for (const key in data.filtersData) {
     const allFilters = []
 
-    filtersData[key].forEach((element, index) => {
+    data.filtersData[key].forEach((element, index) => {
       allFilters.push({
         Country: element[0],
         id: index
@@ -48,77 +42,6 @@ export default ({ filtersData }) => {
   }
 
   useEffect(() => {
-    // const getFiltros_Porte = async () => {
-    //   const get_filtros_porte =  await getFilter(context, '/porte')
-
-     
-    // }
-
-    // const getFiltros_Setor = async () => {
-    //   const get_filtros_setor =  await getFilter(context, '/setor')
-
-    //   let options_filters = []
-    //   get_filtros_setor.map((arr, index) => (
-    //     options_filters.push({
-    //       Country: arr[0],
-    //       id: index
-    //     })
-    //   ))
-    //   setFiltrosSetor(options_filters)
-    // }
-
-    // const getFiltros_Natureza = async () => {
-    //   const get_filtros_natureza =  await getFilter(context, '/natureza')
-
-    //   let options_filters = []
-    //   get_filtros_natureza.map((arr, index) => (
-    //     options_filters.push({
-    //       Country: arr[0],
-    //       id: index
-    //     })
-    //   ))
-    //   setFiltrosNatureza(options_filters)
-    // }
-
-    // const getFiltros_SecaoAtividade = async () => {
-    //   const get_filtros_secao_atividade = await getFilter(context, '/secao_atividade')
-
-    //   let options_filters = []
-    //   get_filtros_secao_atividade.map((arr, index) => (
-    //     options_filters.push({
-    //       Country: arr[0],
-    //       id: index
-    //     })
-    //   ))
-    //   setFiltrosSecaoAtividade(options_filters)
-    // }
-
-    // const getFiltros_municipio = async () => {
-    //   const get_filtros_municipio =  await getFilter(context, '/municipio_empresa')
-
-    //   let options_filters = []
-    //   get_filtros_municipio.map((arr, index) => (
-    //     options_filters.push({
-    //       Country: arr[0],
-    //       id: index
-    //     })
-    //   ))
-    //   setFiltrosMunicipio(options_filters)
-    // }
-
-    // const getFiltros_descricaoAtividade = async () => {
-    //   const get_filtros_descticao_atividade =  await getFilter(context, '/descricao_atividade')
-
-    //   let options_filters = []
-    //   get_filtros_descticao_atividade.map((arr, index) => (
-    //     options_filters.push({
-    //       Country: arr[0],
-    //       id: index
-    //     })
-    //   ))
-    //   setFiltrosDescricaoAtividade(options_filters)
-    // }
-
     const monthlyFilterBuilder = () => {
       const allMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
       const allValidMonths = []
@@ -142,14 +65,7 @@ export default ({ filtersData }) => {
     }
 
     set_ano()
-    // getFiltros_Porte()
-    // getFiltros_Setor()
-    // getFiltros_Natureza()
-    // getFiltros_SecaoAtividade()
-    // getFiltros_municipio()
-    // getFiltros_descricaoAtividade()
     monthlyFilterBuilder()
-    //eslint-disable-next-line
   }, [context])
 
   return(

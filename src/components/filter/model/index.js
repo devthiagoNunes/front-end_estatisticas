@@ -21,6 +21,7 @@ export default ({
         displayValue="Country"
         showCheckbox={showCheckbox}
         placeholder={placeholder}
+        emptyRecordMsg='Carregando...'
         selectionLimit={selectionLimit}
         onSelect={(e) => context.dispatch({type:action, payload: e})}
         onRemove={(e) => context.dispatch({type:action, payload: e})}

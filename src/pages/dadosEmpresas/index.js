@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 
@@ -19,11 +19,9 @@ import './styleGlobal.css'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
-  const [filtersData, setNewFiltersData] = useState({})
 
   const { data, isLoading, error } = useQuery(['response', context.state], async () => {
     const response = await getDatasOfChartsAndFilters(context.state)
-    setNewFiltersData(response.data.filtersData)
     return response.data
   }, {
     staleTime: 1000 * 10 * 60 // 10 minutes
@@ -32,7 +30,7 @@ export default ({tipo}) => {
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
       <Header />
-      <Filters filtersData={filtersData} />
+      <Filters data={data} />
       {
         isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
