@@ -2,30 +2,6 @@ import axios from 'axios'
 
 const backend_endpoint = 'http://localhost:3333'
 
-// export const getDataEmpresasAbertas = async (filtros) => {
-//   return await axios({
-//     method: 'POST', 
-//     url: backend_endpoint + '/empresasAbertas', 
-//     data: filtros
-//   })
-//     .then(res => {
-//     return res.data;
-//   })
-//   .catch(err => err)
-// }
-
-// export const getDataEmpresasAtivas = async (filtros) => {
-//   return await axios({
-//     method: 'POST', 
-//     url: backend_endpoint + '/empresasAtivas', 
-//     data: filtros
-//   })
-//   .then(res => {
-//     return res.data;
-//   })
-//   .catch(err => err)
-// }
-
 export const getCapitalSocial = async (context, endPoint) => {
   return await axios({
     method: 'POST',
@@ -54,11 +30,11 @@ export const getFilter = async (context, endPoint) => {
   .catch(err => err)
 }
 
-export const allDataOfOpenCompanies = async (contextFilters) => {
+export const getDatasOfChartsAndFilters = async (contextFilters) => {
   return await axios({
     method: 'POST',
     data: contextFilters,
-    url: `${backend_endpoint}/estatisticas/company/open`,
+    url: `${backend_endpoint}/estatisticas/datas/all`,
   })
   .then(res => {
     return res
