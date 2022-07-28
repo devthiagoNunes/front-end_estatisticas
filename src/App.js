@@ -14,8 +14,8 @@ class App extends React.PureComponent {
           <BrowserRouter history={history}>
             <Routes>
               <Route path="/" element={<Navigate to="/estatisticas/empresas-abertas" />}/>
-              <Route path="estatisticas/empresas-abertas" element={<LayoutComponent />}/>
-              <Route path="estatisticas/empresas-ativas" element={<LayoutComponent />}/>
+              <Route path="/estatisticas/empresas-abertas" element={<LayoutComponent />}/>
+              <Route path="/estatisticas/empresas-ativas" element={<LayoutComponent />}/>
               <Route path="*" to="/"/>
             </Routes>
           </BrowserRouter>
