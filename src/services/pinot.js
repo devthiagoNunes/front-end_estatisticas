@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const backend_endpoint = 'http://localhost:3333'
+const backend_endpoint = process.env.REACT_APP_BACKEND
 
 export const getDatasOfChartsAndFilters = async (contextFilters) => {
   return await axios({
