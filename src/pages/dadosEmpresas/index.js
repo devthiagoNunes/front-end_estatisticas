@@ -53,7 +53,7 @@ export default ({tipo}) => {
                   <Counties 
                     arr_data_counties={data.graphicsData.municipio_empresa}
                     arr_data_capital={data.graphicsData.capitalSocial}
-                    total_quantity={data.graphicsData.quantity[0][0]} 
+                    total_quantity={data.graphicsData.quantity??[0][0]} 
                   />  
                 </TypeCompany>
                 {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes arr_data_month={data.graphicsData.mes} />}
