@@ -81,7 +81,10 @@ export const reducerFilter = (state, action) => {
       if(action.payload.length == 0){
         return {...state, mes: ''}
       } else {
-        return {...state, mes: `${action.payload[0].label + 1}`}
+        const months_selecteds = action.payload.map(monthData => {
+          return monthData.label
+        })
+        return {...state, mes: [...months_selecteds] }
       }
     
     default:

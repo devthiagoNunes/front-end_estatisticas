@@ -50,14 +50,14 @@ export default ({ data }) => {
         allMonths.forEach((month, index) => {
           allValidMonths.push({
             Country: month,
-            label: index
+            label: index + 1
           })
         })
       } else {
         for (let monthIndex = 0; monthIndex <= new Date().getMonth(); monthIndex++) {
           allValidMonths.push({
             Country: allMonths[monthIndex],
-            label: monthIndex
+            label: monthIndex + 1
           })
         }
       }
@@ -88,7 +88,6 @@ export default ({ data }) => {
             {context.state.empresasAbertas && <FiLter
               descriptionFilter='Mês:'
               options={validMonths}
-              selectionLimit={1}
               action={action.MUDAR_MES}
             />}
             <FiLter
