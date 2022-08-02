@@ -80,6 +80,7 @@ export default ({ data }) => {
             <FiLter
               descriptionFilter='Ano de Abertura:'
               options={ano}
+              singleSelect
               showCheckbox={false}
               placeholder={context.state.ano}
               action={action.MUDAR_ANO}
