@@ -86,11 +86,18 @@ export default ({ data }) => {
               action={action.MUDAR_ANO}
             />
           }
-            {context.state.empresasAbertas && <FiLter
-              descriptionFilter='Mês:'
-              options={validMonths}
-              action={action.MUDAR_MES}
-            />}
+            {context.state.empresasAbertas ?
+              (
+                <FiLter
+                  descriptionFilter='Mês:'
+                  options={validMonths}
+                  selectionLimit={2}
+                  action={action.MUDAR_MES}
+                />
+              ) : (
+                context.state.mes = []
+              )
+            }
             <FiLter
               descriptionFilter='Setor de Atuação:'
               options={filtersParsed.setor}

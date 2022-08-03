@@ -8,6 +8,6 @@ export const estadoGlobal = {
   descricao_atividade: '',
   municipio_empresa: '',
   secao_atividade: '',
-  mes: '',
+  mes: [],
   ano: (initial_date.getMonth() >= 1 && initial_date.getDate() >= 1) ? initial_date.getFullYear() : initial_date.getFullYear()-1
 }
