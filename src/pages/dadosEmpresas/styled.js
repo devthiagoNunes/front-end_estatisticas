@@ -21,8 +21,13 @@ export const TypeCompany = styled.section`
   margin-bottom: 3rem;
   
   section:first-child {
-    width: 62%;
+    width: 60%;
     margin-right: 1rem;
+  }
+
+  section:last-child {
+    width: 40%;
+    max-width: 500px;
   }
 
 @media (max-width: 768px) {
