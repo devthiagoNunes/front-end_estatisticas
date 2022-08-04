@@ -27,6 +27,8 @@ export default ({tipo}) => {
     staleTime: 1000 * 10 * 60 // 10 minutes
   })
 
+  console.log(context.state)
+
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
       <Header />
@@ -56,7 +58,7 @@ export default ({tipo}) => {
                     total_quantity={data.graphicsData.quantity??[0][0]} 
                   />  
                 </TypeCompany>
-                {context.state.empresasAbertas !== false && context.state.mes === '' && <Mes arr_data_month={data.graphicsData.mes} />}
+                {context.state.empresasAbertas !== false && !context.state.mes.length && <Mes arr_data_month={data.graphicsData.mes} />}
               </AllCharts>
             </main>
           </>
