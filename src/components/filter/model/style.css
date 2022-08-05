@@ -50,6 +50,40 @@
 .secao-bottom div p {
   margin: 0;
 }
+
+.secao-topo div p {
+  position: relative;
+}
+
+.secao-topo div p button {
+  border: none;
+  position: absolute;
+  border-radius: 5px;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 1rem;
+  margin-left: .2rem;
+  margin-top: -.2rem;
+  background: black;
+  color: white;
+}
+
+.secao-topo div p button:hover {
+  cursor: pointer;
+}
+
+.secao-topo div p span {
+  position: absolute;
+  font-size: .8rem;
+  margin-top: -2rem;
+  margin-left: 1.7rem;
+  transition: 300ms all ease-in-out;
+  background: #0087D7;
+  color: white;
+  padding: .35rem;
+  border-radius: 5px;
+}
+
 .select-ano {
   border: 1px solid #cccccc;
 }
@@ -73,6 +107,7 @@
 .close-filters {
   display: none;
 }
+
 .filtros div:nth-child(1) {
   display: flex;
   flex-direction: column;
@@ -120,6 +155,11 @@
 .select-ano {
   font-size: 0.8rem;
 }
+
+.secao-topo .month div:nth-child(1) {
+  flex-direction: row;
+}
+
 @media (max-width: 1024px) {
   .secao-topo div p,
   .secao-bottom div p,

@@ -92,6 +92,7 @@ export default ({ data }) => {
                   descriptionFilter='Mês:'
                   options={validMonths}
                   selectionLimit={2}
+                  placeholder={context.state.mes.length >= 1 ? null : 'Selecionar'}
                   action={action.MUDAR_MES}
                 />
               ) : (

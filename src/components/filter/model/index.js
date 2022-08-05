@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import Multiselect from "multiselect-react-dropdown"
 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context"
@@ -10,12 +10,25 @@ export default ({
 }) => {
 
   const context = useContext(ContextGlobal)
+  const [infor, setInfor] = useState(false)
+  const directionFilters = descriptionFilter === 'Mês:' ? 'month' : ''
 
   return (
     <div>
-      <p>{descriptionFilter}</p>
+      <p>
+        {descriptionFilter}
+        {descriptionFilter === 'Mês:' &&
+          <button
+            onMouseOver={() => setInfor(true)}
+            onMouseOut={() => setInfor(false)}
+          >?</button>
+        }
+        {infor && (
+          <span>Ao selecionar 2 meses, os resultados serão baseados no intervalo entre.</span>
+        )}
+      </p>
       <Multiselect
-        className='filtros'
+        className={`filtros ${directionFilters}`}
         options={options}
         singleSelect={singleSelect}
         displayValue="Country"
