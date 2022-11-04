@@ -17,6 +17,20 @@ export const TitleMap = styled.div`
   }
 `
 
+export const SpanText = styled.span`
+  position: absolute;
+  background: #666666;
+  right: 40px;
+  top: 2px;
+  font-size: .6rem;
+  padding: .2rem;
+  border-radius: 20%;
+  display: ${({ popupVisible }) => {
+    if(popupVisible) return 'block'
+    return 'none'
+  }};
+`
+
 export const AlternationTablesStyle = styled.section`
   .municipio {
     height: 100%;
