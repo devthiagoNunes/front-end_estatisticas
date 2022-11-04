@@ -1,26 +1,48 @@
 import styled from "styled-components"
 
+export const TitleMap = styled.div`
+  display: flex;
+  position: relative;
+  
+  background: #007cc1;
+  padding: .8rem 0;
+
+  p {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+  }
+`
+
 export const AlternationTablesStyle = styled.section`
-.municipio {
+  .municipio {
     height: 100%;
     border-radius: 15px;
     padding-right: .5rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
+  }
 
-.municipio .table {
+  .municipio .map {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
+    height: 50.25%;
+    overflow-y: hidden;
     border-radius: 15px;
     box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
-}
+  }
+
+  .municipio .capital_social {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  }
 
 @media (min-width: 1366px) {
-    .municipio .table {
+    .municipio .map {
       margin-bottom: .35rem;
     }
 }
@@ -31,7 +53,7 @@ export const AlternationTablesStyle = styled.section`
     padding-bottom: 1rem;
   }
 
-  .municipio .table {
+  .municipio .map {
     height: ${({ stateempresasAbertas }) => {
       if (stateempresasAbertas === true) return '141.5vh'
       return '85.7vh'
@@ -56,12 +78,12 @@ export const AlternationTablesStyle = styled.section`
     padding-right: .5rem;
   }
   
-  .municipio .table {
+  .municipio .map {
     width: 100%;
     height: 100%;
   }
 
-  .municipio .table table {
+  .municipio .map table {
     max-height: 15px;
   }
 }
@@ -80,12 +102,12 @@ export const AlternationTablesStyle = styled.section`
     padding-bottom: .5rem;
   }
   
-  .municipio .table {
+  .municipio .map {
       width: 95%;
       margin: auto;
   }
 
-  .municipio .table table {
+  .municipio .map table {
       max-height: 15px;
   }
 }

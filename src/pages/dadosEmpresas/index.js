@@ -27,8 +27,6 @@ export default ({tipo}) => {
     staleTime: 1000 * 10 * 60 // 10 minutes
   })
 
-  console.log(context.state)
-
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
       <Header />
