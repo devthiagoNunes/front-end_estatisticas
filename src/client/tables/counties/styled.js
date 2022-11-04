@@ -31,8 +31,31 @@ export const SpanText = styled.span`
   }};
 `
 
+export const ContainerCapitalSocial = styled.div`
+  position: absolute;
+  height: 362px;
+  width: 98.5%;
+  bottom: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  ;
+
+
+  p {
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    background: #007cc1;
+    padding: .8rem 0;
+  }
+`
+
 export const AlternationTablesStyle = styled.section`
   .municipio {
+    position: relative;
     height: 100%;
     border-radius: 15px;
     padding-right: .5rem;
