@@ -39,13 +39,16 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
   ]
 
   const option = {
+    responsive: true,
+    maintainAspectRatio: false,
     tooltip: {
       trigger: "item",
       showDelay: 0,
       transitionDuration: 0.2
     },
     visualMap: {
-      left: "right",
+      orient: 'horizontal',
+      right: 'center',
       min: 100,
       max: 18000,
       inRange: {
@@ -74,8 +77,6 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
     click: (params) => {
       const { seriesIndex, data } = params;
       if (seriesIndex === 0) return;
-  
-      console.log(`点击了${data.name}, 值为${data.value[2]}`);
     }
   };
 
@@ -207,7 +208,13 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
               </p>
              
             </TitleMap>
-            <ReactEcharts option={option} onEvents={onEvents} />
+            <ReactEcharts 
+              option={option} 
+              onEvents={onEvents}
+              style={{
+                height: '90%',
+                width: '100%',
+              }}/>
           </div>
         {!context.state.empresasAbertas && (
           <ContainerCapitalSocial>

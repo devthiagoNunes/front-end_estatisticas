@@ -65,7 +65,7 @@ export const AlternationTablesStyle = styled.section`
 
   .municipio .map {
     width: 100%;
-    height: 50.25%;
+    height: 87%;
     overflow-y: hidden;
     border-radius: 15px;
     box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
