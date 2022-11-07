@@ -14,7 +14,16 @@ export const TitleMap = styled.div`
     font-size: 1.3rem;
     text-align: center;
     font-weight: bold;
+
+    > a {
+      position: absolute;
+      right: 1rem;
+      top: .5rem;
+    }
   }
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `
 
 export const SpanText = styled.span`
@@ -66,31 +75,19 @@ export const AlternationTablesStyle = styled.section`
   .municipio .map {
     width: 100%;
     height: 87%;
-    overflow-y: hidden;
     border-radius: 15px;
     box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
   }
 
-  .municipio .capital_social {
+  .capital_social {
     width: 100%;
     height: 100%;
     border-radius: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   }
 
-@media (min-width: 1366px) {
-    .municipio .map {
-      margin-bottom: .35rem;
-    }
-}
-
 @media (max-width: 1024px) {
-  .municipio {
-    max-width: 350px;
-    padding-bottom: 1rem;
-  }
-
-  .municipio .map {
+  .map {
     height: ${({ stateempresasAbertas }) => {
       if (stateempresasAbertas === true) return '141.5vh'
       return '85.7vh'
@@ -106,45 +103,23 @@ export const AlternationTablesStyle = styled.section`
 }
 
 @media (max-width: 768px) {
-  .municipio {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    padding: 0;
-    padding-bottom: .1rem;
-    padding-right: .5rem;
-  }
-  
-  .municipio .map {
+  .map {
     width: 100%;
     height: 100%;
   }
 
-  .municipio .map table {
+  .map table {
     max-height: 15px;
   }
 }
 
 @media (max-width: 540px) {
-  .municipio {
-    width: 100%;
-    max-width: none;
-    height: max-content;
-    max-height: none;
-    margin: 0 auto;
-
-    display: block;
-    margin-top: 1rem;
-    padding-right: 0;
-    padding-bottom: .5rem;
-  }
-  
-  .municipio .map {
+  .map {
       width: 95%;
       margin: auto;
   }
 
-  .municipio .map table {
+  .map table {
       max-height: 15px;
   }
 }

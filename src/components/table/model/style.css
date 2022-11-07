@@ -21,7 +21,6 @@
 }
 
 .atividade, 
-.municipio,
 .natureza {
   border-radius: 15px;
   overflow: hidden;
@@ -52,7 +51,6 @@
 }
 
 .atividade .table p svg,
-.municipio .map p svg,
 .natureza p svg {
   position: absolute;
   right: 10px;
@@ -98,7 +96,7 @@
   letter-spacing: .1rem;
 }
 
-.municipio .contentTable {
+.contentTable {
   max-height: 25px;
 }
 
@@ -114,12 +112,12 @@
   }
 
   .atividade .table p svg,
-  .municipio .map p svg,
+  .map p svg,
   .natureza p svg {
     width: 35px;
   }
 
-  .municipio .map p svg {
+  .map p svg {
     margin-right: -6px;
   }
 }
@@ -136,7 +134,7 @@
   }
 
   .atividade .table p svg,
-  .municipio .map p svg,
+  .map p svg,
   .natureza p svg {
     width: 25px;
   }
@@ -148,7 +146,7 @@
   }
 
   .atividade .table p,
-  .municipio .map p,
+  .map p,
   .natureza p {
     font-size: 1rem;
   }
@@ -172,40 +170,24 @@
   }
 
   .atividade .table p svg,
-  .municipio .map p svg,
+  .map p svg,
   .natureza p svg {
     width: 25px;
   }
 
-  .municipio .map p svg {
+  .map p svg {
     margin-right: -6px;
   }
 
-  .municipio .map .contentTable table tbody tr td,
+  .map .contentTable table tbody tr td,
   .atividade .table .contentTable table tbody tr td,
   .natureza .table .contentTable table tbody tr td {
     font-size: .85rem;
   }
 
   .atividade .table p,
-  .municipio .map p,
+  .map p,
   .natureza p {
     font-size: .85rem;
   }
 }
-/* 
-@media (max-width: 540px) {
-  .natureza {
-    height: 60vh;
-    max-height: 480px;
-  }
-  .atividade {
-    height: 60vh;
-    max-height: 480px;
-  }
-  .atividade .table p,
-  .municipio .map p,
-  .natureza p {
-    font-size: 1rem;
-  }
-} */

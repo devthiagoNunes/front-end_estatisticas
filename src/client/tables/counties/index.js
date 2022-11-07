@@ -15,6 +15,7 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
   const array_data_counties_to_object = arr_data_counties.map(data => {
     let municipality = ''
 
+    /* para que o mapa seja criado corretamente, é necessário que os nomes de municípios sejam iguais aos do arquivo map_MA.json, e o forEach é responsável por tratar os nomes vindos da api(que estão todos em upperCase) e iguala aos nomes do arquivo, portanto, cuidado ao mexer. */
     const treated_municipality_name = data[0].split(' ')
     treated_municipality_name.forEach((municipality_name, index) => {
       if(municipality_name[0] == "DA" || municipality_name == "DAS" || municipality_name == "DO" || municipality_name == "DOS" || municipality_name == "DE") {
