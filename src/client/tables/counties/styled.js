@@ -42,7 +42,7 @@ export const SpanText = styled.span`
 
 export const ContainerCapitalSocial = styled.div`
   position: relative;
-  height: 385px;
+  height: 376px;
   bottom: 0;
   border-radius: 15px;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);

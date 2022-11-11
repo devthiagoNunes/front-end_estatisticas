@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
+import ReactEcharts from "echarts-for-react";
 
 import Header from '../../client/Header'
 import Filters from '../../client/filters'
@@ -16,6 +17,7 @@ import { Loading } from '../../components/loading'
 
 import {AllCharts, LayoutStyle, TypeCompany} from './styled'
 import './styleGlobal.css'
+import { ContainerCapitalSocial } from '../../client/tables/counties/styled'
 
 export default ({tipo}) => {
   const context = useContext(ContextGlobal)
@@ -26,6 +28,70 @@ export default ({tipo}) => {
   }, {
     staleTime: 1000 * 10 * 60 // 10 minutes
   })
+
+  let capitalSocialData = []
+  let treeMapOptions = {}
+
+  if(data !== undefined) {
+    capitalSocialData = data.graphicsData.capitalSocial.map(data => (
+      {
+        name: data[0],
+        value: data[1],
+      }
+    ))
+
+    treeMapOptions = {
+      title: {
+        text: "Capital Social",
+        left: "center"
+      },
+      tooltip: {
+        formatter: function (info) {
+          return [
+            '<div class="tooltip-title">' + info.name + "</div>",
+            "Capital Social: R$ " + info.value
+          ].join("");
+        }
+      },
+      series: [
+        {
+          type: "treemap",
+          visibleMin: 20,
+          label: {
+            show: true,
+            formatter: "{b}"
+          },
+          itemStyle: {
+            borderColor: "#fff"
+          },
+          levels: [
+            {
+              itemStyle: {
+                borderWidth: 3,
+                borderColor: "#333",
+                gapWidth: 3
+              }
+            },
+            {
+              color: ["#5c677d", "#0096c7", "#0077b6"],
+              colorMappingBy: "value",
+              itemStyle: {
+                gapWidth: 1
+              }
+            }
+          ],
+          // colorMappingBy: 'value',
+          data: [
+            {
+              name: "Empresas Ativas",
+              path: "Empresas Ativas",
+              children: capitalSocialData
+            }
+          ]
+        }
+      ]
+    }
+  }
 
   return (
     <LayoutStyle empresasAbertas={context.state.empresasAbertas}>
@@ -47,7 +113,12 @@ export default ({tipo}) => {
                   <section>
                     <GraphicCompany classificationGraphic='porte' isVetical={true} arr_data_company={data.graphicsData.porte} />
                     {context.state.empresasAbertas == true && <GraphicCompany classificationGraphic='setor' arr_data_company={data.graphicsData.setor} />}
-                    {context.state.empresasAbertas == false && <CompanyActivity arr_data_company_activity={data.graphicsData.descricao_atividade} />}
+                    {!context.state.empresasAbertas && ( 
+                       <ContainerCapitalSocial>
+                        <p>Classificação Por Capital Social</p>
+                        <ReactEcharts option={treeMapOptions} />
+                      </ContainerCapitalSocial>
+                    )}
                     <CompanyNature arr_dada_nature_company={data.graphicsData.natureza} />
                   </section>
                   <Counties 

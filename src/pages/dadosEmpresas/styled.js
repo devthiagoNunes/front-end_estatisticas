@@ -23,6 +23,9 @@ export const TypeCompany = styled.section`
   section:first-child {
     width: 60%;
     margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   section:last-child {
