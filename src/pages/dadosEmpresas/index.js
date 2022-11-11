@@ -8,7 +8,6 @@ import Filters from '../../client/filters'
 import Mes from "../../client/graphics/mes"
 import Botoes from '../../components/Botoes'
 import GraphicCompany from '../../components/graphic/model'
-import CompanyActivity from '../../client/tables/company-activity'
 import CompanyNature from '../../client/tables/company-nature'
 import Counties from '../../client/tables/counties'
 import { ContextGlobal } from '../../contexts/GlobalContext/context'
@@ -123,7 +122,7 @@ export default ({tipo}) => {
                   </section>
                   <Counties 
                     arr_data_counties={data.graphicsData.municipio_empresa}
-                    arr_data_capital={data.graphicsData.capitalSocial}
+                    arr_data_company_activity={data.graphicsData.descricao_atividade}
                     total_quantity={data.graphicsData.quantity??[0][0]} 
                   />  
                 </TypeCompany>

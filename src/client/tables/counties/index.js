@@ -4,14 +4,14 @@ import ReactEcharts from "echarts-for-react";
 import React, { useContext, useState } from "react"
 
 import { ContextGlobal } from "../../../contexts/GlobalContext/context" 
-import CapitalSocial from "../capitalSocial"
+import CompanyActivity from '../company-activity'
 import MA from './map_MA.json'
-import { AlternationTablesStyle, ContainerCapitalSocial, SpanText, TitleMap } from "./styled"
+import { AlternationTablesStyle, SpanText, TitleMap } from "./styled"
 import './style.css'
 
 echarts.registerMap("maranhao", MA);
 
-export default ({arr_data_counties = [], total_quantity, arr_data_capital = []}) => {
+export default ({arr_data_counties = [], total_quantity, arr_data_company_activity = []}) => {
   const array_data_counties_to_object = arr_data_counties.map(data => {
     let municipality = ''
 
@@ -81,111 +81,6 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
     }
   };
 
-  const treeMapOptions = {
-    title: {
-      text: "Capital Social",
-      left: "center"
-    },
-    tooltip: {
-      formatter: function (info) {
-        return [
-          '<div class="tooltip-title">' + info.name + "</div>",
-          "Capital Social: R$ " + info.value
-        ].join("");
-      }
-    },
-    series: [
-      {
-        type: "treemap",
-        visibleMin: 20,
-        label: {
-          show: true,
-          formatter: "{b}"
-        },
-        itemStyle: {
-          borderColor: "#fff"
-        },
-        levels: [
-          {
-            itemStyle: {
-              borderWidth: 3,
-              borderColor: "#333",
-              gapWidth: 3
-            }
-          },
-          {
-            color: ["#5c677d", "#0096c7", "#0077b6"],
-            colorMappingBy: "value",
-            itemStyle: {
-              gapWidth: 1
-            }
-          }
-        ],
-        // colorMappingBy: 'value',
-        data: [
-          {
-            name: "Empresas Ativas",
-            path: "Empresas Ativas",
-            children: [
-              {
-                name: "PETROLEO BRASILEIRO S A PETROBRAS",
-                value: 205000000000
-              },
-              {
-                name: "ITAU UNIBANCO HOLDING S.A.",
-                value: 95000000000
-              },
-              {
-                name: "BANCO DO BRASIL SA",
-                value: 95000000000
-              },
-              {
-                name: "BANCO BRADESCO S.A.",
-                value: 87000000000
-              },
-              {
-                name: "BANCO BRADESCO S.A.",
-                value: 79000000000
-              },
-              {
-                name: "VALE S.A.",
-                value: 77000000000
-              },
-              {
-                name: "ITAU UNIBANCO S.A.",
-                value: 69000000000
-              },
-              {
-                name: "CAIXA ECONOMICA FEDERAL",
-                value: 68000000000
-              },
-              {
-                name: "TELEFONICA BRASIL S.A.",
-                value: 63000000000
-              },
-              {
-                name: "AMBEV S.A.",
-                value: 58000000000
-              },
-              {
-                name: "BANCO SANTANDER (BRASIL) S.A.",
-                value: 54000000000
-              },
-              {
-                name: "AYMORE CREDITO, FINANCIAMENTO E INVESTIMENTO S.A.",
-                value: 41000000000
-              },
-              {
-                name: "HAPVIDA PARTICIPACOES E INVESTIMENTOS S/A",
-                value: 38000000000
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  };
-
   return(
     <AlternationTablesStyle stateempresasAbertas={context.state.empresasAbertas}>
       <div className="municipio">
@@ -218,10 +113,7 @@ export default ({arr_data_counties = [], total_quantity, arr_data_capital = []})
               }}/>
           </div>
         {!context.state.empresasAbertas && (
-          <ContainerCapitalSocial>
-            <p>Classificação Por Capital Social</p>
-            <ReactEcharts option={treeMapOptions} />
-          </ContainerCapitalSocial>
+          <CompanyActivity arr_data_company_activity={arr_data_company_activity} />
         )}
       </div>
     </AlternationTablesStyle>
