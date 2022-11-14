@@ -7,7 +7,7 @@ export default {
   title: 'MyLink',
   component: MyLink,
   args: {
-    href: '/any-href',
+    href: '/estatisticas/empresas-abertas',
     linkText: 'Empresas Abertas',
     pathname: '/estatisticas/empresas-abertas'
   },

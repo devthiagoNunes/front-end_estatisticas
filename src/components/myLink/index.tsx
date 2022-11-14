@@ -10,7 +10,7 @@ export type MyLinkProps = {
 export const MyLink = ({ href, linkText, pathname }: MyLinkProps) => {
 
   return (
-    <Styled.Container pathname={pathname}>
+    <Styled.Container pathname={pathname} href={href}>
       <Link to={href}>{linkText}</Link>
     </Styled.Container>
   )
