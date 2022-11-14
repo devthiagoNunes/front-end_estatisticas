@@ -1,4 +1,4 @@
-import * as actions from '../contexts/GlobalContext/actions'
+import * as actions from '../contexts/filtersContext/actions'
 
 const initial_date = new Date()
 const ano = (initial_date.getMonth() >= 1 && initial_date.getDate() >= 3) ? initial_date.getFullYear() : initial_date.getFullYear()-1
