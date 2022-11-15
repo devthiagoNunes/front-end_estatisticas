@@ -4,12 +4,12 @@ import { returnChartConfig } from "../../utils/chartConfig";
 
 type ChartProps = {
   isVertical?: boolean
-  objectData: (string | number)[][]
+  chartData: (string | number)[][]
 }
 
-export const Chart = ({ isVertical = true, objectData}: ChartProps) => {
+export const Chart = ({ isVertical = true, chartData }: ChartProps) => {
 
-  const { big, large, normal, small } = returnChartConfig({ isVertical, objectData })
+  const { big, large, normal, small } = returnChartConfig({ isVertical, chartData })
 
   return (
     <div>
@@ -18,42 +18,48 @@ export const Chart = ({ isVertical = true, objectData}: ChartProps) => {
           option={small}
           style={{
             width: '100%',
+            height: "45vh",
+            minHeight: '281px',
+            maxHeight: '281px',
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth >= 768 && window.innerWidth <= 1024 && (
+      {window.innerWidth >= 768 && window.innerWidth < 1024 && (
         <Echarts
           option={large}
           style={{
             width: "100%",
-            height: "44vh",
-            maxHeight: "362px"
+            height: "45vh",
+            minHeight: '281px',
+            maxHeight: '281px',
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 1024 && window.innerWidth <= 1366 && (
+      {window.innerWidth >= 1024 && window.innerWidth < 1366 && (
         <Echarts
           option={normal}
           style={{
             width: "100%",
             height: "45vh",
-            maxHeight: "373px"
+            minHeight: '281px',
+            maxHeight: '281px',
           }}
           opts={{ renderer: "canvas" }}
         />
       )}
 
-      {window.innerWidth > 1366 && (
+      {window.innerWidth >= 1366 && (    
         <Echarts
           option={big}
           style={{
             width: '100%',
             height: "45vh",
-            maxHeight: "341px",
+            minHeight: '281px',
+            maxHeight: '281px',
           }}
           opts={{ renderer: "canvas" }}
         />
