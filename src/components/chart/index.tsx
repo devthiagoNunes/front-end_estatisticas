@@ -4,12 +4,13 @@ import { returnChartConfig } from "../../utils/chartConfig";
 
 type ChartProps = {
   isVertical?: boolean
+  chartType?: 'Porte' | 'Setor' | 'Mês'
   chartData: (string | number)[][]
 }
 
-export const Chart = ({ isVertical = true, chartData }: ChartProps) => {
+export const Chart = ({ isVertical = true, chartData, chartType }: ChartProps) => {
 
-  const { big, large, normal, small } = returnChartConfig({ isVertical, chartData })
+  const { big, large, normal, small } = returnChartConfig({ isVertical, chartData, chartType })
 
   return (
     <div>

@@ -1,5 +1,6 @@
 type ReturnChartConfigProps = {
   isVertical?: boolean
+  chartType?: 'Porte' | 'Setor' | 'Mês'
   chartData: (string | number)[][]
 }
 
@@ -8,7 +9,7 @@ type ValuesAndChartColumnColors = {
   itemStyle: { color: string },
 } []
 
-const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigProps) => {
+const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnChartConfigProps) => {
   const obj = {company: [], quantity: []}
 
   chartData.forEach(element => {
@@ -46,7 +47,7 @@ const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigPr
         width: isVertical ? "92%" : "90%",
         height: "90%",
         left: "3%",
-        top: "4%",
+        top: chartType === 'Mês' ? '8%' : "4%",
       },
       tooltip: {
         trigger: "axis",
@@ -103,7 +104,7 @@ const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigPr
         width: isVertical ? "95%" : '90%',
         height: "90%",
         left: "3%",
-        top: "4%",
+        top: chartType === 'Mês' ? '8%' : "4%",
       },
       tooltip: {
         trigger: "axis",
@@ -163,7 +164,7 @@ const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigPr
         width: isVertical ? "95%" : "90%",
         height: "90%",
         left: "3%",
-        top: "4%",
+        top: chartType === 'Mês' ? '8%' : "4%",
       },
       tooltip: {
         trigger: "axis",
@@ -226,7 +227,7 @@ const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigPr
         width: isVertical ? "92%" : "90%",
         height: "90%",
         left: "3%",
-        top: "4%",
+        top: chartType === 'Mês' ? '8%' : "4%",
       },
       tooltip: {
         trigger: "axis",

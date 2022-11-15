@@ -10,17 +10,26 @@ import * as Styled from './styled'
 
 export type TemplateChartProps = {
   chartData: (string | number)[][]
-  chartType: 'Porte' | 'Setor'
+  chartType: 'Porte' | 'Setor' | 'Mês'
 }
 
 export const TemplateChart = ({ chartType, chartData }: TemplateChartProps) => {
   const [messageInfo, setMessageInfo] = useState(false);
   const { state: { empresasAbertas } } = useContext(FilterContext)
+  const allMonths = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
 
   const dataToDownload = [
     [chartType, 'quantidade'],
     ...chartData
   ]
+
+  if(chartType === 'Mês') {
+    chartData = chartData.map((data, index) => (
+      [allMonths[index], data[1]]
+    ))
+  }
+
+  console.log(chartType)
 
   return (
     <Styled.Container>
@@ -40,7 +49,8 @@ export const TemplateChart = ({ chartType, chartData }: TemplateChartProps) => {
       </Styled.Header>
       <Chart 
         chartData={chartData}
-        isVertical={chartType === 'Porte' ? true : false}
+        chartType={chartType}
+        isVertical={(chartType === 'Porte' || chartType === 'Mês') ? true : false}
       />
     </Styled.Container>
   )
