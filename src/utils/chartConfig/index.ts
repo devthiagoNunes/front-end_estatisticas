@@ -1,17 +1,17 @@
 type ReturnChartConfigProps = {
   isVertical?: boolean
-  objectData: (string | number)[][]
+  chartData: (string | number)[][]
 }
 
-type DatasOfChart = {
+type ValuesAndChartColumnColors = {
   value: number
   itemStyle: { color: string },
 } []
 
-const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigProps) => {
+const returnChartConfig = ({ chartData, isVertical = true }: ReturnChartConfigProps) => {
   const obj = {company: [], quantity: []}
 
-  objectData.forEach(element => {
+  chartData.forEach(element => {
     if(typeof element[0] === 'string' && element[0].length > 20) {
       obj.company.push(element[0].replace(' ', '\n'))  
     } else {
@@ -20,7 +20,8 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
     
     obj.quantity.push(element[1]);
   })
-  let datasOfChart: DatasOfChart = []
+  
+  let valuesAndChartColumnColors: ValuesAndChartColumnColors = []
 
   const colors = [
     "#48cae4",
@@ -32,7 +33,7 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
   ];
 
   for (let i = 0; i < obj.company.length; i++) {
-    datasOfChart.push({
+    valuesAndChartColumnColors.push({
       value: obj.quantity[i],
       itemStyle: { color: colors[i] },
     });
@@ -42,7 +43,7 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
     normal: {
       grid: {
         containLabel: true,
-        width: "90%",
+        width: isVertical ? "92%" : "90%",
         height: "90%",
         left: "3%",
         top: "4%",
@@ -53,70 +54,56 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           type: "none",
         },
       },
-      toolbox: {
-        show: true,
-        orient: "horizontal",
-        left: "right",
-        itemSize: 12,
-        showTitle: true,
-        feature: {
-          type: "png",
-          saveAsImage: {
-            show: true,
-            title: "Download",
-            iconStyle: {
-              borderWidth: 1.5,
-            },
-          },
-        },
-      },
       label: {
         show: true,
         position: isVertical ? "top" : "right",
-        fontWeight: 'bold',
+        fontSize: 10,
+        fontWeight: "bold",
         color: "rgb(0, 0, 0)",
       },
       xAxis: {
         type: isVertical ? "category" : "value",
         data: isVertical ? obj.company : obj.quantity,
+        axisTick: {
+          alignWithLabel: true,
+        },
         axisLabel: {
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: "bold",
         },
       },
       yAxis: {
-        tipo: isVertical ? "value" : "category",
+        type: isVertical ? "value" : "category",
         data: isVertical ? null : obj.company,
         axisTick: {
           alignWithLabel: true,
         },
         axisLabel: {
-          fontSize: 12,
+          fontSize: 10,
           fontWeight: "bold",
-          position: "top",
           verticalAlign: "middle",
         },
       },
       series: [
         {
-          data: datasOfChart,
+          data: valuesAndChartColumnColors,
           type: "bar",
           showBackground: true,
           backgroundStyle: {
             color: "rgba(180, 180, 180, 0.2)",
           },
-          barWidth: "35%",
-          barMaxWidth: datasOfChart.length <= 2 ? "25%" : "50%",
+          barWidth: "50%",
+          barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
         },
       ],
     },  
     large: {
       grid: {
         containLabel: true,
-        width: "93%",
-        height: "88%",
-        top: "6%",
-        left: "1%",
+        width: isVertical ? "95%" : '90%',
+        height: "90%",
+        left: "3%",
+        top: "4%",
       },
       tooltip: {
         trigger: "axis",
@@ -124,28 +111,10 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           type: "none",
         },
       },
-      toolbox: {
-        show: true,
-        orient: "horizontal",
-        left: "90%",
-        itemSize: 12,
-        showTitle: true,
-        feature: {
-          type: "png",
-          saveAsImage: {
-            show: true,
-            title: "Download",
-            iconStyle: {
-              borderWidth: 1.5,
-            },
-          },
-        },
-      },
       label: {
         show: true,
         align: "center",
         position: isVertical ? "top" : "right",
-        verticalAlign: "middle",
         fontSize: 10,
         fontWeight: "bold",
         color: "rgb(0, 0, 0)",
@@ -156,8 +125,11 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
         axisLabel: {
           fontSize: 10,
           fontWeight: "bold",
-          rotate: 15
         },
+        axisTick: {
+          alignWithLabel: true,
+        },
+        minInterval: !isVertical ? 6000 : 'auto'
       },
       yAxis: {
         tipo: isVertical ? "value" : "category",
@@ -166,7 +138,7 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           alignWithLabel: true,
         },
         axisLabel: {
-          fontSize: 10,
+          fontSize: isVertical ? 10 : 8,
           fontWeight: "bold",
           position: "top",
           verticalAlign: "middle",
@@ -174,48 +146,29 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
       },
       series: [
         {
-          data: datasOfChart,
+          data: valuesAndChartColumnColors,
           type: "bar",
           showBackground: true,
           backgroundStyle: {
             color: "rgba(180, 180, 180, 0.2)",
           },
           barWidth: "50%",
-          barMaxWidth: datasOfChart.length <= 2 ? "25%" : "50%",
+          barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
         },
       ],
     },
     small: {
       grid: {
         containLabel: true,
-        width: "90%",
-        height: "85%",
-        top: "8%",
+        width: isVertical ? "95%" : "90%",
+        height: "90%",
         left: "3%",
-        right: "5%"
+        top: "4%",
       },
       tooltip: {
         trigger: "axis",
         axisPointer: {
           type: "none",
-        },
-      },
-      toolbox: {
-        show: true,
-        orient: "vertical",
-        left: "right",
-        top: '-3rem',
-        itemSize: 12,
-        showTitle: true,
-        feature: {
-          type: "png",
-          saveAsImage: {
-            show: true,
-            title: "Download",
-            iconStyle: {
-              borderWidth: 1.5,
-            },
-          },
         },
       },
       label: {
@@ -224,17 +177,21 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
         verticalAlign: "middle",
         margin: true,
         position: isVertical ? "top" : "right",
-        fontWeight: "normal",
-        fontSize: 10,
+        fontWeight: "bold",
+        fontSize: 8,
         color: "rgb(0, 0, 0)",
       },
       xAxis: {
         type: isVertical ? "category" : "value",
         data: isVertical ? obj.company : obj.quantity,
         axisLabel: {
-          fontSize: 12,
+          fontSize: 8,
           fontWeight: "bold",
-          },
+        },
+        axisTick: {
+          alignWithLabel: true,
+        },
+        minInterval: 4000
       },
       yAxis: {
         tipo: isVertical ? "value" : "category",
@@ -243,55 +200,38 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           alignWithLabel: true,
         },
         axisLabel: {
-          fontSize: 12,
+          fontSize: 8,
           fontWeight: "bold",
           position: "top",
           verticalAlign: "middle",
         },
+        minInterval: 4000
       },
-      minInterval: 10000,
       series: [
         {
-          data: datasOfChart,
+          data: valuesAndChartColumnColors,
           type: "bar",
           showBackground: true,
           backgroundStyle: {
             color: "rgba(180, 180, 180, 0.2)",
           },
           barWidth: "50%",
-          barMaxWidth: datasOfChart.length <= 2 ? "25%" : "50%",
+          barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
         },
       ],
     },
     big: {
       grid: {
         containLabel: true,
-        height: "92%",
-        width: "90%",
-        top: "6%",
+        width: isVertical ? "92%" : "90%",
+        height: "90%",
         left: "3%",
+        top: "4%",
       },
       tooltip: {
         trigger: "axis",
         axisPointer: {
           type: "none",
-        },
-      },
-      toolbox: {
-        show: true,
-        orient: "horizontal",
-        left: "right",
-        itemSize: 12,
-        showTitle: true,
-        feature: {
-          type: "png",
-          saveAsImage: {
-            show: true,
-            title: "Download",
-            iconStyle: {
-              borderWidth: 1.5,
-            },
-          },
         },
       },
       label: {
@@ -307,6 +247,9 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           fontSize: 12,
           fontWeight: "bold",
         },
+        axisTick: {
+          alignWithLabel: true,
+        },
       },
       yAxis: {
         tipo: isVertical ? "value" : "category",
@@ -315,7 +258,7 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
           alignWithLabel: true,
         },
         axisLabel: {
-          fontSize: 12,
+          fontSize: isVertical ? 12 : 10,
           fontWeight: "bold",
           position: "top",
           verticalAlign: "middle",
@@ -323,14 +266,14 @@ const returnChartConfig = ({ objectData, isVertical = true }: ReturnChartConfigP
       },
       series: [
         {
-          data: datasOfChart,
+          data: valuesAndChartColumnColors,
           type: "bar",
           showBackground: true,
           backgroundStyle: {
             color: "rgba(180, 180, 180, 0.3)",
           },
           barWidth: "50%",
-          barMaxWidth: datasOfChart.length <= 2 ? "25%" : "50%",
+          barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
         },
       ],
     }
