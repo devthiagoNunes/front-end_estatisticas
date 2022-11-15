@@ -1,6 +1,7 @@
 export const theme = {
   colors: {
     blue: {
+      400: '#00b0d7',
       600: '#007CC1',
       700: '#0A4B78',
     }
