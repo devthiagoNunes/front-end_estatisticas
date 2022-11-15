@@ -1,5 +1,7 @@
 import { ThemeProvider } from "styled-components"
 
+import { ContextProvider } from '../src/contexts/filtersContext/contextProvider'
+
 import { theme } from '../src/styles/theme'
 import { GlobalStyle } from '../src/styles/global-styles'
 
@@ -16,7 +18,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      {Story()}
+      <ContextProvider>
+        {Story()}
+      </ContextProvider>
       <GlobalStyle />
     </ThemeProvider>
   )
