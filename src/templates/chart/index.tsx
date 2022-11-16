@@ -29,8 +29,6 @@ export const TemplateChart = ({ chartType, chartData }: TemplateChartProps) => {
     ))
   }
 
-  console.log(chartType)
-
   return (
     <Styled.Container>
       <Styled.Header>
