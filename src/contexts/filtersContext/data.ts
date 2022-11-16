@@ -9,5 +9,5 @@ export const estadoGlobal = {
   municipio_empresa: '',
   secao_atividade: '',
   mes: [],
-  ano: (initial_date.getMonth() >= 1 && initial_date.getDate() >= 1) ? initial_date.getFullYear() : initial_date.getFullYear()-1
+  ano: (initial_date.getMonth() >= 1 && initial_date.getDate() >= 5) ? initial_date.getFullYear() : initial_date.getFullYear()-1
 }
