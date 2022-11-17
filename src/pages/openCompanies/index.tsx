@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Navigate } from 'react-router'
 import { Loading } from '../../components/loading'
 
@@ -30,9 +30,9 @@ export const OpenCompanies = () => {
       {isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
         data && (
-          <>
+          <Styled.Content>
             <Header />
-            <Styled.TemplateHomePage>
+            <Styled.ContentTemplate>
               <TemplateFilter
                 sectorFilterData={data.filtersData.setor}
                 porteFilterData={data.filtersData.porte}
@@ -40,10 +40,9 @@ export const OpenCompanies = () => {
                 setionFilterData={data.filtersData.secao_atividade}
                 activityFilterData={data.filtersData.descricao_atividade}
                 countyFilterData={data.filtersData.municipio_empresa}
-                
               />
   
-              <Styled.StyleContent>
+              <Styled.StyleContent> 
                 <TemplateLinks />
   
                 <Styled.ChartsStyle>
@@ -76,8 +75,8 @@ export const OpenCompanies = () => {
                   <TemplateChart chartData={data.graphicsData.mes} chartType='Mês' />
                 </Styled.ChartsStyle> 
               </Styled.StyleContent>
-            </Styled.TemplateHomePage>
-          </>
+            </Styled.ContentTemplate>
+          </Styled.Content>
         )
       }
     </Styled.Container>

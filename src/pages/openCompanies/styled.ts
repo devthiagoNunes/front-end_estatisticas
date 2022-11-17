@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.main`
   position: relative;
   width: 100%;
+  height: 100vh;
   margin: 0 auto;
 
   > div {
@@ -10,6 +11,15 @@ export const Container = styled.main`
     flex-direction: column;
     gap: ${({theme}) => theme.spacings['1.5']};
   }
+`
+
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: ${({theme}) => theme.spacings[2]};
+
+  padding-bottom: ${({theme}) => theme.spacings[2]};
 `
 
 export const StyleContent = styled.section`
@@ -48,7 +58,6 @@ export const MapSection = styled.section`
   align-items: center;
   flex-direction: column;
   gap: ${({theme}) => theme.spacings[1]};
-
 `
 
 export const QuantityTotal = styled.div`
@@ -74,12 +83,12 @@ export const QuantityTotal = styled.div`
   p:nth-child(2) {
     text-align: center;
     font-size: 3rem;
-    color: ${({theme}) => theme.colors.blue[400]};
+    color: ${({theme}) => theme.font.colors.blue[550]};
     line-height: 100px;
   }
 `
 
-export const TemplateHomePage = styled.div`
+export const ContentTemplate = styled(Content)`
   max-width: 1280px;
   margin: 0 auto;
 `

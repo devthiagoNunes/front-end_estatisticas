@@ -8,6 +8,11 @@ export const theme = {
     }
   },
   font: {
+    colors: {
+      blue: {
+        550: '#2190DC'
+      }
+    },
     sizes: {
       small: '0.5rem',
       normal: '1rem',
