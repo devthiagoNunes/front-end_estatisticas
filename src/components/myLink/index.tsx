@@ -5,13 +5,14 @@ export type MyLinkProps = {
   href: string
   linkText: string
   pathname: string
+  actionOnClick?: () => void
 }
 
-export const MyLink = ({ href, linkText, pathname }: MyLinkProps) => {
+export const MyLink = ({ href, linkText, pathname, actionOnClick }: MyLinkProps) => {
 
   return (
     <Styled.Container pathname={pathname} href={href}>
-      <Link to={href}>{linkText}</Link>
+      <Link to={href} onClick={actionOnClick}>{linkText}</Link>
     </Styled.Container>
   )
 }
