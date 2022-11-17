@@ -1,3 +1,5 @@
+import echarts from "echarts";
+
 type ReturnChartConfigProps = {
   isVertical?: boolean
   chartType?: 'Porte' | 'Setor' | 'Mês'
@@ -6,7 +8,7 @@ type ReturnChartConfigProps = {
 
 type ValuesAndChartColumnColors = {
   value: number
-  itemStyle: { color: string },
+  itemStyle?: { color: string },
 } []
 
 const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnChartConfigProps) => {
@@ -34,10 +36,16 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
   ];
 
   for (let i = 0; i < obj.company.length; i++) {
-    valuesAndChartColumnColors.push({
-      value: obj.quantity[i],
-      itemStyle: { color: colors[i] },
-    });
+    if(chartType !== 'Mês') {
+      valuesAndChartColumnColors.push({
+        value: obj.quantity[i],
+        itemStyle: { color: colors[i] },
+      })
+    } else {
+      valuesAndChartColumnColors.push({
+        value: obj.quantity[i],
+      })
+    }
   }
 
   return ({
@@ -95,6 +103,30 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
           },
           barWidth: "50%",
           barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
+          itemStyle: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: "#00b4d8",
+              },
+              {
+                offset: 1,
+                color: "#1767cd",
+              },
+            ]),
+          } : null,
+          emphasis: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.7,
+                color: "#44C0C1",
+              },
+              {
+                offset: 1,
+                color: "#06B5D7",
+              },
+            ]),
+          } : null
         },
       ],
     },  
@@ -155,6 +187,30 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
           },
           barWidth: "50%",
           barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
+          itemStyle: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: "#00b4d8",
+              },
+              {
+                offset: 1,
+                color: "#1767cd",
+              },
+            ]),
+          } : null,
+          emphasis: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.7,
+                color: "#44C0C1",
+              },
+              {
+                offset: 1,
+                color: "#06B5D7",
+              },
+            ]),
+          } : null
         },
       ],
     },
@@ -218,6 +274,30 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
           },
           barWidth: "50%",
           barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
+          itemStyle: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: "#00b4d8",
+              },
+              {
+                offset: 1,
+                color: "#1767cd",
+              },
+            ]),
+          } : null,
+          emphasis: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.7,
+                color: "#44C0C1",
+              },
+              {
+                offset: 1,
+                color: "#06B5D7",
+              },
+            ]),
+          } : null
         },
       ],
     },
@@ -275,6 +355,30 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
           },
           barWidth: "50%",
           barMaxWidth: valuesAndChartColumnColors.length <= 2 ? "25%" : "50%",
+          itemStyle: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0,
+                color: "#00b4d8",
+              },
+              {
+                offset: 1,
+                color: "#1767cd",
+              },
+            ]),
+          } : null,
+          emphasis: chartType === 'Mês' ? {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              {
+                offset: 0.7,
+                color: "#44C0C1",
+              },
+              {
+                offset: 1,
+                color: "#06B5D7",
+              },
+            ]),
+          } : null
         },
       ],
     }
