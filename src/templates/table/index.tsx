@@ -1,10 +1,8 @@
-import { CSVLink } from 'react-csv'
-import { useContext, useMemo, useState } from 'react'
+import { useContext, useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
 
+import { ChartsHeader } from '../../components/chartsHeader'
 import { FilterContext } from '../../contexts/filtersContext/contextProvider'
-
-import DOWNLOADICON from '../../assets/download-icon.svg'
 
 import * as Styled from './styled'
 
@@ -52,18 +50,12 @@ const Table = ({ columns, data }: TableProps) => {
 }
 
 export type TemplateTableProps = {
-  tableType: 'Atividade' | 'Natureza'
+  tableType: 'Natureza'
   tableData: (string | number)[][]
 }
 
 export const TemplateTable = ({tableType, tableData}: TemplateTableProps) => {
-  const [messageInfo, setMessageInfo] = useState(false);
   const { state: { empresasAbertas } } = useContext(FilterContext)
-
-  const dataToDownload = [
-    [tableType, 'quantidade'],
-    ...tableData
-  ]
 
   const generate_data_table = () => {
     const parse_datas = []
@@ -91,25 +83,15 @@ export const TemplateTable = ({tableType, tableData}: TemplateTableProps) => {
       },
     ], [tableType])
 
-  //eslint-disable-next-line
   const data_memo: (string | number)[][] = useMemo(() => generate_data_table(), [tableData])
 
   return (
     <Styled.Container tableType={tableType}>
-       <Styled.Header>
-        <p>Empresas {empresasAbertas ? 'Abertas' : 'Ativas'} Por {tableType}</p>
-        {messageInfo && <p className='info'>Baixar CSV</p>}
-        <span>
-          <CSVLink data={dataToDownload}
-            filename={`${tableType}-empresa`} 
-            className='icon-download'
-              onMouseOver={() => setMessageInfo(true)}
-              onMouseOut={() => setMessageInfo(false)}
-            > 
-              <img src={DOWNLOADICON} alt="icone de download para arquivo svg" />
-          </CSVLink>
-        </span>
-      </Styled.Header>
+      <ChartsHeader 
+        chartData={tableData} 
+        chartType={tableType} 
+        textToHeader={`Empresas ${empresasAbertas ? 'Abertas' : 'Ativas'} Por ${tableType}`} 
+      />
       <Table columns={columns} data={data_memo} />
     </Styled.Container>
   )
