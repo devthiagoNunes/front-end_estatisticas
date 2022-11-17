@@ -31,7 +31,7 @@ export const TemplateChart = ({ chartType, chartData }: TemplateChartProps) => {
 
   return (
     <Styled.Container>
-      <Styled.Header>
+      <Styled.Header chartType={chartType}>
         <p>Empresas {empresasAbertas ? 'Abertas' : 'Ativas'} Por {chartType}</p>
         {messageInfo && <p className='info'>Baixar CSV</p>}
         <span>

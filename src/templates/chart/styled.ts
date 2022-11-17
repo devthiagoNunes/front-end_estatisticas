@@ -12,7 +12,11 @@ export const Container = styled.div`
   }
 `
 
-export const Header = styled.div`
+type HeaderProps = {
+  chartType?: 'Porte' | 'Setor' | 'Mês'
+}
+
+export const Header = styled.div<HeaderProps>`
   display: flex;
   color: white;
   line-height: 2rem;
@@ -26,14 +30,14 @@ export const Header = styled.div`
   background: #007CC1;
 
   p {
-    width: 92%;
+    width: ${({ chartType }) => chartType !== 'Mês' ? '92%' : '95%'};
   }
 
   .info {
     max-width: max-content;
     
     position: absolute;
-    right: 3rem;
+    right: ${({ chartType }) => chartType !== 'Mês' ? '3rem' : '4rem'};
     top: 0rem;
 
     font-size: .6rem;
