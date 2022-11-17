@@ -385,4 +385,62 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
   })
 }
 
-export { returnChartConfig } 
+type TreeMapOptionsProps = {
+  treeMapData : (string | number)[][]
+}
+
+const returnTreeMapOptions = ({ treeMapData }: TreeMapOptionsProps) => {
+  const _treeMapData  = treeMapData.map(data => ({
+    name: data[0],
+    value: data[1]
+  }))
+
+  return ({
+    tooltip: {
+      formatter: function (info) {
+        return [
+          '<div class="tooltip-title">' + info.name + "</div>",
+          "Capital Social: R$ " + info.value
+        ].join("");
+      }
+    },
+    series: [
+      {
+        type: "treemap",
+        visibleMin: 20,
+        label: {
+          show: true,
+          formatter: "{b}"
+        },
+        itemStyle: {
+          borderColor: "#fff"
+        },
+        levels: [
+          {
+            itemStyle: {
+              borderWidth: 3,
+              borderColor: "#333",
+              gapWidth: 3
+            }
+          },
+          {
+            color: ["#5c677d", "#0096c7", "#0077b6"],
+            colorMappingBy: "value",
+            itemStyle: {
+              gapWidth: 1
+            }
+          }
+        ],
+        data: [
+          {
+            name: "Empresas Ativas",
+            path: "Empresas Ativas",
+            children: _treeMapData
+          }
+        ]
+      }
+    ]
+  })
+}
+
+export { returnChartConfig, returnTreeMapOptions } 
