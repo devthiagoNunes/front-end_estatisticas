@@ -4,6 +4,7 @@ import { FilterContext } from '../../contexts/filtersContext/contextProvider'
 import * as Styled from './styled'
 
 export type TemplateFilterProps = {
+  pathname?: string
   sectorFilterData: [[string]]
   countyFilterData: [[string]]
   setionFilterData: [[string]]
@@ -22,7 +23,7 @@ type MonthOptionsData = {
   label: string 
 } []
 
-export const TemplateFilter = ({ ...data }: TemplateFilterProps) => {
+export const TemplateFilter = ({ pathname, ...data }: TemplateFilterProps) => {
 
   const { state: { ano } } = useContext(FilterContext)
   const selectedYear = ano
@@ -88,17 +89,21 @@ export const TemplateFilter = ({ ...data }: TemplateFilterProps) => {
     <Styled.Container>
       <p>Fltros:</p>
       <Styled.FilterFirstSection>
-        <Filter 
-          action='MUDAR_ANO' 
-          filterDescription='Ano de Abertura' 
-          filterOptionsData={yearOptionsData}
-        />
+        {pathname !== '/estatisticas/empresas-ativas' && (
+          <Filter 
+            action='MUDAR_ANO' 
+            filterDescription='Ano de Abertura' 
+            filterOptionsData={yearOptionsData}
+          />
+        )}
 
-        <Filter 
-          action='MUDAR_MES' 
-          filterDescription='Mês' 
-          filterOptionsData={monthOptionsData}
-        />
+        {pathname !== '/estatisticas/empresas-ativas' && (
+          <Filter 
+            action='MUDAR_MES' 
+            filterDescription='Mês' 
+            filterOptionsData={monthOptionsData}
+          />
+        )}
         
         <Filter 
           action='MUDAR_SETOR' 
