@@ -12,5 +12,22 @@ export const Container = styled.div`
 
   img {
     width: 5rem;
+    line-height: 3rem;
+    right: 0;
+    top: -0.9375rem;
+    line-height: 3rem;
+    position: absolute;
+    padding: 0;
+  }
+`
+
+export const Content = styled.section`
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  svg {
+    display: none;
   }
 `
