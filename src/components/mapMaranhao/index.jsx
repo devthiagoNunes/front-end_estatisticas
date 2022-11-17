@@ -1,13 +1,19 @@
+import { useState } from "react";
 import echarts from "echarts";
 import ReactEcharts from "echarts-for-react";
+
+import DOWNLOADICON from '../../assets/download-icon.svg'
 
 import * as Styled from './styled'
 
 import MA from './map_MA.json'
+import { CSVLink } from "react-csv";
 
 echarts.registerMap("maranhao", MA);
 
 export const MapMaranhao = ({ dataToMap = [] }) => {
+  const [messageInfo, setMessageInfo] = useState(false)
+
   const array_data_counties_to_object = dataToMap.map(data => {
     let municipality = ''
 
@@ -69,11 +75,29 @@ export const MapMaranhao = ({ dataToMap = [] }) => {
       const { seriesIndex } = params;
       if (seriesIndex === 0) return;
     }
-  };
+  }
+
+  const dataToDownload = [
+    ['dados-por-municipio', 'quantidade'],
+    ...dataToMap
+  ]
 
   return (
     <Styled.Container>
-      <p>Mapa de Abertura de Empresas</p>
+      <Styled.Header>
+        <p>Mapa de Abertura de Empresas</p>
+        {messageInfo && <p className='info'>Baixar CSV</p>}
+        <span>
+          <CSVLink data={dataToDownload}
+            filename={'dados-por-municipio'} 
+            className='icon-download'
+              onMouseOver={() => setMessageInfo(true)}
+              onMouseOut={() => setMessageInfo(false)}
+            > 
+              <img src={DOWNLOADICON} alt="icone de download para arquivo svg" />
+          </CSVLink>
+        </span>
+      </Styled.Header>
       <ReactEcharts 
         option={option} 
         onEvents={onEvents}
