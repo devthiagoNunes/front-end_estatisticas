@@ -42,9 +42,9 @@ export const ChartsStyle = styled.div`
 
 export const ChartsFirstSection = styled.section`
   width: 100%;
-  min-width: 700px;
-  max-width: 750px;
-  max-height: 1050px;
+  min-width: 43.75rem;
+  max-width: 46.875rem;
+  max-height: 65.625rem;
 
   display: flex;
   flex-direction: column;
@@ -63,10 +63,10 @@ export const MapSection = styled.section`
 export const QuantityTotal = styled.div`
   width: 100%;
   height: 100%;
-  max-height: 150px;
-  min-height: 150px;
+  max-height: 9.375rem;
+  min-height: 9.375rem;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3 );
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   overflow: hidden;
 
   p:nth-child(1) {
@@ -89,7 +89,7 @@ export const QuantityTotal = styled.div`
 `
 
 export const ContentTemplate = styled(Content)`
-  max-width: 1280px;
+  max-width: 80rem;
   margin: 0 auto;
   padding-top: 2rem;
 `
