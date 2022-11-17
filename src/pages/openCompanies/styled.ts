@@ -91,4 +91,5 @@ export const QuantityTotal = styled.div`
 export const ContentTemplate = styled(Content)`
   max-width: 1280px;
   margin: 0 auto;
+  padding-top: 2rem;
 `

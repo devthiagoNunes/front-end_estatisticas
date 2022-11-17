@@ -27,11 +27,11 @@ export const OpenCompanies = () => {
 
   return (
     <Styled.Container>
+      <Header />
       {isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
         data && (
           <Styled.Content>
-            <Header />
             <Styled.ContentTemplate>
               <TemplateFilter
                 sectorFilterData={data.filtersData.setor}
