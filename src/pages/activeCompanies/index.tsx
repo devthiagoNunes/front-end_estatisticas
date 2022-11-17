@@ -29,11 +29,11 @@ export const ActiveCompanies = () => {
 
   return (
     <Styled.Container>
+      <Header />
       {isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
         data && (
           <Styled.Content>
-            <Header />
             <Styled.ContentTemplate>
               <TemplateFilter
                 pathname={pathname}              
