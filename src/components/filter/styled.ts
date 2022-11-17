@@ -4,6 +4,7 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
+  position: relative;
 
   border-bottom: 1px solid ${({theme}) => theme.colors.blue[650]};
 
@@ -21,10 +22,11 @@ export const Container = styled.section`
 
     .message {
       position: absolute;
-      top: 0;
+      top: -1.5rem;
       width: 15rem;
       color: white;
       display: inline-block;
+      font-weight: bold;
       font-size: .665rem;
 
       padding: ${({theme}) => theme.spacings['0.5']};
