@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Navigate } from 'react-router'
 import { Loading } from '../../components/loading'
 
@@ -17,6 +17,7 @@ import { Header } from '../../components/header'
 
 export const OpenCompanies = () => {
   const { state } = useContext(FilterContext)
+  const [filtersVisible, setFiltersVisible] = useState(false)
   
   const { data, isLoading, error } = useQuery(['response', state], async () => {
     const response = await getDatasOfChartsAndFilters(state)
@@ -27,7 +28,7 @@ export const OpenCompanies = () => {
 
   return (
     <Styled.Container>
-      <Header />
+      <Header setFiltersVisible={setFiltersVisible} filtersVisible={filtersVisible} />
       {isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
         data && (
@@ -40,9 +41,10 @@ export const OpenCompanies = () => {
                 setionFilterData={data.filtersData.secao_atividade}
                 activityFilterData={data.filtersData.descricao_atividade}
                 countyFilterData={data.filtersData.municipio_empresa}
+                filtersVisible={filtersVisible}
               />
   
-              <Styled.StyleContent> 
+              <Styled.StyleContent filtersVisible={filtersVisible}> 
                 <TemplateLinks />
   
                 <Styled.ChartsStyle>
