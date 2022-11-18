@@ -41,11 +41,12 @@ export const Header = styled.div<HeaderProps>`
     }
   } 
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     padding: .35rem 0;
 
     p {
-      font-size: 1.2rem;
+      width: ${({ chartType }) => chartType !== 'Mês' ? '90%' : '95%'};
+      font-size: ${({theme}) => theme.font.sizes.normal};
     }
 
     span {
