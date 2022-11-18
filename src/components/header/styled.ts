@@ -30,4 +30,25 @@ export const Content = styled.section`
   svg {
     display: none;
   }
+
+  @media (max-width: 540px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 ${({theme}) => theme.spacings["0.5"]};
+
+    h2 {
+      font-size: ${({theme}) => theme.font.sizes.small};  
+    }    
+
+    svg {
+      display: block;
+      top: 0;
+      right: 0;
+    }
+
+    img {
+      display: none;
+    }
+  }
 `

@@ -11,10 +11,12 @@ export type HeaderProps = {
 export const Header = () => {
   const [filtersBlock, setFiltersBlock] = useState(false)
 
+  const widthScreen = window.innerWidth
+
   return (
     <Styled.Container>
       <Styled.Content>
-        <h2>PAINEL DE EMPRESAS DO MARANHÃO - Junta Comercial do Maranhão</h2>
+        <h2>{widthScreen <= 540 ? 'PAINEL DE EMPRESAS DO MARANHÃO - Jucema' : 'PAINEL DE EMPRESAS DO MARANHÃO - Junta Comercial do Maranhão'}</h2>
         <img src={Logo} alt="logo-jucema"/>
         <svg xmlns="http:www.w3.org/2000/svg" height="30px" viewBox="0 0 24 24" width="30px" fill="#fff"
           onClick={() => {
