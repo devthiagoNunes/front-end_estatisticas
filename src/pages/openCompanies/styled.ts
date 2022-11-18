@@ -12,6 +12,10 @@ export const Container = styled.main`
     flex-direction: column;
     gap: ${({theme}) => theme.spacings['1.5']};
   }
+
+  @media (max-width: 540px) {
+    padding: 0;
+  }
 `
 
 export const Content = styled.div`
@@ -21,15 +25,26 @@ export const Content = styled.div`
   gap: ${({theme}) => theme.spacings[2]};
 
   padding-bottom: ${({theme}) => theme.spacings[2]};
+
+  @media (max-width: 540px) {
+    height: 100vh;
+    padding: 0;
+  }
 `
 
-export const StyleContent = styled.section`
+type StyleContentProps = {
+  filtersVisible: boolean
+}
+
+export const StyleContent = styled.section<StyleContentProps>`
   position: relative;
   gap: ${({theme}) => theme.spacings['0.5']};
   
   @media (max-width: 540px) {
     width: 90%;
+    display: ${({ filtersVisible }) => filtersVisible ? 'none' : 'block'};
     margin: 0 auto;
+    padding: ${({theme}) => theme.spacings[2]} 0;
   }
 `
 
@@ -107,4 +122,8 @@ export const ContentTemplate = styled(Content)`
   max-width: 80rem;
   margin: 0 auto;
   padding-top: 2rem;
+
+  @media (max-width: 540px) {
+    padding: 0;
+  }
 `
