@@ -11,6 +11,7 @@ export type TemplateFilterProps = {
   porteFilterData: [[string]]
   activityFilterData: [[string]]
   natureFilterData: [[string]]
+  filtersVisible: boolean
 }
 
 type YearOptionsData = {
@@ -23,7 +24,7 @@ type MonthOptionsData = {
   label: string 
 } []
 
-export const TemplateFilter = ({ pathname, ...data }: TemplateFilterProps) => {
+export const TemplateFilter = ({ pathname, filtersVisible, ...data }: TemplateFilterProps) => {
 
   const { state: { ano } } = useContext(FilterContext)
   const selectedYear = ano
@@ -86,7 +87,7 @@ export const TemplateFilter = ({ pathname, ...data }: TemplateFilterProps) => {
   const natureOptionsData = returnObjectList(data.natureFilterData)
   
   return (
-    <Styled.Container>
+    <Styled.Container filtersVisible={filtersVisible}>
       <p>Fltros:</p>
       <Styled.FilterFirstSection>
         {pathname !== '/estatisticas/empresas-ativas' && (
