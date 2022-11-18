@@ -16,6 +16,12 @@ export const Container = styled.div`
   .echarts-for-react {
     min-height: 500px;
   }
+
+  @media (max-width: 768px) {
+    .echarts-for-react {
+      min-height: 480px;
+    } 
+  }
 `
 
 export const Header = styled(HeaderStyle)`
