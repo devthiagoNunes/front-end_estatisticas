@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Header as StyledHeader } from '../chart/styled'
-
 type ContainerProps = {
   tableType: 'Atividade' | 'Natureza'
 }
@@ -13,7 +11,7 @@ export const Container = styled.div<ContainerProps>`
   overflow: hidden;
   overflow-y: scroll;
   border-radius: 15px;
-  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.3);
 
   table {
     width: 100%;
@@ -56,11 +54,8 @@ export const Container = styled.div<ContainerProps>`
     letter-spacing: .1rem;
   }
 
-`
 
-export const Header = styled(StyledHeader)`
-  position: sticky;
-  top: 0;
-
-  border-top-right-radius: 0;
+  @media (max-width: 540px) {
+    min-height: 21.875rem;    
+  }
 `
