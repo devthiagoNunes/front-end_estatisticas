@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.main`
   position: relative;
   width: 100%;
+  overflow-x: hidden;
   height: 100vh;
   margin: 0 auto;
 
@@ -23,7 +24,13 @@ export const Content = styled.div`
 `
 
 export const StyleContent = styled.section`
+  position: relative;
   gap: ${({theme}) => theme.spacings['0.5']};
+  
+  @media (max-width: 540px) {
+    width: 90%;
+    margin: 0 auto;
+  }
 `
 
 export const ChartsStyle = styled.div`
@@ -37,12 +44,16 @@ export const ChartsStyle = styled.div`
     display: flex;
     justify-content: space-evenly;
     gap: ${({theme}) => theme.spacings[1]};
+
+    @media (max-width: 540px) {
+      flex-direction: column;
+      gap: 5rem;
+    }
   }
 `
 
 export const ChartsFirstSection = styled.section`
   width: 100%;
-  min-width: 43.75rem;
   max-width: 46.875rem;
   max-height: 65.625rem;
 
@@ -65,7 +76,7 @@ export const QuantityTotal = styled.div`
   height: 100%;
   max-height: 9.375rem;
   min-height: 9.375rem;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3 );
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
   border-radius: 0.9375rem;
   overflow: hidden;
 
@@ -85,6 +96,10 @@ export const QuantityTotal = styled.div`
     font-size: 3rem;
     color: ${({theme}) => theme.font.colors.blue[550]};
     line-height: 100px;
+  }
+
+  @media (max-width: 540px) {
+    display: none;
   }
 `
 
