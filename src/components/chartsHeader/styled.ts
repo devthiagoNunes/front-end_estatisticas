@@ -57,23 +57,27 @@ export const Header = styled.div<HeaderProps>`
         }
       }
     }
+  }
 
-    @media (max-width: 768px) {
-      padding: .25rem 0;
+  @media (max-width: 540px) {
+    padding: .25rem 0;
 
-      p {
-        font-size: 1rem;
-      }
+    p {
+      width: 92%;
+      font-size: 1rem;
+    }
 
-      span {
-        .icon-download {
-          img {
-            position: absolute;
-            top: .5rem;
-            max-width: 25px;
-          }
+    span {
+      .icon-download {
+        img {
+          position: absolute;
+          max-width: 25px;
         }
       }
+    }
+
+    .info {
+      right: 2.5rem;
     }
   }
 `

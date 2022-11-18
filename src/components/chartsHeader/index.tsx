@@ -1,8 +1,7 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { CSVLink } from 'react-csv'
 
 import DOWNLOADICON from '../../assets/download-icon.svg'
-import { FilterContext } from '../../contexts/filtersContext/contextProvider'
 
 import * as Styled from './styled'
 
@@ -13,7 +12,6 @@ export type ChartsHeaderProps = {
 }
 
 export const ChartsHeader = ({ chartType, chartData, textToHeader }: ChartsHeaderProps) => {
-  const { state: { empresasAbertas } } = useContext(FilterContext)
   const [messageInfo, setMessageInfo] = useState(false);
 
   const dataToDownload = [
