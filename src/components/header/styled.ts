@@ -19,6 +19,12 @@ export const Container = styled.div`
     position: absolute;
     padding: 0;
   }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: ${({theme}) => theme.font.sizes.normal};
+    } 
+  }
 `
 
 export const Content = styled.section`
@@ -29,6 +35,10 @@ export const Content = styled.section`
 
   svg {
     display: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
   }
 
   @media (max-width: 540px) {
