@@ -14,10 +14,16 @@ export const ChartsFirstSection = styled(PageChartsFirstSection)``
 
 export const MapSection = styled(PageMapSection)`
   max-height: 1050px;
-
+  
   > div:nth-child(3) {
     height: 100%;
     max-height: 348px;
+  }
+
+  @media (max-width: 768px) {
+    > div:nth-child(3) {
+      max-height: 22.68rem;
+    }
   }
 
 `

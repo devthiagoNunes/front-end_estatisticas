@@ -26,6 +26,11 @@ export const Content = styled.div`
 
   padding-bottom: ${({theme}) => theme.spacings[2]};
 
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   @media (max-width: 540px) {
     height: 100vh;
     padding: 0;
@@ -76,6 +81,10 @@ export const ChartsFirstSection = styled.section`
   flex-direction: column;
   align-items: center;
   gap: ${({theme}) => theme.spacings[1]};
+
+  @media (max-width: 768px) {
+    min-width: 21.875rem;
+  }
 `
 
 export const MapSection = styled.section`
@@ -84,6 +93,10 @@ export const MapSection = styled.section`
   align-items: center;
   flex-direction: column;
   gap: ${({theme}) => theme.spacings[1]};
+
+  @media (max-width: 768px) {
+    max-width: 18.75rem;
+  }
 `
 
 export const QuantityTotal = styled.div`
@@ -113,6 +126,21 @@ export const QuantityTotal = styled.div`
     line-height: 100px;
   }
 
+  @media (max-width: 768px) {
+    max-height: 8.125rem;
+    min-height: 8.125rem;
+
+    p:nth-child(1) {
+      padding: .35rem 0;
+      font-size: ${({theme}) => theme.font.sizes.normal};
+    }
+
+    p:nth-child(2) {
+      font-size: 2.5rem;
+      line-height: 5.5rem;
+    }
+  }
+
   @media (max-width: 540px) {
     display: none;
   }
@@ -122,6 +150,10 @@ export const ContentTemplate = styled(Content)`
   max-width: 80rem;
   margin: 0 auto;
   padding-top: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   @media (max-width: 540px) {
     padding: 0;
