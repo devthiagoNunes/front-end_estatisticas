@@ -13,6 +13,10 @@ export const Container = styled.div<ContainerProps>`
   border-radius: 15px;
   box-shadow: 4px 4px 8px rgb(0, 0, 0, 0.3);
 
+  > div:nth-child(1) {
+    border-top-right-radius: 0;
+  }
+
   table {
     width: 100%;
     height: 100%;
