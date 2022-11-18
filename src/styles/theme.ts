@@ -14,7 +14,8 @@ export const theme = {
       }
     },
     sizes: {
-      small: '0.5rem',
+      xsmall: '0.5rem',
+      small: '0.75rem',
       normal: '1rem',
       large: '1.5rem',
       bib: '2rem',
