@@ -262,7 +262,7 @@ const returnChartConfig = ({ chartData, isVertical = true, chartType }: ReturnCh
           position: "top",
           verticalAlign: "middle",
         },
-        minInterval: 4000
+        minInterval: 1000
       },
       series: [
         {
