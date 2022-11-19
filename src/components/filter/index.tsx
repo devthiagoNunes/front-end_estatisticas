@@ -5,7 +5,7 @@ import { FilterContext } from "../../contexts/filtersContext/contextProvider"
 
 import * as Styled from './styled'
 
-type Actions = 'MUDAR_ANO' | 'MUDAR_MES' | 'MUDAR_PORTE' | 'MUDAR_SETOR' | 'MUDAR_NATUREZA' | 'MUDAR_MUNICIPIO' | 'MUDAR_SECAO_ATIVIDADE' | 'MUDAR_ATIVIDADE' | 'MUDAR_ESTADO_INICIAL_EMPRESAS' | 'LIMPAR_FILTROS'
+export type Actions = 'MUDAR_ANO' | 'MUDAR_MES' | 'MUDAR_PORTE' | 'MUDAR_SETOR' | 'MUDAR_NATUREZA' | 'MUDAR_MUNICIPIO' | 'MUDAR_SECAO_ATIVIDADE' | 'MUDAR_ATIVIDADE' | 'MUDAR_ESTADO_INICIAL_EMPRESAS' | 'LIMPAR_FILTROS'
 
 export type FilterProps = {
   action: Actions
@@ -28,7 +28,7 @@ export const Filter = ({
   placeholder = 'Selecionar', 
 }: FilterProps) => {
 
-  const context = useContext(FilterContext)
+  const { dispatch } = useContext(FilterContext)
   const [infor, setInfor] = useState(false)
 
   return (
@@ -54,8 +54,8 @@ export const Filter = ({
         showCheckbox={showCheckbox}
         placeholder={placeholder}
         emptyRecordMsg='Carregando...'
-        onSelect={(e) => context.dispatch({type:action, payload: e})}
-        onRemove={(e) => context.dispatch({type:action, payload: e})}
+        onSelect={(e) => dispatch({type:action, payload: e})}
+        onRemove={(e) => dispatch({type:action, payload: e})}
       />
     </Styled.Container>
   )

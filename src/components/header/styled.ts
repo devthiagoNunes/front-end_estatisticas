@@ -5,6 +5,8 @@ export const Container = styled.div`
   color: white;
   background-color: ${({theme}) => theme.colors.blue[700]};
 
+  margin-bottom: ${({theme}) => theme.spacings[2]};
+
   h2 {
     width: max-content;
     line-height: 3rem;
