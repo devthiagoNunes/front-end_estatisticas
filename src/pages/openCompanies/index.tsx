@@ -50,6 +50,12 @@ export const OpenCompanies = () => {
                 <Styled.ChartsStyle>
                   <div className='charts-and-tables'>
                     <Styled.ChartsFirstSection>
+                      {window.innerWidth <= 540 && (
+                        <Styled.QuantityTotal>
+                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                        </Styled.QuantityTotal>
+                      )}
                       <TemplateChart
                         chartType='Porte'
                         chartData={data.graphicsData.porte}
@@ -66,10 +72,12 @@ export const OpenCompanies = () => {
                     </Styled.ChartsFirstSection>
   
                     <Styled.MapSection>
-                      <Styled.QuantityTotal>
-                        <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
-                        <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
-                      </Styled.QuantityTotal>
+                      {window.innerWidth > 540 && (
+                        <Styled.QuantityTotal>
+                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                        </Styled.QuantityTotal>
+                      )}
                       <MapMaranhao dataToMap={data.graphicsData.municipio_empresa} />
                     </Styled.MapSection>
                   </div>
