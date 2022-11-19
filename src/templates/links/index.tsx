@@ -21,20 +21,32 @@ export const TemplateLinks = () => {
       <MyLink 
         pathname={pathname}
         linkText='Empresas Abertas'
-        actionOnClick={() => dispatch({
-          type: Actions.MUDAR_ESTADO_INICIAL_EMPRESAS,
-          payload: true
-        })}
+        actionOnClick={() => {
+          dispatch({
+            type: Actions.LIMPAR_FILTROS,
+          })
+
+          dispatch({
+            type: Actions.MUDAR_ESTADO_INICIAL_EMPRESAS,
+            payload: true
+          })
+        }}
         href='/estatisticas/empresas-abertas'
       />
 
       <MyLink 
         pathname={pathname}
         linkText='Empresas Ativas'
-        actionOnClick={() => dispatch({
-          type: Actions.MUDAR_ESTADO_INICIAL_EMPRESAS,
-          payload: false
-        })}
+        actionOnClick={() => {
+          dispatch({
+            type: Actions.LIMPAR_FILTROS,
+          })
+          
+          dispatch({
+            type: Actions.MUDAR_ESTADO_INICIAL_EMPRESAS,
+            payload: false
+          })
+        }}
         href='/estatisticas/empresas-ativas'
       />
     </Styled.Container>
