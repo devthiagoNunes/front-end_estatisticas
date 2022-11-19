@@ -29,12 +29,16 @@ export const Container = styled.div`
 
 export const Content = styled.section`
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
 
   svg {
     display: none;
+  }
+
+  @media (max-width: 1024px) {
+    width: 90%;
   }
 
   @media (max-width: 540px) {

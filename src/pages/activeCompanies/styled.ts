@@ -10,7 +10,9 @@ export const StyleContent = styled(PageStyleContent)``
 
 export const ChartsStyle = styled(PageChartsStyle)``
 
-export const ChartsFirstSection = styled(PageChartsFirstSection)``
+export const ChartsFirstSection = styled(PageChartsFirstSection)`
+  max-height: 1050px;
+`
 
 export const MapSection = styled(PageMapSection)`
   padding-bottom: 0.75rem;
@@ -18,7 +20,11 @@ export const MapSection = styled(PageMapSection)`
 
   > div:nth-child(3) {
     height: 100%;
-    max-height: 348px;
+    max-height: 346px;
+  }
+
+  @media (max-width: 1024px) {
+    padding-bottom: 1.5rem;
   }
 
   @media (max-width: 768px) {
