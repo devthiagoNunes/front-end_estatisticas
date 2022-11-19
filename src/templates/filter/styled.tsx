@@ -5,6 +5,9 @@ type ContainerProps = {
 }
 
 export const Container = styled.div<ContainerProps>`
+  width: 95%;
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   position: relative;
@@ -61,6 +64,4 @@ export const FilterFirstSection = styled.section`
   }
 `
 
-export const FilterSecondSection = styled(FilterFirstSection)`
-  margin-top: ${({theme}) => theme.spacings['0.75']};
-`
+export const FilterSecondSection = styled(FilterFirstSection)``
