@@ -5,12 +5,12 @@ import * as Styled from './styled'
 
 export type TemplateFilterProps = {
   pathname?: string
-  sectorFilterData: [[string]]
-  countyFilterData: [[string]]
-  setionFilterData: [[string]]
-  porteFilterData: [[string]]
-  activityFilterData: [[string]]
-  natureFilterData: [[string]]
+  sectorFilterData: string[][]
+  countyFilterData: string[][]
+  setionFilterData: string[][]
+  porteFilterData: string[][]
+  activityFilterData: string[][]
+  natureFilterData: string[][]
   filtersVisible: boolean
 }
 
@@ -21,15 +21,24 @@ type YearOptionsData = {
 
 type MonthOptionsData = {
   filterValue: string
-  label: string 
+  label: number 
 } []
 
-export const TemplateFilter = ({ pathname, filtersVisible, ...data }: TemplateFilterProps) => {
+export const TemplateFilter = ({ 
+  pathname,
+  activityFilterData = [],
+  countyFilterData = [],
+  natureFilterData = [],
+  porteFilterData = [],
+  sectorFilterData = [],
+  setionFilterData = [],
+  filtersVisible
+}: TemplateFilterProps) => {
 
   const { state: { ano } } = useContext(FilterContext)
   const selectedYear = ano
 
-  function returnObjectList(listaData: [[string | number]]) {
+  function returnObjectList(listaData: string[][]) {
     const objectList = listaData.map(data => (
       { 
         filterValue: data[0],
@@ -59,17 +68,17 @@ export const TemplateFilter = ({ pathname, filtersVisible, ...data }: TemplateFi
     const monthOptions: MonthOptionsData = []
 
     if(selectedYear < date.getFullYear()) {
-      months.forEach((month) => {
+      months.forEach((month, index) => {
         monthOptions.push({
           filterValue: month,
-          label: month
+          label: index + 1
         })
       })
     } else {
       for (let i = 0; i <= date.getMonth(); i++) {
         monthOptions.push({
           filterValue: months[i],
-          label: months[i]
+          label: i + 1
         })
       }
     }
@@ -79,12 +88,12 @@ export const TemplateFilter = ({ pathname, filtersVisible, ...data }: TemplateFi
 
   const yearOptionsData = createYearOptionsData()
   const monthOptionsData = createMonthOptions()
-  const sectorOptionsData = returnObjectList(data.sectorFilterData)
-  const countyOptionsData = returnObjectList(data.countyFilterData)
-  const setionOptionsData = returnObjectList(data.setionFilterData)
-  const porteOptionsData = returnObjectList(data.porteFilterData)
-  const activityOptionsData = returnObjectList(data.activityFilterData)
-  const natureOptionsData = returnObjectList(data.natureFilterData)
+  const sectorOptionsData = returnObjectList(sectorFilterData)
+  const countyOptionsData = returnObjectList(countyFilterData)
+  const setionOptionsData = returnObjectList(setionFilterData)
+  const porteOptionsData = returnObjectList(porteFilterData)
+  const activityOptionsData = returnObjectList(activityFilterData)
+  const natureOptionsData = returnObjectList(natureFilterData)
   
   return (
     <Styled.Container filtersVisible={filtersVisible}>
@@ -93,7 +102,8 @@ export const TemplateFilter = ({ pathname, filtersVisible, ...data }: TemplateFi
         {pathname !== '/estatisticas/empresas-ativas' && (
           <Filter 
             action='MUDAR_ANO' 
-            filterDescription='Ano de Abertura' 
+            filterDescription='Ano de Abertura'
+            singleSelect={true}
             filterOptionsData={yearOptionsData}
           />
         )}
