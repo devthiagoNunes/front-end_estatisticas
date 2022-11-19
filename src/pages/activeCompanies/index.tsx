@@ -10,11 +10,11 @@ import { TemplateTable } from '../../templates/table'
 import { getDatasOfChartsAndFilters } from '../../services/pinot'
 import { FilterContext } from '../../contexts/filtersContext/contextProvider'
 
-import * as Styled from './styled'
 import { MapMaranhao } from '../../components/mapMaranhao'
 import { TemplateFilter } from '../../templates/filter'
 import { Header } from '../../components/header'
 import { TreeMapComponente } from '../../components/treeMap'
+import * as Styled from './styled'
 
 export const ActiveCompanies = () => {
   const { pathname } = useLocation()
@@ -54,6 +54,12 @@ export const ActiveCompanies = () => {
                 <Styled.ChartsStyle>
                   <div className='charts-and-tables'>
                     <Styled.ChartsFirstSection>
+                      {window.innerWidth <= 540 && (
+                        <Styled.QuantityTotal>
+                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                        </Styled.QuantityTotal>
+                      )}
                       <TemplateChart
                         chartType='Porte'
                         chartData={data.graphicsData.porte}
@@ -66,10 +72,12 @@ export const ActiveCompanies = () => {
                     </Styled.ChartsFirstSection>
   
                     <Styled.MapSection>
-                      <Styled.QuantityTotal>
-                        <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
-                        <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
-                      </Styled.QuantityTotal>
+                      {window.innerWidth > 540 && (
+                        <Styled.QuantityTotal>
+                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                        </Styled.QuantityTotal>
+                      )}
                       <MapMaranhao dataToMap={data.graphicsData.municipio_empresa} />
                       <TemplateTable 
                         tableType='Natureza'
