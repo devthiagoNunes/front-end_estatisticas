@@ -14,14 +14,15 @@ import { MapMaranhao } from '../../components/mapMaranhao'
 import { TemplateFilter } from '../../templates/filter'
 import { Header } from '../../components/header'
 import { TreeMapComponente } from '../../components/treeMap'
+
+import * as Actions from '../../contexts/filtersContext/actions'
 import * as Styled from './styled'
 
 export const ActiveCompanies = () => {
   const { pathname } = useLocation()
-  const { state } = useContext(FilterContext)
+  const { state, dispatch } = useContext(FilterContext)
   const [filtersVisible, setFiltersVisible] = useState(false)
 
-  
   const { data, isLoading, error } = useQuery(['response', state], async () => {
     const response = await getDatasOfChartsAndFilters(state)
     return response.data
@@ -29,25 +30,30 @@ export const ActiveCompanies = () => {
     staleTime: 1000 * 10 * 60 // 10 minutes
   })
 
+  useEffect(() => {
+    dispatch({
+      type: Actions.MUDAR_ESTADO_INICIAL_EMPRESAS,
+      payload: false
+    })
+  }, [])
+
   return (
     <Styled.Container>
       <Header setFiltersVisible={setFiltersVisible} filtersVisible={filtersVisible}/>
+      <TemplateFilter
+        sectorFilterData={data?.filtersData.setor}
+        porteFilterData={data?.filtersData.porte}
+        natureFilterData={data?.filtersData.natureza}
+        setionFilterData={data?.filtersData.secao_atividade}
+        activityFilterData={data?.filtersData.descricao_atividade}
+        countyFilterData={data?.filtersData.municipio_empresa}
+        filtersVisible={filtersVisible}
+      />
       {isLoading ? <Loading /> : 
         error ? <Navigate to='/' /> :
         data && (
           <Styled.Content>
-            <Styled.ContentTemplate>
-              <TemplateFilter
-                pathname={pathname}              
-                sectorFilterData={data.filtersData.setor}
-                porteFilterData={data.filtersData.porte}
-                natureFilterData={data.filtersData.natureza}
-                setionFilterData={data.filtersData.secao_atividade}
-                activityFilterData={data.filtersData.descricao_atividade}
-                countyFilterData={data.filtersData.municipio_empresa}
-                filtersVisible={filtersVisible}
-              />
-  
+            <Styled.ContentTemplate>  
               <Styled.StyleContent filtersVisible={filtersVisible}> 
                 <TemplateLinks />
   
