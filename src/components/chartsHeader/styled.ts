@@ -25,7 +25,7 @@ export const Header = styled.div<HeaderProps>`
     max-width: max-content;
     
     position: absolute;
-    right: ${({ chartType }) => chartType !== 'Mês' ? '3rem' : '4rem'};
+    right: 4rem;
     top: 0rem;
 
     font-size: .6rem;

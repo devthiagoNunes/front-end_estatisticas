@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Header } from '../../components/chartsHeader/styled';
 
 type ContainerProps = {
   tableType: 'Atividade' | 'Natureza'
@@ -15,6 +16,13 @@ export const Container = styled.div<ContainerProps>`
 
   > div:nth-child(1) {
     border-top-right-radius: 0;
+  }
+
+  ${Header} {
+    .info {
+      right: 2rem;
+      top: -.2rem;
+    }
   }
 
   table {

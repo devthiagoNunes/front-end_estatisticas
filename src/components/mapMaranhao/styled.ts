@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Header as HeaderStyle } from '../chartsHeader/styled'
+import { Header } from '../chartsHeader/styled'
 
 export const Container = styled.div`
   width: 100%;
@@ -17,27 +17,16 @@ export const Container = styled.div`
     min-height: 500px;
   }
 
+  ${Header} {
+    .info {
+      right: 2rem;
+      top: -.2rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .echarts-for-react {
       min-height: 480px;
     } 
   }
-`
-
-export const Header = styled(HeaderStyle)`
-  padding: 0;
-
-  .info {
-    right: 2.1rem;
-    top: -.5rem;
-  }
-
-  span {
-    .icon-download {
-      img {
-        top: .5rem;
-        right: .5rem;
-      }
-    }
-  } 
 `
