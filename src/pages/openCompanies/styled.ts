@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Container as MapContainer } from '../../components/mapMaranhao/styled'
+
 export const Container = styled.main`
   position: relative;
   width: 100%;
@@ -76,7 +78,7 @@ export const ChartsStyle = styled.div`
 
     @media (max-width: 540px) {
       flex-direction: column;
-      gap: 5rem;
+      gap: 4.5rem;
     }
   }
 `
