@@ -84,7 +84,7 @@ export const OpenCompanies = () => {
                       {window.innerWidth > 540 && (
                         <Styled.QuantityTotal>
                           <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
-                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                          <p>{data?.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
                         </Styled.QuantityTotal>
                       )}
                       <MapMaranhao dataToMap={data.graphicsData.municipio_empresa} />
