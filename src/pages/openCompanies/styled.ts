@@ -20,6 +20,7 @@ export const Container = styled.main`
 
     > div {
       width: 100%;
+      gap: 0;
     }
   }
 `

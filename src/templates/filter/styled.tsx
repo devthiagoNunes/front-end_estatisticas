@@ -5,7 +5,8 @@ type ContainerProps = {
 }
 
 export const Container = styled.div<ContainerProps>`
-  width: 95%;
+  width: 90%;
+  max-width: 1280px;
   margin: 0 auto;
 
   display: flex;
@@ -37,8 +38,9 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
     height: 100%;
     left: 100%;
+    position: fixed;
 
-    display: ${({ filtersVisible }) =>  filtersVisible ? 'bloxk' : 'none'};
+    display: ${({ filtersVisible }) =>  filtersVisible ? 'block' : 'none'};
     background: white;
     animation: filterTransition 500ms ease-in-out forwards;
     transition: 250ms;

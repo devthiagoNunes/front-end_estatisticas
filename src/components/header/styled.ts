@@ -27,6 +27,10 @@ export const Container = styled.div`
       font-size: ${({theme}) => theme.font.sizes.normal};
     } 
   }
+
+  @media (max-width: 540px) {
+    margin-bottom: 0;
+  }
 `
 
 export const Content = styled.section`
