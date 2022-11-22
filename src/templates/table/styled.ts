@@ -28,12 +28,12 @@ export const Container = styled.div<ContainerProps>`
   table {
     width: 100%;
     height: 100%;
+    max-height: 1.5625rem;
     overflow-y: scroll;
     border-spacing: 0;
   }
 
   table thead tr th:first-child {
-    width: 70%;
     padding-left: .5rem;
   }
 

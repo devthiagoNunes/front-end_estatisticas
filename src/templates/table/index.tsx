@@ -78,7 +78,7 @@ export const TemplateTable = ({tableType, tableData}: TemplateTableProps) => {
         accessor: 'tableData',
       },
       {
-        Header: tableType,
+        Header: 'Quantidade',
         accessor: 'quantidade',
       },
     ], [tableType])
