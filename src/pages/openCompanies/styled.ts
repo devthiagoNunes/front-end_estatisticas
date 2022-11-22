@@ -12,7 +12,7 @@ export const Container = styled.main`
   > div {
     display: flex;
     flex-direction: column;
-    gap: ${({theme}) => theme.spacings['1.5']};
+    gap: ${({theme}) => theme.spacings['0.5']};
   }
 
   @media (max-width: 540px) {
