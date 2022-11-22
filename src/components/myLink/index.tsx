@@ -12,7 +12,13 @@ export const MyLink = ({ href, linkText, pathname, actionOnClick }: MyLinkProps)
 
   return (
     <Styled.Container pathname={pathname} href={href}>
-      <Link to={href} onClick={actionOnClick}>{linkText}</Link>
+      <Link to={href} onClick={() => {
+        if(pathname === href) {
+          return window.location.reload()
+        }
+
+        actionOnClick()
+      }}>{linkText}</Link>
     </Styled.Container>
   )
 }
