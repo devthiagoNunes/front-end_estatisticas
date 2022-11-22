@@ -4,7 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { MyLink, MyLinkProps } from '.'
 
 export default {
-  title: 'MyLink',
+  title: 'Component/MyLink',
   component: MyLink,
   args: {
     href: '/estatisticas/empresas-abertas',
@@ -23,6 +23,10 @@ export default {
     pathname: {
       type:'string',
       description: 'Endereço atual em que o usuário está. É necessário para que o estilo adequado seja aplicado ao link'
+    },
+    actionOnClick: {
+      type: 'function',
+      description: 'Caso queira executar alguma função ao clicar no link, basta passa-la aqui.'
     }
   },
 } as Meta<MyLinkProps>
