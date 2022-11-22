@@ -91,7 +91,7 @@ export const OpenCompanies = () => {
                     </Styled.MapSection>
                   </div>
   
-                  <TemplateChart chartData={data.graphicsData.mes} chartType='Mês' />
+                  {!state.mes.length && <TemplateChart chartData={data.graphicsData.mes} chartType='Mês' />}
                 </Styled.ChartsStyle> 
               </Styled.StyleContent>
             </Styled.ContentTemplate>
