@@ -11,6 +11,7 @@ export type FilterProps = {
   action: Actions
   showCheckbox?: boolean
   singleSelect?: boolean
+  selectionLimit?: number | null
   filterOptionsData: {
     filterValue: string | number
     label: string | number
@@ -23,6 +24,7 @@ export const Filter = ({
   action,
   showCheckbox = true, 
   singleSelect = false, 
+  selectionLimit = null,
   filterOptionsData, 
   filterDescription,
   placeholder = 'Selecionar', 
@@ -54,6 +56,7 @@ export const Filter = ({
         showCheckbox={showCheckbox}
         placeholder={placeholder}
         emptyRecordMsg='Carregando...'
+        selectionLimit={selectionLimit}
         onSelect={(e) => dispatch({type:action, payload: e})}
         onRemove={(e) => dispatch({type:action, payload: e})}
       />

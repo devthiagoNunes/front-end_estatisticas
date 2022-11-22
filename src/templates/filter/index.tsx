@@ -111,7 +111,8 @@ export const TemplateFilter = ({
         {pathname !== '/estatisticas/empresas-ativas' && (
           <Filter 
             action='MUDAR_MES' 
-            filterDescription='Mês' 
+            filterDescription='Mês'
+            selectionLimit={2}
             filterOptionsData={monthOptionsData}
           />
         )}
