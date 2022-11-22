@@ -25,7 +25,7 @@ export const MapSection = styled(PageMapSection)`
 
   > div:nth-child(3) {
     height: 100%;
-    max-height: 346px;
+    max-height: 21.75rem;
   }
 
   @media (max-width: 1024px) {
