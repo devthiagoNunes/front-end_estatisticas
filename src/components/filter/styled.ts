@@ -64,6 +64,11 @@ export const Container = styled.section`
 
   .optionListContainer {
     position: absolute;
+    > ul {
+      li {
+        font-size: .85rem;
+      }
+    }
   }
 `
 
