@@ -2,7 +2,7 @@ import Echarts from "echarts-for-react";
 
 import { returnChartConfig } from "../../utils/chartConfig";
 
-type ChartProps = {
+export type ChartProps = {
   isVertical?: boolean
   chartType?: 'Porte' | 'Setor' | 'Mês'
   chartData: (string | number)[][]
