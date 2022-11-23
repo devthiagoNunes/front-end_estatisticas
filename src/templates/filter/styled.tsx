@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-type ContainerProps = {
-  filtersVisible: boolean
-}
+// type ContainerProps = {
+//   filtersVisible: boolean
+// }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   width: 90%;
   max-width: 1280px;
   margin: 0 auto;
@@ -31,27 +31,6 @@ export const Container = styled.div<ContainerProps>`
       width: 100%;
       text-align: center;
       font-size: ${({theme}) => theme.font.sizes.large};
-    }
-  }
-  
-  @media (max-width: 540px) {
-    width: 100%;
-    height: 100%;
-    left: 100%;
-    position: fixed;
-
-    display: ${({ filtersVisible }) =>  filtersVisible ? 'block' : 'none'};
-    background: white;
-    animation: filterTransition 500ms ease-in-out forwards;
-    transition: 250ms;
-    z-index: 2;
-
-    @keyframes filterTransition {
-      from {
-        left: 100%;
-      } to {
-        left: 0;
-      }
     }
   }
 `

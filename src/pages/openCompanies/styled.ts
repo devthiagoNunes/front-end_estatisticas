@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 import { Container as MapContainer } from '../../components/mapMaranhao/styled'
-
-export const Container = styled.main`
+type ContainerProps = {
+  filtersVisible: boolean
+}
+export const Container = styled.main<ContainerProps>`
   position: relative;
   width: 100%;
   overflow-x: hidden;
@@ -21,6 +23,23 @@ export const Container = styled.main`
     > div {
       width: 100%;
       gap: 0;
+
+      :nth-child(2) {
+        position: fixed;
+        height: 100vh;
+        display: ${({ filtersVisible }) => filtersVisible ? 'block' : 'none'};
+        animation: filterTransition 500ms ease-in-out forwards;
+        transition: 250ms;
+        z-index: 2;
+
+        @keyframes filterTransition {
+          from {
+            left: 100%;
+          } to {
+            left: 0;
+          }
+        }
+      }
     }
   }
 `

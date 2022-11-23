@@ -85,6 +85,7 @@ export const TemplateFilter = ({
 
     return monthOptions
   }
+  console.log(filtersVisible)
 
   const yearOptionsData = createYearOptionsData()
   const monthOptionsData = createMonthOptions()
@@ -96,7 +97,7 @@ export const TemplateFilter = ({
   const natureOptionsData = returnObjectList(natureFilterData)
   
   return (
-    <Styled.Container filtersVisible={filtersVisible}>
+    <Styled.Container>
       <p>Fltros:</p>
       <Styled.FilterFirstSection>
         {pathname !== '/estatisticas/empresas-ativas' && (

@@ -38,7 +38,7 @@ export const ActiveCompanies = () => {
   }, [])
 
   return (
-    <Styled.Container>
+    <Styled.Container filtersVisible={filtersVisible}>
       <Header setFiltersVisible={setFiltersVisible} filtersVisible={filtersVisible}/>
       <TemplateFilter
         sectorFilterData={data?.filtersData.setor}
