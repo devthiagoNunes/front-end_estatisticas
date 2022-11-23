@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Container as PageContainer, Content as PageContent, StyleContent as PageStyleContent, ChartsStyle as PageChartsStyle, ChartsFirstSection as PageChartsFirstSection, MapSection as PageMapSection, QuantityTotal as PageQuantityTotal, ContentTemplate as PageContentTemplate } from '../openCompanies/styled'
+import { Container as PageContainer, Content as PageContent, StyleContent as PageStyleContent, ChartsStyle as PageChartsStyle, ChartsFirstSection as PageChartsFirstSection, MapSection as PageMapSection, QuantityTotal as PageQuantityTotal, ContentTemplate as PageContentTemplate, QuantityTotalToMobile as PageQuantityTotalToMobile } from '../openCompanies/styled'
 import { Container as MapContainer } from '../../components/mapMaranhao/styled'
 
 export const Container = styled(PageContainer)``
@@ -16,7 +16,7 @@ export const ChartsStyle = styled(PageChartsStyle)`
 `
 
 export const ChartsFirstSection = styled(PageChartsFirstSection)`
-  max-height: 1050px;
+  max-height: max-content;
 `
 
 export const MapSection = styled(PageMapSection)`
@@ -30,6 +30,10 @@ export const MapSection = styled(PageMapSection)`
 
   @media (max-width: 1024px) {
     padding-bottom: 1.5rem;
+
+    > div:nth-child(3) {
+      max-height: 23rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -37,19 +41,10 @@ export const MapSection = styled(PageMapSection)`
       max-height: 22.68rem;
     }
   }
-
-  @media (max-width: 540px) {
-    ${MapContainer} {
-      .echarts-for-react { 
-        div {
-          height: 100px;
-        }
-      }
-    }
-  }
-
 `
 
 export const QuantityTotal = styled(PageQuantityTotal)``
+
+export const QuantityTotalToMobile = styled(PageQuantityTotalToMobile)``
 
 export const ContentTemplate = styled(PageContentTemplate)``

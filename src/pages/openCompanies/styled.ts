@@ -63,7 +63,6 @@ export const Content = styled.div`
   }
 
   @media (max-width: 540px) {
-    height: 100vh;
     padding: 0;
   }
 `
@@ -98,7 +97,6 @@ export const ChartsStyle = styled.div`
 
     @media (max-width: 540px) {
       flex-direction: column;
-      gap: 4.5rem;
     }
   }
 `
@@ -106,7 +104,7 @@ export const ChartsStyle = styled.div`
 export const ChartsFirstSection = styled.section`
   width: 100%;
   max-width: 46.875rem;
-  max-height: 65.625rem;
+  max-height: max-content;
 
   display: flex;
   flex-direction: column;
@@ -130,18 +128,29 @@ export const ChartsFirstSection = styled.section`
 `
 
 export const MapSection = styled.section`
-  width: 100%;
+  width: 60%;
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: ${({theme}) => theme.spacings[1]};
 
+  > div {
+    >:nth-child(3) {
+      @media (max-width: 1024px) {
+        min-width: 18.75rem;
+        max-width: 18.75rem;
+      }
+    }
+  }
+
   @media (max-width: 768px) {
+    min-width: 18.75rem;
     max-width: 18.75rem;
   }
 
   @media (max-width: 540px) {
-    max-width: 100%;
+    max-width: none;
+    width: 100%;
   }
 `
 
@@ -195,6 +204,12 @@ export const QuantityTotal = styled.div`
 
   @media (max-width: 540px) {
     display: none;
+  }
+`
+
+export const QuantityTotalToMobile = styled(QuantityTotal)`
+  @media (max-width: 540px) {
+    display: block;
   }
 `
 

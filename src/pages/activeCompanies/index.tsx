@@ -61,10 +61,10 @@ export const ActiveCompanies = () => {
                   <div className='charts-and-tables'>
                     <Styled.ChartsFirstSection>
                       {window.innerWidth <= 540 && (
-                        <Styled.QuantityTotal>
+                        <Styled.QuantityTotalToMobile>
                           <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
                           <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
-                        </Styled.QuantityTotal>
+                        </Styled.QuantityTotalToMobile>
                       )}
                       <TemplateChart
                         chartType='Porte'

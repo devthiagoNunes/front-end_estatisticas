@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
-// type ContainerProps = {
-//   filtersVisible: boolean
-// }
-
 export const Container = styled.div`
-  width: 90%;
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
+  max-width: 80rem;
 
   display: flex;
   flex-direction: column;
@@ -32,6 +28,11 @@ export const Container = styled.div`
       text-align: center;
       font-size: ${({theme}) => theme.font.sizes.large};
     }
+  }
+  
+  @media (max-width: 1024px) {
+    width: 90%;
+    margin: 0 auto;
   }
 `
 
