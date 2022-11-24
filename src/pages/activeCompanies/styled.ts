@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Container as PageContainer, Content as PageContent, StyleContent as PageStyleContent, ChartsStyle as PageChartsStyle, ChartsFirstSection as PageChartsFirstSection, MapSection as PageMapSection, QuantityTotal as PageQuantityTotal, ContentTemplate as PageContentTemplate, QuantityTotalToMobile as PageQuantityTotalToMobile } from '../openCompanies/styled'
+import { Container as PageContainer, Content as PageContent, StyleContent as PageStyleContent, ChartsStyle as PageChartsStyle, ChartsFirstSection as PageChartsFirstSection, MapSection as PageMapSection, QuantityTotal as PageQuantityTotal, QuantityTotalToMobile as PageQuantityTotalToMobile } from '../openCompanies/styled'
 import { Container as MapContainer } from '../../components/mapMaranhao/styled'
 
 export const Container = styled(PageContainer)``
@@ -46,5 +46,3 @@ export const MapSection = styled(PageMapSection)`
 export const QuantityTotal = styled(PageQuantityTotal)``
 
 export const QuantityTotalToMobile = styled(PageQuantityTotalToMobile)``
-
-export const ContentTemplate = styled(PageContentTemplate)``

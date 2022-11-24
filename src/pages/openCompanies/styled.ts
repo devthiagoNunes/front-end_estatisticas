@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+  import styled from 'styled-components';
 
-import { Container as MapContainer } from '../../components/mapMaranhao/styled'
 type ContainerProps = {
   filtersVisible: boolean
 }
+
 export const Container = styled.main<ContainerProps>`
   position: relative;
   width: 100%;
@@ -46,10 +46,14 @@ export const Container = styled.main<ContainerProps>`
 
 export const Content = styled.div`
   width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  
   display: flex;
   flex-direction: column;
   gap: ${({theme}) => theme.spacings[2]};
-
+    
+  padding-top: 2rem;
   padding-bottom: ${({theme}) => theme.spacings[2]};
 
   @media (max-width: 1024px) {
@@ -74,6 +78,8 @@ type StyleContentProps = {
 export const StyleContent = styled.section<StyleContentProps>`
   position: relative;
   gap: ${({theme}) => theme.spacings['0.5']};
+  height: max-content;
+  max-height: max-content;
   
   @media (max-width: 540px) {
     width: 90%;
@@ -89,7 +95,7 @@ export const ChartsStyle = styled.div`
   gap: ${({theme}) => theme.spacings[1]};
   padding: ${({theme}) => theme.spacings['0.75']};
   border: 1px solid ${({theme}) => theme.colors.blue[400]};
-  
+
   .charts-and-tables {
     display: flex;
     justify-content: space-evenly;
@@ -111,6 +117,12 @@ export const ChartsFirstSection = styled.section`
   align-items: center;
   gap: ${({theme}) => theme.spacings[1]};
 
+  > div {
+    :nth-child(3) {
+      max-height: 360px;
+    }
+  }
+
   @media (max-width: 1366px) {
     min-width: 48rem;
     max-width: 48rem;
@@ -129,19 +141,12 @@ export const ChartsFirstSection = styled.section`
 
 export const MapSection = styled.section`
   width: 60%;
+  max-height: max-content;
+
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: ${({theme}) => theme.spacings[1]};
-
-  > div {
-    >:nth-child(3) {
-      @media (max-width: 1024px) {
-        min-width: 18.75rem;
-        max-width: 18.75rem;
-      }
-    }
-  }
 
   @media (max-width: 768px) {
     min-width: 18.75rem;
@@ -210,23 +215,5 @@ export const QuantityTotal = styled.div`
 export const QuantityTotalToMobile = styled(QuantityTotal)`
   @media (max-width: 540px) {
     display: block;
-  }
-`
-
-export const ContentTemplate = styled(Content)`
-  max-width: 80rem;
-  margin: 0 auto;
-  padding-top: 2rem;
-  
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-
-  @media (max-width: 540px) {
-    padding: 0;
   }
 `

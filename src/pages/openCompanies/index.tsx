@@ -51,50 +51,47 @@ export const OpenCompanies = () => {
         error ? <Navigate to='/' /> :
         data && (
           <Styled.Content>
-            <Styled.ContentTemplate>
-  
-              <Styled.StyleContent filtersVisible={filtersVisible}> 
-                <TemplateLinks />
-  
-                <Styled.ChartsStyle>
-                  <div className='charts-and-tables'>
-                    <Styled.ChartsFirstSection>
-                      {window.innerWidth <= 540 && (
-                        <Styled.QuantityTotalToMobile>
-                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
-                          <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
-                        </Styled.QuantityTotalToMobile>
-                      )}
-                      <TemplateChart
-                        chartType='Porte'
-                        chartData={data.graphicsData.porte}
-                      />
-                      <TemplateChart
-                        chartType='Setor'
-                        chartData={data.graphicsData.setor}
-                      />
-  
-                      <TemplateTable 
-                        tableType='Natureza'
-                        tableData={data.graphicsData.natureza}
-                      />
-                    </Styled.ChartsFirstSection>
-  
-                    <Styled.MapSection>
-                      {window.innerWidth > 540 && (
-                        <Styled.QuantityTotal>
-                          <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
-                          <p>{data?.graphicsData.quantity[0] ? data.graphicsData.quantity[0][0].toLocaleString('pt-BR') : 0}</p>
-                        </Styled.QuantityTotal>
-                      )}
-                      <MapMaranhao dataToMap={data.graphicsData.municipio_empresa} />
-                    </Styled.MapSection>
-                  </div>
-  
-                  {!state.mes.length && <TemplateChart chartData={data.graphicsData.mes} chartType='Mês' />}
-                </Styled.ChartsStyle> 
-              </Styled.StyleContent>
-            </Styled.ContentTemplate>
+            <Styled.StyleContent filtersVisible={filtersVisible}> 
+              <TemplateLinks />
+
+              <Styled.ChartsStyle>
+                <div className='charts-and-tables'>
+                  <Styled.ChartsFirstSection>
+                    {window.innerWidth <= 540 && (
+                      <Styled.QuantityTotalToMobile>
+                        <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                        <p>{data.graphicsData.quantity[0][0].toLocaleString('pt-BR')}</p>
+                      </Styled.QuantityTotalToMobile>
+                    )}
+                    <TemplateChart
+                      chartType='Porte'
+                      chartData={data.graphicsData.porte}
+                    />
+                    <TemplateChart
+                      chartType='Setor'
+                      chartData={data.graphicsData.setor}
+                    />
+
+                    <TemplateTable 
+                      tableType='Natureza'
+                      tableData={data.graphicsData.natureza}
+                    />
+                  </Styled.ChartsFirstSection>  
+
+                  <Styled.MapSection>
+                    {window.innerWidth > 540 && (
+                      <Styled.QuantityTotal>
+                        <p>Total de Empresas {state.empresasAbertas ? 'Abertas' : 'Ativas'}</p>
+                        <p>{data?.graphicsData.quantity[0] ? data.graphicsData.quantity[0][0].toLocaleString('pt-BR') : 0}</p>
+                      </Styled.QuantityTotal>
+                    )}
+                    <MapMaranhao dataToMap={data.graphicsData.municipio_empresa} />
+                  </Styled.MapSection>
+                </div>
+
+                {!state.mes.length && <TemplateChart chartData={data.graphicsData.mes} chartType='Mês' />}
+              </Styled.ChartsStyle> 
+            </Styled.StyleContent>
           </Styled.Content>
         )
       }
