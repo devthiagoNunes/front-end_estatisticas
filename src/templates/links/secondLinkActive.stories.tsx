@@ -6,7 +6,7 @@ import { TemplateLinksProps } from '.'
 import { Container } from './styled'
 
 export default {
-  title: 'TemplateLinks/SecondLinkActive',
+  title: 'Templates/Links/SecondLinkActive',
 } as Meta<TemplateLinksProps>
 
 export const SecondLinkActive = (args: TemplateLinksProps) => (
