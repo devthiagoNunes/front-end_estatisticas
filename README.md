@@ -51,4 +51,38 @@
     <li>o projeto antigo não se adaptava a resoluções de telas diferentes, e com a diversidade de dispositivos hoje existente, nada mais justo que adicionar essa nova funcionalidade no projeto.</li>
     <li>no novo painel isso foi implementado, e hoje a aplicação se adapta a celular, tablet, notbook e computador, e também foi criado um visual novo totalmente do zero para este projeto, onde mudei totalmente o layout do painel antigo trazendo um visual mais agradavel e intuitivo.</li>
   </ul>
+  <h2>Veja a seguir algumas imagens do projeto documentado no storybook</h2>
+  <div>
+    <section>
+      <p>Component e Template de gráficos</p>
+      <img src='./assets/storybookimages/chart-1.png' />
+      <img src='./assets/storybookimages/chart-2.png' />
+      <img src='./assets/storybookimages/chart-3.png' />
+      <img src='./assets/storybookimages/chart-template.png' />
+    </section>
+    <section>
+      <p>Component e Template de filtros</p>
+      <img src='./assets/storybookimages/filter-month.png' />
+      <img src='./assets/storybookimages/filter-multi.png' />
+      <img src='./assets/storybookimages/filter-single.png' />
+      <img src='./assets/storybookimages/filter-template.png' />
+    </section>
+    <section>
+      <p>Template dos links</p>
+      <img src='./assets/storybookimages/links.png' />
+    </section>
+    <section>
+      <p>Template do Mapa</p>
+      <img src='./assets/storybookimages/map.png' />
+    </section>
+    <section>
+      <p>Template do treemap </p>
+      <img src='./assets/storybookimages/      <p>Template do treemap </p>
+.png' />
+    </section>
+    <section>
+      <p>Template das tablas</p>
+      <img src='./assets/storybookimages/table.png' />
+    </section>
+  </div>
 </div>
